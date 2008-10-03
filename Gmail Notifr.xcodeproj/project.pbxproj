@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A1463630E9595ED00930C28 /* MIT-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */; };
+		1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463820E95F67700930C28 /* ApplicationController.rb */; };
+		1A14638C0E95FF8200930C28 /* app.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A14638B0E95FF8200930C28 /* app.tiff */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -21,6 +23,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		1A1463510E95954900930C28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1A1463620E9595ED00930C28 /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
+		1A1463820E95F67700930C28 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationController.rb; sourceTree = "<group>"; };
+		1A14638B0E95FF8200930C28 /* app.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app.tiff; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -47,6 +51,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1A1463820E95F67700930C28 /* ApplicationController.rb */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 			children = (
 				1A1463620E9595ED00930C28 /* MIT-LICENSE */,
 				1A1463510E95954900930C28 /* README.md */,
+				1A14638B0E95FF8200930C28 /* app.tiff */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
 			);
@@ -177,6 +183,8 @@
 				4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */,
 				4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */,
 				1A1463630E9595ED00930C28 /* MIT-LICENSE in Resources */,
+				1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */,
+				1A14638C0E95FF8200930C28 /* app.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

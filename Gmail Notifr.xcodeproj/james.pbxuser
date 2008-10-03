@@ -7,12 +7,13 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -34,10 +35,156 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	1A1463510E95954900930C28 /* README.md */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {698, 348}}";
+			sepNavSelRange = "{115, 0}";
+			sepNavVisRange = "{0, 115}";
+		};
+	};
+	1A1463530E95955C00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 1";
+		rLen = 0;
+		rLoc = 17;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	1A1463540E95955C00930C28 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 1A1463550E95955C00930C28;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	1A1463550E95955C00930C28 = {
+		isa = PBXFileReference;
+		lastKnownFileType = folder;
+		sourceTree = "<group>";
+	};
+	1A1463560E95955C00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 1";
+		rLen = 0;
+		rLoc = 17;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	1A1463620E9595ED00930C28 /* MIT-LICENSE */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {641, 348}}";
+			sepNavSelRange = "{1054, 0}";
+			sepNavVisRange = "{0, 1054}";
+		};
+	};
+	1A1463640E95964E00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */;
+		name = "MIT-LICENSE: 21";
+		rLen = 0;
+		rLoc = 1054;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	1A1463650E95964E00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 1";
+		rLen = 0;
+		rLoc = 17;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	1A1463660E95964E00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 1";
+		rLen = 0;
+		rLoc = 17;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	1A1463670E95964E00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */;
+		name = "MIT-LICENSE: 21";
+		rLen = 0;
+		rLoc = 1054;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	1A1463680E95964E00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 1";
+		rLen = 0;
+		rLoc = 115;
+		rType = 0;
+		vrLen = 71;
+		vrLoc = 0;
+	};
+	1A1463690E95966F00930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 4";
+		rLen = 0;
+		rLoc = 73;
+		rType = 0;
+		vrLen = 115;
+		vrLoc = 0;
+	};
+	1A14636A0E9596A500930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */;
+		name = "MIT-LICENSE: 21";
+		rLen = 0;
+		rLoc = 1054;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	1A14636B0E9596A500930C28 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+	};
+	1A14636C0E9596A500930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */;
+		name = "MIT-LICENSE: 21";
+		rLen = 0;
+		rLoc = 1054;
+		rType = 0;
+		vrLen = 1054;
+		vrLoc = 0;
+	};
+	1A14636D0E9596A500930C28 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1A1463510E95954900930C28 /* README.md */;
+		name = "README.md: 4";
+		rLen = 0;
+		rLoc = 115;
+		rType = 0;
+		vrLen = 115;
+		vrLoc = 0;
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 1A1463450E9593E000930C28 /* Gmail Notifr */;
 		activeTarget = 4DDCA7030ACC9A6100E082CE /* Gmail Notifr */;
+		addToTargets = (
+			4DDCA7030ACC9A6100E082CE /* Gmail Notifr */,
+		);
 		codeSenseManager = 1A14634C0E9593E300930C28 /* Code sense */;
 		executables = (
 			1A1463450E9593E000930C28 /* Gmail Notifr */,
@@ -48,7 +195,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					463,
 					20,
 					48.16259765625,
 					43,
@@ -68,6 +215,21 @@
 			PBXPerProjectTemplateStateSaveDate = 244683744;
 			PBXWorkspaceStateSaveDate = 244683744;
 		};
+		perUserProjectItems = {
+			1A1463530E95955C00930C28 /* PBXTextBookmark */ = 1A1463530E95955C00930C28 /* PBXTextBookmark */;
+			1A1463540E95955C00930C28 /* PlistBookmark */ = 1A1463540E95955C00930C28 /* PlistBookmark */;
+			1A1463560E95955C00930C28 /* PBXTextBookmark */ = 1A1463560E95955C00930C28 /* PBXTextBookmark */;
+			1A1463640E95964E00930C28 /* PBXTextBookmark */ = 1A1463640E95964E00930C28 /* PBXTextBookmark */;
+			1A1463650E95964E00930C28 /* PBXTextBookmark */ = 1A1463650E95964E00930C28 /* PBXTextBookmark */;
+			1A1463660E95964E00930C28 /* PBXTextBookmark */ = 1A1463660E95964E00930C28 /* PBXTextBookmark */;
+			1A1463670E95964E00930C28 /* PBXTextBookmark */ = 1A1463670E95964E00930C28 /* PBXTextBookmark */;
+			1A1463680E95964E00930C28 /* PBXTextBookmark */ = 1A1463680E95964E00930C28 /* PBXTextBookmark */;
+			1A1463690E95966F00930C28 /* PBXTextBookmark */ = 1A1463690E95966F00930C28 /* PBXTextBookmark */;
+			1A14636A0E9596A500930C28 /* PBXTextBookmark */ = 1A14636A0E9596A500930C28 /* PBXTextBookmark */;
+			1A14636B0E9596A500930C28 /* PBXBookmark */ = 1A14636B0E9596A500930C28 /* PBXBookmark */;
+			1A14636C0E9596A500930C28 /* PBXTextBookmark */ = 1A14636C0E9596A500930C28 /* PBXTextBookmark */;
+			1A14636D0E9596A500930C28 /* PBXTextBookmark */ = 1A14636D0E9596A500930C28 /* PBXTextBookmark */;
+		};
 		sourceControlManager = 1A14634B0E9593E300930C28 /* Source Control */;
 		userBuildSettings = {
 		};
@@ -77,5 +239,10 @@
 		executables = (
 			1A1463450E9593E000930C28 /* Gmail Notifr */,
 		);
+	};
+	4DDCA7110ACC9A6100E082CE /* Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
+		};
 	};
 }

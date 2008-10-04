@@ -4,27 +4,25 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
-	<key>LSUIElement</key>
-	<string>1</string>
 	<key>CFBundleExecutable</key>
 	<string>Gmail Notifr</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>app</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ashchan.GmailNotifr</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>LSUIElement</key>
+	<string>1</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.ashchan.GmailNotifr</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 </dict>
 </plist>

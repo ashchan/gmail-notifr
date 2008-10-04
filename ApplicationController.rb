@@ -10,14 +10,13 @@ require 'osx/cocoa'
 
 class ApplicationController < OSX::NSObject
 	include OSX
+	
+	MIN_INTERVAL = 1
+	MAX_INTERVAL = 300
+	DEFAULT_INTERVAL = 30
 
 	attr_writer :menu
-
-	def	init
-		super_init
-		self
-	end
-	
+		
 	def	awakeFromNib
 		@status_bar = NSStatusBar.systemStatusBar
 		status_item = @status_bar.statusItemWithLength(NSVariableStatusItemLength)
@@ -28,6 +27,19 @@ class ApplicationController < OSX::NSObject
 		icon_file = NSBundle.mainBundle.pathForResource_ofType('app', 'tiff')
 		icon = NSImage.alloc.initWithContentsOfFile(icon_file)
 		status_item.setImage(icon)
+		
+		setupDefaults
+	end
+	
+	def	setupDefaults
+		defaults = NSUserDefaults.standardUserDefaults
+		values = NSDictionary.dictionaryWithObjectsAndKeys(
+			DEFAULT_INTERVAL, "interval",
+			"", "username",
+			"", "password",
+			false, "auto_launch"
+		)
+		defaults.registerDefaults(values)
 	end
 
 end

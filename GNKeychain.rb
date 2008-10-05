@@ -27,7 +27,7 @@ class GNKeychain < OSX::NSObject
 			nil)
 			
 		#already set
-		if error == -25299 #errSecDuplicateItem
+		if error == OSX::ErrSecDuplicateItem
 			status, *data = SecKeychainFindGenericPassword(
 				nil,
 				SERVICE.length,

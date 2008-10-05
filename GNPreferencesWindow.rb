@@ -15,6 +15,7 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :username
 	ib_outlet :password
 	ib_outlet :interval
+	ib_outlet :autoLaunch
 	ib_action :save
 
 	def	awakeFromNib
@@ -58,7 +59,10 @@ class GNPreferencesWindow < OSX::NSWindow
 			@applicationContrller.checkMail
 		end
 		
-		reload_ui({:username => username, :password => password, :interval => interval})
+		autoLaunch = @autoLaunch.state == NSOnState ? true : false
+		GNStartItems.new.set(autoLaunch)
+		
+		reload_ui({:username => username, :password => password, :interval => interval, :autoLaunch => autoLaunch })
 		
 		self.close
 	end
@@ -69,17 +73,19 @@ class GNPreferencesWindow < OSX::NSWindow
 		username = defaults.stringForKey("username")
 		password = GNKeychain.new.get_password(username)
 		interval = defaults.integerForKey("interval")
+		autoLaunch = GNStartItems.new.isSet
 		
-		return { :username => username, :password => password, :interval => interval }
+		return { :username => username, :password => password, :interval => interval, :autoLaunch => autoLaunch }
 	end
 	
 	def	reload_ui(values)
 		username = values[:username]
 		password = values[:password]
 		interval = values[:interval]
+		autoLaunch = values[:autoLaunch]
 		@username.setTitleWithMnemonic(username) if username && username.length > 0
 		@password.setTitleWithMnemonic(password) if password && password.length > 0
 		@interval.setTitleWithMnemonic(interval.to_s)
+		@autoLaunch.setState(autoLaunch ? NSOnState : NSOffState)
 	end
-
 end

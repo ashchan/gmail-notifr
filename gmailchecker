@@ -23,13 +23,13 @@ class GmailChecker
 
 		  if response
 			case response.code
-				when "401" #HTTPUnauthorized
-					count = "E"
-				when "200" #HTTPOK				
-					feed = REXML::Document.new response.body
-					count = feed.get_elements('/feed/fullcount')[0].text
-				else
-					count = "F"
+			when "401" #HTTPUnauthorized
+				count = "E"
+			when "200" #HTTPOK				
+				feed = REXML::Document.new response.body
+				count = feed.get_elements('/feed/fullcount')[0].text
+			else
+				count = "F"
 			end
 		  else
 			#don't get response
@@ -37,7 +37,7 @@ class GmailChecker
 		rescue REXML::ParseException => e
 		  puts "error parsing feed: #{e.message}"
 		rescue => e
-		  puts "error: #{e.to_s}"
+		  puts "error: #{e}"
 		end
 		
 		count

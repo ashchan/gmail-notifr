@@ -16,6 +16,7 @@
 		1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1465A20E979FE600930C28 /* GNKeychain.rb */; };
 		1A1466F70E987BF100930C28 /* gmailchecker in Resources */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
 		1A1467050E987D4500930C28 /* gmailchecker in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
+		1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 1A33AF920E9896DE002F815F /* Security.bridgesupport */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -49,6 +50,7 @@
 		1A1465540E979E7200930C28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A1465A20E979FE600930C28 /* GNKeychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNKeychain.rb; sourceTree = "<group>"; };
 		1A1466F60E987BF100930C28 /* gmailchecker */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = gmailchecker; sourceTree = "<group>"; };
+		1A33AF920E9896DE002F815F /* Security.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Security.bridgesupport; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -111,14 +113,25 @@
 		1A14664D0E98420A00930C28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A1466F60E987BF100930C28 /* gmailchecker */,
 				1A1465A20E979FE600930C28 /* GNKeychain.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
+		1A33AF860E9892DA002F815F /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1A14638B0E95FF8200930C28 /* app.tiff */,
+				1A1463AC0E9743E300930C28 /* app.icns */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* Gmail Notifr */ = {
 			isa = PBXGroup;
 			children = (
+				1A33AF860E9892DA002F815F /* Icons */,
 				1A14664D0E98420A00930C28 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -133,13 +146,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1A1463AC0E9743E300930C28 /* app.icns */,
+				1A33AF920E9896DE002F815F /* Security.bridgesupport */,
 				1A1463620E9595ED00930C28 /* MIT-LICENSE */,
 				1A1463510E95954900930C28 /* README.md */,
-				1A14638B0E95FF8200930C28 /* app.tiff */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
-				1A1466F60E987BF100930C28 /* gmailchecker */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 				1A1464370E975D8C00930C28 /* GNPreferencesWindow.rb in Resources */,
 				1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */,
 				1A1466F70E987BF100930C28 /* gmailchecker in Resources */,
+				1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

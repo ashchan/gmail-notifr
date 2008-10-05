@@ -7,10 +7,12 @@
 #
 
 require 'osx/cocoa'
+
+include OSX
 OSX.require_framework 'Security'
+OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
 
 class ApplicationController < OSX::NSObject
-	include OSX
 	
 	MIN_INTERVAL = 1
 	MAX_INTERVAL = 300
@@ -58,13 +60,14 @@ class ApplicationController < OSX::NSObject
 	
 	def	checkMail
 		@status_item.setToolTip("checking mail...")
+		@status_item.setTitle("...")
 				
 		defaults = NSUserDefaults.standardUserDefaults		
 		username = defaults.stringForKey("username")
 		password = GNKeychain.new.get_password(username)
 		return unless username.length > 0 && password.length > 0
 				
-		@checker.interrupt and @checker.dealloc if @checker
+		@checker.interrupt and @checker = nil if @checker
 		@checker = NSTask.alloc.init
 		@checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
 		@checker.setLaunchPath(@checker_path)
@@ -72,15 +75,13 @@ class ApplicationController < OSX::NSObject
 		args = NSArray.arrayWithObjects(username, password, nil)
 		@checker.setArguments(args)		
 		
-		@pipe.dealloc if @pipe
-		@pipe = NSPipe.alloc.init
-		@checker.setStandardOutput(@pipe)
+		pipe = NSPipe.alloc.init
+		@checker.setStandardOutput(pipe)
 		
 		nc = NSNotificationCenter.defaultCenter
-		fn = @pipe.fileHandleForReading
+		fn = pipe.fileHandleForReading
 		nc.removeObserver(self)
 		nc.addObserver_selector_name_object(self, 'checkCountReturned', NSFileHandleReadToEndOfFileCompletionNotification, fn)
-		nc.addObserver_selector_name_object(self, 'checkFinished', NSTaskDidTerminateNotification, @checker)
 		
 		@checker.launch
 		fn.readToEndOfFileInBackgroundAndNotify
@@ -102,11 +103,6 @@ class ApplicationController < OSX::NSObject
 			@status_item.setToolTip("#{mail_count} unread mail(s)")
 			@status_item.setTitle(mail_count)
 		end
-	end
-	
-	def	checkFinished(notification)
-		@checker.release
-		@checker = nil
 	end
 
 	def	checkMailByTimer(timer)

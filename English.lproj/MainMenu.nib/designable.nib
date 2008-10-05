@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="429"/>
 			<integer value="385"/>
-			<integer value="391"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -171,7 +171,7 @@
 											<reference key="NSSuperview" ref="614539815"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="189541624">
-												<int key="NSCellFlags">879885888</int>
+												<int key="NSCellFlags">343014976</int>
 												<int key="NSCellFlags2">272630784</int>
 												<string key="NSContents"/>
 												<reference key="NSSupport" ref="43957172"/>
@@ -221,7 +221,7 @@
 											<reference key="NSSuperview" ref="614539815"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="119829698">
-												<int key="NSCellFlags">-1267597759</int>
+												<int key="NSCellFlags">-1804468671</int>
 												<int key="NSCellFlags2">272630784</int>
 												<string key="NSContents"/>
 												<reference key="NSSupport" ref="43957172"/>
@@ -464,6 +464,14 @@
 						<reference key="destination" ref="759571753"/>
 					</object>
 					<int key="connectionID">439</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">password</string>
+						<reference key="source" ref="885398745"/>
+						<reference key="destination" ref="422810936"/>
+					</object>
+					<int key="connectionID">454</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -813,7 +821,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">453</int>
+			<int key="maxID">454</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -854,7 +862,7 @@
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>interval</string>
-							<string>test</string>
+							<string>password</string>
 							<string>username</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">

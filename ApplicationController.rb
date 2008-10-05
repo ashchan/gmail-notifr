@@ -7,6 +7,7 @@
 #
 
 require 'osx/cocoa'
+OSX.require_framework 'Security'
 
 class ApplicationController < OSX::NSObject
 	include OSX

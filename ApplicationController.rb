@@ -28,13 +28,17 @@ class ApplicationController < OSX::NSObject
 		@status_item = @status_bar.statusItemWithLength(NSVariableStatusItemLength)
 		@status_item.setHighlightMode(true)
 		@status_item.setMenu(@menu)
-		@status_item.setTitle(0)
 		
 		icon_file = NSBundle.mainBundle.pathForResource_ofType('app', 'tiff')
 		icon = NSImage.alloc.initWithContentsOfFile(icon_file)
 		@status_item.setImage(icon)
 		
 		setupDefaults
+		
+		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
+		
+		setTimer
+		checkMail
 	end
 	
 	def	setupDefaults
@@ -52,28 +56,61 @@ class ApplicationController < OSX::NSObject
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString("http://mail.google.com/mail"))
 	end
 	
-	def checkMail
-		defaults = NSUserDefaults.standardUserDefaults
-		
+	def	checkMail
+		@status_item.setToolTip("checking mail...")
+				
+		defaults = NSUserDefaults.standardUserDefaults		
 		username = defaults.stringForKey("username")
 		password = GNKeychain.new.get_password(username)
+		return unless username.length > 0 && password.length > 0
+				
+		@checker.interrupt and @checker.dealloc if @checker
+		@checker = NSTask.alloc.init
+		@checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
+		@checker.setLaunchPath(@checker_path)
+
+		args = NSArray.arrayWithObjects(username, password, nil)
+		@checker.setArguments(args)		
 		
-		if username.length > 0 && password.length > 0
-			mail_count = GNGmailChecker.new(username, password).new_mail_count
-			
-			#TOTO: better have icons for errors
-			if mail_count == "F"
-				@status_item.setToolTip("checking fails")
-				@staus_item.setTitle(":(")
-			elsif mail_count == "E"
-				@status_item.setToolTip("username or password wrong")
-				@status_item.setTitle(":(")
-			else
-				#TODO: use different icon to present
-				@status_item.setToolTip("#{mail_count} unread mail(s)")
-				@status_item.setTitle(mail_count)
-			end
+		@pipe.dealloc if @pipe
+		@pipe = NSPipe.alloc.init
+		@checker.setStandardOutput(@pipe)
+		
+		nc = NSNotificationCenter.defaultCenter
+		fn = @pipe.fileHandleForReading
+		nc.removeObserver(self)
+		nc.addObserver_selector_name_object(self, 'checkCountReturned', NSFileHandleReadToEndOfFileCompletionNotification, fn)
+		nc.addObserver_selector_name_object(self, 'checkFinished', NSTaskDidTerminateNotification, @checker)
+		
+		@checker.launch
+		fn.readToEndOfFileInBackgroundAndNotify
+	end
+	
+	def	checkCountReturned(notification)
+		data = notification.userInfo.valueForKey(NSFileHandleNotificationDataItem)
+		mail_count = NSString.alloc.initWithData_encoding(data, NSUTF8StringEncoding)
+		
+		#TOTO: better have icons for errors
+		if mail_count == "F"
+			@status_item.setToolTip("checking fails")
+			@staus_item.setTitle(":(")
+		elsif mail_count == "E"
+			@status_item.setToolTip("username or password wrong")
+			@status_item.setTitle(":(")
+		else
+			#TODO: use different icon to present
+			@status_item.setToolTip("#{mail_count} unread mail(s)")
+			@status_item.setTitle(mail_count)
 		end
+	end
+	
+	def	checkFinished(notification)
+		@checker.release
+		@checker = nil
+	end
+
+	def	checkMailByTimer(timer)
+		checkMail
 	end
 	
 	def	showAbout(sender)
@@ -84,6 +121,14 @@ class ApplicationController < OSX::NSObject
 	def	showPreferencesWindow(sender)	
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
 		@preferencesWindow.makeKeyAndOrderFront(sender)
+	end
+	
+	def	setTimer		
+		defaults = NSUserDefaults.standardUserDefaults		
+		interval = defaults.integerForKey("interval")
+		@timer.invalidate if @timer
+		@timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
+			interval * 60, self, 'checkMailByTimer', nil, true)
 	end
 
 end

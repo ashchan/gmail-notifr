@@ -11,6 +11,7 @@ require 'osx/cocoa'
 class GNPreferencesWindow < OSX::NSWindow
 	include OSX
 
+	ib_outlet :applicationContrller
 	ib_outlet :username
 	ib_outlet :password
 	ib_outlet :interval
@@ -28,28 +29,37 @@ class GNPreferencesWindow < OSX::NSWindow
 
 	
 	def	save
+		self.orderOut(nil)
+		
 		old_values = load_defaults
 		interval = 
 			@interval.intValue.between?(ApplicationController::MIN_INTERVAL, ApplicationController::MAX_INTERVAL) ?
 			@interval.intValue : ApplicationController::DEFAULT_INTERVAL
 		username = @username.stringValue
 		password = @password.stringValue
+		changed = false
 		
 		defaults = NSUserDefaults.standardUserDefaults
 		
 		if old_values[:interval] != interval
 			defaults.setInteger_forKey(interval, "interval")
-			#todo timer
+			changed = true
+			@applicationContrller.setTimer
 		end
 		
 		if (username.length > 0 && password.length > 0) && (username != old_values[:username] || password != old_values[:password])
 			GNKeychain.new.set_account(username, password)
 			defaults.setObject_forKey(username, "username")
+			changed = true
 		end
 		
-		defaults.synchronize
+		if changed
+			defaults.synchronize
+			@applicationContrller.checkMail
+		end
 		
 		reload_ui({:username => username, :password => password, :interval => interval})
+		
 		self.close
 	end
 	

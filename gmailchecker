@@ -1,15 +1,8 @@
-#
-#  GNGmailChecker.rb
-#  Gmail Notifr
-#
-#  Created by james on 10/5/08.
-#  Copyright (c) 2008 ashchan.com. All rights reserved.
-#
-
+#!/usr/bin/env ruby
 require 'net/https'
 require 'rexml/document'
 
-class GNGmailChecker
+class GmailChecker
 	def initialize(username, password)
 		@username = username
 		@password = password
@@ -50,3 +43,5 @@ class GNGmailChecker
 		count
 	end
 end
+
+print GmailChecker.new(ARGV[0], ARGV[1]).new_mail_count

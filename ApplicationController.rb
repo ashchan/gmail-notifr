@@ -42,5 +42,9 @@ class ApplicationController < OSX::NSObject
 		)
 		defaults.registerDefaults(values)
 	end
+	
+	def	openInbox
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString("http://mail.google.com/mail"))
+	end
 
 end

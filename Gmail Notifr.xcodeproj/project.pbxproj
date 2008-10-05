@@ -14,6 +14,7 @@
 		1A1464370E975D8C00930C28 /* GNPreferencesWindow.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */; };
 		1A1465550E979E7200930C28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1465540E979E7200930C28 /* Security.framework */; };
 		1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1465A20E979FE600930C28 /* GNKeychain.rb */; };
+		1A14664F0E98422D00930C28 /* GNGmailChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A14664E0E98422D00930C28 /* GNGmailChecker.rb */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -33,6 +34,7 @@
 		1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferencesWindow.rb; sourceTree = "<group>"; };
 		1A1465540E979E7200930C28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A1465A20E979FE600930C28 /* GNKeychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNKeychain.rb; sourceTree = "<group>"; };
+		1A14664E0E98422D00930C28 /* GNGmailChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNGmailChecker.rb; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -62,7 +64,6 @@
 			children = (
 				1A1463820E95F67700930C28 /* ApplicationController.rb */,
 				1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */,
-				1A1465A20E979FE600930C28 /* GNKeychain.rb */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -93,9 +94,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1A14664D0E98420A00930C28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A1465A20E979FE600930C28 /* GNKeychain.rb */,
+				1A14664E0E98422D00930C28 /* GNGmailChecker.rb */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* Gmail Notifr */ = {
 			isa = PBXGroup;
 			children = (
+				1A14664D0E98420A00930C28 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -201,6 +212,7 @@
 				1A1463AD0E9743E300930C28 /* app.icns in Resources */,
 				1A1464370E975D8C00930C28 /* GNPreferencesWindow.rb in Resources */,
 				1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */,
+				1A14664F0E98422D00930C28 /* GNGmailChecker.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

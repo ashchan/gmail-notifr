@@ -16,9 +16,12 @@ class ApplicationController < OSX::NSObject
 	MAX_INTERVAL = 300
 	DEFAULT_INTERVAL = 30
 
+	ib_outlet :preferencesWindow
 	ib_outlet :menu
 	ib_action :openInbox
 	ib_action :checkMail
+	ib_action :showAbout
+	ib_action :showPreferencesWindow
 		
 	def	awakeFromNib
 		@status_bar = NSStatusBar.systemStatusBar
@@ -71,6 +74,16 @@ class ApplicationController < OSX::NSObject
 				@status_item.setTitle(mail_count)
 			end
 		end
+	end
+	
+	def	showAbout(sender)
+		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
+		NSApplication.sharedApplication.orderFrontStandardAboutPanel(sender)
+	end
+	
+	def	showPreferencesWindow(sender)	
+		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
+		@preferencesWindow.makeKeyAndOrderFront(sender)
 	end
 
 end

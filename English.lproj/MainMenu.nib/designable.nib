@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="391"/>
 			<integer value="373"/>
+			<integer value="390"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -45,7 +45,7 @@
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
 					</object>
-					<object class="NSMenuItem" id="5466605">
+					<object class="NSMenuItem" id="612536815">
 						<reference key="NSMenu" ref="845846908"/>
 						<string key="NSTitle">Open Inbox</string>
 						<string key="NSKeyEquiv"/>
@@ -53,7 +53,7 @@
 						<reference key="NSOnImage" ref="253178495"/>
 						<reference key="NSMixedImage" ref="1026465229"/>
 					</object>
-					<object class="NSMenuItem" id="709640723">
+					<object class="NSMenuItem" id="68512779">
 						<reference key="NSMenu" ref="845846908"/>
 						<bool key="NSIsDisabled">YES</bool>
 						<bool key="NSIsSeparator">YES</bool>
@@ -420,22 +420,6 @@
 					<int key="connectionID">382</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">orderFrontStandardAboutPanel:</string>
-						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="600488540"/>
-					</object>
-					<int key="connectionID">383</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">makeKeyAndOrderFront:</string>
-						<reference key="source" ref="885398745"/>
-						<reference key="destination" ref="456474594"/>
-					</object>
-					<int key="connectionID">392</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">nextKeyView</string>
 						<reference key="source" ref="879562125"/>
@@ -495,7 +479,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">openInbox:</string>
 						<reference key="source" ref="363356160"/>
-						<reference key="destination" ref="5466605"/>
+						<reference key="destination" ref="612536815"/>
 					</object>
 					<int key="connectionID">457</int>
 				</object>
@@ -506,6 +490,30 @@
 						<reference key="destination" ref="256512304"/>
 					</object>
 					<int key="connectionID">458</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showAbout:</string>
+						<reference key="source" ref="363356160"/>
+						<reference key="destination" ref="600488540"/>
+					</object>
+					<int key="connectionID">459</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">preferencesWindow</string>
+						<reference key="source" ref="363356160"/>
+						<reference key="destination" ref="885398745"/>
+					</object>
+					<int key="connectionID">460</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showPreferencesWindow:</string>
+						<reference key="source" ref="363356160"/>
+						<reference key="destination" ref="456474594"/>
+					</object>
+					<int key="connectionID">461</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -547,8 +555,8 @@
 							<reference ref="1055027963"/>
 							<reference ref="256512304"/>
 							<reference ref="456474594"/>
-							<reference ref="5466605"/>
-							<reference ref="709640723"/>
+							<reference ref="612536815"/>
+							<reference ref="68512779"/>
 						</object>
 						<reference key="parent" ref="1049"/>
 					</object>
@@ -760,12 +768,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">455</int>
-						<reference key="object" ref="5466605"/>
+						<reference key="object" ref="612536815"/>
 						<reference key="parent" ref="845846908"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">456</int>
-						<reference key="object" ref="709640723"/>
+						<reference key="object" ref="68512779"/>
 						<reference key="parent" ref="845846908"/>
 					</object>
 				</object>
@@ -871,7 +879,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">458</int>
+			<int key="maxID">461</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -885,16 +893,29 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>checkMail:</string>
 							<string>openInbox:</string>
+							<string>showAbout:</string>
+							<string>showPreferencesWindow:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>menu</string>
+							<string>preferencesWindow</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">menu</string>
-						<string key="NS.object.0">id</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>

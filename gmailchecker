@@ -12,7 +12,7 @@ class GmailChecker
 		http = Net::HTTP.new("mail.google.com", 443)
 		http.use_ssl = true
 		response = nil
-		count = 0
+		count = "E"
 
 		begin
 		  http.start do |http|
@@ -24,20 +24,16 @@ class GmailChecker
 		  if response
 			case response.code
 			when "401" #HTTPUnauthorized
-				count = "E"
+				count = "F"
 			when "200" #HTTPOK				
 				feed = REXML::Document.new response.body
 				count = feed.get_elements('/feed/fullcount')[0].text
-			else
-				count = "F"
 			end
-		  else
-			#don't get response
 		  end
 		rescue REXML::ParseException => e
-		  puts "error parsing feed: #{e.message}"
+		  #puts "error parsing feed: #{e.message}"
 		rescue => e
-		  puts "error: #{e}"
+		  #puts "error: #{e}"
 		end
 		
 		count

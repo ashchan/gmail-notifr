@@ -31,9 +31,14 @@ class ApplicationController < OSX::NSObject
 		@status_item.setHighlightMode(true)
 		@status_item.setMenu(@menu)
 		
-		icon_file = NSBundle.mainBundle.pathForResource_ofType('app', 'tiff')
-		icon = NSImage.alloc.initWithContentsOfFile(icon_file)
-		@status_item.setImage(icon)
+		bundle = NSBundle.mainBundle
+		@app_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('app', 'tiff'))
+		@mail_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('mail', 'tiff'))
+		@check_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check', 'tiff'))
+		@error_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('error', 'tiff'))
+		
+		@status_item.setImage(@app_icon)
+		@status_item.setTitle("0")
 		
 		setupDefaults
 		
@@ -60,7 +65,7 @@ class ApplicationController < OSX::NSObject
 	
 	def	checkMail
 		@status_item.setToolTip("checking mail...")
-		@status_item.setTitle("...")
+		@status_item.setImage(@check_icon)
 				
 		defaults = NSUserDefaults.standardUserDefaults		
 		username = defaults.stringForKey("username")
@@ -91,17 +96,16 @@ class ApplicationController < OSX::NSObject
 		data = notification.userInfo.valueForKey(NSFileHandleNotificationDataItem)
 		mail_count = NSString.alloc.initWithData_encoding(data, NSUTF8StringEncoding)
 		
-		#TOTO: better have icons for errors
-		if mail_count == "F"
-			@status_item.setToolTip("checking fails")
-			@staus_item.setTitle(":(")
-		elsif mail_count == "E"
+		if mail_count == "E"
+			@status_item.setToolTip("connecting error")
+			@staus_item.setImage(@error_icon)
+		elsif mail_count == "F"
 			@status_item.setToolTip("username or password wrong")
-			@status_item.setTitle(":(")
+			@status_item.setImage(@error_icon)
 		else
-			#TODO: use different icon to present
 			@status_item.setToolTip("#{mail_count} unread mail(s)")
 			@status_item.setTitle(mail_count)
+			@status_item.setImage(mail_count == "0" ? @app_icon : @mail_icon)
 		end
 	end
 

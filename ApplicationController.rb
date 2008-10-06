@@ -98,7 +98,7 @@ class ApplicationController < OSX::NSObject
 		
 		if mail_count == "E"
 			@status_item.setToolTip("connecting error")
-			@staus_item.setImage(@error_icon)
+			@status_item.setImage(@error_icon)
 		elsif mail_count == "F"
 			@status_item.setToolTip("username or password wrong")
 			@status_item.setImage(@error_icon)

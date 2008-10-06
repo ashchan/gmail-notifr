@@ -10,7 +10,7 @@ There's an official [Google Notifier](http://toolbar.google.com/gmail-helper/not
 
 * It installs and runs several daemon processes (Google Updater for example) without asking you. What's even worse, these processes remain after uninstalling Google Notifier.
 	
-There's an alternative great free Gmail notifier [GmailStatus](www.uebercoders.net/gms/), which I've been using for a while. It is really good.
+There's an alternative great free Gmail notifier [GmailStatus](http://www.uebercoders.net/gms/), which I've been using for a while. It is really good.
 
 When I started learning [RubyCocoa](http://rubycocoa.sourceforge.net/) recently, an idea came out: why not write a Gmail Notifier in RubyCocoa?
 

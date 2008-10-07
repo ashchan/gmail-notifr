@@ -11,6 +11,7 @@ require 'osx/cocoa'
 include OSX
 OSX.require_framework 'Security'
 OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
+OSX.ruby_thread_switcher_stop
 
 class ApplicationController < OSX::NSObject
 	

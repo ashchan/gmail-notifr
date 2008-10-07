@@ -20,6 +20,10 @@ So here comes Gmail Notifr.
 
 * Mac OS X 10.5+ (Leopard)
 
+# Binary Download
+
+[http://assets.ashchan.com/GmailNotifr.app.zip](http://assets.ashchan.com/GmailNotifr.app.zip)
+
 # Copyright Info #
 
 Copyright (c) 2008 [James Chan](http://blog.ashchan.com) (ashchan), released under the MIT license

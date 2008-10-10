@@ -24,6 +24,10 @@ So here comes Gmail Notifr.
 
 [http://assets.ashchan.com/GmailNotifr.app.zip](http://assets.ashchan.com/GmailNotifr.app.zip)
 
+# Source #
+
+[http://github.com/ashchan/gmail-notifr/tree/master](http://github.com/ashchan/gmail-notifr/tree/master)
+
 # Copyright Info #
 
 Copyright (c) 2008 [James Chan](http://blog.ashchan.com) (ashchan), released under the MIT license

@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="373"/>
 			<integer value="430"/>
+			<integer value="373"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -91,7 +91,7 @@
 					</object>
 					<object class="NSMenuItem" id="436251882">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Quite Gmail Notifr</string>
+						<string key="NSTitle">Quit Gmail Notifr</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>

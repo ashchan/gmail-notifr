@@ -11,33 +11,48 @@ require 'osx/cocoa'
 class GNStartItems < OSX::NSObject
 
 	def	isSet
-		cf = OSX::CFPreferencesCopyValue("AutoLaunchedApplicationDictionary", "loginwindow",OSX::KCFPreferencesCurrentUser, OSX::KCFPreferencesAnyHost)
+		cf = OSX::CFPreferencesCopyValue(
+			"AutoLaunchedApplicationDictionary",
+			"loginwindow",
+			OSX::KCFPreferencesCurrentUser,
+			OSX::KCFPreferencesAnyHost
+		)
 
-		cf.each do |app|
-			return true if path == app.valueForKey("Path")
-		end
-		false
+		cf.any? { |app| path == app["Path"] }
 	end
 	
 	def	set(autoLaunch)
 		if autoLaunch != isSet
-			cf = OSX::CFPreferencesCopyValue("AutoLaunchedApplicationDictionary", "loginwindow",OSX::KCFPreferencesCurrentUser, OSX::KCFPreferencesAnyHost)
-			cf = cf.mutableCopy
+			cf = OSX::CFPreferencesCopyValue(
+				"AutoLaunchedApplicationDictionary",
+				"loginwindow",
+				OSX::KCFPreferencesCurrentUser,
+				OSX::KCFPreferencesAnyHost
+			).mutableCopy
 			
 			if autoLaunch
 				#add
-				entry = OSX::NSDictionary.dictionaryWithObject_forKey(path, "Path")
-				cf.addObject(entry)
+				cf << { "Path" => path }
 			else
 				#remove
 				cf.each do |app|
-					cf.removeObject(app) and break if app.valueForKey("Path") == path
+					cf.delete(app) and break if app["Path"] == path
 				end
-				puts cf
 			end
 			
-			OSX::CFPreferencesSetValue("AutoLaunchedApplicationDictionary", cf, "loginwindow",OSX::KCFPreferencesCurrentUser, OSX::KCFPreferencesAnyHost)
-			OSX::CFPreferencesSynchronize("loginwindow", OSX::KCFPreferencesCurrentUser, OSX::KCFPreferencesAnyHost)
+			OSX::CFPreferencesSetValue(
+				"AutoLaunchedApplicationDictionary",
+				cf,
+				"loginwindow",
+				OSX::KCFPreferencesCurrentUser,
+				OSX::KCFPreferencesAnyHost
+			)
+			
+			OSX::CFPreferencesSynchronize(
+				"loginwindow",
+				OSX::KCFPreferencesCurrentUser,
+				OSX::KCFPreferencesAnyHost
+			)
 		end
 	end
 	

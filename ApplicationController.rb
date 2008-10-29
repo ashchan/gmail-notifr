@@ -117,6 +117,9 @@ class ApplicationController < OSX::NSObject
 				@status_item.setImage(@app_icon)
 			else
 				@status_item.setImage(@mail_icon)
+				if sound = NSSound.soundNamed('Blow')
+					sound.play
+				end
 				@growl.notify("Gmail Notifr", "You have #{tooltip}!") 
 			end
 		end

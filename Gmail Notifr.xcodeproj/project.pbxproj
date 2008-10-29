@@ -19,6 +19,8 @@
 		1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 1A33AF920E9896DE002F815F /* Security.bridgesupport */; };
 		1A33B0EE0E98C070002F815F /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A33B0ED0E98C070002F815F /* GNStartItems.rb */; };
 		1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1A382A290E9F2EE000BDC026 /* Credits.html */; };
+		1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A58F8B20EB88D28004D74BB /* Growl.rb */; };
+		1A58F8B50EB88D60004D74BB /* GNGrowlController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A58F8B40EB88D60004D74BB /* GNGrowlController.rb */; };
 		1A709B050E98EC34009672CC /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B020E98EC34009672CC /* check.tiff */; };
 		1A709B060E98EC34009672CC /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B030E98EC34009672CC /* error.tiff */; };
 		1A709B070E98EC34009672CC /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B040E98EC34009672CC /* mail.tiff */; };
@@ -58,6 +60,8 @@
 		1A33AF920E9896DE002F815F /* Security.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Security.bridgesupport; sourceTree = "<group>"; };
 		1A33B0ED0E98C070002F815F /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNStartItems.rb; sourceTree = "<group>"; };
 		1A382A290E9F2EE000BDC026 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		1A58F8B20EB88D28004D74BB /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Growl.rb; sourceTree = "<group>"; };
+		1A58F8B40EB88D60004D74BB /* GNGrowlController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNGrowlController.rb; sourceTree = "<group>"; };
 		1A709B020E98EC34009672CC /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check.tiff; sourceTree = "<group>"; };
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			children = (
 				1A1463820E95F67700930C28 /* ApplicationController.rb */,
 				1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */,
+				1A58F8B40EB88D60004D74BB /* GNGrowlController.rb */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				1A1466F60E987BF100930C28 /* gmailchecker */,
 				1A1465A20E979FE600930C28 /* GNKeychain.rb */,
 				1A33B0ED0E98C070002F815F /* GNStartItems.rb */,
+				1A58F8B20EB88D28004D74BB /* Growl.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 				1A709B060E98EC34009672CC /* error.tiff in Resources */,
 				1A709B070E98EC34009672CC /* mail.tiff in Resources */,
 				1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */,
+				1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */,
+				1A58F8B50EB88D60004D74BB /* GNGrowlController.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,6 +45,7 @@ class ApplicationController < OSX::NSObject
 		
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
+		@growl = GNGrowlController.alloc.init
 		setTimer
 		checkMail
 	end
@@ -109,9 +110,15 @@ class ApplicationController < OSX::NSObject
 			@status_item.setToolTip("username or password wrong")
 			@status_item.setImage(@error_icon)
 		else
-			@status_item.setToolTip("#{mail_count} unread mail(s)")
+			tooltip = "#{mail_count} new message#{mail_count == '1' ? '' : 's'}"
+			@status_item.setToolTip(tooltip)
 			@status_item.setTitle(mail_count)
-			@status_item.setImage(mail_count == "0" ? @app_icon : @mail_icon)
+			if mail_count == "0"
+				@status_item.setImage(@app_icon)
+			else
+				@status_item.setImage(@mail_icon)
+				@growl.notify("Gmail Notifr", "You have #{tooltip}!") 
+			end
 		end
 	end
 

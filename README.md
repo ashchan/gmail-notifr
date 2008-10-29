@@ -20,13 +20,21 @@ So here comes Gmail Notifr.
 
 * Mac OS X 10.5+ (Leopard)
 
+# Project Detail #
+
+* View [project home page](http://ashchan.com/projects/gmail-notifr)
+
+# Updates, Changelog & Feedback
+
+* [Changelog & Feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/)
+
 # Binary Download
 
-[http://assets.ashchan.com/GmailNotifr.app.zip](http://assets.ashchan.com/GmailNotifr.app.zip)
+* [http://assets.ashchan.com/GmailNotifr.app.zip](http://assets.ashchan.com/GmailNotifr.app.zip)
 
 # Source #
 
-[http://github.com/ashchan/gmail-notifr/tree/master](http://github.com/ashchan/gmail-notifr/tree/master)
+* [http://github.com/ashchan/gmail-notifr/tree/master](http://github.com/ashchan/gmail-notifr/tree/master)
 
 # Copyright Info #
 

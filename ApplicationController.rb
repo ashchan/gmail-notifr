@@ -61,7 +61,11 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	openInbox
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString("http://mail.google.com/mail"))
+		username = NSUserDefaults.standardUserDefaults.stringForKey("username")
+		account_domain = username.split("@")
+		
+		inbox_url = account_domain.length == 2 ? "http://mail.google.com/a/#{account_domain[1]}" : "http://mail.google.com/mail"
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
 	end
 	
 	def	checkMail

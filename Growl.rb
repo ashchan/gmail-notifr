@@ -1,4 +1,6 @@
-# this growl file was extracted from the growlnotifier project(http://rubyforge.org/projects/growlnotifier/) with the author's permission
+# Copyright (c) 2007-2008 Satoshi Nakagawa <psychs@limechat.net>, Eloy Duran <e.duran@superalloy.nl>
+# You can redistribute it and/or modify it under the same terms as Ruby.
+# this growl file was extracted from the growlnotifier project(http://rubyforge.org/projects/growlnotifier/, http://github.com/psychs/growlnotifier/tree/master) with the authors' permission
 
 require 'osx/cocoa'
 

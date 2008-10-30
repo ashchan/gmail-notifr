@@ -24,6 +24,7 @@
 		1A709B050E98EC34009672CC /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B020E98EC34009672CC /* check.tiff */; };
 		1A709B060E98EC34009672CC /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B030E98EC34009672CC /* error.tiff */; };
 		1A709B070E98EC34009672CC /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B040E98EC34009672CC /* mail.tiff */; };
+		1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 1AE07F550EB9EE5F0096B4AE /* CHANGELOG */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -65,6 +66,7 @@
 		1A709B020E98EC34009672CC /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check.tiff; sourceTree = "<group>"; };
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
+		1AE07F550EB9EE5F0096B4AE /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -172,6 +174,7 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
 				1A382A290E9F2EE000BDC026 /* Credits.html */,
+				1AE07F550EB9EE5F0096B4AE /* CHANGELOG */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */,
 				1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */,
 				1A58F8B50EB88D60004D74BB /* GNGrowlController.rb in Resources */,
+				1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

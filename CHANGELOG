@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 0.2.1 (Oct 21, 2008)
+
+* Bugfix: Crash when registering defaults.
+
 ### 0.2.0 (Oct 30, 2008)
 
 * Added Growl support.

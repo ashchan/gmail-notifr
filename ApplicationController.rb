@@ -56,7 +56,8 @@ class ApplicationController < OSX::NSObject
 			DEFAULT_INTERVAL, "interval",
 			"", "username",
 			"", "password",
-			false, "auto_launch"
+			false, "auto_launch",
+			nil
 		)
 		defaults.registerDefaults(values)
 	end

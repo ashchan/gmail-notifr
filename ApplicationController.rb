@@ -102,8 +102,12 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkCountReturned(notification)
-		data = notification.userInfo.valueForKey(NSFileHandleNotificationDataItem)
-		mail_count = NSString.alloc.initWithData_encoding(data, NSUTF8StringEncoding)
+		#result format: count\nsender:subject\nsender:subject\nsender:subject\n...
+		result = NSString.alloc.initWithData_encoding(
+			notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
+			NSUTF8StringEncoding
+		).split("\n")
+		mail_count = result.shift
 		
 		if mail_count == "E"
 			@status_item.setToolTip("connecting error")
@@ -122,7 +126,7 @@ class ApplicationController < OSX::NSObject
 				if sound = NSSound.soundNamed('Blow')
 					sound.play
 				end
-				@growl.notify("Gmail Notifr", "You have #{tooltip}!") 
+				@growl.notify("You have #{tooltip}!", result.join("\n")) 
 			end
 		end
 	end

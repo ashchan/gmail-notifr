@@ -12,7 +12,7 @@ class GmailChecker
 		http = Net::HTTP.new("mail.google.com", 443)
 		http.use_ssl = true
 		response = nil
-		count = "E"
+		result = "E"
 
 		begin
 		  http.start do |http|
@@ -24,10 +24,21 @@ class GmailChecker
 		  if response
 			case response.code
 			when "401" #HTTPUnauthorized
-				count = "F"
+				result = "F"
 			when "200" #HTTPOK				
 				feed = REXML::Document.new response.body
-				count = feed.get_elements('/feed/fullcount')[0].text
+				# messages count
+				result = [feed.get_elements('/feed/fullcount')[0].text]
+				
+				feed.each_element('/feed/entry') do |msg|
+					# only return first three messages
+					result << "..." and break if result.size > 3
+				
+					result << msg.get_elements('author/name')[0].text + ": " + 
+						msg.get_elements('title')[0].text
+				end
+				
+				result = result.join("\n")
 			end
 		  end
 		rescue REXML::ParseException => e
@@ -36,7 +47,7 @@ class GmailChecker
 		  #puts "error: #{e}"
 		end
 		
-		count
+		result
 	end
 end
 

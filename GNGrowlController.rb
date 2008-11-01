@@ -9,6 +9,7 @@
 require 'osx/cocoa'
 
 class GNGrowlController < OSX::NSObject
+	attr_accessor :app
 	def init
 		if super_init
 			@g = Growl::Notifier.sharedInstance
@@ -18,6 +19,7 @@ class GNGrowlController < OSX::NSObject
 		end
 	end
 
+	# delegate not working?
 	def growlNotifierClicked_context(sender, context)
 	end
 
@@ -25,6 +27,8 @@ class GNGrowlController < OSX::NSObject
 	end
 	
 	def notify(title, desc)
-		@g.notify('new_messages', title, desc)
+		@g.notify('new_messages', title, desc) do
+			@app.openInbox if @app
+		end
 	end
 end

@@ -46,6 +46,7 @@ class ApplicationController < OSX::NSObject
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
 		@growl = GNGrowlController.alloc.init
+		@growl.app = self
 		setTimer
 		checkMail
 	end

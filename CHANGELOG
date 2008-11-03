@@ -1,6 +1,11 @@
 ## CHANGELOG
 
-### 0.2.1 (Oct 21, 2008)
+### 0.2.2 (Nov 3, 2008)
+
+* Goto inbox when click on the growl notification
+* Show sender names and subjects of the first three messages
+
+### 0.2.1 (Oct 31, 2008)
 
 * Bugfix: Crash when registering defaults.
 

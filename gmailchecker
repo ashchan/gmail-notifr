@@ -11,6 +11,7 @@ class GmailChecker
 	def	new_mail_count
 		http = Net::HTTP.new("mail.google.com", 443)
 		http.use_ssl = true
+		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		response = nil
 		result = "E"
 

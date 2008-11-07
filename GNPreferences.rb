@@ -27,7 +27,7 @@ class GNPreferences < OSX::NSObject
 
 		@username	= defaults.stringForKey("username") || ""
 		@interval	= defaults.integerForKey("interval") || DEFAULT_INTERVAL
-		@growl		= defaults.boolForKey("growl") || true
+		@growl		= defaults.boolForKey("growl")
 		@sound		= defaults.stringForKey("sound") || SOUND_NONE
 
 		@password	= GNKeychain.new.get_password(username)
@@ -66,7 +66,7 @@ class GNPreferences < OSX::NSObject
 					"", "password",
 					false, "auto_launch",
 					SOUND_NONE, "sound",
-					true, "growl",
+					1, "growl",
 					nil
 				)
 			)

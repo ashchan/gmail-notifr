@@ -61,7 +61,7 @@ class GNPreferencesWindow < OSX::NSWindow
 		@preferences.growl = @growl.state == NSOnState ? true : false
 		@preferences.sound = @soundList.titleOfSelectedItem
 		
-		@preferences.writeBack	
+		@preferences.writeBack
 		
 		reload_ui
 		

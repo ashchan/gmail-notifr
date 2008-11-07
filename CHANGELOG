@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-### 0.2.3 (Nov 7, 2008)
+### 0.2.4 (Nov 7, 2008)
 * Added growl and sound notification settings to Preferences
 * Got rid of the ssl warning in system log:  "peer certificate won't be verified in this SSL session"
 

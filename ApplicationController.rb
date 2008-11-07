@@ -14,10 +14,6 @@ OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Securit
 OSX.ruby_thread_switcher_stop
 
 class ApplicationController < OSX::NSObject
-	
-	MIN_INTERVAL = 1
-	MAX_INTERVAL = 300
-	DEFAULT_INTERVAL = 30
 
 	ib_outlet :preferencesWindow
 	ib_outlet :menu
@@ -25,6 +21,7 @@ class ApplicationController < OSX::NSObject
 	ib_action :checkMail
 	ib_action :showAbout
 	ib_action :showPreferencesWindow
+
 		
 	def	awakeFromNib
 		@status_bar = NSStatusBar.systemStatusBar
@@ -52,19 +49,11 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	setupDefaults
-		defaults = NSUserDefaults.standardUserDefaults
-		values = NSDictionary.dictionaryWithObjectsAndKeys(
-			DEFAULT_INTERVAL, "interval",
-			"", "username",
-			"", "password",
-			false, "auto_launch",
-			nil
-		)
-		defaults.registerDefaults(values)
+		GNPreferences::setupDefaults
 	end
 	
 	def	openInbox
-		username = NSUserDefaults.standardUserDefaults.stringForKey("username")
+		username = GNPreferences.alloc.init.username
 		account_domain = username.split("@")
 		
 		inbox_url = (account_domain.length == 2 && account_domain[1] != "gmail.com") ? 
@@ -73,13 +62,13 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkMail
+		preferences = GNPreferences.alloc.init	
+		username = preferences.username
+		password = preferences.password
+		return unless username.length > 0 && password.length > 0
+		
 		@status_item.setToolTip("checking mail...")
 		@status_item.setImage(@check_icon)
-				
-		defaults = NSUserDefaults.standardUserDefaults		
-		username = defaults.stringForKey("username")
-		password = GNKeychain.new.get_password(username)
-		return unless username.length > 0 && password.length > 0
 				
 		@checker.interrupt and @checker = nil if @checker
 		@checker = NSTask.alloc.init
@@ -123,10 +112,13 @@ class ApplicationController < OSX::NSObject
 				@status_item.setImage(@app_icon)
 			else
 				@status_item.setImage(@mail_icon)
-				if sound = NSSound.soundNamed('Blow')
+				
+				preferences = GNPreferences.alloc.init
+				
+				if preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
 					sound.play
 				end
-				@growl.notify("You have #{tooltip}!", result.join("\n")) 
+				@growl.notify("You have #{tooltip}!", result.join("\n")) if preferences.growl
 			end
 		end
 	end
@@ -145,12 +137,10 @@ class ApplicationController < OSX::NSObject
 		@preferencesWindow.makeKeyAndOrderFront(sender)
 	end
 	
-	def	setTimer		
-		defaults = NSUserDefaults.standardUserDefaults		
-		interval = defaults.integerForKey("interval")
+	def	setTimer
 		@timer.invalidate if @timer
 		@timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
-			interval * 60, self, 'checkMailByTimer', nil, true)
+			GNPreferences.alloc.init.interval * 60, self, 'checkMailByTimer', nil, true)
 	end
 
 end

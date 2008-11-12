@@ -19,6 +19,7 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :growl
 	ib_outlet :soundList
 	ib_action :save
+	ib_action :soundSelected
 
 	def	awakeFromNib
 		@soundList.removeAllItems
@@ -82,5 +83,11 @@ class GNPreferencesWindow < OSX::NSWindow
 		@autoLaunch.setState(@preferences.autoLaunch ? NSOnState : NSOffState)
 		@growl.setState(@preferences.growl ? NSOnState : NSOffState)
 		@soundList.selectItemWithTitle(@preferences.sound)
+	end
+	
+	def soundSelect(sender)
+		if sound = NSSound.soundNamed(@soundList.titleOfSelectedItem)
+			sound.play
+		end
 	end
 end

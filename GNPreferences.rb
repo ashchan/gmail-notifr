@@ -30,9 +30,9 @@ class GNPreferences < OSX::NSObject
 		@growl		= defaults.boolForKey("growl")
 		@sound		= defaults.stringForKey("sound") || SOUND_NONE
 
-		@password	= GNKeychain.new.get_password(username)
+		@password	= GNKeychain.alloc.init.get_password(username)
 				
-		@autoLaunch = GNStartItems.new.isSet
+		@autoLaunch = GNStartItems.alloc.init.isSet
 		
 		self
 	end
@@ -51,10 +51,10 @@ class GNPreferences < OSX::NSObject
 		defaults.synchronize	
 		
 		# save to default keychain
-		GNKeychain.new.set_account(@username, @password)
+		GNKeychain.alloc.init.set_account(@username, @password)
 		
 		# save to startup items
-		GNStartItems.new.set(@autoLaunch)
+		GNStartItems.alloc.init.set(@autoLaunch)
 	end
 	
 	class << self

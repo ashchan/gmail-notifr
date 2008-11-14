@@ -32,11 +32,12 @@ class GNStartItems < OSX::NSObject
 			
 			if autoLaunch
 				#add
-				cf << { "Path" => path }
+				#cf << { "Path" => path }
+				cf.addObject(NSDictionary.dictionaryWithObject_forKey(path, "Path"))
 			else
 				#remove
 				cf.each do |app|
-					cf.delete(app) and break if app["Path"] == path
+					cf.removeObject(app) and break if app.valueForKey("Path") == path
 				end
 			end
 			

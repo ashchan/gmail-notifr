@@ -107,10 +107,11 @@ class ApplicationController < OSX::NSObject
 		else
 			tooltip = "#{mail_count} new message#{mail_count == '1' ? '' : 's'}"
 			@status_item.setToolTip(tooltip)
-			@status_item.setTitle(mail_count)
 			if mail_count == "0"
+				@status_item.setTitle('') # do not show count for 0
 				@status_item.setImage(@app_icon)
 			else
+				@status_item.setTitle(mail_count)
 				@status_item.setImage(@mail_icon)
 				
 				preferences = GNPreferences.alloc.init

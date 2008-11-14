@@ -36,7 +36,6 @@ class ApplicationController < OSX::NSObject
 		@error_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('error', 'tiff'))
 		
 		@status_item.setImage(@app_icon)
-		@status_item.setTitle("0")
 		
 		setupDefaults
 		

@@ -3,6 +3,7 @@
 ### 0.2.6 (Nov 14, 2008)
 * Bugfix: Crash when set launch at login
 * Bugfix: Crash on launch
+* Do not show count number if there is no new message
 
 ### 0.2.5 (Nov 12, 2008)
 * Play the sound when selected in Preferences window

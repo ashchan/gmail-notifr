@@ -2,6 +2,8 @@
 
 A RubyCocoa Gmail Notifier for Mac OS X
 
+![screenshot](http://assets.ashchan.com/projects/gmail-notifr-screen.png)
+
 # Why Another Gmail Notifier? #
 
 There's an official [Google Notifier](http://toolbar.google.com/gmail-helper/notifier_mac.html) for Mac out there. For two reasons I don't like Google Notifier very much:

@@ -46,6 +46,8 @@ class GmailChecker
 		  #puts "error parsing feed: #{e.message}"
 		rescue => e
 		  #puts "error: #{e}"
+		rescue Timeout::Error => e
+			#puts "time out on connection"
 		end
 		
 		result

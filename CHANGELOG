@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 0.2.7 (Nov 20, 2008)
+* Bugfix: Exit sometimes due to onClick error of the grwol notification
+* Handle Gmail feed connect timeout error
+
 ### 0.2.6 (Nov 14, 2008)
 * Bugfix: Crash when set launch at login
 * Bugfix: Crash on launch

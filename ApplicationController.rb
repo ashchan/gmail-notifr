@@ -56,7 +56,7 @@ class ApplicationController < OSX::NSObject
 		account_domain = username.split("@")
 		
 		inbox_url = (account_domain.length == 2 && account_domain[1] != "gmail.com") ? 
-			"http://mail.google.com/a/#{account_domain[1]}" : "http://mail.google.com/mail"
+			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
 	end
 	

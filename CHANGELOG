@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 0.2.8 (Dec 7, 2008)
+* Do not notify if unread messages unchanged
+* Open Inbox with https
+
 ### 0.2.7 (Nov 20, 2008)
 * Bugfix: Exit sometimes due to onClick error of the grwol notification
 * Handle Gmail feed connect timeout error

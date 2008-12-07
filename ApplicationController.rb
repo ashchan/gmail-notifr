@@ -113,12 +113,16 @@ class ApplicationController < OSX::NSObject
 				@status_item.setTitle(mail_count)
 				@status_item.setImage(@mail_icon)
 				
-				preferences = GNPreferences.alloc.init
-				
-				if preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
-					sound.play
+				if @result != result
+					preferences = GNPreferences.alloc.init
+					
+					if preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
+						sound.play
+					end
+					@growl.notify("You have #{tooltip}!", result.join("\n")) if preferences.growl					
+					
+					@result = result
 				end
-				@growl.notify("You have #{tooltip}!", result.join("\n")) if preferences.growl
 			end
 		end
 	end

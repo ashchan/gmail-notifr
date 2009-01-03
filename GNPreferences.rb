@@ -18,7 +18,7 @@ class GNPreferences < OSX::NSObject
 			
 	@@soundList = []
 	
-	attr_accessor :username, :password, :interval, :autoLaunch, :growl, :sound
+	attr_accessor :username, :accounts, :password, :interval, :autoLaunch, :growl, :sound
 	
 	def	init
 		super_init
@@ -26,6 +26,18 @@ class GNPreferences < OSX::NSObject
 		defaults = NSUserDefaults.standardUserDefaults
 
 		@username	= defaults.stringForKey("username") || ""
+
+		@accounts	= NSMutableArray.alloc.init
+		defaults.stringArrayForKey("usernames").each do |u|
+			@accounts << GNAccount.alloc.initWithName(u)
+		end
+		
+		# import the single username from version before 0.3
+		if @accounts.size == 0 && @username.length > 0
+			@accounts << GNAccount.alloc.initWithName(@username)
+		end
+		
+		
 		@interval	= defaults.integerForKey("interval") || DEFAULT_INTERVAL
 		@growl		= defaults.boolForKey("growl")
 		@sound		= defaults.stringForKey("sound") || SOUND_NONE
@@ -37,6 +49,20 @@ class GNPreferences < OSX::NSObject
 		self
 	end
 	
+	# clean accounts changes
+	# return true if there's any changes that need to be written back
+	def	merge_accounts_change
+		changed = false
+		@accounts.each do |account|
+			if account.new?
+				#new added and deleted account, just leave it
+				@accounts.removeObject(account) if account.deleted?
+			else
+				changed = true if account.changed?
+			end
+		end
+	end
+	
 	def writeBack
 		@interval = DEFAULT_INTERVAL unless @interval.between?(MIN_INTERVAL, MAX_INTERVAL)
 	
@@ -44,14 +70,19 @@ class GNPreferences < OSX::NSObject
 		
 		defaults.setInteger_forKey(@interval, "interval")
 		defaults.setObject_forKey(@username, "username")
+		
+		defaults.setObject_forKey(@accounts.collect{ |a| a.username }, "usernames")
 		defaults.setBool_forKey(@growl, "growl")
 		defaults.setObject_forKey(@sound, "sound")
 
 		# save to Info.plist
 		defaults.synchronize	
 		
-		# save to default keychain
-		GNKeychain.alloc.init.set_account(@username, @password)
+		# save accounts to default keychain
+		#TODO: still don't delete removed accounts for now, perhaps should add this feature to make the keychain clean
+		@accounts.each do |account|
+			GNKeychain.alloc.init.set_account(account.username, account.password) if !account.deleted? && account.changed?
+		end
 		
 		# save to startup items
 		GNStartItems.alloc.init.set(@autoLaunch)
@@ -63,6 +94,7 @@ class GNPreferences < OSX::NSObject
 				NSDictionary.dictionaryWithObjectsAndKeys(
 					DEFAULT_INTERVAL, "interval",
 					"", "username",
+					[], "usernames",
 					"", "password",
 					false, "auto_launch",
 					SOUND_NONE, "sound",

@@ -25,6 +25,7 @@
 		1A709B060E98EC34009672CC /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B030E98EC34009672CC /* error.tiff */; };
 		1A709B070E98EC34009672CC /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B040E98EC34009672CC /* mail.tiff */; };
 		1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A8653870EC3C81D00384B3E /* GNPreferences.rb */; };
+		1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */; };
 		1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 1AE07F550EB9EE5F0096B4AE /* CHANGELOG */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -68,6 +69,7 @@
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
 		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
+		1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNAccount.rb; sourceTree = "<group>"; };
 		1AE07F550EB9EE5F0096B4AE /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				1A33B0ED0E98C070002F815F /* GNStartItems.rb */,
 				1A58F8B20EB88D28004D74BB /* Growl.rb */,
 				1A8653870EC3C81D00384B3E /* GNPreferences.rb */,
+				1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				1A58F8B50EB88D60004D74BB /* GNGrowlController.rb in Resources */,
 				1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */,
 				1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */,
+				1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

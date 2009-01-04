@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'net/https'
 require 'rexml/document'
+require 'yaml'
 
 class GmailChecker
 	def initialize(username, password)
@@ -54,4 +55,10 @@ class GmailChecker
 	end
 end
 
-print GmailChecker.new(ARGV[0], ARGV[1]).new_mail_count
+results = {}
+(ARGV.length / 2).times do |t|
+	results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).new_mail_count
+end
+
+print results.to_yaml
+ 

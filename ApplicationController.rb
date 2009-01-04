@@ -7,6 +7,7 @@
 #
 
 require 'osx/cocoa'
+require 'yaml'
 
 include OSX
 OSX.require_framework 'Security'
@@ -90,11 +91,18 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkCountReturned(notification)
-		#result format: count\nsender:subject\nsender:subject\nsender:subject\n...
-		result = NSString.alloc.initWithData_encoding(
-			notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
-			NSUTF8StringEncoding
-		).split("\n")
+		results = YAML.load(
+			NSString.alloc.initWithData_encoding(
+				notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
+				NSUTF8StringEncoding
+			)
+		)
+		#TODO: switch to multiple accounts check and display results in menus
+		results.each do |k, v|
+			
+		end
+
+		result = results[GNPreferences.alloc.init.username.to_s].split("\n")
 		mail_count = result.shift
 		
 		if mail_count == "E"

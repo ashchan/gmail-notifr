@@ -33,8 +33,8 @@ class GmailChecker
 				result = [feed.get_elements('/feed/fullcount')[0].text]
 				
 				feed.each_element('/feed/entry') do |msg|
-					# only return first three messages
-					result << "..." and break if result.size > 3
+					# only return first 10 messages
+					result << "..." and break if result.size > 10
 				
 					result << msg.get_elements('author/name')[0].text + ": " + 
 						msg.get_elements('title')[0].text

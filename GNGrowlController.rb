@@ -21,13 +21,13 @@ class GNGrowlController < OSX::NSObject
 
 	# delegate not working if :click_context not provided?
 	def growlNotifierClicked_context(sender, context)
-		@app.openInbox if @app
+		@app.openInboxForAccount(context) if @app && context
 	end
 
 	def growlNotifierTimedOut_context(sender, context)
 	end
 	
 	def notify(title, desc)
-		@g.notify('new_messages', title, desc, :click_context => Time.now.to_s)
+		@g.notify('new_messages', title, desc, :click_context => title)
 	end
 end

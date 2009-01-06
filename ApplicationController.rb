@@ -16,6 +16,8 @@ OSX.ruby_thread_switcher_stop
 
 class ApplicationController < OSX::NSObject
 
+	ACCOUNT_MENUITEM_POS = 2
+
 	ib_outlet :preferencesWindow
 	ib_outlet :menu
 	ib_action :openInbox
@@ -36,6 +38,8 @@ class ApplicationController < OSX::NSObject
 		@check_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check', 'tiff'))
 		@error_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('error', 'tiff'))
 		
+		@cached_results = {}
+		
 		@status_item.setImage(@app_icon)
 		
 		setupDefaults
@@ -52,21 +56,19 @@ class ApplicationController < OSX::NSObject
 		GNPreferences::setupDefaults
 	end
 	
-	def	openInbox
-		username = GNPreferences.alloc.init.username
-		account_domain = username.split("@")
+	def	openInbox(sender)
+		openInboxForAccount(sender.menu.title)
+	end
+	
+	def	openInboxForAccount(account)
+		account_domain = account.split("@")
 		
 		inbox_url = (account_domain.length == 2 && account_domain[1] != "gmail.com") ? 
 			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
 	end
 	
-	def	checkMail
-		preferences = GNPreferences.alloc.init	
-		username = preferences.username
-		password = preferences.password
-		return unless username.length > 0 && password.length > 0
-		
+	def	checkMail		
 		@status_item.setToolTip("checking mail...")
 		@status_item.setImage(@check_icon)
 				
@@ -75,7 +77,12 @@ class ApplicationController < OSX::NSObject
 		@checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
 		@checker.setLaunchPath(@checker_path)
 
-		args = NSArray.arrayWithObjects(username, password, nil)
+		args = NSMutableArray.alloc.init
+		GNPreferences.alloc.init.accounts.each do |a|
+			args.addObject(a.username.to_s)
+			args.addObject(a.password.to_s)
+		end
+
 		@checker.setArguments(args)		
 		
 		pipe = NSPipe.alloc.init
@@ -97,41 +104,40 @@ class ApplicationController < OSX::NSObject
 				NSUTF8StringEncoding
 			)
 		)
-		#TODO: switch to multiple accounts check and display results in menus
-		results.each do |k, v|
-			
-		end
-
-		result = results[GNPreferences.alloc.init.username.to_s].split("\n")
-		mail_count = result.shift
 		
-		if mail_count == "E"
-			@status_item.setToolTip("connecting error")
-			@status_item.setImage(@error_icon)
-		elsif mail_count == "F"
-			@status_item.setToolTip("username or password wrong")
-			@status_item.setImage(@error_icon)
+		removeAccountMenuItems
+		@mail_count = 0
+		
+		menu_position = ACCOUNT_MENUITEM_POS
+		results.each do |k, v|
+			addAccountMenuItem(k, v, menu_position)
+			menu_position += 1
+		end
+		
+		if @mail_count > 0
+			@status_item.setToolTip("#{@mail_count} unread message#{@mail_count == '1' ? '' : 's'}")
+			@status_item.setImage(@mail_icon)
+			@status_item.setTitle(@mail_count)
 		else
-			tooltip = "#{mail_count} new message#{mail_count == '1' ? '' : 's'}"
-			@status_item.setToolTip(tooltip)
-			if mail_count == "0"
-				@status_item.setTitle('') # do not show count for 0
-				@status_item.setImage(@app_icon)
-			else
-				@status_item.setTitle(mail_count)
-				@status_item.setImage(@mail_icon)
-				
-				if @result != result
-					preferences = GNPreferences.alloc.init
-					
-					if preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
-						sound.play
-					end
-					@growl.notify("You have #{tooltip}!", result.join("\n")) if preferences.growl					
-					
-					@result = result
-				end
+			@status_item.setToolTip("")
+			@status_item.setImage(@app_icon)
+		end
+		
+		@accounts_count = menu_position - 1
+		
+		preferences = GNPreferences.alloc.init
+		should_notify = false
+		
+		results.each_key do |account|
+			cached_result = @cached_results[account]
+			if cached_result[0] != cached_result[1]
+				should_notify = true
+				@growl.notify(account, cached_result[1]) if preferences.growl	
 			end
+		end
+		
+		if should_notify && preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
+			sound.play
 		end
 	end
 
@@ -154,5 +160,60 @@ class ApplicationController < OSX::NSObject
 		@timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
 			GNPreferences.alloc.init.interval * 60, self, 'checkMailByTimer', nil, true)
 	end
-
+	
+	def	removeAccountMenuItems
+		if @accounts_count
+			@accounts_count.times do |t|
+				@status_item.menu.removeItemAtIndex(ACCOUNT_MENUITEM_POS)
+			end
+		end
+	end
+	
+	def	addAccountMenuItem(account_name, results, pos)
+		accountMenu = NSMenu.alloc.initWithTitle(account_name)
+		
+		#open inbox menu item
+		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent_("Open Inbox", "openInbox", "")
+		openInboxItem.target = self
+		openInboxItem.enabled = true
+		
+		accountMenu.addItem(NSMenuItem.separatorItem)
+		
+		#new messages
+		result = results.split("\n")
+		mail_count = result.shift
+		
+		if mail_count == "E"
+			error = "connection error"
+			item = accountMenu.addItemWithTitle_action_keyEquivalent(error, nil, "")
+			item.setImage(@error_icon)
+			cache_result(account_name, error)
+		elsif mail_count == "F"
+			error = "username/password wrong"
+			item = accountMenu.addItemWithTitle_action_keyEquivalent(error, nil, "")
+			item.setImage(@error_icon)
+			cache_result(account_name, error)
+		else
+			@mail_count += mail_count.to_i
+			tooltip = "#{mail_count} unread message#{mail_count == '1' ? '' : 's'}"
+			result.each do |msg|
+				accountMenu.addItemWithTitle_action_keyEquivalent_(msg, nil, "")
+			end
+			
+			cache_result(account_name, tooltip + "\n" + result.join("\n"))
+		end
+		
+		#top level menu item for acount
+		accountItem = NSMenuItem.alloc.init
+		accountItem.title = account_name
+		accountItem.submenu = accountMenu
+		
+		@status_item.menu.insertItem_atIndex(accountItem, pos)
+	end
+	
+	def	cache_result(account, result)
+		@cached_results[account] ||= ["", ""]
+		@cached_results[account][0] = @cached_results[account][1]
+		@cached_results[account][1] = result
+	end
 end

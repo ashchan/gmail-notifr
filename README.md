@@ -2,7 +2,7 @@
 
 A RubyCocoa Gmail Notifier for Mac OS X
 
-![screenshot](http://assets.ashchan.com/projects/gmail-notifr-screen.png)
+![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)
 
 # Why Another Gmail Notifier? #
 

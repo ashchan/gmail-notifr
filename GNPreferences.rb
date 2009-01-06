@@ -71,7 +71,7 @@ class GNPreferences < OSX::NSObject
 		defaults.setInteger_forKey(@interval, "interval")
 		defaults.setObject_forKey(@username, "username")
 		
-		defaults.setObject_forKey(@accounts.collect{ |a| a.username }, "usernames")
+		defaults.setObject_forKey(@accounts.reject{ |a| a.deleted? }.collect{ |a| a.username }, "usernames")
 		defaults.setBool_forKey(@growl, "growl")
 		defaults.setObject_forKey(@sound, "sound")
 

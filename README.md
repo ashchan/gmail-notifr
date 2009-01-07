@@ -4,23 +4,22 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)
 
-# Why Another Gmail Notifier? #
+# Yet Another Gmail Notifier #
 
-There's an official [Google Notifier](http://toolbar.google.com/gmail-helper/notifier_mac.html) for Mac out there. For two reasons I don't like Google Notifier very much:
+[Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in RubyCocoa and has these features:
 
-* You cannot configure it to check mail every N minutes. Whenever a new message is received, it will notify you. That disturbs.
-
-* It installs and runs several daemon processes (Google Updater for example) without asking you. What's even worse, these processes remain after uninstalling Google Notifier.
-	
-There's an alternative great free Gmail notifier [GmailStatus](http://www.uebercoders.net/gms/), which I've been using for a while. It is really good.
-
-When I started learning [RubyCocoa](http://rubycocoa.sourceforge.net/) recently, an idea came out: why not write a Gmail Notifier in RubyCocoa?
-
-So here comes Gmail Notifr.
+* Support multiple accounts! (new in version 0.3.0)
+* Support Google hosted account.
+* Check mail at a specified interval.
+* Growl &amp; sound notifications.
+* Small &amp; fast.
+* No background daemon processes installed as Google's official notifier.
+* Open Source &amp; free!
 
 # Requirements #
 
 * Mac OS X 10.5+ (Leopard)
+* RubyCocoa
 
 # Project Detail #
 

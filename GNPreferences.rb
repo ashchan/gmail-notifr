@@ -28,9 +28,9 @@ class GNPreferences < OSX::NSObject
 		@username	= defaults.stringForKey("username") || ""
 
 		@accounts	= NSMutableArray.alloc.init
-		defaults.stringArrayForKey("usernames").each do |u|
-			@accounts << GNAccount.alloc.initWithName(u)
-		end
+		usernames = defaults.stringArrayForKey("usernames")
+
+		usernames.each { |u| @accounts << GNAccount.alloc.initWithName(u) } if usernames
 		
 		# import the single username from version before 0.3
 		if @accounts.size == 0 && @username.length > 0

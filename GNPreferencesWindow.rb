@@ -14,6 +14,8 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :applicationContrller
 	ib_outlet :username
 	ib_outlet :password
+	ib_outlet :removeButton
+	ib_outlet :hint
 	ib_outlet :interval
 	ib_outlet :autoLaunch
 	ib_outlet :growl
@@ -83,6 +85,7 @@ class GNPreferencesWindow < OSX::NSWindow
 		@growl.setState(@preferences.growl ? NSOnState : NSOffState)
 		@soundList.selectItemWithTitle(@preferences.sound)
 		@userList.reloadData
+		refresh_account_fields
 		show_username_and_password
 	end
 	
@@ -99,6 +102,9 @@ class GNPreferencesWindow < OSX::NSWindow
 		@preferences.accounts << account
 		@userList.reloadData
 		@userList.selectRow_byExtendingSelection(accounts.size - 1, false)
+		
+		refresh_account_fields
+		
 		@username.selectText(self)
 	end
 	
@@ -108,6 +114,8 @@ class GNPreferencesWindow < OSX::NSWindow
 			selected_account.destroy
 			@userList.reloadData
 		end
+		
+		refresh_account_fields
 		
 		show_username_and_password
 	end
@@ -156,5 +164,15 @@ class GNPreferencesWindow < OSX::NSWindow
 			@username.setTitleWithMnemonic(selected_account.username)
 			@password.setTitleWithMnemonic(selected_account.password)
 		end		
+	end
+	
+	def refresh_account_fields
+		enabled = accounts.size > 0
+		@username.enabled = @password.enabled = @removeButton.enabled = enabled
+		@hint.hidden = enabled
+		unless enabled
+			@username.setTitleWithMnemonic("")
+			@password.setTitleWithMnemonic("")
+		end
 	end
 end

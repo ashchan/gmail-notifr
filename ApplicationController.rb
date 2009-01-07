@@ -123,7 +123,7 @@ class ApplicationController < OSX::NSObject
 			@status_item.setImage(@app_icon)
 		end
 		
-		@accounts_count = menu_position - 1
+		@accounts_count = menu_position - ACCOUNT_MENUITEM_POS
 		
 		preferences = GNPreferences.alloc.init
 		should_notify = false

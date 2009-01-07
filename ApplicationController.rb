@@ -194,13 +194,20 @@ class ApplicationController < OSX::NSObject
 			item.setImage(@error_icon)
 			cache_result(account_name, error)
 		else
+			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
-			tooltip = "#{mail_count} unread message#{mail_count == '1' ? '' : 's'}"
+			tooltip = "#{mail_count} unread message#{mail_count == 1 ? '' : 's'}"
 			result.each do |msg|
 				accountMenu.addItemWithTitle_action_keyEquivalent_(msg, nil, "")
 			end
 			
-			cache_result(account_name, tooltip + "\n" + result.join("\n"))
+			if mail_count == 0
+				# no unread messages: force to clear cache_result
+				cache_result(account_name, "")
+				cache_result(account_name, "")
+			else
+				cache_result(account_name, tooltip + "\n" + result.join("\n"))
+			end
 		end
 		
 		#top level menu item for acount

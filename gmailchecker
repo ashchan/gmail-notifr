@@ -36,8 +36,7 @@ class GmailChecker
 					# only return first 10 messages
 					result << "..." and break if result.size > 10
 				
-					result << msg.get_elements('author/name')[0].text + ": " + 
-						msg.get_elements('title')[0].text
+					result << "#{msg.get_elements('author/name')[0].text}: #{msg.get_elements('title')[0].text}"
 				end
 				
 				result = result.join("\n")

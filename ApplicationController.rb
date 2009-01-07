@@ -121,6 +121,7 @@ class ApplicationController < OSX::NSObject
 		else
 			@status_item.setToolTip("")
 			@status_item.setImage(@app_icon)
+			@status_item.setTitle("")
 		end
 		
 		@accounts_count = menu_position - ACCOUNT_MENUITEM_POS

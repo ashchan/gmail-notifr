@@ -1,5 +1,17 @@
 ## CHANGELOG
 
+### 0.3.2 (Jan 8, 2009)
+* Bugfix: Username/password could not be saved
+
+### 0.3.1 (Jan 7, 2009)
+* Add hint to guide new user to add an account
+* Bugfix: Crash when there’s no account information
+* Bugfix: Crash when new message doesn’t have a subject
+
+
+### 0.3.0 (Jan 7, 2009)
+* Multiple accounts support, finally!
+
 ### 0.2.8 (Dec 7, 2008)
 * Do not notify if unread messages unchanged
 * Open Inbox with https

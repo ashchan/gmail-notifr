@@ -54,13 +54,19 @@ class GNPreferences < OSX::NSObject
 	def	merge_accounts_change
 		changed = false
 		@accounts.each do |account|
+			NSLog("account: #{account.username}")
 			if account.new?
 				#new added and deleted account, just leave it
-				@accounts.removeObject(account) if account.deleted?
+				if account.deleted?
+					@accounts.removeObject(account)
+				else
+					changed = true
+				end
 			else
 				changed = true if account.changed?
 			end
 		end
+		changed
 	end
 	
 	def writeBack

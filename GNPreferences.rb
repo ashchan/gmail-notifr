@@ -53,12 +53,13 @@ class GNPreferences < OSX::NSObject
 	# return true if there's any changes that need to be written back
 	def	merge_accounts_change
 		changed = false
+		accounts_to_remove = NSMutableArray.alloc.init
 		@accounts.each do |account|
-			NSLog("account: #{account.username}")
+			NSLog("pending account: #{account.username}")
 			if account.new?
 				#new added and deleted account, just leave it
 				if account.deleted?
-					@accounts.removeObject(account)
+					accounts_to_remove << account
 				else
 					changed = true
 				end
@@ -66,6 +67,7 @@ class GNPreferences < OSX::NSObject
 				changed = true if account.changed?
 			end
 		end
+		@accounts.removeObjectsInArray(accounts_to_remove)
 		changed
 	end
 	

@@ -10,6 +10,9 @@ require 'osx/cocoa'
 
 class GNPreferencesWindow < OSX::NSWindow
 	include OSX
+	
+	TAG_USERNAME = 0
+	TAG_PASSWORD = 1
 
 	ib_outlet :applicationContrller
 	ib_outlet :username
@@ -140,11 +143,13 @@ class GNPreferencesWindow < OSX::NSWindow
 		selected_account = current_account
 		if selected_account
 			field = notification.object
-			if field == @username
+			if field.tag == TAG_USERNAME
 				selected_account.username = @username.stringValue
 				@userList.reloadData
-			elsif field == @password
+			elsif field.tag == TAG_PASSWORD
 				selected_account.password = @password.stringValue
+			else
+				NSLog("username/password input not captured")
 			end
 		end
 	end

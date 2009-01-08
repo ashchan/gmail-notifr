@@ -55,7 +55,6 @@ class GNPreferences < OSX::NSObject
 		changed = false
 		accounts_to_remove = NSMutableArray.alloc.init
 		@accounts.each do |account|
-			NSLog("pending account: #{account.username}")
 			if account.new?
 				#new added and deleted account, just leave it
 				if account.deleted?
@@ -68,6 +67,7 @@ class GNPreferences < OSX::NSObject
 			end
 		end
 		@accounts.removeObjectsInArray(accounts_to_remove)
+
 		changed
 	end
 	

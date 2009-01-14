@@ -21,7 +21,7 @@ class ApplicationController < OSX::NSObject
 	ib_outlet :preferencesWindow
 	ib_outlet :menu
 	ib_action :openInbox
-	ib_action :checkMail
+	ib_action :checkMailByMenu
 	ib_action :showAbout
 	ib_action :showPreferencesWindow
 
@@ -143,6 +143,11 @@ class ApplicationController < OSX::NSObject
 	end
 
 	def	checkMailByTimer(timer)
+		checkMail
+	end
+	
+	def checkMailByMenu
+		setTimer
 		checkMail
 	end
 	

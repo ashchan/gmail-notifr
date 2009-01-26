@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 0.3.3 (Jan 26, 2009)
+* Bugfix: Crash on adding user account
+* Reset timer(interval) when check mail by menu
+
 ### 0.3.2 (Jan 8, 2009)
 * Bugfix: Username/password could not be saved
 

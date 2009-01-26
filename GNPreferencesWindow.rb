@@ -102,7 +102,7 @@ class GNPreferencesWindow < OSX::NSWindow
 		account = GNAccount.alloc.init
 		account.username = "username"
 		account.password = ""
-		@preferences.accounts << account
+		@preferences.accounts.addObject(account)
 		@userList.reloadData
 		@userList.selectRow_byExtendingSelection(accounts.size - 1, false)
 		

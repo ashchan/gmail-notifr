@@ -30,11 +30,11 @@ class GNPreferences < OSX::NSObject
 		@accounts	= NSMutableArray.alloc.init
 		usernames = defaults.stringArrayForKey("usernames")
 
-		usernames.each { |u| @accounts << GNAccount.alloc.initWithName(u) } if usernames
+		usernames.each { |u| @accounts.addObject(GNAccount.alloc.initWithName(u)) } if usernames
 		
 		# import the single username from version before 0.3
 		if @accounts.size == 0 && @username.length > 0
-			@accounts << GNAccount.alloc.initWithName(@username)
+			@accounts.addObject(GNAccount.alloc.initWithName(@username))
 		end
 		
 		
@@ -58,7 +58,7 @@ class GNPreferences < OSX::NSObject
 			if account.new?
 				#new added and deleted account, just leave it
 				if account.deleted?
-					accounts_to_remove << account
+					accounts_to_remove.addObject(account)
 				else
 					changed = true
 				end

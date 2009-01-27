@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+### 0.3.4 (Jan 27, 2009)
+* Bugfix: Special characters in the password not recognized
+
 ### 0.3.3 (Jan 26, 2009)
 * Bugfix: Crash on adding user account
 * Reset timer(interval) when check mail by menu

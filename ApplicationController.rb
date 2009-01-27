@@ -80,7 +80,8 @@ class ApplicationController < OSX::NSObject
 		args = NSMutableArray.alloc.init
 		GNPreferences.alloc.init.accounts.each do |a|
 			args.addObject(a.username.to_s)
-			args.addObject(a.password.to_s)
+			# pass password as base64 encoded to gmailchecker
+			args.addObject([a.password.to_s].pack("m"))
 		end
 
 		@checker.setArguments(args)		

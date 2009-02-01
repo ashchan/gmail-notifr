@@ -34,13 +34,17 @@ class ApplicationController < OSX::NSObject
 		
 		bundle = NSBundle.mainBundle
 		@app_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('app', 'tiff'))
+		@app_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('app_a', 'tiff'))
 		@mail_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('mail', 'tiff'))
+		@mail_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('mail_a', 'tiff'))
 		@check_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check', 'tiff'))
+		@check_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check_a', 'tiff'))
 		@error_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('error', 'tiff'))
 		
 		@cached_results = {}
 		
 		@status_item.setImage(@app_icon)
+		@status_item.setAlternateImage(@app_alter_icon)
 		
 		setupDefaults
 		
@@ -71,6 +75,7 @@ class ApplicationController < OSX::NSObject
 	def	checkMail		
 		@status_item.setToolTip("checking mail...")
 		@status_item.setImage(@check_icon)
+		@status_item.setAlternateImage(@check_alter_icon)
 				
 		@checker.interrupt and @checker = nil if @checker
 		@checker = NSTask.alloc.init
@@ -116,12 +121,14 @@ class ApplicationController < OSX::NSObject
 		end
 		
 		if @mail_count > 0
-			@status_item.setToolTip("#{@mail_count} unread message#{@mail_count == '1' ? '' : 's'}")
+			@status_item.setToolTip("#{@mail_count} unread message#{@mail_count == 1 ? '' : 's'}")
 			@status_item.setImage(@mail_icon)
+			@status_item.setAlternateImage(@mail_alter_icon)
 			@status_item.setTitle(@mail_count)
 		else
 			@status_item.setToolTip("")
 			@status_item.setImage(@app_icon)
+			@status_item.setAlternateImage(@app_alter_icon)
 			@status_item.setTitle("")
 		end
 		

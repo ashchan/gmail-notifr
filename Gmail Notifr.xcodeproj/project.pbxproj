@@ -27,6 +27,9 @@
 		1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A8653870EC3C81D00384B3E /* GNPreferences.rb */; };
 		1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */; };
 		1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 1AE07F550EB9EE5F0096B4AE /* CHANGELOG */; };
+		1AF197650F356152009CBBF1 /* app_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197630F356152009CBBF1 /* app_a.tiff */; };
+		1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197640F356152009CBBF1 /* mail_a.tiff */; };
+		1AF197730F356353009CBBF1 /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197720F356353009CBBF1 /* check_a.tiff */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -71,6 +74,9 @@
 		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
 		1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNAccount.rb; sourceTree = "<group>"; };
 		1AE07F550EB9EE5F0096B4AE /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		1AF197630F356152009CBBF1 /* app_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app_a.tiff; sourceTree = "<group>"; };
+		1AF197640F356152009CBBF1 /* mail_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail_a.tiff; sourceTree = "<group>"; };
+		1AF197720F356353009CBBF1 /* check_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check_a.tiff; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -147,6 +153,9 @@
 		1A33AF860E9892DA002F815F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				1AF197720F356353009CBBF1 /* check_a.tiff */,
+				1AF197630F356152009CBBF1 /* app_a.tiff */,
+				1AF197640F356152009CBBF1 /* mail_a.tiff */,
 				1A709B020E98EC34009672CC /* check.tiff */,
 				1A709B030E98EC34009672CC /* error.tiff */,
 				1A709B040E98EC34009672CC /* mail.tiff */,
@@ -280,6 +289,9 @@
 				1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */,
 				1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */,
 				1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */,
+				1AF197650F356152009CBBF1 /* app_a.tiff in Resources */,
+				1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */,
+				1AF197730F356353009CBBF1 /* check_a.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

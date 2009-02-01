@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+### 0.3.5 (Feb 1, 2009)
+* Use Leopard style icons
+
 ### 0.3.4 (Jan 27, 2009)
 * Bugfix: Special characters in the password not recognized
 

@@ -25,8 +25,12 @@
 		1A709B060E98EC34009672CC /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B030E98EC34009672CC /* error.tiff */; };
 		1A709B070E98EC34009672CC /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B040E98EC34009672CC /* mail.tiff */; };
 		1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A8653870EC3C81D00384B3E /* GNPreferences.rb */; };
+		1AAAF6960F38613A00F7A3FB /* release_notes_template.html.erb in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */; };
+		1AAAF6970F38613A00F7A3FB /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6950F38613A00F7A3FB /* ReleaseNotes.txt */; };
+		1AAAF6990F3861F600F7A3FB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
+		1AAAF6B80F38626A00F7A3FB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
+		1AAAF6BD0F3863F800F7A3FB /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */; };
 		1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */; };
-		1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 1AE07F550EB9EE5F0096B4AE /* CHANGELOG */; };
 		1AF197650F356152009CBBF1 /* app_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197630F356152009CBBF1 /* app_a.tiff */; };
 		1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197640F356152009CBBF1 /* mail_a.tiff */; };
 		1AF197730F356353009CBBF1 /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197720F356353009CBBF1 /* check_a.tiff */; };
@@ -46,6 +50,16 @@
 			dstSubfolderSpec = 6;
 			files = (
 				1A1467050E987D4500930C28 /* gmailchecker in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1AAAF6B70F38624800F7A3FB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1AAAF6B80F38626A00F7A3FB /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +86,11 @@
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
 		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
+		1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes_template.html.erb; sourceTree = "<group>"; };
+		1AAAF6950F38613A00F7A3FB /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		1AAAF6980F3861F600F7A3FB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNAccount.rb; sourceTree = "<group>"; };
-		1AE07F550EB9EE5F0096B4AE /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		1AF197630F356152009CBBF1 /* app_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app_a.tiff; sourceTree = "<group>"; };
 		1AF197640F356152009CBBF1 /* mail_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail_a.tiff; sourceTree = "<group>"; };
 		1AF197720F356353009CBBF1 /* check_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check_a.tiff; sourceTree = "<group>"; };
@@ -95,6 +112,7 @@
 				4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */,
 				4DDCA70D0ACC9A6100E082CE /* RubyCocoa.framework in Frameworks */,
 				1A1465550E979E7200930C28 /* Security.framework in Frameworks */,
+				1AAAF6990F3861F600F7A3FB /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +132,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AAAF6980F3861F600F7A3FB /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */,
 			);
@@ -183,13 +202,14 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */,
+				1AAAF6950F38613A00F7A3FB /* ReleaseNotes.txt */,
 				1A33AF920E9896DE002F815F /* Security.bridgesupport */,
 				1A1463620E9595ED00930C28 /* MIT-LICENSE */,
 				1A1463510E95954900930C28 /* README.md */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
 				1A382A290E9F2EE000BDC026 /* Credits.html */,
-				1AE07F550EB9EE5F0096B4AE /* CHANGELOG */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -197,6 +217,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
@@ -235,6 +256,7 @@
 				4DDCA7090ACC9A6100E082CE /* Sources */,
 				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
 				1A1466FA0E987CA200930C28 /* CopyFiles */,
+				1AAAF6B70F38624800F7A3FB /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -286,12 +308,14 @@
 				1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */,
 				1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */,
 				1A58F8B50EB88D60004D74BB /* GNGrowlController.rb in Resources */,
-				1AE07F560EB9EE5F0096B4AE /* CHANGELOG in Resources */,
 				1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */,
 				1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */,
 				1AF197650F356152009CBBF1 /* app_a.tiff in Resources */,
 				1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */,
 				1AF197730F356353009CBBF1 /* check_a.tiff in Resources */,
+				1AAAF6960F38613A00F7A3FB /* release_notes_template.html.erb in Resources */,
+				1AAAF6970F38613A00F7A3FB /* ReleaseNotes.txt in Resources */,
+				1AAAF6BD0F3863F800F7A3FB /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +370,7 @@
 					i386,
 				);
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
@@ -358,6 +383,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 38;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -379,6 +408,10 @@
 					i386,
 				);
 				CURRENT_PROJECT_VERSION = 38;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";

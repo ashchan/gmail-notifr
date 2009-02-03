@@ -7,7 +7,7 @@ require 'rake/testtask'
 require 'pathname'
 
 # Application own Settings
-APPNAME               = "«PROJECTNAME»"
+APPNAME               = "Gmail Notifr"
 TARGET                = "#{APPNAME}.app"
 #APPVERSION           = "rev#{`svn info`[/Revision: (\d+)/, 1]}"
 APPVERSION            = Time.now.strftime("%Y-%m-%d")
@@ -153,4 +153,24 @@ if ["update", "add", "create"].include? ARGV[0]
   ARGV.map! {|a| a.sub(/^\+/, "-") }
   Rake.application[ARGV[0].to_sym].invoke
   exit # will not reach
+end
+
+require "choctop"
+
+ChocTop.new do |s|
+  s.host     = 'ashchan.com'
+  s.remote_dir = '/home/james/apps/ashchan.com/shared/gmailnotifr'
+
+  # Optional, showing defaults
+  s.base_url   = "http://#{s.host}/gmailnotifr"
+  s.release_notes = "release_notes.html"
+
+  # # Custom DMG
+  s.background_file = "dmg_background.jpg"
+  s.app_icon_position = [200, 70]
+  # s.applications_icon_position =  [400, 90]
+  # 
+  # # Custom DMG options
+  # s.volume_icon = "dmg.icns"
+  # s.icon_size = 104
 end

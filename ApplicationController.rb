@@ -61,7 +61,15 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	openInbox(sender)
-		openInboxForAccount(sender.menu.title)
+		if sender.title == "Open Inbox"
+			# "Open Inbox" menu item
+			account = sender.menu.title
+		else
+			# top menu item for account
+			account = sender.title
+		end
+		# remove the "(number)" part from account name
+		openInboxForAccount(account.gsub(/\s\(\d+\)/, ''))
 	end
 	
 	def	openInboxForAccount(account)
@@ -226,8 +234,10 @@ class ApplicationController < OSX::NSObject
 		
 		#top level menu item for acount
 		accountItem = NSMenuItem.alloc.init
-		accountItem.title = account_name
+		accountItem.title = account_name + " (#{mail_count.to_i})"
 		accountItem.submenu = accountMenu
+		accountItem.target = self
+		accountItem.action = 'openInbox'
 		
 		@status_item.menu.insertItem_atIndex(accountItem, pos)
 	end

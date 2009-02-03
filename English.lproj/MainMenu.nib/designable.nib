@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="373"/>
+			<integer value="516"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -76,6 +76,14 @@
 					<object class="NSMenuItem" id="456474594">
 						<reference key="NSMenu" ref="845846908"/>
 						<string key="NSTitle">Preferences...</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="253178495"/>
+						<reference key="NSMixedImage" ref="1026465229"/>
+					</object>
+					<object class="NSMenuItem" id="273274217">
+						<reference key="NSMenu" ref="845846908"/>
+						<string type="base64-UTF8" key="NSTitle">Q2hlY2sgZm9yIFVwZGF0ZXPigKY</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -387,6 +395,7 @@
 														</object>
 														<string key="NSFrame">{{1, 1}, {201, 133}}</string>
 														<reference key="NSSuperview" ref="277519444"/>
+														<reference key="NSNextKeyView" ref="313996060"/>
 														<reference key="NSDocView" ref="313996060"/>
 														<reference key="NSBGColor" ref="1025968926"/>
 														<int key="NScvFlags">4</int>
@@ -415,6 +424,7 @@
 												</object>
 												<string key="NSFrame">{{6, 42}, {203, 135}}</string>
 												<reference key="NSSuperview" ref="1072132677"/>
+												<reference key="NSNextKeyView" ref="200186031"/>
 												<int key="NSsFlags">658</int>
 												<reference key="NSVScroller" ref="934312738"/>
 												<reference key="NSHScroller" ref="1015018427"/>
@@ -800,6 +810,9 @@
 			<object class="NSUserDefaultsController" id="444476408">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
+			<object class="NSCustomObject" id="180970480">
+				<string key="NSClassName">SUUpdater</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -988,6 +1001,14 @@
 					</object>
 					<int key="connectionID">514</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="180970480"/>
+						<reference key="destination" ref="273274217"/>
+					</object>
+					<int key="connectionID">517</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1030,6 +1051,7 @@
 							<reference ref="456474594"/>
 							<reference ref="189338223"/>
 							<reference ref="780025866"/>
+							<reference ref="273274217"/>
 						</object>
 						<reference key="parent" ref="1049"/>
 					</object>
@@ -1483,6 +1505,16 @@
 						<reference key="object" ref="293651696"/>
 						<reference key="parent" ref="646618657"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">515</int>
+						<reference key="object" ref="180970480"/>
+						<reference key="parent" ref="1049"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">516</int>
+						<reference key="object" ref="273274217"/>
+						<reference key="parent" ref="845846908"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1554,13 +1586,15 @@
 					<string>509.IBPluginDependency</string>
 					<string>511.IBPluginDependency</string>
 					<string>512.IBPluginDependency</string>
+					<string>515.IBPluginDependency</string>
+					<string>516.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{931, 643}, {183, 113}}</string>
+					<string>{{931, 623}, {194, 133}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1572,6 +1606,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{57, 381}, {562, 272}}</string>
 					<integer value="0"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1644,7 +1680,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">514</int>
+			<int key="maxID">517</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1756,6 +1792,36 @@
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
 					</object>
+				</object>
+			</object>
+			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.1+">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBDocumentRelativeSource</string>
+						<string key="minorKey">../../../Downloads/Sparkle 1.5b6/Sparkle.framework/Versions/A/Headers/SUAppcast.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="138893461">
+						<string key="majorKey">IBDocumentRelativeSource</string>
+						<string key="minorKey">../../../Downloads/Sparkle 1.5b6/Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SUUpdater</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">checkForUpdates:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">delegate</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<reference key="sourceIdentifier" ref="138893461"/>
 				</object>
 			</object>
 		</object>

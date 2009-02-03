@@ -395,7 +395,6 @@
 														</object>
 														<string key="NSFrame">{{1, 1}, {201, 133}}</string>
 														<reference key="NSSuperview" ref="277519444"/>
-														<reference key="NSNextKeyView" ref="313996060"/>
 														<reference key="NSDocView" ref="313996060"/>
 														<reference key="NSBGColor" ref="1025968926"/>
 														<int key="NScvFlags">4</int>
@@ -424,7 +423,6 @@
 												</object>
 												<string key="NSFrame">{{6, 42}, {203, 135}}</string>
 												<reference key="NSSuperview" ref="1072132677"/>
-												<reference key="NSNextKeyView" ref="200186031"/>
 												<int key="NSsFlags">658</int>
 												<reference key="NSVScroller" ref="934312738"/>
 												<reference key="NSHScroller" ref="1015018427"/>
@@ -763,7 +761,7 @@
 														<reference key="NSSuperview" ref="260850140"/>
 													</object>
 												</object>
-												<string key="NSFrame">{{6, 4}, {504, 83}}</string>
+												<string key="NSFrame">{{6, 5}, {504, 83}}</string>
 												<reference key="NSSuperview" ref="901871461"/>
 												<string key="NSOffsets">{0, 0}</string>
 												<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1602,9 +1600,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{57, 381}, {562, 272}}</string>
+					<string>{{313, 381}, {562, 272}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{57, 381}, {562, 272}}</string>
+					<string>{{313, 381}, {562, 272}}</string>
 					<integer value="0"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1741,7 +1739,7 @@
 							<string>addUser:</string>
 							<string>removeUser:</string>
 							<string>save:</string>
-							<string>soundSelected:</string>
+							<string>soundSelect:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1800,14 +1798,14 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../Downloads/Sparkle 1.5b6/Sparkle.framework/Versions/A/Headers/SUAppcast.h</string>
+						<string key="minorKey">../Sparkle.framework/Versions/A/Headers/SUAppcast.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="138893461">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="926804457">
 						<string key="majorKey">IBDocumentRelativeSource</string>
-						<string key="minorKey">../../../Downloads/Sparkle 1.5b6/Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
+						<string key="minorKey">../Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1821,7 +1819,7 @@
 						<string key="NS.key.0">delegate</string>
 						<string key="NS.object.0">id</string>
 					</object>
-					<reference key="sourceIdentifier" ref="138893461"/>
+					<reference key="sourceIdentifier" ref="926804457"/>
 				</object>
 			</object>
 		</object>

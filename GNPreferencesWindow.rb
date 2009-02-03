@@ -25,7 +25,7 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :soundList
 	ib_outlet :userList
 	ib_action :save
-	ib_action :soundSelected
+	ib_action :soundSelect
 	ib_action :addUser
 	ib_action :removeUser
 

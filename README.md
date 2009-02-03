@@ -13,6 +13,7 @@ A RubyCocoa Gmail Notifier for Mac OS X
 * Check mail at a specified interval.
 * Growl &amp; sound notifications.
 * Small &amp; fast.
+* Sparkle automatic updates.
 * No background daemon processes installed as Google's official notifier.
 * Open Source &amp; free!
 

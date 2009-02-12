@@ -1,3 +1,7 @@
+h3. 0.4.1 (Feb 12, 2009)
+
+* Updated icons (don't update if you like the current icons; don't be mad if the new set are not looking good for you)
+
 h3. 0.4.0 (Feb 3, 2009)
 
 * Added Sparkle Update support and packaged as DMG

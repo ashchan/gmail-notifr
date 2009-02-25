@@ -167,8 +167,8 @@ ChocTop.new do |s|
 
   # # Custom DMG
   s.background_file = "dmg_background.jpg"
-  s.app_icon_position = [200, 70]
-  # s.applications_icon_position =  [400, 90]
+  s.app_icon_position = [90, 200]
+  s.applications_icon_position =  [390, 200]
   # 
   # # Custom DMG options
   # s.volume_icon = "dmg.icns"

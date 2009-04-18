@@ -1,3 +1,6 @@
+h3. 0.4.2 (Apr 18, 2009)
+* Bugfix: Crash when startup items are empty
+
 h3. 0.4.1 (Feb 12, 2009)
 
 * Updated icons (don't update if you like the current icons; don't be mad if the new set are not looking good for you)

@@ -159,7 +159,7 @@ require "choctop"
 
 ChocTop.new do |s|
   s.host     = 'ashchan.com'
-  s.remote_dir = '/home/james/apps/ashchan.com/shared/gmailnotifr'
+  s.remote_dir = '/var/www/ashchan.com/shared/gmailnotifr'
 
   # Optional, showing defaults
   s.base_url   = "http://#{s.host}/gmailnotifr"

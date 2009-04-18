@@ -17,6 +17,8 @@ class GNStartItems < OSX::NSObject
 			OSX::KCFPreferencesCurrentUser,
 			OSX::KCFPreferencesAnyHost
 		)
+		
+		return false unless cf
 
 		cf.any? { |app| path == app["Path"] }
 	end
@@ -28,7 +30,13 @@ class GNStartItems < OSX::NSObject
 				"loginwindow",
 				OSX::KCFPreferencesCurrentUser,
 				OSX::KCFPreferencesAnyHost
-			).mutableCopy
+			)
+			
+			if cf
+				cf = cf.mutableCopy
+			else
+				cf = NSMutableArray.alloc.init
+			end
 			
 			if autoLaunch
 				#add
@@ -36,9 +44,11 @@ class GNStartItems < OSX::NSObject
 				cf.addObject(NSDictionary.dictionaryWithObject_forKey(path, "Path"))
 			else
 				#remove
+				to_remove = nil
 				cf.each do |app|
-					cf.removeObject(app) and break if app.valueForKey("Path") == path
+					to_remove = app and break if app.valueForKey("Path") == path
 				end
+				cf.removeObject(to_remove) if to_remove
 			end
 			
 			OSX::CFPreferencesSetValue(

@@ -11,6 +11,8 @@ require 'osx/cocoa'
 # a normal gmail account, or a google hosted email account
 class GNAccount < OSX::NSObject
 
+	attr_reader :username, :password
+
 	def init
 		super_init
 	end
@@ -22,14 +24,6 @@ class GNAccount < OSX::NSObject
 		@password = GNKeychain.alloc.init.get_password(username)
 		@existing_account = true
 		return a
-	end
-	
-	def	username
-		@username
-	end
-	
-	def	password
-		@password
 	end
 	
 	def	username=(new_username)

@@ -171,6 +171,6 @@ ChocTop.new do |s|
   s.applications_icon_position =  [390, 200]
   # 
   # # Custom DMG options
-  # s.volume_icon = "dmg.icns"
+  s.volume_icon = "app.icns"
   # s.icon_size = 104
 end

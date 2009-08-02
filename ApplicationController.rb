@@ -204,17 +204,14 @@ class ApplicationController < OSX::NSObject
 		#new messages
 		result = results.split("\n")
 		mail_count = result.shift
+		has_error = false
 		
 		if mail_count == "E"
-			error = "connection error"
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(error, nil, "")
-			item.setImage(@error_icon)
-			cache_result(account_name, error)
+			has_error = true
+			item = accountMenu.addItemWithTitle_action_keyEquivalent("connection error", nil, "")
 		elsif mail_count == "F"
-			error = "username/password wrong"
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(error, nil, "")
-			item.setImage(@error_icon)
-			cache_result(account_name, error)
+			has_error = true
+			item = accountMenu.addItemWithTitle_action_keyEquivalent("username/password wrong", nil, "")
 		else
 			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
@@ -224,9 +221,7 @@ class ApplicationController < OSX::NSObject
 			end
 			
 			if mail_count == 0
-				# no unread messages: force to clear cache_result
-				cache_result(account_name, "")
-				cache_result(account_name, "")
+				force_clear_cache(account_name)
 			else
 				cache_result(account_name, tooltip + "\n" + result.join("\n"))
 			end
@@ -239,6 +234,10 @@ class ApplicationController < OSX::NSObject
 		accountItem.target = self
 		accountItem.action = 'openInbox'
 		
+		if has_error
+			accountItem.setImage(@error_icon)
+			force_clear_cache(account_name)
+		end
 		@status_item.menu.insertItem_atIndex(accountItem, pos)
 	end
 	
@@ -246,5 +245,9 @@ class ApplicationController < OSX::NSObject
 		@cached_results[account] ||= ["", ""]
 		@cached_results[account][0] = @cached_results[account][1]
 		@cached_results[account][1] = result
+	end
+	
+	def	force_clear_cache(account)
+		2.times { cache_result(account, '') }
 	end
 end

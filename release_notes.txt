@@ -1,5 +1,5 @@
 h3. 0.4.3 (Aug 2, 2009)
-* New icons from Iiro Jäppinen (http://iirojappinen.com/)
+* New icons from Iiro J&auml;ppinen (http://iirojappinen.com/)
 * Do not notify if there's a connection or wrong username/password error
 
 h3. 0.4.2 (Apr 18, 2009)

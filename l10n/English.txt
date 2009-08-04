@@ -1,0 +1,44 @@
+### Contributor: James Chan
+
+### Localizable Strings
+
+"ToolbarAccounts" = "Accounts";
+"ToolbarSettings" = "Settings";
+"Open Inbox" = "Open Inbox";
+"Checking Mail" = "checking mail...";
+"Connection Error" = "connection error";
+"Username/password Wrong" = "username/password wrong";
+"Unread Messages" = "%s unread messages";
+"Unread Message" = "%s unread messsage";
+"Sound None" = "None";
+
+
+### Nib Elements
+
+# Menu:
+  Check
+  Preferences...
+  Check for Updates...
+  About Gmail Notifr
+  Donate
+  Quit Gmail Notifr
+  
+# Preferences window:
+  # Tabs:
+    Accounts
+      To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com.
+      Username
+      Password
+      Click the plus button to add your first account
+
+    Settings
+      Settings
+      Check for new mail every
+      minutes
+      Launch at login
+  
+      Notification
+      Use Growl Notification
+      Play Sound
+  
+  Save

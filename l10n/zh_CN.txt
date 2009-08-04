@@ -1,0 +1,44 @@
+### Contributor: James Chan
+
+### Localizable Strings
+
+"ToolbarAccounts" = "账户";
+"ToolbarSettings" = "设置";
+"Open Inbox" = "打开邮箱";
+"Checking Mail" = "正在检查...";
+"Connection Error" = "连接错误";
+"Username/password Wrong" = "用户名/密码 不正确";
+"Unread Messages" = "%s 封未读邮件";
+"Unread Message" = "%s 封未读邮件";
+"Sound None" = "无";
+
+
+### Nib Elements
+
+# Menu:
+  检查新邮件
+  设置...
+  检查更新...
+  关于Gmail Notifr
+  捐赠
+  退出Gmail Notifr
+  
+# Preferences window:
+  # Tabs:
+    账户
+      若要添加 Google Hosted 账户，需在用户名中输入完整的电子邮件地址，如：admin@ashchan.com。
+      用户名
+      密码
+      点左边的+号添加一个新账户。
+
+    设置
+      设置
+      自动检查新邮件时间间隔
+      分钟
+      登录系统时自动运行
+  
+      通知
+      使用Growl通知
+      播放声音
+  
+  Save

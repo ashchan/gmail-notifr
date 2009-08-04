@@ -24,6 +24,8 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :growl
 	ib_outlet :soundList
 	ib_outlet :userList
+	ib_outlet :tabView
+	
 	ib_action :save
 	ib_action :soundSelect
 	ib_action :addUser
@@ -41,6 +43,8 @@ class GNPreferencesWindow < OSX::NSWindow
 		@password.delegate = self
 		
 		reload_ui
+
+		load_toolbar
 	end
 	
 	def windowWillClose(notification)
@@ -154,6 +158,30 @@ class GNPreferencesWindow < OSX::NSWindow
 		end
 	end
 	
+	def	toolbar_itemForItemIdentifier_willBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
+		@toolbarItems.objectForKey(itemIdentifier)
+	end
+	
+	def	toolbarAllowedItemIdentifiers(toolbar)
+		@toolbarIdentifiers
+	end
+	
+	def	toolbarDefaultItemIdentifiers(toolbar)
+		@toolbarIdentifiers
+	end
+	
+	def	toolbarSelectableItemIdentifiers(toolbbar)
+		@toolbarIdentifiers
+	end
+	
+	def	switchToAccountsTab(sender)
+		@tabView.selectTabViewItemAtIndex(0)
+	end
+	
+	def	switchToSettingsTab(sender)
+		@tabView.selectTabViewItemAtIndex(1)
+	end
+	
 	private
 	def	accounts
 		@preferences.accounts.reject { |a| a.deleted? }
@@ -179,5 +207,37 @@ class GNPreferencesWindow < OSX::NSWindow
 			@username.setTitleWithMnemonic("")
 			@password.setTitleWithMnemonic("")
 		end
+	end
+	
+	def	load_toolbar
+		@toolbarIdentifiers = [
+			"toolbarItemAccounts",
+			"toolbarItemSettings"
+		]
+		
+		
+		bundle = NSBundle.mainBundle
+		
+		item_accounts = NSToolbarItem.alloc.initWithItemIdentifier(@toolbarIdentifiers[0])
+		item_accounts.label = "Accounts"
+		item_accounts.image = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('Accounts', 'tiff'))
+		item_accounts.target = self;
+		item_accounts.action = "switchToAccountsTab"
+		
+		item_settings = NSToolbarItem.alloc.initWithItemIdentifier(@toolbarIdentifiers[1])
+		item_settings.label = "Settings"
+		item_settings.image = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('Settings', 'tiff'))
+		item_settings.target = self;
+		item_settings.action = "switchToSettingsTab"
+		
+		@toolbarItems = NSMutableDictionary.alloc.init
+		@toolbarItems.setObject_forKey(item_accounts, @toolbarIdentifiers[0])
+		@toolbarItems.setObject_forKey(item_settings, @toolbarIdentifiers[1])
+		
+		toolbar = NSToolbar.alloc.initWithIdentifier("preferencesToolbar")
+		toolbar.delegate = self
+		toolbar.setAllowsUserCustomization(false)
+		toolbar.setSelectedItemIdentifier(@toolbarIdentifiers[0])
+		self.setToolbar(toolbar)
 	end
 end

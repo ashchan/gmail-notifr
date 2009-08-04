@@ -14,7 +14,7 @@ class GNPreferences < OSX::NSObject
 	MIN_INTERVAL		= 1
 	MAX_INTERVAL		= 300
 	DEFAULT_INTERVAL	= 30
-	SOUND_NONE			= "None"
+	SOUND_NONE			= NSLocalizedString("Sound None")
 			
 	@@soundList = []
 	

@@ -219,13 +219,13 @@ class GNPreferencesWindow < OSX::NSWindow
 		bundle = NSBundle.mainBundle
 		
 		item_accounts = NSToolbarItem.alloc.initWithItemIdentifier(@toolbarIdentifiers[0])
-		item_accounts.label = "Accounts"
+		item_accounts.label = NSLocalizedString("ToolbarAccounts")
 		item_accounts.image = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('Accounts', 'tiff'))
 		item_accounts.target = self;
 		item_accounts.action = "switchToAccountsTab"
 		
 		item_settings = NSToolbarItem.alloc.initWithItemIdentifier(@toolbarIdentifiers[1])
-		item_settings.label = "Settings"
+		item_settings.label = NSLocalizedString("ToolbarSettings")
 		item_settings.image = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('Settings', 'tiff'))
 		item_settings.target = self;
 		item_settings.action = "switchToSettingsTab"

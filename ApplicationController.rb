@@ -61,7 +61,7 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	openInbox(sender)
-		if sender.title == "Open Inbox"
+		if sender.title == NSLocalizedString("Open Inbox")
 			# "Open Inbox" menu item
 			account = sender.menu.title
 		else
@@ -85,7 +85,7 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkMail		
-		@status_item.setToolTip("checking mail...")
+		@status_item.setToolTip(NSLocalizedString("Checking Mail"))
 		@status_item.setImage(@check_icon)
 		@status_item.setAlternateImage(@check_alter_icon)
 				
@@ -133,7 +133,10 @@ class ApplicationController < OSX::NSObject
 		end
 		
 		if @mail_count > 0
-			@status_item.setToolTip("#{@mail_count} unread message#{@mail_count == 1 ? '' : 's'}")
+			@status_item.setToolTip(
+				@mail_count == 1 ? NSLocalizedString("Unread Message") % @mail_count :
+				NSLocalizedString("Unread Messages") % @mail_count
+			)
 			@status_item.setImage(@mail_icon)
 			@status_item.setAlternateImage(@mail_alter_icon)
 			@status_item.setTitle(@mail_count)
@@ -200,7 +203,7 @@ class ApplicationController < OSX::NSObject
 		accountMenu = NSMenu.alloc.initWithTitle(account_name)
 		
 		#open inbox menu item
-		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent_("Open Inbox", "openInbox", "")
+		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Open Inbox"), "openInbox", "")
 		openInboxItem.target = self
 		openInboxItem.enabled = true
 		
@@ -213,14 +216,15 @@ class ApplicationController < OSX::NSObject
 		
 		if mail_count == "E"
 			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent("connection error", nil, "")
+			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
 		elsif mail_count == "F"
 			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent("username/password wrong", nil, "")
+			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
 		else
 			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
-			tooltip = "#{mail_count} unread message#{mail_count == 1 ? '' : 's'}"
+			tooltip = (mail_count == 1 ? NSLocalizedString("Unread Message") % mail_count :
+				NSLocalizedString("Unread Messages") % mail_count)
 			subjects = Array.new
 			result.each do |msg|	 
 				link = msg.split("|")[0]

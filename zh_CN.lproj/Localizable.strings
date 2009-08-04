@@ -1,0 +1,15 @@
+﻿/* 
+   Localizable.strings
+   Gmail Notifr
+
+   Created by James Chen on 8/4/09.
+   Copyright 2009 ashchan.com. All rights reserved.
+ */
+"ToolbarAccounts" = "账户";
+"ToolbarSettings" = "设置";
+"Open Inbox" = "打开邮箱";
+"Checking Mail" = "正在检查...";
+"Connection Error" = "连接错误";
+"Username/password Wrong" = "用户名/密码 不正确";
+"Unread Messages" = "%s 封未读邮件";
+"Unread Message" = "%s 封未读邮件";

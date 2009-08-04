@@ -36,8 +36,15 @@ class GmailChecker
 				feed.each_element('/feed/entry') do |msg|
 					# only return first 10 messages
 					result << "..." and break if result.size > 10
-				
-					result << "#{msg.get_elements('author/name')[0].text}: #{msg.get_elements('title')[0].text}"
+					link = "#{msg.get_elements('link')[0].attributes['href']}"
+
+					if @username.include?("@")
+						domain = @username.split("@")[1]
+						if domain != "gmail.com" && domain != "googlemail.com" then
+							link = link.gsub("/mail?", "/a/#{domain}/?")
+						end
+					end
+					result << "#{link}| #{msg.get_elements('author/name')[0].text}: #{msg.get_elements('title')[0].text}"
 				end
 				
 				result = result.join("\n")

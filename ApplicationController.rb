@@ -71,6 +71,10 @@ class ApplicationController < OSX::NSObject
 		# remove the "(number)" part from account name
 		openInboxForAccount(account.gsub(/\s\(\d+\)/, ''))
 	end
+
+	def openMessage(sender)
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject()))
+	end
 	
 	def	openInboxForAccount(account)
 		account_domain = account.split("@")
@@ -147,6 +151,7 @@ class ApplicationController < OSX::NSObject
 		
 		results.each_key do |account|
 			cached_result = @cached_results[account]
+
 			if cached_result[0] != cached_result[1]
 				should_notify = true
 				@growl.notify(account, cached_result[1]) if preferences.growl	
@@ -216,14 +221,21 @@ class ApplicationController < OSX::NSObject
 			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
 			tooltip = "#{mail_count} unread message#{mail_count == 1 ? '' : 's'}"
-			result.each do |msg|
-				accountMenu.addItemWithTitle_action_keyEquivalent_(msg, nil, "")
+			subjects = Array.new
+			result.each do |msg|	 
+				link = msg.split("|")[0]
+				subject = msg.split("|")[1]
+				subjects.push(subject)
+				msgItem = accountMenu.addItemWithTitle_action_keyEquivalent_(subject, "openMessage", "")
+				msgItem.enabled = true
+				msgItem.setRepresentedObject_(link)
+				msgItem.target = self
 			end
 			
 			if mail_count == 0
 				force_clear_cache(account_name)
 			else
-				cache_result(account_name, tooltip + "\n" + result.join("\n"))
+				cache_result(account_name, tooltip + "\n" + subjects.join("\n"))
 			end
 		end
 		

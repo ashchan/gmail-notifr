@@ -17,6 +17,7 @@ OSX.ruby_thread_switcher_stop
 class ApplicationController < OSX::NSObject
 
 	ACCOUNT_MENUITEM_POS = 2
+	DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
 	ib_outlet :preferencesWindow
 	ib_outlet :menu
@@ -24,6 +25,7 @@ class ApplicationController < OSX::NSObject
 	ib_action :checkMailByMenu
 	ib_action :showAbout
 	ib_action :showPreferencesWindow
+	ib_action :donate
 
 		
 	def	awakeFromNib
@@ -265,5 +267,9 @@ class ApplicationController < OSX::NSObject
 	
 	def	force_clear_cache(account)
 		2.times { cache_result(account, '') }
+	end
+	
+	def	donate
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
 end

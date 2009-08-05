@@ -1,0 +1,44 @@
+### Contributor: Túbal Martín
+
+### Localizable Strings
+
+"ToolbarAccounts" = "Cuentas";
+"ToolbarSettings" = "Configuración";
+"Open Inbox" = "Abrir bandeja de entrada";
+"Checking Mail" = "comprobando el correo...";
+"Connection Error" = "error de conexión";
+"Username/password Wrong" = "usuario/contraseña incorrecto";
+"Unread Messages" = "%s mensajes no leídos";
+"Unread Message" = "%s mensaje no leído";
+"Sound None" = "Ninguna";
+
+
+### Nib Elements
+
+# Menu:
+  Comprobar
+  Preferencias...
+  Buscar actualizaciones...
+  Acerca de Gmail Notifr
+  Donar
+  Salir de Gmail Notifr
+  
+# Preferences window:
+  # Tabs:
+    Cuentas
+      Para añadir una Cuenta de Google, introduce como usuario tu dirección de correo electrónico completa, ej: admin@ashchan.com.
+      Usuario
+      Contraseña
+      Haz click sobre el botón Añadir (+) para añadir tu primera cuenta
+
+    Configuración
+      Configuración
+      Buscar nuevo correo cada
+      minutos
+      Abrir al iniciar sesión
+  
+      Notificaciones
+      Utilizar notificaciones Growl
+      Reproducir sonido
+  
+  Guardar

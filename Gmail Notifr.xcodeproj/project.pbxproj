@@ -104,6 +104,8 @@
 		1AF197630F356152009CBBF1 /* app_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app_a.tiff; sourceTree = "<group>"; };
 		1AF197640F356152009CBBF1 /* mail_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail_a.tiff; sourceTree = "<group>"; };
 		1AF197720F356353009CBBF1 /* check_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check_a.tiff; sourceTree = "<group>"; };
+		1AF46DC9102BBFDD00E4C859 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AF46DCA102BC07800E4C859 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -371,6 +373,7 @@
 				1AE8E8F210286ECE0053B0A0 /* English */,
 				1AE8E8F410286F2B0053B0A0 /* zh_CN */,
 				1AE8E9B81029B26A0053B0A0 /* Spanish */,
+				1AF46DC9102BBFDD00E4C859 /* Japanese */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 				1AE8E8E310286A980053B0A0 /* zh_CN */,
 				1AE8E9B91029B2A20053B0A0 /* Spanish */,
+				1AF46DCA102BC07800E4C859 /* Japanese */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";

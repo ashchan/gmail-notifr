@@ -1,0 +1,18 @@
+﻿/* 
+   Localizable.strings
+   Gmail Notifr
+
+   Created by James Chen on 8/4/09.
+   Copyright 2009 ashchan.com. All rights reserved. 
+   
+   Contributor: Felix Sun
+ */
+"ToolbarAccounts" = "アカウント";
+"ToolbarSettings" = "設定";
+"Open Inbox" = "受信トレイ";
+"Checking Mail" = "メールをチェックしています...";
+"Connection Error" = "接続エラー";
+"Username/password Wrong" = "ユーザー／パースワードが違います。";
+"Unread Messages" = "未読のメールが%s件";
+"Unread Message" = "未読のメールが%s件";
+"Sound None" = "なし";

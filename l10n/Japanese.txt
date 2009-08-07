@@ -1,0 +1,46 @@
+### Contributor: Felix Sun
+
+### Localizable Strings
+
+"ToolbarAccounts" = "アカウント";
+"ToolbarSettings" = "設定";
+"Open Inbox" = "受信トレイ";
+"Checking Mail" = "メールをチェックしています...";
+"Connection Error" = "接続エラー";
+"Username/password Wrong" = "ユーザー／パースワードが違います。";
+"Unread Messages" = "未読のメールが%s件";
+"Unread Message" = "未読のメールが%s件";
+"Sound None" = "なし";
+
+
+### Nib Elements
+
+# Menu:
+  チェック
+  設定...
+  更新検査...
+  Gmail Notifrについて
+  Donate　
+  Gmail Notifrを終了する
+ 
+# Preferences window:
+  # Tabs:
+    アカウント
+      Google Hosted Accountを追加のは、完全なメールアドレスを指定する, 例えば: admin@ashchan.com.
+      ユーザー名
+      パースワード
+      ＋ボタンをクリックすると、最初のアカウントを追加する。
+
+    設定
+      設定
+      1分ごとに新着メールをチェックする
+      minutes
+      ログイン時に起動する
+ 
+      通知
+      Growl通知を使う
+      音を再生する
+ 
+  保存
+
+

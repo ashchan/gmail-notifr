@@ -1,0 +1,19 @@
+﻿/* 
+   Localizable.strings
+   Gmail Notifr
+
+   Created by James Chen on 8/4/09.
+   Copyright 2009 ashchan.com. All rights reserved.
+   
+   Contributor: Fabrice Truillot de Chambrier
+ */
+"ToolbarAccounts" = "Comptes";
+"ToolbarSettings" = "Préférences";
+"Open Inbox" = "Ouvrir la boîte de réception";
+"Checking Mail" = "lecture du courriel...";
+"Connection Error" = "erreur de connexion";
+"Username/password Wrong" = "Nom d'utilisateur/mot de passe erronés";
+"Unread Messages" = "%s messages non lus";
+"Unread Message" = "%s messsage non lu";
+"Sound None" = "Aucun";
+

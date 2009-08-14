@@ -20,6 +20,7 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_outlet :removeButton
 	ib_outlet :hint
 	ib_outlet :interval
+	ib_outlet :showUnreadCount
 	ib_outlet :autoLaunch
 	ib_outlet :growl
 	ib_outlet :soundList
@@ -69,6 +70,7 @@ class GNPreferencesWindow < OSX::NSWindow
 		authChanged = @preferences.merge_accounts_change
 		
 		@preferences.autoLaunch = @autoLaunch.state == NSOnState ? true : false
+		@preferences.showUnreadCount = @showUnreadCount.state == NSOnState ? true : false
 		@preferences.growl = @growl.state == NSOnState ? true : false
 		@preferences.sound = @soundList.titleOfSelectedItem
 		
@@ -90,6 +92,7 @@ class GNPreferencesWindow < OSX::NSWindow
 		@interval.setTitleWithMnemonic(@preferences.interval.to_s)
 		@autoLaunch.setState(@preferences.autoLaunch ? NSOnState : NSOffState)
 		@growl.setState(@preferences.growl ? NSOnState : NSOffState)
+		@showUnreadCount.setState(@preferences.showUnreadCount ? NSOnState : NSOffState)
 		@soundList.selectItemWithTitle(@preferences.sound)
 		@userList.reloadData
 		refresh_account_fields

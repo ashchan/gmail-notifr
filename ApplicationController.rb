@@ -118,6 +118,8 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkCountReturned(notification)
+		preferences = GNPreferences.alloc.init
+
 		results = YAML.load(
 			NSString.alloc.initWithData_encoding(
 				notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
@@ -141,7 +143,12 @@ class ApplicationController < OSX::NSObject
 			)
 			@status_item.setImage(@mail_icon)
 			@status_item.setAlternateImage(@mail_alter_icon)
-			@status_item.setTitle(@mail_count)
+			
+			if preferences.showUnreadCount
+			  @status_item.setTitle(@mail_count)
+		  else
+			  @status_item.setTitle("")
+		  end
 		else
 			@status_item.setToolTip("")
 			@status_item.setImage(@app_icon)
@@ -151,7 +158,6 @@ class ApplicationController < OSX::NSObject
 		
 		@accounts_count = menu_position - ACCOUNT_MENUITEM_POS
 		
-		preferences = GNPreferences.alloc.init
 		should_notify = false
 		
 		results.each_key do |account|

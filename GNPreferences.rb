@@ -18,7 +18,7 @@ class GNPreferences < OSX::NSObject
 			
 	@@soundList = []
 	
-	attr_accessor :username, :accounts, :password, :interval, :autoLaunch, :growl, :sound
+	attr_accessor :username, :accounts, :password, :interval, :autoLaunch, :growl, :sound, :showUnreadCount
 	
 	def	init
 		super_init
@@ -45,6 +45,7 @@ class GNPreferences < OSX::NSObject
 		@password	= GNKeychain.alloc.init.get_password(username)
 				
 		@autoLaunch = GNStartItems.alloc.init.isSet
+		@showUnreadCount = defaults.boolForKey("show_unread_count")
 		
 		self
 	end
@@ -78,7 +79,8 @@ class GNPreferences < OSX::NSObject
 		
 		defaults.setInteger_forKey(@interval, "interval")
 		defaults.setObject_forKey(@username, "username")
-		
+		defaults.setObject_forKey(@showUnreadCount, "show_unread_count")
+				
 		defaults.setObject_forKey(@accounts.reject{ |a| a.deleted? }.collect{ |a| a.username }, "usernames")
 		defaults.setBool_forKey(@growl, "growl")
 		defaults.setObject_forKey(@sound, "sound")
@@ -105,6 +107,7 @@ class GNPreferences < OSX::NSObject
 					[], "usernames",
 					"", "password",
 					false, "auto_launch",
+					true, "show_unread_count",
 					SOUND_NONE, "sound",
 					1, "growl",
 					nil

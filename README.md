@@ -32,7 +32,7 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 # Binary Download
 
-* [http://ashchan.com/gmailnotifr/index.php](http://ashchan.com/gmailnotifr/index.php)
+* [http://github.com/ashchan/gmail-notifr/downloads](http://github.com/ashchan/gmail-notifr/downloads)
 
 # Source #
 

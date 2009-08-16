@@ -19,6 +19,10 @@ class GNPreferences < OSX::NSObject
 	@@soundList = []
 	
 	attr_accessor :username, :accounts, :password, :interval, :autoLaunch, :growl, :sound, :showUnreadCount
+  
+  def self.sharedInstance
+    @instance ||= self.alloc.init
+  end
 	
 	def	init
 		super_init
@@ -45,10 +49,27 @@ class GNPreferences < OSX::NSObject
 		@password	= GNKeychain.alloc.init.get_password(username)
 				
 		@autoLaunch = GNStartItems.alloc.init.isSet
-		@showUnreadCount = defaults.boolForKey("show_unread_count")
+		@showUnreadCount = defaults.boolForKey("ShowUnreadCount")
 		
 		self
 	end
+  
+  def autoLaunch?
+    GNStartItems.alloc.init.isSet
+  end
+    
+  def autoLaunch=(val)
+		GNStartItems.alloc.init.set(val)
+  end
+  
+  def showUnreadCount?
+    NSUserDefaults.standardUserDefaults.boolForKey("ShowUnreadCount")
+  end
+  
+  def showUnreadCount=(val)
+		NSUserDefaults.standardUserDefaults.setObject_forKey(val, "ShowUnreadCount")
+    NSUserDefaults.standardUserDefaults.synchronize
+  end
 	
 	# clean accounts changes
 	# return true if there's any changes that need to be written back
@@ -79,7 +100,7 @@ class GNPreferences < OSX::NSObject
 		
 		defaults.setInteger_forKey(@interval, "interval")
 		defaults.setObject_forKey(@username, "username")
-		defaults.setObject_forKey(@showUnreadCount, "show_unread_count")
+		defaults.setObject_forKey(@showUnreadCount, "ShowUnreadCount")
 				
 		defaults.setObject_forKey(@accounts.reject{ |a| a.deleted? }.collect{ |a| a.username }, "usernames")
 		defaults.setBool_forKey(@growl, "growl")
@@ -94,8 +115,6 @@ class GNPreferences < OSX::NSObject
 			GNKeychain.alloc.init.set_account(account.username, account.password) if !account.deleted? && account.changed?
 		end
 		
-		# save to startup items
-		GNStartItems.alloc.init.set(@autoLaunch)
 	end
 	
 	class << self

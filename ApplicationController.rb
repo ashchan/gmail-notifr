@@ -49,6 +49,8 @@ class ApplicationController < OSX::NSObject
 		@status_item.setAlternateImage(@app_alter_icon)
 		
 		setupDefaults
+    
+    setupPreferencesWindow    
 		
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
@@ -190,7 +192,8 @@ class ApplicationController < OSX::NSObject
 	
 	def	showPreferencesWindow(sender)	
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
-		@preferencesWindow.makeKeyAndOrderFront(sender)
+		PreferencesController.sharedController.showWindow(sender)
+    #@preferencesWindow.makeKeyAndOrderFront(sender)
 	end
 	
 	def	setTimer
@@ -278,4 +281,11 @@ class ApplicationController < OSX::NSObject
 	def	donate
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
+  
+  private
+  def setupPreferencesWindow
+    accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
+    settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
+    PreferencesController.sharedController.modules = [accounts, settings]
+  end
 end

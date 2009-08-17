@@ -50,8 +50,10 @@ class ApplicationController < OSX::NSObject
 		
 		setupDefaults
     
-    setupPreferencesWindow    
-		
+    registerObservers
+    
+    setupPreferencesWindow
+    		
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
 		@growl = GNGrowlController.alloc.init
@@ -145,18 +147,13 @@ class ApplicationController < OSX::NSObject
 			)
 			@status_item.setImage(@mail_icon)
 			@status_item.setAlternateImage(@mail_alter_icon)
-			
-			if preferences.showUnreadCount
-			  @status_item.setTitle(@mail_count)
-		  else
-			  @status_item.setTitle("")
-		  end
 		else
 			@status_item.setToolTip("")
 			@status_item.setImage(@app_icon)
 			@status_item.setAlternateImage(@app_alter_icon)
-			@status_item.setTitle("")
 		end
+    
+    updateMenuBarCount
 		
 		@accounts_count = menu_position - ACCOUNT_MENUITEM_POS
 		
@@ -282,10 +279,27 @@ class ApplicationController < OSX::NSObject
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
   
+  def updateMenuBarCount(notification = nil)
+    if GNPreferences.sharedInstance.showUnreadCount? && @mail_count && @mail_count > 0
+      @status_item.setTitle(@mail_count)
+    else
+      @status_item.setTitle('')
+    end
+  end
+
   private
   def setupPreferencesWindow
     accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
     settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
     PreferencesController.sharedController.modules = [accounts, settings]
+  end
+  
+  def registerObservers
+    NSDistributedNotificationCenter.defaultCenter.addObserver_selector_name_object(
+      self,
+      "updateMenuBarCount",
+      GNShowUnreadCountChangedNotification,
+      nil
+    )
   end
 end

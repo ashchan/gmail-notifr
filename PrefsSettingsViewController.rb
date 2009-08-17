@@ -39,6 +39,7 @@ class PrefsSettingsViewController <  OSX::NSViewController
   
   def saveShowUnreadCount(sender)
     GNPreferences.sharedInstance.showUnreadCount = (@showUnreadCount.state == NSOnState)
-    #todo notify the app controller to show/hide menu bar count
+    # why NSNotificationCenter doesn't work?
+    NSDistributedNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, nil)
   end
 end

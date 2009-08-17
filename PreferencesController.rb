@@ -109,6 +109,7 @@ class PreferencesController < OSX::NSWindowController
     
     @currentModule = mod
     self.window.contentView.addSubview(@currentModule.view)
+    self.window.setInitialFirstResponder(@currentModule.view)
     
     NSUserDefaults.standardUserDefaults.setObject_forKey(mod.identifier, "PreferencesSelection")
   end

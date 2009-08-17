@@ -39,7 +39,6 @@ class PrefsSettingsViewController <  OSX::NSViewController
   
   def saveShowUnreadCount(sender)
     GNPreferences.sharedInstance.showUnreadCount = (@showUnreadCount.state == NSOnState)
-    # why NSNotificationCenter doesn't work?
-    NSDistributedNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, nil)
+    NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
   end
 end

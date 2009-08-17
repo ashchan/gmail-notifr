@@ -114,7 +114,7 @@ class ApplicationController < OSX::NSObject
 		
 		nc = NSNotificationCenter.defaultCenter
 		fn = pipe.fileHandleForReading
-		nc.removeObserver(self)
+    nc.removeObserver_name_object(self, NSFileHandleReadToEndOfFileCompletionNotification, nil)
 		nc.addObserver_selector_name_object(self, 'checkCountReturned', NSFileHandleReadToEndOfFileCompletionNotification, fn)
 		
 		@checker.launch
@@ -190,7 +190,6 @@ class ApplicationController < OSX::NSObject
 	def	showPreferencesWindow(sender)	
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
 		PreferencesController.sharedController.showWindow(sender)
-    #@preferencesWindow.makeKeyAndOrderFront(sender)
 	end
 	
 	def	setTimer
@@ -295,7 +294,7 @@ class ApplicationController < OSX::NSObject
   end
   
   def registerObservers
-    NSDistributedNotificationCenter.defaultCenter.addObserver_selector_name_object(
+    NSNotificationCenter.defaultCenter.addObserver_selector_name_object(
       self,
       "updateMenuBarCount",
       GNShowUnreadCountChangedNotification,

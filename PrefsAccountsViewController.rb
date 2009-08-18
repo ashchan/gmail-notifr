@@ -32,9 +32,28 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   def loadView
     super_loadView
-    #todo
+    
+    forceRefresh
   end
   
+  ## account list table view
+  def numberOfRowsInTableView(sender)
+		accounts.size
+	end
+	
+	def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
+		account = accounts[row]
+		account ? (tableColumn.identifier == "AccountName" ? account.username : "y") : ""
+	end
+	
+	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)		
+	end
+	
+	def	tableViewSelectionDidChange(notification)
+		forceRefresh
+	end
+  
+  ## button actions
   def addAccount(sender)
   end
   
@@ -44,4 +63,21 @@ class PrefsAccountsViewController <  OSX::NSViewController
   def editAccount(sender)
   end
 
+  private
+  def accounts
+		GNPreferences.sharedInstance.accounts.reject { |a| a.deleted? }
+  end
+  
+	def	currentAccount
+    if @accountList.selectedRow > -1
+      accounts[@accountList.selectedRow]
+    else
+      nil
+    end
+	end
+  
+  def forceRefresh
+    enabled = !currentAccount.nil?
+    @removeButton.enabled = @editButton.enabled = enabled
+  end
 end

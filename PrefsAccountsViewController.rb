@@ -10,6 +10,14 @@ require 'osx/cocoa'
 
 class PrefsAccountsViewController <  OSX::NSViewController
 
+  ib_outlet :addButton
+  ib_outlet :removeButton
+  ib_outlet :editButton
+  ib_outlet :accountList
+  ib_action :addAccount
+  ib_action :removeAccount
+  ib_action :editAccount
+
   def title
     OSX::NSLocalizedString("PrefsToolbarAccounts")
   end
@@ -20,6 +28,20 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   def identifier
     "prefsToolbarItemAccounts"
+  end
+  
+  def loadView
+    super_loadView
+    #todo
+  end
+  
+  def addAccount(sender)
+  end
+  
+  def removeAccount(sender)
+  end
+  
+  def editAccount(sender)
   end
 
 end

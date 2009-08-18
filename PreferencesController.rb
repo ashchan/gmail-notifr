@@ -16,7 +16,15 @@ class PreferencesController < OSX::NSWindowController
   ib_outlet :settingsPane
 
   def self.sharedController
-    @sharedInstance ||= self.alloc.init
+    unless @sharedInstance
+      @sharedInstance = self.alloc.init
+      
+      accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
+      settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
+      @sharedInstance.modules = [accounts, settings]
+    end
+    
+    @sharedInstance
   end
 
   def	init

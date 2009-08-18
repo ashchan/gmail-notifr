@@ -19,7 +19,6 @@ class ApplicationController < OSX::NSObject
 	ACCOUNT_MENUITEM_POS = 2
 	DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
-	ib_outlet :preferencesWindow
 	ib_outlet :menu
 	ib_action :openInbox
 	ib_action :checkMailByMenu
@@ -51,8 +50,6 @@ class ApplicationController < OSX::NSObject
 		setupDefaults
     
     registerObservers
-    
-    setupPreferencesWindow
     		
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
@@ -287,11 +284,6 @@ class ApplicationController < OSX::NSObject
   end
 
   private
-  def setupPreferencesWindow
-    accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
-    settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
-    PreferencesController.sharedController.modules = [accounts, settings]
-  end
   
   def registerObservers
     NSNotificationCenter.defaultCenter.addObserver_selector_name_object(

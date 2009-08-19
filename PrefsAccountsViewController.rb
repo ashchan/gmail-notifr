@@ -14,9 +14,11 @@ class PrefsAccountsViewController <  OSX::NSViewController
   ib_outlet :removeButton
   ib_outlet :editButton
   ib_outlet :accountList
-  ib_action :addAccount
+  ib_action :startAddingAccount
+  ib_action :endAddingAccount
   ib_action :removeAccount
-  ib_action :editAccount
+  ib_action :startEditingAccount
+  ib_action :endEditingAccount
 
   def title
     OSX::NSLocalizedString("PrefsToolbarAccounts")
@@ -32,7 +34,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   def loadView
     super_loadView
-    
+    registerObservers
     forceRefresh
   end
   
@@ -56,6 +58,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
 	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)	
     if (account = accounts[row]) && tableColumn.identifier == "EnableStatus"
       account.enabled = object
+      account.save
     end
 	end
 	
@@ -64,14 +67,15 @@ class PrefsAccountsViewController <  OSX::NSViewController
 	end
   
   ## button actions
-  def addAccount(sender)
-    #todo account detail pane
-    GNPreferences.sharedInstance.addAccount(
-      GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
-        "name#{accounts.count}", 30, true, true, nil
-      )
+  def startAddingAccount(sender)
+    account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
+      "username", nil, true, true, nil
     )
-    
+    account.markNew
+    AccountDetailController.editAccountOnWindow(account, view.superview.window)
+  end
+  
+  def endAddingAccount(sender)        
     forceRefresh
     index = accounts.count - 1
     @accountList.selectRowIndexes_byExtendingSelection(NSIndexSet.indexSetWithIndex(index), false)
@@ -86,8 +90,14 @@ class PrefsAccountsViewController <  OSX::NSViewController
     end
   end
   
-  def editAccount(sender)
-    #todo account detail pane
+  def startEditingAccount(sender)
+    account = currentAccount
+    if account
+      AccountDetailController.editAccountOnWindow(account, view.superview.window)
+    end
+  end
+  
+  def endEditingAccount(sender)
     forceRefresh
   end
 
@@ -108,5 +118,22 @@ class PrefsAccountsViewController <  OSX::NSViewController
     @accountList.reloadData
     enabled = !currentAccount.nil?
     @removeButton.enabled = @editButton.enabled = enabled
+  end
+  
+  def registerObservers
+    center = NSNotificationCenter.defaultCenter
+    center.addObserver_selector_name_object(
+      self,
+      "endAddingAccount",
+      GNAccountAddedNotification,
+      nil
+    )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "endEditingAccount",
+      GNAccountChangedNotification,
+      nil
+    )
   end
 end

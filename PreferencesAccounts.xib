@@ -351,14 +351,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">addAccount:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="50997497"/>
-					</object>
-					<int key="connectionID">55</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">removeAccount:</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="159354339"/>
@@ -367,11 +359,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">editAccount:</string>
+						<string key="label">startAddingAccount:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="50997497"/>
+					</object>
+					<int key="connectionID">58</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">startEditingAccount:</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="483953567"/>
 					</object>
-					<int key="connectionID">57</int>
+					<int key="connectionID">59</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -580,7 +580,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">57</int>
+			<int key="maxID">59</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -592,12 +592,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addAccount:</string>
-							<string>editAccount:</string>
+							<string>endAddingAccount:</string>
+							<string>endEditingAccount:</string>
 							<string>removeAccount:</string>
+							<string>startAddingAccount:</string>
+							<string>startEditingAccount:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -609,11 +613,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>accountList</string>
 							<string>addButton</string>
+							<string>detailSheet</string>
 							<string>editButton</string>
 							<string>removeButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

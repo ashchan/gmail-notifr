@@ -17,6 +17,7 @@ class GNAccount < OSX::NSObject
 	MIN_INTERVAL		= 1
 	MAX_INTERVAL		= 300
 	DEFAULT_INTERVAL	= 30
+	SOUND_NONE			= NSLocalizedString("Sound None")
 
 	def init
 		self.password = GNKeychain.alloc.init.get_password(@username)
@@ -28,7 +29,7 @@ class GNAccount < OSX::NSObject
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
-    self.sound = sound
+    self.sound = sound || SOUND_NONE
     
 		init
 	end
@@ -92,4 +93,21 @@ class GNAccount < OSX::NSObject
 	def changed?
 		username_changed? || password_changed? #todo
 	end
+  
+  def new?
+    @new_account
+  end
+  
+  def markNew
+    @new_account = true
+  end
+  
+  def save
+    if new?
+      GNPreferences.sharedInstance.addAccount(self)
+    else
+      GNPreferences.sharedInstance.saveAccount(self)
+    end
+    @new_account = false
+  end
 end

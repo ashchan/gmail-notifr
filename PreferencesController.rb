@@ -21,7 +21,7 @@ class PreferencesController < OSX::NSWindowController
       
       accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
       settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
-      @sharedInstance.modules = [accounts, settings]
+      @sharedInstance.modules = [settings, accounts]
     end
     
     @sharedInstance
@@ -89,7 +89,7 @@ class PreferencesController < OSX::NSWindowController
       toolbar.insertItemWithItemIdentifier_atIndex(mod.identifier, toolbar.items.count)
     end
     
-    savedIdentifier = NSUserDefaults.standardUserDefaults.stringForKey("PreferencesSelection")
+    savedIdentifier = NSUserDefaults.standardUserDefaults.stringForKey(PreferencesSelection)
     defaultModule = moduleForIdentifier(savedIdentifier) || @modules.first
     switchToModule(defaultModule)
   end
@@ -119,7 +119,7 @@ class PreferencesController < OSX::NSWindowController
     self.window.contentView.addSubview(@currentModule.view)
     self.window.setInitialFirstResponder(@currentModule.view)
     
-    NSUserDefaults.standardUserDefaults.setObject_forKey(mod.identifier, "PreferencesSelection")
+    NSUserDefaults.standardUserDefaults.setObject_forKey(mod.identifier, PreferencesSelection)
   end
 
   def moduleForIdentifier(identifier)

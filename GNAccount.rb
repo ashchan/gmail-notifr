@@ -58,7 +58,7 @@ class GNAccount < OSX::NSObject
   
   def enabled=(val)
     @enabled = val
-    @enabled = true if val == 0
+    @enabled = false if val == 0
   end
   
   def interval=(val)
@@ -68,7 +68,7 @@ class GNAccount < OSX::NSObject
   
   def growl=(val)
     @growl = val
-    @growl = true if val == 0
+    @growl = false if val == 0
   end
 	
 	def	username=(new_username)

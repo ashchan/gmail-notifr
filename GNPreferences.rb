@@ -10,15 +10,11 @@ require 'osx/cocoa'
 
 # a simple wrapper for preferences values
 class GNPreferences < OSX::NSObject
-	
-	MIN_INTERVAL		= 1
-	MAX_INTERVAL		= 300
-	DEFAULT_INTERVAL	= 30
 	SOUND_NONE			= NSLocalizedString("Sound None")
 			
 	@@soundList = []
 	
-	attr_accessor :username, :accounts, :password, :interval, :autoLaunch, :growl, :sound, :showUnreadCount
+	attr_accessor :accounts, :autoLaunch, :showUnreadCount
   
   def self.sharedInstance
     @instance ||= self.alloc.init
@@ -29,28 +25,34 @@ class GNPreferences < OSX::NSObject
 		
 		defaults = NSUserDefaults.standardUserDefaults
 
-		@username	= defaults.stringForKey("username") || ""
-
 		@accounts	= NSMutableArray.alloc.init
-		usernames = defaults.stringArrayForKey("usernames")
+    
+    
+    if archivedAccounts = defaults.objectForKey(Accounts)
+      @accounts = archivedAccounts.map { |a| NSKeyedUnarchiver.unarchiveObjectWithData(a) }
+    end
+    
+    # from version <= 0.4.3
+    if @accounts.count == 0 && usernames = defaults.stringArrayForKey("usernames")
+      interval = defaults.integerForKey("interval")
+      growl	= defaults.boolForKey("growl")
+      sound	= defaults.stringForKey("sound") || SOUND_NONE
+      
+      usernames.each do |u|
+        account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
+        @accounts.addObject(account)
+      end
+      
+      # remove legacy preferences
+      %w(username usernames growl sound interval show_unread_count).each do |k|
+        defaults.removeObjectForKey(k)
+      end
+      writeBack
+    end
 
-		usernames.each { |u| @accounts.addObject(GNAccount.alloc.initWithName(u)) } if usernames
-		
-		# import the single username from version before 0.3
-		if @accounts.size == 0 && @username.length > 0
-			@accounts.addObject(GNAccount.alloc.initWithName(@username))
-		end
-		
-		
-		@interval	= defaults.integerForKey("interval") || DEFAULT_INTERVAL
-		@growl		= defaults.boolForKey("growl")
-		@sound		= defaults.stringForKey("sound") || SOUND_NONE
-
-		@password	= GNKeychain.alloc.init.get_password(username)
-				
 		@autoLaunch = GNStartItems.alloc.init.isSet
-		@showUnreadCount = defaults.boolForKey("ShowUnreadCount")
-		
+		@showUnreadCount = defaults.boolForKey(ShowUnreadCount)
+
 		self
 	end
   
@@ -63,57 +65,36 @@ class GNPreferences < OSX::NSObject
   end
   
   def showUnreadCount?
-    NSUserDefaults.standardUserDefaults.boolForKey("ShowUnreadCount")
+    NSUserDefaults.standardUserDefaults.boolForKey(ShowUnreadCount)
   end
   
   def showUnreadCount=(val)
-		NSUserDefaults.standardUserDefaults.setObject_forKey(val, "ShowUnreadCount")
+		NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
   end
 	
 	# clean accounts changes
 	# return true if there's any changes that need to be written back
 	def	merge_accounts_change
-		changed = false
-		accounts_to_remove = NSMutableArray.alloc.init
-		@accounts.each do |account|
-			if account.new?
-				#new added and deleted account, just leave it
-				if account.deleted?
-					accounts_to_remove.addObject(account)
-				else
-					changed = true
-				end
-			else
-				changed = true if account.changed?
-			end
-		end
-		@accounts.removeObjectsInArray(accounts_to_remove)
-
-		changed
+		true
 	end
 	
 	def writeBack
-		@interval = DEFAULT_INTERVAL unless @interval.between?(MIN_INTERVAL, MAX_INTERVAL)
-	
 		defaults = NSUserDefaults.standardUserDefaults
-		
-		defaults.setInteger_forKey(@interval, "interval")
-		defaults.setObject_forKey(@username, "username")
-		defaults.setObject_forKey(@showUnreadCount, "ShowUnreadCount")
 				
-		defaults.setObject_forKey(@accounts.reject{ |a| a.deleted? }.collect{ |a| a.username }, "usernames")
-		defaults.setBool_forKey(@growl, "growl")
-		defaults.setObject_forKey(@sound, "sound")
+		defaults.setObject_forKey(
+      @accounts.map { |a| NSKeyedArchiver.archivedDataWithRootObject(a) },
+      Accounts
+    )
 
 		# save to Info.plist
 		defaults.synchronize	
 		
 		# save accounts to default keychain
 		#TODO: still don't delete removed accounts for now, perhaps should add this feature to make the keychain clean
-		@accounts.each do |account|
-			GNKeychain.alloc.init.set_account(account.username, account.password) if !account.deleted? && account.changed?
-		end
+		#@accounts.each do |account|
+		#	GNKeychain.alloc.init.set_account(account.username, account.password) if !account.deleted? && account.changed?
+		#end
 		
 	end
 	
@@ -121,14 +102,8 @@ class GNPreferences < OSX::NSObject
 		def setupDefaults
 			NSUserDefaults.standardUserDefaults.registerDefaults(
 				NSDictionary.dictionaryWithObjectsAndKeys(
-					DEFAULT_INTERVAL, "interval",
-					"", "username",
-					[], "usernames",
-					"", "password",
-					false, "auto_launch",
-					true, "show_unread_count",
-					SOUND_NONE, "sound",
-					1, "growl",
+					true, ShowUnreadCount,
+          PrefsToolbarItemAccounts, PreferencesSelection,
 					nil
 				)
 			)

@@ -7,3 +7,11 @@
 #
 
 GNShowUnreadCountChangedNotification = "GNShowUnreadCountChanged"
+
+
+PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
+PrefsToolbarItemSettings = "prefsToolbarItemSettings"
+
+ShowUnreadCount = "ShowUnreadCount"
+PreferencesSelection = "PreferencesSelection"
+Accounts = "Accounts"

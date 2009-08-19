@@ -7,6 +7,9 @@
 #
 
 GNShowUnreadCountChangedNotification = "GNShowUnreadCountChanged"
+GNAccountAddedNotification = "GNAccountAddedNotification"
+GNAccountRemovedNotification = "GNAccountRemovedNotification"
+GNAccountChangedNotification = "GNAccountChangedNotification"
 
 
 PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"

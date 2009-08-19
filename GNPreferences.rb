@@ -71,6 +71,24 @@ class GNPreferences < OSX::NSObject
   def showUnreadCount=(val)
 		NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
+    NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
+  end
+  
+  def addAccount(account)
+    @accounts.addObject(account)
+    writeBack
+    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountAddedNotification, self)
+  end
+  
+  def removeAccount(account)
+    @accounts.removeObject(account)
+    writeBack
+    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountRemovedNotification, self)
+  end
+  
+  def saveAccount(account)
+    writeBack
+    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountChangedNotification, self)
   end
 	
 	# clean accounts changes

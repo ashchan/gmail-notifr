@@ -43,10 +43,20 @@ class PrefsAccountsViewController <  OSX::NSViewController
 	
 	def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
 		account = accounts[row]
-		account ? (tableColumn.identifier == "AccountName" ? account.username : account.enabled) : ""
+    if account
+      case tableColumn.identifier
+      when "AccountName"
+        account.username
+      when "EnableStatus"
+        account.enabled?
+      end
+    end
 	end
 	
-	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)		
+	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)	
+    if (account = accounts[row]) && tableColumn.identifier == "EnableStatus"
+      account.enabled = object
+    end
 	end
 	
 	def	tableViewSelectionDidChange(notification)
@@ -55,12 +65,30 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   ## button actions
   def addAccount(sender)
+    #todo account detail pane
+    GNPreferences.sharedInstance.addAccount(
+      GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
+        "name#{accounts.count}", 30, true, true, nil
+      )
+    )
+    
+    forceRefresh
+    index = accounts.count - 1
+    @accountList.selectRowIndexes_byExtendingSelection(NSIndexSet.indexSetWithIndex(index), false)
+    @accountList.scrollRowToVisible(index)
   end
   
   def removeAccount(sender)
+    account = currentAccount
+    if account
+      GNPreferences.sharedInstance.removeAccount(account) 
+      forceRefresh
+    end
   end
   
   def editAccount(sender)
+    #todo account detail pane
+    forceRefresh
   end
 
   private
@@ -77,6 +105,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
 	end
   
   def forceRefresh
+    @accountList.reloadData
     enabled = !currentAccount.nil?
     @removeButton.enabled = @editButton.enabled = enabled
   end

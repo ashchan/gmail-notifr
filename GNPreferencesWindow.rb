@@ -33,6 +33,7 @@ class GNPreferencesWindow < OSX::NSWindow
 	ib_action :removeUser
 
 	def	awakeFromNib
+    return
 		@soundList.removeAllItems
 		GNPreferences.sounds.each { |s| @soundList.addItemWithTitle(s) }
 	

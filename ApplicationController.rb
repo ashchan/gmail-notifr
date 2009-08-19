@@ -98,7 +98,7 @@ class ApplicationController < OSX::NSObject
 		@checker.setLaunchPath(@checker_path)
 
 		args = NSMutableArray.alloc.init
-		GNPreferences.alloc.init.accounts.each do |a|
+		GNPreferences.sharedInstance.accounts.each do |a|
 			args.addObject(a.username.to_s)
 			# pass password as base64 encoded to gmailchecker
 			args.addObject([a.password.to_s].pack("m"))
@@ -119,7 +119,7 @@ class ApplicationController < OSX::NSObject
 	end
 	
 	def	checkCountReturned(notification)
-		preferences = GNPreferences.alloc.init
+		preferences = GNPreferences.sharedInstance
 
 		results = YAML.load(
 			NSString.alloc.initWithData_encoding(
@@ -161,13 +161,13 @@ class ApplicationController < OSX::NSObject
 
 			if cached_result[0] != cached_result[1]
 				should_notify = true
-				@growl.notify(account, cached_result[1]) if preferences.growl	
+				@growl.notify(account, cached_result[1])# if preferences.growl	
 			end
 		end
 		
-		if should_notify && preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
-			sound.play
-		end
+		#if should_notify && preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
+		#	sound.play
+		#end
 	end
 
 	def	checkMailByTimer(timer)
@@ -192,7 +192,7 @@ class ApplicationController < OSX::NSObject
 	def	setTimer
 		@timer.invalidate if @timer
 		@timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
-			GNPreferences.alloc.init.interval * 60, self, 'checkMailByTimer', nil, true)
+			1 * 60, self, 'checkMailByTimer', nil, true)
 	end
 	
 	def	removeAccountMenuItems

@@ -12,7 +12,6 @@
 		1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463820E95F67700930C28 /* ApplicationController.rb */; };
 		1A14638C0E95FF8200930C28 /* app.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A14638B0E95FF8200930C28 /* app.tiff */; };
 		1A1463AD0E9743E300930C28 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463AC0E9743E300930C28 /* app.icns */; };
-		1A1464370E975D8C00930C28 /* GNPreferencesWindow.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */; };
 		1A1465550E979E7200930C28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1465540E979E7200930C28 /* Security.framework */; };
 		1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1465A20E979FE600930C28 /* GNKeychain.rb */; };
 		1A1466F70E987BF100930C28 /* gmailchecker in Resources */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
@@ -86,7 +85,6 @@
 		1A1463820E95F67700930C28 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationController.rb; sourceTree = "<group>"; };
 		1A14638B0E95FF8200930C28 /* app.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app.tiff; sourceTree = "<group>"; };
 		1A1463AC0E9743E300930C28 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = app.icns; sourceTree = "<group>"; };
-		1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferencesWindow.rb; sourceTree = "<group>"; };
 		1A1465540E979E7200930C28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A1465A20E979FE600930C28 /* GNKeychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNKeychain.rb; sourceTree = "<group>"; };
 		1A1466F60E987BF100930C28 /* gmailchecker */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = gmailchecker; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				1A1463820E95F67700930C28 /* ApplicationController.rb */,
-				1A1464360E975D8C00930C28 /* GNPreferencesWindow.rb */,
 				1A58F8B40EB88D60004D74BB /* GNGrowlController.rb */,
 				1AA23341103790BE00D5A79B /* PreferencesController.rb */,
 				1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */,
@@ -352,7 +349,6 @@
 				1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */,
 				1A14638C0E95FF8200930C28 /* app.tiff in Resources */,
 				1A1463AD0E9743E300930C28 /* app.icns in Resources */,
-				1A1464370E975D8C00930C28 /* GNPreferencesWindow.rb in Resources */,
 				1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */,
 				1A1466F70E987BF100930C28 /* gmailchecker in Resources */,
 				1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */,

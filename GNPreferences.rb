@@ -10,8 +10,7 @@ require 'osx/cocoa'
 
 # a simple wrapper for preferences values
 class GNPreferences < OSX::NSObject			
-	@@soundList = []
-	
+
 	attr_accessor :accounts, :autoLaunch, :showUnreadCount
   
   def self.sharedInstance
@@ -34,7 +33,7 @@ class GNPreferences < OSX::NSObject
     if @accounts.count == 0 && usernames = defaults.stringArrayForKey("usernames")
       interval = defaults.integerForKey("interval")
       growl	= defaults.boolForKey("growl")
-      sound	= defaults.stringForKey("sound") || GNAcccount::SOUND_NONE
+      sound	= defaults.stringForKey("sound") || GNSound::SOUND_NONE
       
       usernames.each do |u|
         account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
@@ -89,12 +88,6 @@ class GNPreferences < OSX::NSObject
     NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountChangedNotification, self)
   end
 	
-	# clean accounts changes
-	# return true if there's any changes that need to be written back
-	def	merge_accounts_change
-		true
-	end
-	
 	def writeBack
 		defaults = NSUserDefaults.standardUserDefaults
 				
@@ -123,34 +116,6 @@ class GNPreferences < OSX::NSObject
 					nil
 				)
 			)
-		end
-		
-		def	sounds
-			return @@soundList if @@soundList.size > 0			
-					
-			@@soundList.clear
-
-			knownSoundTypes = NSSound.soundUnfilteredFileTypes
-			libs = NSSearchPathForDirectoriesInDomains(
-				NSLibraryDirectory,
-				NSUserDomainMask | NSLocalDomainMask | NSSystemDomainMask,
-				true
-			)
-			
-			fileManager = NSFileManager.defaultManager
-			
-			libs.each do |folder|
-				folder_name = File.join(folder, "Sounds")
-				if fileManager.fileExistsAtPath_isDirectory(folder_name, nil)
-					fileManager.directoryContentsAtPath(folder_name).each do |file|
-						if knownSoundTypes.include?(file.pathExtension)						
-							@@soundList << file.stringByDeletingPathExtension
-						end
-					end
-				end
-			end
-
-			@@soundList.sort.unshift(SOUND_NONE)
 		end
 	end
 	

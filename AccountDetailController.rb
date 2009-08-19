@@ -10,6 +10,7 @@ require 'osx/cocoa'
 
 class AccountDetailController < OSX::NSWindowController
 
+  ib_outlet :soundList
   ib_action :cancel
   ib_action :okay
   
@@ -28,6 +29,11 @@ class AccountDetailController < OSX::NSWindowController
     initWithWindowNibName("AccountDetail")
     @account = account
     self
+  end
+  
+  def awakeFromNib
+  	@soundList.removeAllItems
+    GNSound.all.each { |s| @soundList.addItemWithTitle(s) }
   end
   
   def cancel(sender)

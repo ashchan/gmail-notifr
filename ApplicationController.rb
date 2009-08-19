@@ -165,7 +165,7 @@ class ApplicationController < OSX::NSObject
 			end
 		end
 		
-		#if should_notify && preferences.sound != GNPreferences::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
+		#if should_notify && preferences.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
 		#	sound.play
 		#end
 	end

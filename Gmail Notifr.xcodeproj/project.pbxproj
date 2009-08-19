@@ -34,6 +34,7 @@
 		1AA235381039966800D5A79B /* Constants.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA235371039966800D5A79B /* Constants.rb */; };
 		1AA239EC103BD70800D5A79B /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA239EB103BD70800D5A79B /* AccountDetail.xib */; };
 		1AA23A39103BDC6000D5A79B /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */; };
+		1AA23B47103C0A4200D5A79B /* GNSound.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA23B46103C0A4200D5A79B /* GNSound.rb */; };
 		1AAAF6960F38613A00F7A3FB /* release_notes_template.html.erb in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */; };
 		1AAAF6990F3861F600F7A3FB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
 		1AAAF6B80F38626A00F7A3FB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
@@ -106,6 +107,7 @@
 		1AA235371039966800D5A79B /* Constants.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Constants.rb; sourceTree = "<group>"; };
 		1AA239EB103BD70800D5A79B /* AccountDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetail.xib; sourceTree = "<group>"; };
 		1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AccountDetailController.rb; sourceTree = "<group>"; };
+		1AA23B46103C0A4200D5A79B /* GNSound.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNSound.rb; sourceTree = "<group>"; };
 		1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes_template.html.erb; sourceTree = "<group>"; };
 		1AAAF6980F3861F600F7A3FB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				1A8653870EC3C81D00384B3E /* GNPreferences.rb */,
 				1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */,
 				1AA235371039966800D5A79B /* Constants.rb */,
+				1AA23B46103C0A4200D5A79B /* GNSound.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				1AA235381039966800D5A79B /* Constants.rb in Resources */,
 				1AA239EC103BD70800D5A79B /* AccountDetail.xib in Resources */,
 				1AA23A39103BDC6000D5A79B /* AccountDetailController.rb in Resources */,
+				1AA23B47103C0A4200D5A79B /* GNSound.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

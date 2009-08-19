@@ -17,7 +17,7 @@ class AccountDetailController < OSX::NSWindowController
   ib_outlet :growl
   ib_outlet :soundList
   
-  
+  ib_action :soundSelect
   ib_action :cancel
   ib_action :okay
   
@@ -64,6 +64,12 @@ class AccountDetailController < OSX::NSWindowController
     
     closeWindow
   end
+  
+  def soundSelect(sender)
+		if sound = NSSound.soundNamed(@soundList.titleOfSelectedItem)
+			sound.play
+		end
+	end
   
   def sheetDidEnd_returnCode_contextInfo(sheet, code, info)
     sheet.orderOut(nil)

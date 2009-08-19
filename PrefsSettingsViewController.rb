@@ -39,6 +39,5 @@ class PrefsSettingsViewController <  OSX::NSViewController
   
   def saveShowUnreadCount(sender)
     GNPreferences.sharedInstance.showUnreadCount = (@showUnreadCount.state == NSOnState)
-    NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
   end
 end

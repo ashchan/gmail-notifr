@@ -20,7 +20,7 @@ class PrefsSettingsViewController <  OSX::NSViewController
   end
   
   def image
-    NSImage.imageNamed('Settings')
+    NSImage.imageNamed("NSPreferencesGeneral")
   end
   
   def identifier

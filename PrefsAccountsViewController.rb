@@ -25,7 +25,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   end
   
   def image
-    NSImage.imageNamed('Accounts')
+    NSImage.imageNamed("NSUserAccounts")
   end
   
   def identifier

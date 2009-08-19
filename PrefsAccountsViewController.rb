@@ -27,7 +27,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   end
   
   def identifier
-    "prefsToolbarItemAccounts"
+    PrefsToolbarItemAccounts
   end
   
   def loadView
@@ -43,7 +43,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
 	
 	def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
 		account = accounts[row]
-		account ? (tableColumn.identifier == "AccountName" ? account.username : "y") : ""
+		account ? (tableColumn.identifier == "AccountName" ? account.username : account.enabled) : ""
 	end
 	
 	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)		
@@ -65,7 +65,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
 
   private
   def accounts
-		GNPreferences.sharedInstance.accounts.reject { |a| a.deleted? }
+		GNPreferences.sharedInstance.accounts
   end
   
 	def	currentAccount

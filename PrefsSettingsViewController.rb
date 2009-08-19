@@ -24,7 +24,7 @@ class PrefsSettingsViewController <  OSX::NSViewController
   end
   
   def identifier
-    "prefsToolbarItemSettings"
+    PrefsToolbarItemSettings
   end
   
   def loadView

@@ -93,7 +93,7 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{500, 100}</string>
+				<string key="NSFrameSize">{400, 100}</string>
 				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -232,7 +232,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{2120, 245}, {500, 100}}</string>
+					<string>{{2120, 245}, {400, 100}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="3"/>
 					<string>{628, 654}</string>

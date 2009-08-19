@@ -151,7 +151,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				1A1463820E95F67700930C28 /* ApplicationController.rb */,
@@ -161,7 +161,7 @@
 				1AA233671037BC2B00D5A79B /* PrefsSettingsViewController.rb */,
 				1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */,
 			);
-			name = Classes;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -228,7 +228,7 @@
 			children = (
 				1A33AF860E9892DA002F815F /* Icons */,
 				1A14664D0E98420A00930C28 /* Models */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				080E96DDFE201D6D7F000001 /* Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,

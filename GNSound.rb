@@ -10,7 +10,7 @@ require 'osx/cocoa'
 
 class GNSound < OSX::NSObject
 
-	SOUND_NONE = NSLocalizedString("Sound None")
+	SOUND_NONE = "None" #NSLocalizedString("Sound None")
   
   @@soundList = []
   

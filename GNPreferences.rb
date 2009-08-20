@@ -101,9 +101,9 @@ class GNPreferences < OSX::NSObject
 		
 		# save accounts to default keychain
 		#TODO: still don't delete removed accounts for now, perhaps should add this feature to make the keychain clean
-		#@accounts.each do |account|
-		#	GNKeychain.alloc.init.set_account(account.username, account.password) if !account.deleted? && account.changed?
-		#end
+		@accounts.each do |account|
+			GNKeychain.alloc.init.set_account(account.username, account.password)# if !account.deleted? && account.changed?
+		end
 		
 	end
 	

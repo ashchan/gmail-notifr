@@ -21,7 +21,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   ib_action :endEditingAccount
 
   def title
-    OSX::NSLocalizedString("PrefsToolbarAccounts")
+    NSLocalizedString("Accounts")
   end
   
   def image
@@ -35,6 +35,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   def loadView
     super_loadView
     registerObservers
+    @editButton.title = NSLocalizedString("Edit")
     @accountList.target = self
     @accountList.setDoubleAction("startEditingAccount")
     forceRefresh

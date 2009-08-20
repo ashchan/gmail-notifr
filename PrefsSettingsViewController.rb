@@ -16,7 +16,7 @@ class PrefsSettingsViewController <  OSX::NSViewController
   ib_action :saveShowUnreadCount
 
   def title
-    OSX::NSLocalizedString("PrefsToolbarSettings")
+    NSLocalizedString("Settings")
   end
   
   def image
@@ -29,7 +29,9 @@ class PrefsSettingsViewController <  OSX::NSViewController
   
   def loadView
     super_loadView
+    @autoLaunch.setTitle(NSLocalizedString("Launch at login"))
 		@autoLaunch.setState(GNPreferences.sharedInstance.autoLaunch? ? NSOnState : NSOffState)
+    @showUnreadCount.setTitle(NSLocalizedString("Show unread count in menu bar"))
     @showUnreadCount.setState(GNPreferences.sharedInstance.showUnreadCount? ? NSOnState : NSOffState)
   end
 

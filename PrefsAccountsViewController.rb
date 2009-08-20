@@ -35,6 +35,8 @@ class PrefsAccountsViewController <  OSX::NSViewController
   def loadView
     super_loadView
     registerObservers
+    @accountList.target = self
+    @accountList.setDoubleAction("startEditingAccount")
     forceRefresh
   end
   

@@ -33,14 +33,13 @@ class ApplicationController < OSX::NSObject
 		@status_item.setHighlightMode(true)
 		@status_item.setMenu(@menu)
 		
-		bundle = NSBundle.mainBundle
-		@app_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('app', 'tiff'))
-		@app_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('app_a', 'tiff'))
-		@mail_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('mail', 'tiff'))
-		@mail_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('mail_a', 'tiff'))
-		@check_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check', 'tiff'))
-		@check_alter_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('check_a', 'tiff'))
-		@error_icon = NSImage.alloc.initWithContentsOfFile(bundle.pathForResource_ofType('error', 'tiff'))
+		@app_icon = NSImage.imageNamed('app.tiff')
+		@app_alter_icon = NSImage.imageNamed('app_a.tiff')
+		@mail_icon = NSImage.imageNamed('mail.tiff')
+		@mail_alter_icon = NSImage.imageNamed('mail_a.tiff')
+		@check_icon = NSImage.imageNamed('check.tiff')
+		@check_alter_icon = NSImage.imageNamed('check_a.tiff')
+		@error_icon = NSImage.imageNamed('error.tiff')
 		
 		@cached_results = {}
 		

@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">435.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="373"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -74,7 +75,7 @@
 					</object>
 					<object class="NSMenuItem" id="456474594">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">6K6+572uLi4uA</string>
+						<string type="base64-UTF8" key="NSTitle">5YGP5aW96K6+572uLi4uA</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -90,7 +91,7 @@
 					</object>
 					<object class="NSMenuItem" id="600488540">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">5YWz5LqOR21haWwgTm90aWZyA</string>
+						<string type="base64-UTF8" key="NSTitle">5YWz5LqOIEdtYWlsIE5vdGlmcg</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -116,7 +117,7 @@
 					</object>
 					<object class="NSMenuItem" id="436251882">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">6YCA5Ye6R21haWwgTm90aWZyA</string>
+						<string type="base64-UTF8" key="NSTitle">6YCA5Ye6IEdtYWlsIE5vdGlmcg</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -327,7 +328,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{823, 603}, {166, 153}}</string>
+					<string>{{823, 603}, {170, 153}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

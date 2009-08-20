@@ -49,11 +49,11 @@ class ApplicationController < OSX::NSObject
 		setupDefaults
     
     registerObservers
+
+    registerGrowl
     		
 		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
 		
-		@growl = GNGrowlController.alloc.init
-		@growl.app = self
 		setTimer
 		checkMail
 	end
@@ -160,7 +160,7 @@ class ApplicationController < OSX::NSObject
 
 			if cached_result[0] != cached_result[1]
 				should_notify = true
-				@growl.notify(account, cached_result[1])# if preferences.growl	
+				notify(account, cached_result[1])# if preferences.growl	
 			end
 		end
 		
@@ -296,6 +296,18 @@ class ApplicationController < OSX::NSObject
     #todo
     puts "account removed"
   end
+  
+  # delegate not working if :click_context not provided?
+	def growlNotifierClicked_context(sender, context)
+		openInboxForAccount(context) if context
+	end
+
+	def growlNotifierTimedOut_context(sender, context)
+	end
+	
+	def notify(title, desc)
+		Growl::Notifier.sharedInstance.notify('new_messages', title, desc, :click_context => title)
+	end
 
   private
   
@@ -330,5 +342,11 @@ class ApplicationController < OSX::NSObject
       GNAccountRemovedNotification,
       nil
     )
+  end
+  
+  def registerGrowl
+    g = Growl::Notifier.sharedInstance
+    g.delegate = self
+    g.register('Gmail Notifr', ['new_messages'])
   end
 end

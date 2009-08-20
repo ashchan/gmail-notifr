@@ -282,14 +282,53 @@ class ApplicationController < OSX::NSObject
       @status_item.setTitle('')
     end
   end
+  
+  def accountAdded(notification)
+    #todo
+    puts "account added"
+  end
+    
+  def accountChanged(notification)
+    #todo
+    puts "account changed"
+  end
+    
+  def accountRemoved(notification)
+    #todo
+    puts "account removed"
+  end
 
   private
   
   def registerObservers
-    NSNotificationCenter.defaultCenter.addObserver_selector_name_object(
+    center = NSNotificationCenter.defaultCenter
+    
+    center.addObserver_selector_name_object(
       self,
       "updateMenuBarCount",
       GNShowUnreadCountChangedNotification,
+      nil
+    )
+    
+    center = NSNotificationCenter.defaultCenter
+    center.addObserver_selector_name_object(
+      self,
+      "accountAdded",
+      GNAccountAddedNotification,
+      nil
+    )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "accountChanged",
+      GNAccountChangedNotification,
+      nil
+    )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "accountRemoved",
+      GNAccountRemovedNotification,
       nil
     )
   end

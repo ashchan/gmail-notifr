@@ -310,7 +310,7 @@
 						<object class="NSPopUpButton" id="489399907">
 							<reference key="NSNextResponder" ref="589341706"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{167, 160}, {143, 26}}</string>
+							<string key="NSFrame">{{167, 160}, {241, 26}}</string>
 							<reference key="NSSuperview" ref="589341706"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="734987036">
@@ -419,18 +419,18 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="1006463091">
+						<object class="NSButton" id="643301538">
 							<reference key="NSNextResponder" ref="589341706"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 244}, {385, 1}}</string>
 							<reference key="NSSuperview" ref="589341706"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="959578314">
+							<object class="NSButtonCell" key="NSCell" id="1006041373">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="878695420"/>
-								<reference key="NSControlView" ref="1006463091"/>
+								<reference key="NSControlView" ref="643301538"/>
 								<int key="NSButtonFlags">-2038284033</int>
 								<int key="NSButtonFlags2">134</int>
 								<reference key="NSAlternateImage" ref="878695420"/>
@@ -660,7 +660,7 @@
 							<reference ref="484631846"/>
 							<reference ref="489399907"/>
 							<reference ref="282617539"/>
-							<reference ref="1006463091"/>
+							<reference ref="643301538"/>
 							<reference ref="1022317534"/>
 							<reference ref="98754116"/>
 							<reference ref="634934953"/>
@@ -872,17 +872,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
-						<reference key="object" ref="1006463091"/>
+						<reference key="object" ref="643301538"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="959578314"/>
+							<reference ref="1006041373"/>
 						</object>
 						<reference key="parent" ref="589341706"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">63</int>
-						<reference key="object" ref="959578314"/>
-						<reference key="parent" ref="1006463091"/>
+						<reference key="object" ref="1006041373"/>
+						<reference key="parent" ref="643301538"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">23</int>

@@ -19,7 +19,7 @@ class GNAccount < OSX::NSObject
 	DEFAULT_INTERVAL	= 30
 
 	def init
-		self.password = GNKeychain.alloc.init.get_password(@username)
+		self.password = GNKeychain.sharedInstance.get_password(@username)
 		super_init
 	end
 

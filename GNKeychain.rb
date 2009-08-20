@@ -12,6 +12,11 @@ OSX.require_framework 'Security'
 class GNKeychain < OSX::NSObject
 	include OSX	
 	SERVICE = "GmailNotifr"
+  
+    
+  def self.sharedInstance
+    @instance ||= self.alloc.init
+  end
 	
 	def	set_account(username, password)
 		return if username.nil? || password.nil?

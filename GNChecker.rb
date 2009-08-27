@@ -31,14 +31,26 @@ class GNChecker < OSX::NSObject
     @guid == guid
   end
   
+  def userError?
+    true
+  end
+  
+  def connectionError?
+    true
+  end
+  
+  def messages
+  end
+  
   def messageCount
     return 0 unless @account && @account.enabled?
     @msgCount || 0
   end
   
   def reset
-     cleanup
-  
+    cleanup
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNCheckingAccountNotification, self, :guid => @account.guid)
+
     if @account && @account.enabled?
       @timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
         @account.interval * 60, self, 'checkMail', nil, true)
@@ -61,8 +73,6 @@ class GNChecker < OSX::NSObject
       fn = @pipe.fileHandleForReading
       nc.addObserver_selector_name_object(self, 'checkResult', NSFileHandleReadToEndOfFileCompletionNotification, fn)
       
-      NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNCheckingAccountNotification, self, :guid => @account.guid)
-
       @checker.launch
       
       fn.readToEndOfFileInBackgroundAndNotify

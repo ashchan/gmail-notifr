@@ -17,6 +17,9 @@ OSX.ruby_thread_switcher_stop
 class ApplicationController < OSX::NSObject
 
 	ACCOUNT_MENUITEM_POS = 2
+  CHECK_MENUITEM_POS = 1
+  ENABLE_MENUITEM_POS = 2
+  DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
 	DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
 	ib_outlet :menu
@@ -98,6 +101,11 @@ class ApplicationController < OSX::NSObject
 	def checkMailByMenu
 		checkAll
 	end
+    
+  def checkAccount(sender)
+    account = accountForGuid(sender.menu.title)
+    checkerForAccount(account).reset
+  end
 	
 	def	showAbout(sender)
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
@@ -170,15 +178,27 @@ class ApplicationController < OSX::NSObject
     account = accountForGuid(notification.userInfo[:guid])
     menuItem = menuItemForAccount(account)
     count = menuItem.submenu.itemArray.count
-    if count > 3
-      (count - 1).downto(3).each { |idx| menuItem.submenu.removeItemAtIndex(idx) }
+    if count > DEFAULT_ACCOUNT_SUBMENU_COUNT
+      (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT).each { |idx| menuItem.submenu.removeItemAtIndex(idx) }
     end
     
     if account.enabled?
+      # messages list
+      checker = checkerForAccount(account)
       #todo messages
       
-      msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_("Last checked: #{notification.userInfo[:checkedAt]}", nil, "")
-      msgItem.enabled = false
+      if checker.connectionError?
+        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
+        errorItem.enabled = false
+      elsif checker.userError?
+        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
+        errorItem.enabled = false
+      else
+      end
+      
+      # recent check timestamp
+      timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
+      timeItem.enabled = false
     end
   
     updateMenuBarCount
@@ -189,13 +209,8 @@ class ApplicationController < OSX::NSObject
 		mail_count = result.shift
 		has_error = false
 		
-		if mail_count == "E"
-			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
-		elsif mail_count == "F"
-			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
-		else
+
+		if 0
 			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
 			tooltip = (mail_count == 1 ? NSLocalizedString("Unread Message") % mail_count :
@@ -327,11 +342,17 @@ class ApplicationController < OSX::NSObject
   
   def addAccountMenuItem(account, index)
     accountMenu = NSMenu.alloc.initWithTitle(account.guid)
+    accountMenu.setAutoenablesItems(false)
 		
 		#open inbox menu item
 		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Open Inbox"), "openInbox", "")
 		openInboxItem.target = self
 		openInboxItem.enabled = true
+    
+    #check menu item
+    checkItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Check"), "checkAccount", "")
+		checkItem.target = self
+		checkItem.enabled = account.enabled?
     
     #enable/disable menu item
     enableAccountItem = accountMenu.addItemWithTitle_action_keyEquivalent(
@@ -362,6 +383,8 @@ class ApplicationController < OSX::NSObject
   end
   
   def updateMenuItemAccountEnabled(account)
-    menuItemForAccount(account).submenu.itemAtIndex(1).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
+    menu = menuItemForAccount(account).submenu
+    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
+    menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
   end
 end

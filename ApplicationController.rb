@@ -115,10 +115,24 @@ class ApplicationController < OSX::NSObject
   
   #todo
   def updateMenuBarCount(notification = nil)
-    if GNPreferences.sharedInstance.showUnreadCount? && @mail_count && @mail_count > 0
-      @status_item.setTitle(@mail_count)
+    msgCount = messageCount
+    if GNPreferences.sharedInstance.showUnreadCount? && msgCount > 0
+      @status_item.setTitle(msgCount)
     else
       @status_item.setTitle('')
+    end
+    
+    if msgCount > 0
+      @status_item.setToolTip(
+        msgCount == 1 ? NSLocalizedString("Unread Message") % msgCount :
+          NSLocalizedString("Unread Messages") % msgCount
+      )
+      @status_item.setImage(@mail_icon)
+      @status_item.setAlternateImage(@mail_alter_icon)
+    else
+      @status_item.setToolTip("")
+      @status_item.setImage(@app_icon)
+      @status_item.setAlternateImage(@app_alter_icon)
     end
   end
   
@@ -142,6 +156,14 @@ class ApplicationController < OSX::NSObject
     checker = checkerForGuid(notification.userInfo[:guid])
     checker.cleanupAndQuit
     @checkers.delete(checker)
+    updateMenuBarCount
+  end
+  
+  def accountChecking(notification)
+    #account = accountForGuid(notification.userInfo[:guid])
+    @status_item.setToolTip(NSLocalizedString("Checking Mail"))
+    @status_item.setImage(@check_icon)
+    @status_item.setAlternateImage(@check_alter_icon)
   end
   
   def	updateAccountMenuItem(notification)
@@ -153,11 +175,13 @@ class ApplicationController < OSX::NSObject
     end
     
     if account.enabled?
+      #todo messages
       
       msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_("Last checked: #{notification.userInfo[:checkedAt]}", nil, "")
       msgItem.enabled = false
     end
   
+    updateMenuBarCount
     return
     #todo
 		#new messages
@@ -249,6 +273,13 @@ class ApplicationController < OSX::NSObject
       GNAccountMenuUpdateNotification,
       nil
     )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "accountChecking",
+      GNCheckingAccountNotification,
+      nil
+    )
   end
   
   def registerGrowl
@@ -285,7 +316,7 @@ class ApplicationController < OSX::NSObject
   end
   
   def messageCount
-    @checkers.sum { |c| c.messageCount }
+    @checkers.inject(0) { |n, c| n + c.messageCount }
   end
   
   def setupMenu

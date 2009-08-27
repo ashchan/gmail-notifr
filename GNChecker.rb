@@ -61,9 +61,13 @@ class GNChecker < OSX::NSObject
       fn = @pipe.fileHandleForReading
       nc.addObserver_selector_name_object(self, 'checkResult', NSFileHandleReadToEndOfFileCompletionNotification, fn)
       
+      NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNCheckingAccountNotification, self, :guid => @account.guid)
+
       @checker.launch
       
       fn.readToEndOfFileInBackgroundAndNotify
+    else
+      notifyMenuUpdate
     end
   end
   
@@ -83,11 +87,11 @@ class GNChecker < OSX::NSObject
 			)
 		)
     #todo, cache result, send notification
-    notify(@account.username, "todo")
     should_notify = true
+    notifyMenuUpdate
     
-    if should_notify
-      NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountMenuUpdateNotification, self, :guid => @account.guid, :checkedAt => checkedAt)
+    if should_notify && @account.growl
+      notify(@account.username, "todo")
     end
 		if should_notify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
 			sound.play
@@ -96,6 +100,10 @@ class GNChecker < OSX::NSObject
   
   def checkedAt
     @checkedAt ? @checkedAt.strftime("%I:%M%p") : "NA"
+  end
+  
+  def notifyMenuUpdate
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountMenuUpdateNotification, self, :guid => @account.guid, :checkedAt => checkedAt)
   end
   
   def notify(title, desc)

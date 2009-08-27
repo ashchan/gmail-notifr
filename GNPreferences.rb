@@ -74,18 +74,18 @@ class GNPreferences < OSX::NSObject
   def addAccount(account)
     @accounts.addObject(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountAddedNotification, self)
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountAddedNotification, self, :guid => account.guid)
   end
   
   def removeAccount(account)
     @accounts.removeObject(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountRemovedNotification, self)
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountRemovedNotification, self, :guid => account.guid)
   end
   
   def saveAccount(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object(GNAccountChangedNotification, self)
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountChangedNotification, self, :guid => account.guid)
   end
 	
 	def writeBack

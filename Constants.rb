@@ -10,6 +10,7 @@ GNShowUnreadCountChangedNotification = "GNShowUnreadCountChanged"
 GNAccountAddedNotification = "GNAccountAddedNotification"
 GNAccountRemovedNotification = "GNAccountRemovedNotification"
 GNAccountChangedNotification = "GNAccountChangedNotification"
+GNAccountMenuUpdateNotification = "GNAccountMenuUpdateNotification"
 
 
 PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"

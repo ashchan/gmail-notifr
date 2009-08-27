@@ -11,8 +11,8 @@ require 'osx/cocoa'
 # a normal gmail account, or a google hosted email account
 class GNAccount < OSX::NSObject
 
-  attr_accessor :username, :password, :interval, :enabled, :sound, :growl
-  Properties = [:username, :interval, :enabled, :sound, :growl]
+  attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl
+  Properties = [:guid, :username, :interval, :enabled, :sound, :growl]
   	
 	MIN_INTERVAL		= 1
 	MAX_INTERVAL		= 300
@@ -50,7 +50,7 @@ class GNAccount < OSX::NSObject
   end
   
   def description
-    "<#{self.class}: #{username}, enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}>"
+    "<#{self.class}: #{username}(#{guid}), enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}>"
   end
   
   alias inspect to_s
@@ -94,19 +94,15 @@ class GNAccount < OSX::NSObject
 	end
   
   def new?
-    @new_account
-  end
-  
-  def markNew
-    @new_account = true
+    @guid.nil?
   end
   
   def save
     if new?
+      self.guid = `uuidgen`.strip
       GNPreferences.sharedInstance.addAccount(self)
     else
       GNPreferences.sharedInstance.saveAccount(self)
     end
-    @new_account = false
   end
 end

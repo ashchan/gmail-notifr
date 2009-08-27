@@ -37,7 +37,7 @@ class GNPreferences < OSX::NSObject
       
       usernames.each do |u|
         account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
-        @accounts.addObject(account)
+        account.save
       end
       
       # remove legacy preferences

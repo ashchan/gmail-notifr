@@ -45,6 +45,22 @@ class GNKeychain < OSX::NSObject
 			SecKeychainItemModifyContent(item, nil, pass.length, pass)
 		end
 	end
+  
+  def delete_account(username)
+  	return if username.nil?
+		status, *data = SecKeychainFindGenericPassword(
+			nil,
+			SERVICE.length,
+			SERVICE,
+			username.length,
+			username)
+		if status == 0
+			data.shift
+			data.shift
+			item = data.shift
+      SecKeychainItemDelete(item)
+		end
+  end
 	
 	def	get_password(username)
 		return "" if username.nil?

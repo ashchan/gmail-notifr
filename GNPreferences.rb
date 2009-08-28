@@ -79,9 +79,13 @@ class GNPreferences < OSX::NSObject
   end
   
   def removeAccount(account)
+    guid = account.guid
+    # also delete keychain item
+    # FIXFIX should delete old item when renaming an account; don't track name changing now so it's not possible to do so for now
+    GNKeychain.sharedInstance.delete_account(account.username)
     @accounts.removeObject(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountRemovedNotification, self, :guid => account.guid)
+    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountRemovedNotification, self, :guid => guid)
   end
   
   def saveAccount(account)
@@ -101,9 +105,8 @@ class GNPreferences < OSX::NSObject
 		defaults.synchronize	
 		
 		# save accounts to default keychain
-		#TODO: still don't delete removed accounts for now, perhaps should add this feature to make the keychain clean
 		@accounts.each do |account|
-			GNKeychain.sharedInstance.set_account(account.username, account.password)# if !account.deleted? && account.changed?
+			GNKeychain.sharedInstance.set_account(account.username, account.password)
 		end
 		
 	end

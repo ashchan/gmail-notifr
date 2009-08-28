@@ -206,7 +206,7 @@ class ApplicationController < OSX::NSObject
         menuItem.title = "#{account.username} (#{checker.messageCount})"
       end      
       
-      menuItem.submenu.addItem(NSMenuItem.separatorItem)
+      menuItem.submenu.addItem(NSMenuItem.separatorItem) if checker.messages.count > 0
       # recent check timestamp
       timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
       timeItem.enabled = false

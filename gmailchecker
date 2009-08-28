@@ -40,16 +40,16 @@ class GmailChecker
             # only return first 10 messages
             break if cnt > 10
             
-            contributor = msg.get_elements('contributor')[0]
-            author = if contributor 
-              contributor.get_elements('name')[0].text
-            else
-              msg.get_elements('author/name')[0].text
-            end
+            #contributor = msg.get_elements('contributor')[0]
+            #author = if contributor 
+            #  contributor.get_elements('name')[0].text
+            #else
+            #  msg.get_elements('author/name')[0].text
+            #end
 
             result[:messages] << {
               :link => msg.get_elements('link')[0].attributes['href'],
-              :author => author,
+              :author => msg.get_elements('author/name')[0].text,
               :subject => msg.get_elements('title')[0].text,
               :id => msg.get_elements('id')[0].text,
               :date => DateTime.parse(msg.get_elements('issued')[0].text),

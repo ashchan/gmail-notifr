@@ -74,7 +74,6 @@ class PrefsAccountsViewController <  OSX::NSViewController
     account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
       "username", nil, true, true, nil
     )
-    account.markNew
     AccountDetailController.editAccountOnWindow(account, view.superview.window)
   end
   

@@ -17,6 +17,9 @@ OSX.ruby_thread_switcher_stop
 class ApplicationController < OSX::NSObject
 
 	ACCOUNT_MENUITEM_POS = 2
+  CHECK_MENUITEM_POS = 1
+  ENABLE_MENUITEM_POS = 2
+  DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
 	DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
 	ib_outlet :menu
@@ -41,8 +44,6 @@ class ApplicationController < OSX::NSObject
 		@check_alter_icon = NSImage.imageNamed('check_a.tiff')
 		@error_icon = NSImage.imageNamed('error.tiff')
 		
-		@cached_results = {}
-		
 		@status_item.setImage(@app_icon)
 		@status_item.setAlternateImage(@app_alter_icon)
 		
@@ -51,11 +52,9 @@ class ApplicationController < OSX::NSObject
     registerObservers
 
     registerGrowl
-    		
-		@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
-		
-		setTimer
-		checkMail
+
+    setupMenu
+    setupCheckers
 	end
 	
 	def	setupDefaults
@@ -65,118 +64,48 @@ class ApplicationController < OSX::NSObject
 	def	openInbox(sender)
 		if sender.title == NSLocalizedString("Open Inbox")
 			# "Open Inbox" menu item
-			account = sender.menu.title
+			account = accountForGuid(sender.menu.title)
 		else
 			# top menu item for account
-			account = sender.title
+			account = accountForGuid(sender.submenu.title)
 		end
 		# remove the "(number)" part from account name
-		openInboxForAccount(account.gsub(/\s\(\d+\)/, ''))
+		openInboxForAccount(account)
 	end
+  
+  def toggleAccount(sender)
+    account = accountForGuid(sender.menu.title)
+    account.enabled = !account.enabled
+    account.save
+    
+    updateMenuItemAccountEnabled(account)
+    checkerForAccount(account).reset
+  end
 
 	def openMessage(sender)
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject()))
 	end
 	
 	def	openInboxForAccount(account)
-		account_domain = account.split("@")
+    openInboxForAccountName(account.username)
+	end
+  
+  def	openInboxForAccountName(name)
+		account_domain = name.split("@")
 		
 		inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
 			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
 	end
-	
-	def	checkMail		
-		@status_item.setToolTip(NSLocalizedString("Checking Mail"))
-		@status_item.setImage(@check_icon)
-		@status_item.setAlternateImage(@check_alter_icon)
-				
-		@checker.interrupt and @checker = nil if @checker
-		@checker = NSTask.alloc.init
-		@checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
-		@checker.setLaunchPath(@checker_path)
 
-		args = NSMutableArray.alloc.init
-		GNPreferences.sharedInstance.accounts.each do |a|
-			args.addObject(a.username.to_s)
-			# pass password as base64 encoded to gmailchecker
-			args.addObject([a.password.to_s].pack("m"))
-		end
-
-		@checker.setArguments(args)		
-		
-		pipe = NSPipe.alloc.init
-		@checker.setStandardOutput(pipe)
-		
-		nc = NSNotificationCenter.defaultCenter
-		fn = pipe.fileHandleForReading
-    nc.removeObserver_name_object(self, NSFileHandleReadToEndOfFileCompletionNotification, nil)
-		nc.addObserver_selector_name_object(self, 'checkCountReturned', NSFileHandleReadToEndOfFileCompletionNotification, fn)
-		
-		@checker.launch
-		fn.readToEndOfFileInBackgroundAndNotify
-	end
-	
-	def	checkCountReturned(notification)
-		preferences = GNPreferences.sharedInstance
-
-		results = YAML.load(
-			NSString.alloc.initWithData_encoding(
-				notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
-				NSUTF8StringEncoding
-			)
-		)
-		
-		removeAccountMenuItems
-		@mail_count = 0
-		
-		menu_position = ACCOUNT_MENUITEM_POS
-		results.each do |k, v|
-			addAccountMenuItem(k, v, menu_position)
-			menu_position += 1
-		end
-		
-		if @mail_count > 0
-			@status_item.setToolTip(
-				@mail_count == 1 ? NSLocalizedString("Unread Message") % @mail_count :
-				NSLocalizedString("Unread Messages") % @mail_count
-			)
-			@status_item.setImage(@mail_icon)
-			@status_item.setAlternateImage(@mail_alter_icon)
-		else
-			@status_item.setToolTip("")
-			@status_item.setImage(@app_icon)
-			@status_item.setAlternateImage(@app_alter_icon)
-		end
-    
-    updateMenuBarCount
-		
-		@accounts_count = menu_position - ACCOUNT_MENUITEM_POS
-		
-		should_notify = false
-		
-		results.each_key do |account|
-			cached_result = @cached_results[account]
-
-			if cached_result[0] != cached_result[1]
-				should_notify = true
-				notify(account, cached_result[1])# if preferences.growl	
-			end
-		end
-		
-		#if should_notify && preferences.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(preferences.sound)
-		#	sound.play
-		#end
-	end
-
-	def	checkMailByTimer(timer)
-		checkMail
-	end
-	
 	def checkMailByMenu
-		setTimer
-		checkMail
+		checkAll
 	end
+    
+  def checkAccount(sender)
+    account = accountForGuid(sender.menu.title)
+    checkerForAccount(account).reset
+  end
 	
 	def	showAbout(sender)
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
@@ -187,43 +116,101 @@ class ApplicationController < OSX::NSObject
 		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
 		PreferencesController.sharedController.showWindow(sender)
 	end
-	
-	def	setTimer
-		@timer.invalidate if @timer
-		@timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
-			1 * 60, self, 'checkMailByTimer', nil, true)
+
+	def	donate
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
-	
-	def	removeAccountMenuItems
-		if @accounts_count
-			@accounts_count.times do |t|
-				@status_item.menu.removeItemAtIndex(ACCOUNT_MENUITEM_POS)
-			end
-		end
-	end
-	
-	def	addAccountMenuItem(account_name, results, pos)
-		accountMenu = NSMenu.alloc.initWithTitle(account_name)
-		
-		#open inbox menu item
-		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Open Inbox"), "openInbox", "")
-		openInboxItem.target = self
-		openInboxItem.enabled = true
-		
-		accountMenu.addItem(NSMenuItem.separatorItem)
-		
+  
+  #todo
+  def updateMenuBarCount(notification = nil)
+    msgCount = messageCount
+    if GNPreferences.sharedInstance.showUnreadCount? && msgCount > 0
+      @status_item.setTitle(msgCount)
+    else
+      @status_item.setTitle('')
+    end
+    
+    if msgCount > 0
+      @status_item.setToolTip(
+        msgCount == 1 ? NSLocalizedString("Unread Message") % msgCount :
+          NSLocalizedString("Unread Messages") % msgCount
+      )
+      @status_item.setImage(@mail_icon)
+      @status_item.setAlternateImage(@mail_alter_icon)
+    else
+      @status_item.setToolTip("")
+      @status_item.setImage(@app_icon)
+      @status_item.setAlternateImage(@app_alter_icon)
+    end
+  end
+  
+  def accountAdded(notification)
+    account = accountForGuid(notification.userInfo[:guid])
+    addAccountMenuItem(account, GNPreferences.sharedInstance.accounts.count - 1)
+    checker = GNChecker.alloc.initWithAccount(account)
+    @checkers << checker
+    checker.reset
+  end
+    
+  def accountChanged(notification)
+    account = accountForGuid(notification.userInfo[:guid])
+    updateMenuItemAccountEnabled(account)
+    checkerForAccount(account).reset
+  end
+    
+  def accountRemoved(notification)
+    item = menuItemForGuid(notification.userInfo[:guid])
+    @status_item.menu.removeItem(item)
+    checker = checkerForGuid(notification.userInfo[:guid])
+    checker.cleanupAndQuit
+    @checkers.delete(checker)
+    updateMenuBarCount
+  end
+  
+  def accountChecking(notification)
+    #account = accountForGuid(notification.userInfo[:guid])
+    @status_item.setToolTip(NSLocalizedString("Checking Mail"))
+    @status_item.setImage(@check_icon)
+    @status_item.setAlternateImage(@check_alter_icon)
+  end
+  
+  def	updateAccountMenuItem(notification)
+    account = accountForGuid(notification.userInfo[:guid])
+    menuItem = menuItemForAccount(account)
+    count = menuItem.submenu.itemArray.count
+    if count > DEFAULT_ACCOUNT_SUBMENU_COUNT
+      (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT).each { |idx| menuItem.submenu.removeItemAtIndex(idx) }
+    end
+    
+    if account.enabled?
+      # messages list
+      checker = checkerForAccount(account)
+      #todo messages
+      
+      if checker.connectionError?
+        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
+        errorItem.enabled = false
+      elsif checker.userError?
+        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
+        errorItem.enabled = false
+      else
+      end
+      
+      # recent check timestamp
+      timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
+      timeItem.enabled = false
+    end
+  
+    updateMenuBarCount
+    return
+    #todo
 		#new messages
 		result = results.split("\n")
 		mail_count = result.shift
 		has_error = false
 		
-		if mail_count == "E"
-			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
-		elsif mail_count == "F"
-			has_error = true
-			item = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
-		else
+
+		if 0
 			mail_count = mail_count.to_i
 			@mail_count += mail_count.to_i
 			tooltip = (mail_count == 1 ? NSLocalizedString("Unread Message") % mail_count :
@@ -246,67 +233,19 @@ class ApplicationController < OSX::NSObject
 			end
 		end
 		
-		#top level menu item for acount
-		accountItem = NSMenuItem.alloc.init
-		accountItem.title = account_name + " (#{mail_count.to_i})"
-		accountItem.submenu = accountMenu
-		accountItem.target = self
-		accountItem.action = 'openInbox'
 		
 		if has_error
 			accountItem.setImage(@error_icon)
 			force_clear_cache(account_name)
 		end
-		@status_item.menu.insertItem_atIndex(accountItem, pos)
 	end
-	
-	def	cache_result(account, result)
-		@cached_results[account] ||= ["", ""]
-		@cached_results[account][0] = @cached_results[account][1]
-		@cached_results[account][1] = result
-	end
-	
-	def	force_clear_cache(account)
-		2.times { cache_result(account, '') }
-	end
-	
-	def	donate
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
-	end
-  
-  def updateMenuBarCount(notification = nil)
-    if GNPreferences.sharedInstance.showUnreadCount? && @mail_count && @mail_count > 0
-      @status_item.setTitle(@mail_count)
-    else
-      @status_item.setTitle('')
-    end
-  end
-  
-  def accountAdded(notification)
-    #todo
-    puts "account added"
-  end
-    
-  def accountChanged(notification)
-    #todo
-    puts "account changed"
-  end
-    
-  def accountRemoved(notification)
-    #todo
-    puts "account removed"
-  end
   
   # delegate not working if :click_context not provided?
 	def growlNotifierClicked_context(sender, context)
-		openInboxForAccount(context) if context
+		openInboxForAccountName(context) if context
 	end
 
 	def growlNotifierTimedOut_context(sender, context)
-	end
-	
-	def notify(title, desc)
-		Growl::Notifier.sharedInstance.notify('new_messages', title, desc, :click_context => title)
 	end
 
   private
@@ -342,11 +281,110 @@ class ApplicationController < OSX::NSObject
       GNAccountRemovedNotification,
       nil
     )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "updateAccountMenuItem",
+      GNAccountMenuUpdateNotification,
+      nil
+    )
+    
+    center.addObserver_selector_name_object(
+      self,
+      "accountChecking",
+      GNCheckingAccountNotification,
+      nil
+    )
   end
   
   def registerGrowl
     g = Growl::Notifier.sharedInstance
     g.delegate = self
     g.register('Gmail Notifr', ['new_messages'])
+  end
+  
+  def setupCheckers
+    @checkers = []
+    GNPreferences.sharedInstance.accounts.each do |a|
+      @checkers << GNChecker.alloc.initWithAccount(a)
+    end
+    
+    checkAll
+  end
+  
+  def checkAll  
+    @checkers.each do |c|
+      c.reset
+    end
+  end
+  
+  def accountForGuid(guid)
+    GNPreferences.sharedInstance.accounts.find { |a| a.guid == guid }
+  end
+  
+  def checkerForAccount(account)
+    @checkers.find { |c| c.forAccount?(account) }
+  end
+  
+  def checkerForGuid(guid)
+    @checkers.find { |c| c.forGuid?(guid) }
+  end
+  
+  def messageCount
+    @checkers.inject(0) { |n, c| n + c.messageCount }
+  end
+  
+  def setupMenu
+    GNPreferences.sharedInstance.accounts.each_with_index do |a, i|
+      addAccountMenuItem(a, i)
+    end
+  end
+  
+  def addAccountMenuItem(account, index)
+    accountMenu = NSMenu.alloc.initWithTitle(account.guid)
+    accountMenu.setAutoenablesItems(false)
+		
+		#open inbox menu item
+		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Open Inbox"), "openInbox", "")
+		openInboxItem.target = self
+		openInboxItem.enabled = true
+    
+    #check menu item
+    checkItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Check"), "checkAccount", "")
+		checkItem.target = self
+		checkItem.enabled = account.enabled?
+    
+    #enable/disable menu item
+    enableAccountItem = accountMenu.addItemWithTitle_action_keyEquivalent(
+      account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable"),
+      "toggleAccount", ""
+    )
+    enableAccountItem.target = self
+    enableAccountItem.enabled = true
+		
+		accountMenu.addItem(NSMenuItem.separatorItem)
+    
+    #top level menu item for acount
+		accountItem = NSMenuItem.alloc.init
+		accountItem.title = account.username
+		accountItem.submenu = accountMenu
+		accountItem.target = self
+		accountItem.action = 'openInbox'
+
+		@status_item.menu.insertItem_atIndex(accountItem, ACCOUNT_MENUITEM_POS + index)
+  end
+  
+  def menuItemForAccount(account)
+    menuItemForGuid(account.guid)
+  end
+  
+  def menuItemForGuid(guid)
+    @status_item.menu.itemArray.find { |i| i.submenu && i.submenu.title == guid }
+  end
+  
+  def updateMenuItemAccountEnabled(account)
+    menu = menuItemForAccount(account).submenu
+    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
+    menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
   end
 end

@@ -18,6 +18,7 @@
 		1A1467050E987D4500930C28 /* gmailchecker in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
 		1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 1A33AF920E9896DE002F815F /* Security.bridgesupport */; };
 		1A33B0EE0E98C070002F815F /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A33B0ED0E98C070002F815F /* GNStartItems.rb */; };
+		1A37869110468635003FA6E2 /* GNChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A37869010468635003FA6E2 /* GNChecker.rb */; };
 		1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1A382A290E9F2EE000BDC026 /* Credits.html */; };
 		1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A58F8B20EB88D28004D74BB /* Growl.rb */; };
 		1A709B050E98EC34009672CC /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B020E98EC34009672CC /* check.tiff */; };
@@ -87,6 +88,7 @@
 		1A1466F60E987BF100930C28 /* gmailchecker */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = gmailchecker; sourceTree = "<group>"; };
 		1A33AF920E9896DE002F815F /* Security.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Security.bridgesupport; sourceTree = "<group>"; };
 		1A33B0ED0E98C070002F815F /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNStartItems.rb; sourceTree = "<group>"; };
+		1A37869010468635003FA6E2 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNChecker.rb; sourceTree = "<group>"; };
 		1A382A290E9F2EE000BDC026 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		1A58F8B20EB88D28004D74BB /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Growl.rb; sourceTree = "<group>"; };
 		1A709B020E98EC34009672CC /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check.tiff; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */,
 				1AA235371039966800D5A79B /* Constants.rb */,
 				1AA23B46103C0A4200D5A79B /* GNSound.rb */,
+				1A37869010468635003FA6E2 /* GNChecker.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				1AA239EC103BD70800D5A79B /* AccountDetail.xib in Resources */,
 				1AA23A39103BDC6000D5A79B /* AccountDetailController.rb in Resources */,
 				1AA23B47103C0A4200D5A79B /* GNSound.rb in Resources */,
+				1A37869110468635003FA6E2 /* GNChecker.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

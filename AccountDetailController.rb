@@ -49,8 +49,11 @@ class AccountDetailController < OSX::NSWindowController
   
   def awakeFromNib
   	@soundList.removeAllItems
+    @soundList.addItemWithTitle(GNSound::SOUND_NONE)
+    @soundList.menu.addItem(NSMenuItem.separatorItem)
     GNSound.all.each { |s| @soundList.addItemWithTitle(s) }
 		@soundList.selectItemWithTitle(@account.sound)
+    
  		@interval.setTitleWithMnemonic(@account.interval.to_s)
     @accountEnabled.setState(@account.enabled? ? NSOnState : NSOffState)
 		@growl.setState(@account.growl ? NSOnState : NSOffState)

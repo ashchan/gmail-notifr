@@ -41,7 +41,7 @@ class GNSound < OSX::NSObject
 				end
 			end
 
-			@@soundList.sort!.unshift(SOUND_NONE)
+			@@soundList.sort!
 		end
 	end
 

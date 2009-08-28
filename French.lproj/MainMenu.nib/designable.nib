@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">435.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="528"/>
+			<integer value="373"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -172,14 +172,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">checkMailByMenu:</string>
-						<reference key="source" ref="363356160"/>
-						<reference key="destination" ref="256512304"/>
-					</object>
-					<int key="connectionID">514</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">checkForUpdates:</string>
 						<reference key="source" ref="180970480"/>
 						<reference key="destination" ref="273274217"/>
@@ -193,6 +185,14 @@
 						<reference key="destination" ref="1036176720"/>
 					</object>
 					<int key="connectionID">529</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkAll:</string>
+						<reference key="source" ref="363356160"/>
+						<reference key="destination" ref="256512304"/>
+					</object>
+					<int key="connectionID">530</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -359,7 +359,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">529</int>
+			<int key="maxID">530</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -371,7 +371,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkMailByMenu:</string>
+							<string>checkAll:</string>
 							<string>donate:</string>
 							<string>openInbox:</string>
 							<string>showAbout:</string>

@@ -83,7 +83,7 @@ class ApplicationController < OSX::NSObject
   end
 
 	def openMessage(sender)
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject()))
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject))
 	end
 	
 	def	openInboxForAccount(account)
@@ -177,67 +177,43 @@ class ApplicationController < OSX::NSObject
   def	updateAccountMenuItem(notification)
     account = accountForGuid(notification.userInfo[:guid])
     menuItem = menuItemForAccount(account)
+    menuItem.title = account.username
+        
     count = menuItem.submenu.itemArray.count
     if count > DEFAULT_ACCOUNT_SUBMENU_COUNT
       (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT).each { |idx| menuItem.submenu.removeItemAtIndex(idx) }
     end
     
     if account.enabled?
-      # messages list
       checker = checkerForAccount(account)
-      #todo messages
       
       if checker.connectionError?
         errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
         errorItem.enabled = false
+        menuItem.setImage(@error_icon)
       elsif checker.userError?
         errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
         errorItem.enabled = false
+        menuItem.setImage(@error_icon)
       else
-      end
+        # messages list
+        checker.messages.each do |msg|
+          msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(msg[:subject], "openMessage", "")
+          msgItem.enabled = true
+          msgItem.setRepresentedObject(msg[:link])
+          msgItem.target = self
+        end
+        menuItem.setImage(nil)
+        menuItem.title = "#{account.username} (#{checker.messageCount})"
+      end      
       
+      menuItem.submenu.addItem(NSMenuItem.separatorItem)
       # recent check timestamp
       timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
       timeItem.enabled = false
     end
   
     updateMenuBarCount
-    return
-    #todo
-		#new messages
-		result = results.split("\n")
-		mail_count = result.shift
-		has_error = false
-		
-
-		if 0
-			mail_count = mail_count.to_i
-			@mail_count += mail_count.to_i
-			tooltip = (mail_count == 1 ? NSLocalizedString("Unread Message") % mail_count :
-				NSLocalizedString("Unread Messages") % mail_count)
-			subjects = Array.new
-			result.each do |msg|	 
-				link = msg.split("|")[0]
-				subject = msg.split("|")[1]
-				subjects.push(subject)
-				msgItem = accountMenu.addItemWithTitle_action_keyEquivalent_(subject, "openMessage", "")
-				msgItem.enabled = true
-				msgItem.setRepresentedObject_(link)
-				msgItem.target = self
-			end
-			
-			if mail_count == 0
-				force_clear_cache(account_name)
-			else
-				cache_result(account_name, tooltip + "\n" + subjects.join("\n"))
-			end
-		end
-		
-		
-		if has_error
-			accountItem.setImage(@error_icon)
-			force_clear_cache(account_name)
-		end
 	end
   
   # delegate not working if :click_context not provided?

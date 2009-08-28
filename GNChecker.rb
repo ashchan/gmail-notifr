@@ -17,6 +17,7 @@ class GNChecker < OSX::NSObject
     init
     @account = account
     @guid = account.guid
+    @messages = []
     
     @checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')    
 
@@ -32,21 +33,20 @@ class GNChecker < OSX::NSObject
   end
   
   def userError?
-    #todo
-    false
+    @userError
   end
   
   def connectionError?
-    #todo
-    false
+    @connectionError
   end
   
   def messages
+    @messages
   end
   
   def messageCount
     return 0 unless @account && @account.enabled?
-    @msgCount || 0
+    @messageCount || 0
   end
   
   def reset
@@ -98,14 +98,51 @@ class GNChecker < OSX::NSObject
 				NSUTF8StringEncoding
 			)
 		)
-    #todo, cache result, send notification
-    should_notify = true
+    
+    result = results[@account.username.to_s]
+    return unless result
+    
+    @messages.clear
+    @messageCount = result[:count]
+    @connectionError = result[:error] == "ConnectionError"
+    @userError = result[:error] == "UserError"
+
+    result[:messages].each do |msg|
+      @messages << {
+        :subject => msg[:subject],
+        :author => msg[:author],
+        :link => normalizeMessageLink(msg[:link]),
+        :id => msg[:id],
+        :date => msg[:date],
+        :summary => msg[:summary]
+      }
+    end
+    
+    shouldNotify = @account.enabled? && @messages.count > 0
+    if shouldNotify
+      newestDate = @messages.map { |m| m[:date] }.sort[-1]
+      
+      if @newestDate
+        shouldNotify = newestDate > @newestDate
+      end
+
+      @newestDate = newestDate
+    end
+    
     notifyMenuUpdate
     
-    if should_notify && @account.growl
-      notify(@account.username, "todo")
+    if shouldNotify && @account.growl
+      info = @messages.map { |m| "#{m[:author]} : #{m[:subject]}" }.join("\n\n")
+      if @messageCount > @messages.count
+        info += "\n\n..."
+      end
+      
+      unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
+          NSLocalizedString("Unread Messages") % @messageCount
+      
+      notify(@account.username, [unreadCount, info].join("\n\n"))
     end
-		if should_notify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
+		if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
 			sound.play
 		end
 	end
@@ -135,5 +172,17 @@ class GNChecker < OSX::NSObject
     cleanup
     @timer = nil
     @pipe = nil
+  end
+  
+  private
+  def normalizeMessageLink(link)
+    if @account.username.include?("@")
+      domain = @account.username.split("@")[1]
+      if domain != "gmail.com" && domain != "googlemail.com"
+        link = link.gsub("/mail?", "/a/#{domain}/?")
+      end
+    end
+    
+    link
   end
 end

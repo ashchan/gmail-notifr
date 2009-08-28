@@ -10,12 +10,12 @@ class GmailChecker
 		@password = password.unpack("m").first
 	end
 	
-	def	new_mail_count
+	def	check
 		http = Net::HTTP.new("mail.google.com", 443)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		response = nil
-		result = "E"
+		result = { :error => "ConnectionError", :count => 0, :messages => [] }
 
 		begin
 		  http.start do |http|
@@ -25,30 +25,38 @@ class GmailChecker
 		  end
 
 		  if response
-			case response.code
-			when "401" #HTTPUnauthorized
-				result = "F"
-			when "200" #HTTPOK				
-				feed = REXML::Document.new response.body
-				# messages count
-				result = [feed.get_elements('/feed/fullcount')[0].text]
-				
-				feed.each_element('/feed/entry') do |msg|
-					# only return first 10 messages
-					result << "..." and break if result.size > 10
-					link = "#{msg.get_elements('link')[0].attributes['href']}"
+        case response.code
+        when "401" #HTTPUnauthorized
+          result[:error] = "UserError"
+        when "200" #HTTPOK				
+          feed = REXML::Document.new response.body
+          # messages count
+          result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
+          result[:error] = "No"
+          
+          cnt = 0
+          feed.each_element('/feed/entry') do |msg|
+            cnt += 1
+            # only return first 10 messages
+            break if cnt > 10
+            
+            contributor = msg.get_elements('contributor')[0]
+            author = if contributor 
+              contributor.get_elements('name')[0].text
+            else
+              msg.get_elements('author/name')[0].text
+            end
 
-					if @username.include?("@")
-						domain = @username.split("@")[1]
-						if domain != "gmail.com" && domain != "googlemail.com" then
-							link = link.gsub("/mail?", "/a/#{domain}/?")
-						end
-					end
-					result << "#{link}| #{msg.get_elements('author/name')[0].text}: #{msg.get_elements('title')[0].text}"
-				end
-				
-				result = result.join("\n")
-			end
+            result[:messages] << {
+              :link => msg.get_elements('link')[0].attributes['href'],
+              :author => author,
+              :subject => msg.get_elements('title')[0].text,
+              :id => msg.get_elements('id')[0].text,
+              :date => DateTime.parse(msg.get_elements('issued')[0].text),
+              :summary => msg.get_elements('summary')[0].text
+            }
+          end
+        end
 		  end
 		rescue REXML::ParseException => e
 		  #puts "error parsing feed: #{e.message}"
@@ -64,8 +72,7 @@ end
 
 results = {}
 (ARGV.length / 2).times do |t|
-	results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).new_mail_count
+	results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).check
 end
 
 print results.to_yaml
- 

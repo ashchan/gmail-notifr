@@ -26,7 +26,7 @@ class GNPreferences < OSX::NSObject
     
     
     if archivedAccounts = defaults.objectForKey(Accounts)
-      @accounts = archivedAccounts.map { |a| NSKeyedUnarchiver.unarchiveObjectWithData(a) }
+      archivedAccounts.each { |a| @accounts.addObject(NSKeyedUnarchiver.unarchiveObjectWithData(a)) }
     end
     
     # from version <= 0.4.3
@@ -37,7 +37,8 @@ class GNPreferences < OSX::NSObject
       
       usernames.each do |u|
         account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
-        account.save
+        account.gen_guid
+        @accounts.addObject(account)
       end
       
       # remove legacy preferences

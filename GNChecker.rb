@@ -32,11 +32,13 @@ class GNChecker < OSX::NSObject
   end
   
   def userError?
-    true
+    #todo
+    false
   end
   
   def connectionError?
-    true
+    #todo
+    false
   end
   
   def messages

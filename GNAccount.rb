@@ -97,9 +97,13 @@ class GNAccount < OSX::NSObject
     @guid.nil?
   end
   
+  def gen_guid
+    self.guid = `uuidgen`.strip
+  end
+  
   def save
     if new?
-      self.guid = `uuidgen`.strip
+      gen_guid
       GNPreferences.sharedInstance.addAccount(self)
     else
       GNPreferences.sharedInstance.saveAccount(self)

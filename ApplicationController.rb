@@ -24,7 +24,7 @@ class ApplicationController < OSX::NSObject
 
 	ib_outlet :menu
 	ib_action :openInbox
-	ib_action :checkMailByMenu
+	ib_action :checkAll
 	ib_action :showAbout
 	ib_action :showPreferencesWindow
 	ib_action :donate
@@ -47,18 +47,15 @@ class ApplicationController < OSX::NSObject
 		@status_item.setImage(@app_icon)
 		@status_item.setAlternateImage(@app_alter_icon)
 		
-		setupDefaults
+		GNPreferences::setupDefaults
     
     registerObservers
 
     registerGrowl
 
     setupMenu
+    
     setupCheckers
-	end
-	
-	def	setupDefaults
-		GNPreferences::setupDefaults
 	end
 	
 	def	openInbox(sender)
@@ -69,7 +66,6 @@ class ApplicationController < OSX::NSObject
 			# top menu item for account
 			account = accountForGuid(sender.submenu.title)
 		end
-		# remove the "(number)" part from account name
 		openInboxForAccount(account)
 	end
   
@@ -85,20 +81,8 @@ class ApplicationController < OSX::NSObject
 	def openMessage(sender)
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject))
 	end
-	
-	def	openInboxForAccount(account)
-    openInboxForAccountName(account.username)
-	end
-  
-  def	openInboxForAccountName(name)
-		account_domain = name.split("@")
-		
-		inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
-			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
-	end
 
-	def checkMailByMenu
+	def checkAll(sender)
 		checkAll
 	end
     
@@ -117,7 +101,7 @@ class ApplicationController < OSX::NSObject
 		PreferencesController.sharedController.showWindow(sender)
 	end
 
-	def	donate
+	def	donate(sender)
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
   
@@ -363,4 +347,16 @@ class ApplicationController < OSX::NSObject
     menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
     menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
   end
+  	
+	def	openInboxForAccount(account)
+    openInboxForAccountName(account.username)
+	end
+  
+  def	openInboxForAccountName(name)
+		account_domain = name.split("@")
+		
+		inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
+			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
+		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
+	end
 end

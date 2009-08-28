@@ -124,7 +124,7 @@ class ApplicationController < OSX::NSObject
   def updateMenuBarCount(notification = nil)
     msgCount = messageCount
     if GNPreferences.sharedInstance.showUnreadCount? && msgCount > 0
-      @status_item.setTitle(msgCount)
+      @status_item.setTitle(msgCount.to_s)
     else
       @status_item.setTitle('')
     end

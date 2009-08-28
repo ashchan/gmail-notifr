@@ -83,7 +83,7 @@ class ApplicationController < OSX::NSObject
 	end
 
 	def checkAll(sender)
-		checkAll
+		checkAllAccounts
 	end
     
   def checkAccount(sender)
@@ -269,10 +269,10 @@ class ApplicationController < OSX::NSObject
       @checkers << GNChecker.alloc.initWithAccount(a)
     end
     
-    checkAll
+    checkAllAccounts
   end
   
-  def checkAll  
+  def checkAllAccounts
     @checkers.each do |c|
       c.reset
     end

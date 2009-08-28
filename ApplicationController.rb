@@ -121,7 +121,6 @@ class ApplicationController < OSX::NSObject
 		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
 	end
   
-  #todo
   def updateMenuBarCount(notification = nil)
     msgCount = messageCount
     if GNPreferences.sharedInstance.showUnreadCount? && msgCount > 0
@@ -198,7 +197,7 @@ class ApplicationController < OSX::NSObject
       else
         # messages list
         checker.messages.each do |msg|
-          msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(msg[:subject], "openMessage", "")
+          msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_("#{msg[:author]}: #{msg[:subject]}", "openMessage", "")
           msgItem.enabled = true
           msgItem.setRepresentedObject(msg[:link])
           msgItem.target = self

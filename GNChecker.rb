@@ -132,7 +132,7 @@ class GNChecker < OSX::NSObject
     notifyMenuUpdate
     
     if shouldNotify && @account.growl
-      info = @messages.map { |m| "#{m[:author]} : #{m[:subject]}" }.join("\n\n")
+      info = @messages.map { |m| "#{m[:subject]}\nFrom: #{m[:author]}" }.join("\n#{'-' * 30}\n\n")
       if @messageCount > @messages.count
         info += "\n\n..."
       end
@@ -148,7 +148,7 @@ class GNChecker < OSX::NSObject
 	end
   
   def checkedAt
-    @checkedAt ? @checkedAt.strftime("%I:%M%p") : "NA"
+    @checkedAt ? @checkedAt.strftime("%H:%M") : "NA"
   end
   
   def notifyMenuUpdate

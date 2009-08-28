@@ -198,6 +198,7 @@ class ApplicationController < OSX::NSObject
         # messages list
         checker.messages.each do |msg|
           msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_("#{msg[:author]}: #{msg[:subject]}", "openMessage", "")
+          msgItem.toolTip = msg[:summary]
           msgItem.enabled = true
           msgItem.setRepresentedObject(msg[:link])
           msgItem.target = self
@@ -208,7 +209,7 @@ class ApplicationController < OSX::NSObject
       
       menuItem.submenu.addItem(NSMenuItem.separatorItem) if checker.messages.count > 0
       # recent check timestamp
-      timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
+      timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last Checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
       timeItem.enabled = false
     end
   

@@ -52,7 +52,7 @@ class GmailChecker
               :author => msg.get_elements('author/name')[0].text,
               :subject => msg.get_elements('title')[0].text,
               :id => msg.get_elements('id')[0].text,
-              :date => DateTime.parse(msg.get_elements('issued')[0].text),
+              :date => Date.parse(msg.get_elements('issued')[0].text),
               :summary => msg.get_elements('summary')[0].text
             }
           end

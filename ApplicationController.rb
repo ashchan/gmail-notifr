@@ -164,7 +164,7 @@ class ApplicationController < OSX::NSObject
         
     count = menuItem.submenu.itemArray.count
     if count > DEFAULT_ACCOUNT_SUBMENU_COUNT
-      (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT).each { |idx| menuItem.submenu.removeItemAtIndex(idx) }
+      (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT) { |idx| menuItem.submenu.removeItemAtIndex(idx) }
     end
     
     if account.enabled?

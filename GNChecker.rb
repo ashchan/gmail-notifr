@@ -118,7 +118,7 @@ class GNChecker < OSX::NSObject
       }
     end
     
-    shouldNotify = @account.enabled? && @messages.count > 0
+    shouldNotify = @account.enabled? && @messages.size > 0
     if shouldNotify
       newestDate = @messages.map { |m| m[:date] }.sort[-1]
       
@@ -133,7 +133,7 @@ class GNChecker < OSX::NSObject
     
     if shouldNotify && @account.growl
       info = @messages.map { |m| "#{m[:subject]}\nFrom: #{m[:author]}" }.join("\n#{'-' * 30}\n\n")
-      if @messageCount > @messages.count
+      if @messageCount > @messages.size
         info += "\n\n..."
       end
       

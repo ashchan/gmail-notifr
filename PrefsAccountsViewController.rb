@@ -79,7 +79,7 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   def endAddingAccount(sender)        
     forceRefresh
-    index = accounts.count - 1
+    index = accounts.size - 1
     @accountList.selectRowIndexes_byExtendingSelection(NSIndexSet.indexSetWithIndex(index), false)
     @accountList.scrollRowToVisible(index)
   end

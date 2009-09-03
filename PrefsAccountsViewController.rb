@@ -43,11 +43,11 @@ class PrefsAccountsViewController <  OSX::NSViewController
   
   ## account list table view
   def numberOfRowsInTableView(sender)
-		accounts.size
-	end
-	
-	def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
-		account = accounts[row]
+    accounts.size
+  end
+  
+  def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
+    account = accounts[row]
     if account
       case tableColumn.identifier
       when "AccountName"
@@ -56,18 +56,18 @@ class PrefsAccountsViewController <  OSX::NSViewController
         account.enabled?
       end
     end
-	end
-	
-	def	tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)	
+  end
+  
+  def tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)  
     if (account = accounts[row]) && tableColumn.identifier == "EnableStatus"
       account.enabled = object
       account.save
     end
-	end
-	
-	def	tableViewSelectionDidChange(notification)
-		forceRefresh
-	end
+  end
+  
+  def tableViewSelectionDidChange(notification)
+    forceRefresh
+  end
   
   ## button actions
   def startAddingAccount(sender)
@@ -105,16 +105,16 @@ class PrefsAccountsViewController <  OSX::NSViewController
 
   private
   def accounts
-		GNPreferences.sharedInstance.accounts
+    GNPreferences.sharedInstance.accounts
   end
   
-	def	currentAccount
+  def currentAccount
     if @accountList.selectedRow > -1
       accounts[@accountList.selectedRow]
     else
       nil
     end
-	end
+  end
   
   def forceRefresh
     @accountList.reloadData

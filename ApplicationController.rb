@@ -16,38 +16,38 @@ OSX.ruby_thread_switcher_stop
 
 class ApplicationController < OSX::NSObject
 
-	ACCOUNT_MENUITEM_POS = 2
+  ACCOUNT_MENUITEM_POS = 2
   CHECK_MENUITEM_POS = 1
   ENABLE_MENUITEM_POS = 2
   DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
-	DONATE_URL = "http://www.pledgie.com/campaigns/2046"
+  DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
-	ib_outlet :menu
-	ib_action :openInbox
-	ib_action :checkAll
-	ib_action :showAbout
-	ib_action :showPreferencesWindow
-	ib_action :donate
+  ib_outlet :menu
+  ib_action :openInbox
+  ib_action :checkAll
+  ib_action :showAbout
+  ib_action :showPreferencesWindow
+  ib_action :donate
 
-		
-	def	awakeFromNib
-		@status_bar = NSStatusBar.systemStatusBar
-		@status_item = @status_bar.statusItemWithLength(NSVariableStatusItemLength)
-		@status_item.setHighlightMode(true)
-		@status_item.setMenu(@menu)
-		
-		@app_icon = NSImage.imageNamed('app.tiff')
-		@app_alter_icon = NSImage.imageNamed('app_a.tiff')
-		@mail_icon = NSImage.imageNamed('mail.tiff')
-		@mail_alter_icon = NSImage.imageNamed('mail_a.tiff')
-		@check_icon = NSImage.imageNamed('check.tiff')
-		@check_alter_icon = NSImage.imageNamed('check_a.tiff')
-		@error_icon = NSImage.imageNamed('error.tiff')
-		
-		@status_item.setImage(@app_icon)
-		@status_item.setAlternateImage(@app_alter_icon)
-		
-		GNPreferences::setupDefaults
+    
+  def awakeFromNib
+    @status_bar = NSStatusBar.systemStatusBar
+    @status_item = @status_bar.statusItemWithLength(NSVariableStatusItemLength)
+    @status_item.setHighlightMode(true)
+    @status_item.setMenu(@menu)
+    
+    @app_icon = NSImage.imageNamed('app.tiff')
+    @app_alter_icon = NSImage.imageNamed('app_a.tiff')
+    @mail_icon = NSImage.imageNamed('mail.tiff')
+    @mail_alter_icon = NSImage.imageNamed('mail_a.tiff')
+    @check_icon = NSImage.imageNamed('check.tiff')
+    @check_alter_icon = NSImage.imageNamed('check_a.tiff')
+    @error_icon = NSImage.imageNamed('error.tiff')
+    
+    @status_item.setImage(@app_icon)
+    @status_item.setAlternateImage(@app_alter_icon)
+    
+    GNPreferences::setupDefaults
     
     registerObservers
 
@@ -56,18 +56,18 @@ class ApplicationController < OSX::NSObject
     setupMenu
     
     setupCheckers
-	end
-	
-	def	openInbox(sender)
-		if sender.title == NSLocalizedString("Open Inbox")
-			# "Open Inbox" menu item
-			account = accountForGuid(sender.menu.title)
-		else
-			# top menu item for account
-			account = accountForGuid(sender.submenu.title)
-		end
-		openInboxForAccount(account)
-	end
+  end
+  
+  def openInbox(sender)
+    if sender.title == NSLocalizedString("Open Inbox")
+      # "Open Inbox" menu item
+      account = accountForGuid(sender.menu.title)
+    else
+      # top menu item for account
+      account = accountForGuid(sender.submenu.title)
+    end
+    openInboxForAccount(account)
+  end
   
   def toggleAccount(sender)
     account = accountForGuid(sender.menu.title)
@@ -78,32 +78,32 @@ class ApplicationController < OSX::NSObject
     checkerForAccount(account).reset
   end
 
-	def openMessage(sender)
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject))
-	end
+  def openMessage(sender)
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject))
+  end
 
-	def checkAll(sender)
-		checkAllAccounts
-	end
+  def checkAll(sender)
+    checkAllAccounts
+  end
     
   def checkAccount(sender)
     account = accountForGuid(sender.menu.title)
     checkerForAccount(account).reset
   end
-	
-	def	showAbout(sender)
-		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
-		NSApplication.sharedApplication.orderFrontStandardAboutPanel(sender)
-	end
-	
-	def	showPreferencesWindow(sender)	
-		NSApplication.sharedApplication.activateIgnoringOtherApps(true)
-		PreferencesController.sharedController.showWindow(sender)
-	end
+  
+  def showAbout(sender)
+    NSApplication.sharedApplication.activateIgnoringOtherApps(true)
+    NSApplication.sharedApplication.orderFrontStandardAboutPanel(sender)
+  end
+  
+  def showPreferencesWindow(sender) 
+    NSApplication.sharedApplication.activateIgnoringOtherApps(true)
+    PreferencesController.sharedController.showWindow(sender)
+  end
 
-	def	donate(sender)
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
-	end
+  def donate(sender)
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(DONATE_URL))
+  end
   
   def updateMenuBarCount(notification = nil)
     msgCount = messageCount
@@ -157,7 +157,7 @@ class ApplicationController < OSX::NSObject
     @status_item.setAlternateImage(@check_alter_icon)
   end
   
-  def	updateAccountMenuItem(notification)
+  def updateAccountMenuItem(notification)
     account = accountForGuid(notification.userInfo[:guid])
     menuItem = menuItemForAccount(account)
     menuItem.title = account.username
@@ -198,15 +198,15 @@ class ApplicationController < OSX::NSObject
     end
   
     updateMenuBarCount
-	end
+  end
   
   # delegate not working if :click_context not provided?
-	def growlNotifierClicked_context(sender, context)
-		openInboxForAccountName(context) if context
-	end
+  def growlNotifierClicked_context(sender, context)
+    openInboxForAccountName(context) if context
+  end
 
-	def growlNotifierTimedOut_context(sender, context)
-	end
+  def growlNotifierTimedOut_context(sender, context)
+  end
 
   private
   
@@ -303,16 +303,16 @@ class ApplicationController < OSX::NSObject
   def addAccountMenuItem(account, index)
     accountMenu = NSMenu.alloc.initWithTitle(account.guid)
     accountMenu.setAutoenablesItems(false)
-		
-		#open inbox menu item
-		openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Open Inbox"), "openInbox", "")
-		openInboxItem.target = self
-		openInboxItem.enabled = true
+    
+    #open inbox menu item
+    openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Open Inbox"), "openInbox", "")
+    openInboxItem.target = self
+    openInboxItem.enabled = true
     
     #check menu item
     checkItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Check"), "checkAccount", "")
-		checkItem.target = self
-		checkItem.enabled = account.enabled?
+    checkItem.target = self
+    checkItem.enabled = account.enabled?
     
     #enable/disable menu item
     enableAccountItem = accountMenu.addItemWithTitle_action_keyEquivalent(
@@ -321,17 +321,17 @@ class ApplicationController < OSX::NSObject
     )
     enableAccountItem.target = self
     enableAccountItem.enabled = true
-		
-		accountMenu.addItem(NSMenuItem.separatorItem)
+    
+    accountMenu.addItem(NSMenuItem.separatorItem)
     
     #top level menu item for acount
-		accountItem = NSMenuItem.alloc.init
-		accountItem.title = account.username
-		accountItem.submenu = accountMenu
-		accountItem.target = self
-		accountItem.action = 'openInbox'
+    accountItem = NSMenuItem.alloc.init
+    accountItem.title = account.username
+    accountItem.submenu = accountMenu
+    accountItem.target = self
+    accountItem.action = 'openInbox'
 
-		@status_item.menu.insertItem_atIndex(accountItem, ACCOUNT_MENUITEM_POS + index)
+    @status_item.menu.insertItem_atIndex(accountItem, ACCOUNT_MENUITEM_POS + index)
   end
   
   def menuItemForAccount(account)
@@ -347,16 +347,16 @@ class ApplicationController < OSX::NSObject
     menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
     menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
   end
-  	
-	def	openInboxForAccount(account)
+    
+  def openInboxForAccount(account)
     openInboxForAccountName(account.username)
-	end
+  end
   
-  def	openInboxForAccountName(name)
-		account_domain = name.split("@")
-		
-		inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
-			"https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
-		NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
-	end
+  def openInboxForAccountName(name)
+    account_domain = name.split("@")
+    
+    inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
+      "https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
+  end
 end

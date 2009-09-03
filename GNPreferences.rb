@@ -9,20 +9,20 @@
 require 'osx/cocoa'
 
 # a simple wrapper for preferences values
-class GNPreferences < OSX::NSObject			
+class GNPreferences < OSX::NSObject     
 
-	attr_accessor :accounts, :autoLaunch, :showUnreadCount
+  attr_accessor :accounts, :autoLaunch, :showUnreadCount
   
   def self.sharedInstance
     @instance ||= self.alloc.init
   end
-	
-	def	init
-		super_init
-		
-		defaults = NSUserDefaults.standardUserDefaults
+  
+  def init
+    super_init
+    
+    defaults = NSUserDefaults.standardUserDefaults
 
-		@accounts	= NSMutableArray.alloc.init
+    @accounts = NSMutableArray.alloc.init
     
     
     if archivedAccounts = defaults.objectForKey(Accounts)
@@ -32,8 +32,8 @@ class GNPreferences < OSX::NSObject
     # from version <= 0.4.3
     if @accounts.count == 0 && usernames = defaults.stringArrayForKey("usernames")
       interval = defaults.integerForKey("interval")
-      growl	= defaults.boolForKey("growl")
-      sound	= defaults.stringForKey("sound") || GNSound::SOUND_NONE
+      growl = defaults.boolForKey("growl")
+      sound = defaults.stringForKey("sound") || GNSound::SOUND_NONE
       
       usernames.each do |u|
         account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
@@ -48,18 +48,18 @@ class GNPreferences < OSX::NSObject
       writeBack
     end
 
-		@autoLaunch = GNStartItems.alloc.init.isSet
-		@showUnreadCount = defaults.boolForKey(ShowUnreadCount)
+    @autoLaunch = GNStartItems.alloc.init.isSet
+    @showUnreadCount = defaults.boolForKey(ShowUnreadCount)
 
-		self
-	end
+    self
+  end
   
   def autoLaunch?
     GNStartItems.alloc.init.isSet
   end
     
   def autoLaunch=(val)
-		GNStartItems.alloc.init.set(val)
+    GNStartItems.alloc.init.set(val)
   end
   
   def showUnreadCount?
@@ -67,7 +67,7 @@ class GNPreferences < OSX::NSObject
   end
   
   def showUnreadCount=(val)
-		NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
+    NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
     NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
   end
@@ -92,35 +92,35 @@ class GNPreferences < OSX::NSObject
     writeBack
     NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountChangedNotification, self, :guid => account.guid)
   end
-	
-	def writeBack
-		defaults = NSUserDefaults.standardUserDefaults
-				
-		defaults.setObject_forKey(
+  
+  def writeBack
+    defaults = NSUserDefaults.standardUserDefaults
+        
+    defaults.setObject_forKey(
       @accounts.map { |a| NSKeyedArchiver.archivedDataWithRootObject(a) },
       Accounts
     )
 
-		# save to Info.plist
-		defaults.synchronize	
-		
-		# save accounts to default keychain
-		@accounts.each do |account|
-			GNKeychain.sharedInstance.set_account(account.username, account.password)
-		end
-		
-	end
-	
-	class << self
-		def setupDefaults
-			NSUserDefaults.standardUserDefaults.registerDefaults(
-				NSDictionary.dictionaryWithObjectsAndKeys(
-					true, ShowUnreadCount,
+    # save to Info.plist
+    defaults.synchronize  
+    
+    # save accounts to default keychain
+    @accounts.each do |account|
+      GNKeychain.sharedInstance.set_account(account.username, account.password)
+    end
+    
+  end
+  
+  class << self
+    def setupDefaults
+      NSUserDefaults.standardUserDefaults.registerDefaults(
+        NSDictionary.dictionaryWithObjectsAndKeys(
+          true, ShowUnreadCount,
           PrefsToolbarItemAccounts, PreferencesSelection,
-					nil
-				)
-			)
-		end
-	end
-	
+          nil
+        )
+      )
+    end
+  end
+  
 end

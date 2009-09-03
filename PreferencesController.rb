@@ -27,7 +27,7 @@ class PreferencesController < OSX::NSWindowController
     @sharedInstance
   end
 
-  def	init
+  def init
     if super_init
       prefsWindow = NSWindow.alloc.initWithContentRect_styleMask_backing_defer(
         NSMakeRect(0, 0, 550, 260),
@@ -43,8 +43,8 @@ class PreferencesController < OSX::NSWindowController
 
     self
   end
-	
-  def	toolbar_itemForItemIdentifier_willBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
+  
+  def toolbar_itemForItemIdentifier_willBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
     mod = moduleForIdentifier(itemIdentifier)
     item = NSToolbarItem.alloc.initWithItemIdentifier(itemIdentifier)
     
@@ -58,15 +58,15 @@ class PreferencesController < OSX::NSWindowController
     item
   end
 
-  def	toolbarAllowedItemIdentifiers(toolbar)
+  def toolbarAllowedItemIdentifiers(toolbar)
     @modules.map { |mod| mod.identifier }
   end
 
-  def	toolbarDefaultItemIdentifiers(toolbar)
+  def toolbarDefaultItemIdentifiers(toolbar)
     nil
   end
 
-  def	toolbarSelectableItemIdentifiers(toolbar)
+  def toolbarSelectableItemIdentifiers(toolbar)
     toolbarAllowedItemIdentifiers(toolbar)
   end
   
@@ -75,7 +75,7 @@ class PreferencesController < OSX::NSWindowController
     super_showWindow(sender)
   end
 
-  def	selectModule(sender)
+  def selectModule(sender)
     mod = moduleForIdentifier(sender.itemIdentifier)
     switchToModule(mod) if mod
   end
@@ -95,12 +95,12 @@ class PreferencesController < OSX::NSWindowController
   end
 
   private
-	def	setupToolbar
+  def setupToolbar
     toolbar = NSToolbar.alloc.initWithIdentifier("preferencesToolbar")
     toolbar.delegate = self
     toolbar.setAllowsUserCustomization(false)
     self.window.setToolbar(toolbar)
-	end
+  end
 
   def switchToModule(mod)
     @currentModule.view.removeFromSuperview if @currentModule

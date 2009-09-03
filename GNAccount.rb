@@ -13,25 +13,25 @@ class GNAccount < OSX::NSObject
 
   attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl
   Properties = [:guid, :username, :interval, :enabled, :sound, :growl]
-  	
-	MIN_INTERVAL		= 1
-	MAX_INTERVAL		= 300
-	DEFAULT_INTERVAL	= 30
+    
+  MIN_INTERVAL    = 1
+  MAX_INTERVAL    = 300
+  DEFAULT_INTERVAL  = 30
 
-	def init
-		self.password = GNKeychain.sharedInstance.get_password(@username)
-		super_init
-	end
+  def init
+    self.password = GNKeychain.sharedInstance.get_password(@username)
+    super_init
+  end
 
-	def	initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
-		self.username = username    
+  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
+    self.username = username    
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
     self.sound = sound || GNSound::SOUND_NONE
     
-		init
-	end
+    init
+  end
   
   def initWithCoder(coder)
     Properties.each do |prop|
@@ -70,28 +70,28 @@ class GNAccount < OSX::NSObject
     @growl = val
     @growl = false if val == 0
   end
-	
-	def	username=(new_username)
-		@old_username ||= @username
-		@username = new_username
-	end
-	
-	def	password=(new_password)
-		@old_password ||= @password
-		@password = new_password
-	end
-	
-	def	username_changed?
-		@old_username && @old_username != @username
-	end
-	
-	def	password_changed?
-		@old_password && @old_password != @password
-	end
-	
-	def changed?
-		username_changed? || password_changed? #todo
-	end
+  
+  def username=(new_username)
+    @old_username ||= @username
+    @username = new_username
+  end
+  
+  def password=(new_password)
+    @old_password ||= @password
+    @password = new_password
+  end
+  
+  def username_changed?
+    @old_username && @old_username != @username
+  end
+  
+  def password_changed?
+    @old_password && @old_password != @password
+  end
+  
+  def changed?
+    username_changed? || password_changed? #todo
+  end
   
   def new?
     @guid.nil?

@@ -83,21 +83,21 @@ class GNChecker < OSX::NSObject
     end
   end
   
-  def	checkMail				
-		reset
-	end
-	
-	def	checkResult(notification)  
+  def checkMail       
+    reset
+  end
+  
+  def checkResult(notification)  
     @checkedAt = DateTime.now
     
-		preferences = GNPreferences.sharedInstance
+    preferences = GNPreferences.sharedInstance
 
-		results = YAML.load(
-			NSString.alloc.initWithData_encoding(
-				notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
-				NSUTF8StringEncoding
-			)
-		)
+    results = YAML.load(
+      NSString.alloc.initWithData_encoding(
+        notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
+        NSUTF8StringEncoding
+      )
+    )
     
     result = results[@account.username.to_s]
     return unless result
@@ -142,10 +142,10 @@ class GNChecker < OSX::NSObject
       
       notify(@account.username, [unreadCount, info].join("\n\n"))
     end
-		if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
-			sound.play
-		end
-	end
+    if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
+      sound.play
+    end
+  end
   
   def checkedAt
     @checkedAt ? @checkedAt.strftime("%H:%M") : "NA"
@@ -156,14 +156,14 @@ class GNChecker < OSX::NSObject
   end
   
   def notify(title, desc)
-		Growl::Notifier.sharedInstance.notify('new_messages', title, desc, :click_context => title)
-	end
+    Growl::Notifier.sharedInstance.notify('new_messages', title, desc, :click_context => title)
+  end
   
   def cleanup
     @checker.interrupt and @checker = nil if @checker
     @timer.invalidate if @timer
     
-		if @pipe
+    if @pipe
       NSNotificationCenter.defaultCenter.removeObserver_name_object(self, NSFileHandleReadToEndOfFileCompletionNotification, @pipe.fileHandleForReading)
     end
   end

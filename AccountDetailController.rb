@@ -48,15 +48,15 @@ class AccountDetailController < OSX::NSWindowController
   end
   
   def awakeFromNib
-  	@soundList.removeAllItems
+    @soundList.removeAllItems
     @soundList.addItemWithTitle(GNSound::SOUND_NONE)
     @soundList.menu.addItem(NSMenuItem.separatorItem)
     GNSound.all.each { |s| @soundList.addItemWithTitle(s) }
-		@soundList.selectItemWithTitle(@account.sound)
+    @soundList.selectItemWithTitle(@account.sound)
     
- 		@interval.setTitleWithMnemonic(@account.interval.to_s)
+    @interval.setTitleWithMnemonic(@account.interval.to_s)
     @accountEnabled.setState(@account.enabled? ? NSOnState : NSOffState)
-		@growl.setState(@account.growl ? NSOnState : NSOffState)
+    @growl.setState(@account.growl ? NSOnState : NSOffState)
     @username.setTitleWithMnemonic(@account.username)
     @password.setTitleWithMnemonic(@account.password)
     
@@ -77,10 +77,10 @@ class AccountDetailController < OSX::NSWindowController
   end
   
   def okay(sender)
-		@account.sound = @soundList.titleOfSelectedItem
-  	@account.interval = @interval.integerValue
+    @account.sound = @soundList.titleOfSelectedItem
+    @account.interval = @interval.integerValue
     @account.enabled = @accountEnabled.state == NSOnState ? true : false
-		@account.growl = @growl.state == NSOnState ? true : false
+    @account.growl = @growl.state == NSOnState ? true : false
     @account.username = @username.stringValue
     @account.password = @password.stringValue
     @account.save
@@ -89,10 +89,10 @@ class AccountDetailController < OSX::NSWindowController
   end
   
   def soundSelect(sender)
-		if sound = NSSound.soundNamed(@soundList.titleOfSelectedItem)
-			sound.play
-		end
-	end
+    if sound = NSSound.soundNamed(@soundList.titleOfSelectedItem)
+      sound.play
+    end
+  end
   
   def sheetDidEnd_returnCode_contextInfo(sheet, code, info)
     sheet.orderOut(nil)

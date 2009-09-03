@@ -4,31 +4,31 @@ require 'rexml/document'
 require 'yaml'
 
 class GmailChecker
-	# password should be base64 encoded
-	def initialize(username, password)
-		@username = username
-		@password = password.unpack("m").first
-	end
-	
-	def	check
-		http = Net::HTTP.new("mail.google.com", 443)
-		http.use_ssl = true
-		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-		response = nil
-		result = { :error => "ConnectionError", :count => 0, :messages => [] }
+  # password should be base64 encoded
+  def initialize(username, password)
+    @username = username
+    @password = password.unpack("m").first
+  end
+  
+  def check
+    http = Net::HTTP.new("mail.google.com", 443)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    response = nil
+    result = { :error => "ConnectionError", :count => 0, :messages => [] }
 
-		begin
-		  http.start do |http|
-			req = Net::HTTP::Get.new("/mail/feed/atom")
-			req.basic_auth(@username, @password)
-			response = http.request(req)
-		  end
+    begin
+      http.start do |http|
+      req = Net::HTTP::Get.new("/mail/feed/atom")
+      req.basic_auth(@username, @password)
+      response = http.request(req)
+      end
 
-		  if response
+      if response
         case response.code
         when "401" #HTTPUnauthorized
           result[:error] = "UserError"
-        when "200" #HTTPOK				
+        when "200" #HTTPOK        
           feed = REXML::Document.new response.body
           # messages count
           result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
@@ -60,22 +60,22 @@ class GmailChecker
             }
           end
         end
-		  end
-		rescue REXML::ParseException => e
-		  #puts "error parsing feed: #{e.message}"
-		rescue => e
-		  #puts "error: #{e}"
-		rescue Timeout::Error => e
-			#puts "time out on connection"
-		end
-		
-		result
-	end
+      end
+    rescue REXML::ParseException => e
+      #puts "error parsing feed: #{e.message}"
+    rescue => e
+      #puts "error: #{e}"
+    rescue Timeout::Error => e
+      #puts "time out on connection"
+    end
+    
+    result
+  end
 end
 
 results = {}
 (ARGV.length / 2).times do |t|
-	results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).check
+  results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).check
 end
 
 print results.to_yaml

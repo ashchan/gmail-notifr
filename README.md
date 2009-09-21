@@ -8,6 +8,7 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 [Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in RubyCocoa and has these features:
 
+* Separate check and notification setting for each account! (new in version 0.5.0)
 * Support multiple accounts! (new in version 0.3.0)
 * Support Google hosted account.
 * Check mail at a specified interval.
@@ -42,4 +43,4 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 # Copyright Info #
 
-Copyright (c) 2008 [James Chan](http://blog.ashchan.com) (ashchan), released under the MIT license
+Copyright (c) 2008 - 2009 [James Chan](http://blog.ashchan.com) (ashchan), released under the MIT license

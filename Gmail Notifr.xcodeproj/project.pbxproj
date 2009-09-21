@@ -99,6 +99,8 @@
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
 		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
+		1A8853E01067C053006EBA4F /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Norwegian; path = Norwegian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1A8B46251067B01900475725 /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Norwegian; path = Norwegian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AA23341103790BE00D5A79B /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PreferencesController.rb; sourceTree = "<group>"; };
 		1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PrefsAccountsViewController.rb; sourceTree = "<group>"; };
 		1AA233671037BC2B00D5A79B /* PrefsSettingsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PrefsSettingsViewController.rb; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				Spanish,
 				fr_CA,
 				Italian,
+				Norwegian,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gmail Notifr */;
 			projectDirPath = "";
@@ -412,6 +415,7 @@
 				1AFD5C43102DAC3000E0EECA /* fr_CA */,
 				1A42C6CD10670C82008D6EA1 /* Italian */,
 				1A42C6CE10670C89008D6EA1 /* German */,
+				1A8B46251067B01900475725 /* Norwegian */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -427,6 +431,7 @@
 				1AFD5C47102DB1B900E0EECA /* fr_CA */,
 				1A42C6CB10670C52008D6EA1 /* Italian */,
 				1A42C6CC10670C6B008D6EA1 /* German */,
+				1A8853E01067C053006EBA4F /* Norwegian */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";

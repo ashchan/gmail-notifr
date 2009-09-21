@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10A421a</string>
-		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">1038</string>
-		<string key="IBDocument.HIToolboxVersion">435.00</string>
+		<string key="IBDocument.SystemVersion">10B504</string>
+		<string key="IBDocument.InterfaceBuilderVersion">732</string>
+		<string key="IBDocument.AppKitVersion">1038.2</string>
+		<string key="IBDocument.HIToolboxVersion">437.00</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
+			<string key="NS.object.0">732</string>
+		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="373"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>com.apple.InterfaceBuilderKit</string>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
@@ -75,7 +78,7 @@
 					</object>
 					<object class="NSMenuItem" id="456474594">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">UHLDqWbDqXJlbmNlcy4uLg</string>
+						<string key="NSTitle">Préférences...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -83,7 +86,7 @@
 					</object>
 					<object class="NSMenuItem" id="273274217">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">VsOpcmlmaWVyIGxlcyBtaXNlcyDDoCBqb3VyIGRpc3BvbmlibGVzLi4uA</string>
+						<string key="NSTitle">Vérifier les mises à jour disponibles...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -91,7 +94,7 @@
 					</object>
 					<object class="NSMenuItem" id="600488540">
 						<reference key="NSMenu" ref="845846908"/>
-						<string type="base64-UTF8" key="NSTitle">w4AgcHJvcG9zIGRlIEdtYWlsIE5vdGlmcg</string>
+						<string key="NSTitle">À propos de Gmail Notifr</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -99,7 +102,7 @@
 					</object>
 					<object class="NSMenuItem" id="1036176720">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Faire un don</string>
+						<string key="NSTitle">Faire un don...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -208,7 +211,7 @@
 						<int key="objectID">-2</int>
 						<reference key="object" ref="1021"/>
 						<reference key="parent" ref="0"/>
-						<string type="base64-UTF8" key="objectName">RmlsZSdzIE93bmVyA</string>
+						<string key="objectName">File's Owner</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">-1</int>
@@ -306,30 +309,24 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="NSArray" key="dict.sortedKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>-1.IBPluginDependency</string>
-					<string>-2.IBPluginDependency</string>
 					<string>-3.IBPluginDependency</string>
 					<string>373.IBEditorWindowLastContentRect</string>
 					<string>373.IBPluginDependency</string>
 					<string>376.IBPluginDependency</string>
 					<string>378.IBPluginDependency</string>
 					<string>379.IBPluginDependency</string>
-					<string>381.IBPluginDependency</string>
 					<string>384.IBPluginDependency</string>
 					<string>385.IBPluginDependency</string>
+					<string>404.IBPluginDependency</string>
 					<string>456.IBPluginDependency</string>
 					<string>509.IBPluginDependency</string>
-					<string>515.IBPluginDependency</string>
 					<string>516.IBPluginDependency</string>
 					<string>528.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilderKit</string>
-					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{799, 203}, {311, 153}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{717, 203}, {308, 153}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -436,6 +433,19 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<integer value="1050" key="NS.object.0"/>
+		</object>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<integer value="1050" key="NS.object.0"/>
+		</object>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
+			<integer value="3000" key="NS.object.0"/>
+		</object>
+		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../Gmail Notifr.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>

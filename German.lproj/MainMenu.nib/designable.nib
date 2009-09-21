@@ -102,7 +102,7 @@
 					</object>
 					<object class="NSMenuItem" id="1036176720">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Spenden</string>
+						<string key="NSTitle">Spenden...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>

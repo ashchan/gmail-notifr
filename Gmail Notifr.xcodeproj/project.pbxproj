@@ -90,6 +90,10 @@
 		1A33B0ED0E98C070002F815F /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNStartItems.rb; sourceTree = "<group>"; };
 		1A37869010468635003FA6E2 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNChecker.rb; sourceTree = "<group>"; };
 		1A382A290E9F2EE000BDC026 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		1A42C6CB10670C52008D6EA1 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1A42C6CC10670C6B008D6EA1 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1A42C6CD10670C82008D6EA1 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A42C6CE10670C89008D6EA1 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A58F8B20EB88D28004D74BB /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Growl.rb; sourceTree = "<group>"; };
 		1A709B020E98EC34009672CC /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check.tiff; sourceTree = "<group>"; };
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 				zh_CN,
 				Spanish,
 				fr_CA,
+				Italian,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gmail Notifr */;
 			projectDirPath = "";
@@ -405,6 +410,8 @@
 				1AF46DC9102BBFDD00E4C859 /* Japanese */,
 				1AFD5C42102DABDE00E0EECA /* French */,
 				1AFD5C43102DAC3000E0EECA /* fr_CA */,
+				1A42C6CD10670C82008D6EA1 /* Italian */,
+				1A42C6CE10670C89008D6EA1 /* German */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -418,6 +425,8 @@
 				1AF46DCA102BC07800E4C859 /* Japanese */,
 				1AFD5C44102DAC6E00E0EECA /* French */,
 				1AFD5C47102DB1B900E0EECA /* fr_CA */,
+				1A42C6CB10670C52008D6EA1 /* Italian */,
+				1A42C6CC10670C6B008D6EA1 /* German */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";

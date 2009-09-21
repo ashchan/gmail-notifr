@@ -5,12 +5,60 @@
    Created by James Chen on 8/4/09.
    Copyright 2009 ashchan.com. All rights reserved.
  */
-"ToolbarAccounts" = "账户";
-"ToolbarSettings" = "设置";
+ 
+//-----------------------------------------
+// Menu and tooltip
+// ---------------------------------------- 
+/* Open Inbox menu item under each account */
 "Open Inbox" = "打开邮箱";
+
+/* menubar tooltip when checking mail */
 "Checking Mail" = "正在检查...";
+
+/* connection error message */
 "Connection Error" = "连接错误";
+
+/* wrong username/password pair error message */
 "Username/password Wrong" = "用户名/密码 不正确";
+
+/* count of unread messages */
 "Unread Messages" = "%s 封未读邮件";
-"Unread Message" = "%s 封未读邮件";
-"Sound None" = "无";
+
+/* count (1) of unread message */
+"Unread Message" = "%s 封未读邮件 u";
+
+/* last check time */
+"Last Checked:" = "上次检查:";
+
+/* Enable, Disable */
+"Enable Account" = "启用账户";
+"Disable Account" = "禁用账户";
+
+/* Check */
+"Check" = "检查新邮件";
+
+
+//-----------------------------------------
+// Preferences - Settings
+// ----------------------------------------
+"Settings" = "设置";
+"Launch at login" = "登录系统时自动运行";
+"Show unread count in menu bar" = "在菜单栏中显示未读邮件数";
+
+
+//-----------------------------------------
+// Preferences - Accounts
+// ----------------------------------------
+"Accounts" = "账户";
+"Edit" = "修改";
+
+"Username:" = "用户名:";
+"Password:" = "密码:";
+"Check for new mail every" = "自动检查新邮件时间间隔";
+"minutes" = "分钟";
+"Use Growl Notification" = "使用Growl通知";
+"Play sound:" = "播放声音:";
+"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com." = "若要添加 Google Hosted 账户，需在用户名中输入完整的电子邮件地址，如：admin@ashchan.com。";
+"Enable this account" = "启用此账户";
+"Cancel" = "取消";
+"OK" = "保存";

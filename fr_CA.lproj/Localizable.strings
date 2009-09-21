@@ -7,13 +7,59 @@
    
    Contributor: Fabrice Truillot de Chambrier
  */
-"ToolbarAccounts" = "Comptes";
-"ToolbarSettings" = "Préférences";
+ 
+//-----------------------------------------
+// Menu and tooltip
+// ---------------------------------------- 
+/* Open Inbox menu item under each account */
 "Open Inbox" = "Ouvrir la boîte de réception";
-"Checking Mail" = "lecture du courriel...";
-"Connection Error" = "erreur de connexion";
-"Username/password Wrong" = "Nom d'utilisateur/mot de passe erronés";
-"Unread Messages" = "%s messages non lus";
-"Unread Message" = "%s messsage non lu";
-"Sound None" = "Aucun";
 
+/* menubar tooltip when checking mail */
+"Checking Mail" = "lecture du courriel...";
+
+/* connection error message */
+"Connection Error" = "erreur de connexion";
+
+/* wrong username/password pair error message */
+"Username/password Wrong" = "Nom d'utilisateur/mot de passe erronés";
+
+/* count of unread messages */
+"Unread Messages" = "%s messages non lus";
+
+/* count (1) of unread message */
+"Unread Message" = "%s message non lu";
+
+/* last check time */
+"Last Checked:" = "Last Checked:";
+
+/* Enable, Disable */
+"Enable Account" = "Enable Account";
+"Disable Account" = "Disable Account";
+
+/* Check */
+"Check" = "Relever";
+
+//-----------------------------------------
+// Preferences - Settings
+// ----------------------------------------
+"Settings" = "Configuration";
+"Launch at login" = "Ouverture automatique à l'ouverture de session";
+"Show unread count in menu bar" = "Show unread count in menu bar";
+
+
+//-----------------------------------------
+// Preferences - Accounts
+// ----------------------------------------
+"Accounts" = "Comptes";
+"Edit" = "Edit";
+
+"Username:" = "Nom d'utilisateur:";
+"Password:" = "Mot de passe:";
+"Check for new mail every" = "Relever le courriel toutes les";
+"minutes" = "minutes";
+"Use Growl Notification" = "Utiliser les notifications Growl";
+"Play sound:" = "Émettre un son:";
+"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com." = "Pour ajouter un compte Google Hosted, spécifiez l'adresse courriel complète comme nom d'utilisateur, p. ex. admin@ashchan.com.";
+"Enable this account" = "Enable this account";
+"Cancel" = "Cancel";
+"OK" = "OK";

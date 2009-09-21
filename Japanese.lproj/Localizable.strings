@@ -7,12 +7,59 @@
    
    Contributor: Felix Sun
  */
-"ToolbarAccounts" = "アカウント";
-"ToolbarSettings" = "設定";
+ 
+//-----------------------------------------
+// Menu and tooltip
+// ---------------------------------------- 
+/* Open Inbox menu item under each account */
 "Open Inbox" = "受信トレイ";
+
+/* menubar tooltip when checking mail */
 "Checking Mail" = "メールをチェックしています...";
+
+/* connection error message */
 "Connection Error" = "接続エラー";
+
+/* wrong username/password pair error message */
 "Username/password Wrong" = "ユーザー／パースワードが違います。";
+
+/* count of unread messages */
 "Unread Messages" = "未読のメールが%s件";
+
+/* count (1) of unread message */
 "Unread Message" = "未読のメールが%s件";
-"Sound None" = "なし";
+
+/* last check time */
+"Last Checked:" = "Last Checked:";
+
+/* Enable, Disable */
+"Enable Account" = "Enable Account";
+"Disable Account" = "Disable Account";
+
+/* Check */
+"Check" = "チェック";
+
+//-----------------------------------------
+// Preferences - Settings
+// ----------------------------------------
+"Settings" = "設定";
+"Launch at login" = "ログイン時に起動する";
+"Show unread count in menu bar" = "Show unread count in menu bar";
+
+
+//-----------------------------------------
+// Preferences - Accounts
+// ----------------------------------------
+"Accounts" = "アカウント";
+"Edit" = "Edit";
+
+"Username:" = "ユーザー名:";
+"Password:" = "パースワード:";
+"Check for new mail every" = "1分ごとに新着メールをチェックする";
+"minutes" = "minutes";
+"Use Growl Notification" = "Growl通知を使う";
+"Play sound:" = "音を再生する:";
+"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com." = "Google Hosted Accountを追加のは、完全なメールアドレスを指定する, 例えば: admin@ashchan.com.";
+"Enable this account" = "Enable this account";
+"Cancel" = "Cancel";
+"OK" = "OK";

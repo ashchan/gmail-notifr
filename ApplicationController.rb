@@ -316,7 +316,7 @@ class ApplicationController < OSX::NSObject
     
     #enable/disable menu item
     enableAccountItem = accountMenu.addItemWithTitle_action_keyEquivalent(
-      account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable"),
+      account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account"),
       "toggleAccount", ""
     )
     enableAccountItem.target = self
@@ -344,7 +344,7 @@ class ApplicationController < OSX::NSObject
   
   def updateMenuItemAccountEnabled(account)
     menu = menuItemForAccount(account).submenu
-    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable") : NSLocalizedString("Enable")
+    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account")
     menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
   end
     

@@ -1,3 +1,16 @@
+h3. 0.5.0 (Sep 21, 2009)
+* Support separate checking and notification setting for each account
+* Option to Enable/Disable account
+* Option to hide unread message count in memu bar
+* Click on message subject menu item opens that message
+* Show message summary as menu item tooltip on message subject
+* Show last check time for each account
+* Localization for Simplified Chinese, French, Japanese, Italian and German
+
+h3. 0.4.4 (Aug 31, 2009)
+* Bugfix: Message count doesn't show in menu bar under Snow Leopard
+* Note: A new beta version has also been released (still marked as v0.4.3) at http://ashchan.com/gn-beta.zip. It’s not stable yet so try it at your own risk. Don’t be mad of me if it doesn’t work well.
+
 h3. 0.4.3 (Aug 2, 2009)
 * New icons from Iiro J&auml;ppinen (http://iirojappinen.com/)
 * Do not notify if there's a connection or wrong username/password error

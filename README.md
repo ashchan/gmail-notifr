@@ -43,4 +43,4 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 # Copyright Info #
 
-Copyright (c) 2008 - 2009 [James Chan](http://blog.ashchan.com) (ashchan), released under the MIT license
+Copyright (c) 2008 - 2009 [James Chen](http://blog.ashchan.com) (ashchan), released under the MIT license

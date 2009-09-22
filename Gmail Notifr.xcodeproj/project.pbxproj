@@ -99,6 +99,8 @@
 		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
 		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
 		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
+		1A884FD61068652800EE6A8B /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Catalan; path = Catalan.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A884FE61068655000EE6A8B /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Catalan; path = Catalan.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		1A8853E01067C053006EBA4F /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Norwegian; path = Norwegian.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		1A8B46251067B01900475725 /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Norwegian; path = Norwegian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AA23341103790BE00D5A79B /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PreferencesController.rb; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				fr_CA,
 				Italian,
 				Norwegian,
+				Catalan,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gmail Notifr */;
 			projectDirPath = "";
@@ -416,6 +419,7 @@
 				1A42C6CD10670C82008D6EA1 /* Italian */,
 				1A42C6CE10670C89008D6EA1 /* German */,
 				1A8B46251067B01900475725 /* Norwegian */,
+				1A884FD61068652800EE6A8B /* Catalan */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 				1A42C6CB10670C52008D6EA1 /* Italian */,
 				1A42C6CC10670C6B008D6EA1 /* German */,
 				1A8853E01067C053006EBA4F /* Norwegian */,
+				1A884FE61068655000EE6A8B /* Catalan */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";

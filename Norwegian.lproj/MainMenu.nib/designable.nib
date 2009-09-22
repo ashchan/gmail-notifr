@@ -44,7 +44,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="256512304">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Sjekk Alle</string>
+						<string key="NSTitle">Sjekk alle</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="253178495">
@@ -86,7 +86,7 @@
 					</object>
 					<object class="NSMenuItem" id="273274217">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Søk etter Oppdateringer...</string>
+						<string key="NSTitle">Søk etter oppdateringer...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -102,7 +102,7 @@
 					</object>
 					<object class="NSMenuItem" id="1036176720">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Donér...</string>
+						<string key="NSTitle">Doner...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="253178495"/>
@@ -326,7 +326,7 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{799, 203}, {229, 153}}</string>
+					<string>{{799, 203}, {227, 153}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

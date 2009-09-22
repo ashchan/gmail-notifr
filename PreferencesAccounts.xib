@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10A432</string>
+		<string key="IBDocument.SystemVersion">10B504</string>
 		<string key="IBDocument.InterfaceBuilderVersion">732</string>
-		<string key="IBDocument.AppKitVersion">1038</string>
+		<string key="IBDocument.AppKitVersion">1038.2</string>
 		<string key="IBDocument.HIToolboxVersion">437.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="44"/>
+			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -98,7 +98,7 @@
 					<object class="NSButton" id="483953567">
 						<reference key="NSNextResponder" ref="491180646"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{324, 19}, {56, 22}}</string>
+						<string key="NSFrame">{{374, 19}, {56, 22}}</string>
 						<reference key="NSSuperview" ref="491180646"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="449862840">
@@ -128,7 +128,7 @@
 									<object class="NSTableView" id="878390631">
 										<reference key="NSNextResponder" ref="845408331"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrameSize">{358, 132}</string>
+										<string key="NSFrameSize">{408, 132}</string>
 										<reference key="NSSuperview" ref="845408331"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="_NSCornerView" key="NSCornerView">
@@ -193,7 +193,7 @@
 											</object>
 											<object class="NSTableColumn" id="863066620">
 												<string key="NSIdentifier">AccountName</string>
-												<double key="NSWidth">304</double>
+												<double key="NSWidth">354</double>
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -254,7 +254,7 @@
 										<int key="NSTableViewDraggingDestinationStyle">0</int>
 									</object>
 								</object>
-								<string key="NSFrame">{{1, 1}, {358, 132}}</string>
+								<string key="NSFrame">{{1, 1}, {408, 132}}</string>
 								<reference key="NSSuperview" ref="272714071"/>
 								<reference key="NSNextKeyView" ref="878390631"/>
 								<reference key="NSDocView" ref="878390631"/>
@@ -281,7 +281,7 @@
 								<double key="NSPercent">0.7482993</double>
 							</object>
 						</object>
-						<string key="NSFrame">{{20, 48}, {360, 134}}</string>
+						<string key="NSFrame">{{20, 48}, {410, 134}}</string>
 						<reference key="NSSuperview" ref="491180646"/>
 						<reference key="NSNextKeyView" ref="845408331"/>
 						<int key="NSsFlags">530</int>
@@ -291,7 +291,7 @@
 						<bytes key="NSScrollAmts">QSAAAEEgAABBsAAAQbAAAA</bytes>
 					</object>
 				</object>
-				<string key="NSFrameSize">{400, 202}</string>
+				<string key="NSFrameSize">{450, 202}</string>
 				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -565,7 +565,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{2092, 550}, {400, 202}}</string>
+					<string>{{2092, 550}, {450, 202}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>

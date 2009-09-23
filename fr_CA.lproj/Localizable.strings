@@ -5,8 +5,9 @@
    Created by James Chen on 8/4/09.
    Copyright 2009 ashchan.com. All rights reserved.
    
-   Contributor: Fabrice Truillot de Chambrier
+   Contributors: Fabrice Truillot de Chambrier, Thibault Guerpillon
  */
+
  
 //-----------------------------------------
 // Menu and tooltip
@@ -30,11 +31,11 @@
 "Unread Message" = "%s message non lu";
 
 /* last check time */
-"Last Checked:" = "Last Checked:";
+"Last Checked:" = "Dernière vérification:";
 
 /* Enable, Disable */
-"Enable Account" = "Enable Account";
-"Disable Account" = "Disable Account";
+"Enable Account" = "Activer le compte";
+"Disable Account" = "Désactiver le compte";
 
 /* Check */
 "Check" = "Relever";
@@ -44,14 +45,14 @@
 // ----------------------------------------
 "Settings" = "Configuration";
 "Launch at login" = "Ouverture automatique à l'ouverture de session";
-"Show unread count in menu bar" = "Show unread count in menu bar";
+"Show unread count in menu bar" = "Montrer le nombre de non lus dans la barre des tâches";
 
 
 //-----------------------------------------
 // Preferences - Accounts
 // ----------------------------------------
 "Accounts" = "Comptes";
-"Edit" = "Edit";
+"Edit" = "Editer";
 
 "Username:" = "Nom d'utilisateur:";
 "Password:" = "Mot de passe:";
@@ -60,6 +61,6 @@
 "Use Growl Notification" = "Utiliser les notifications Growl";
 "Play sound:" = "Émettre un son:";
 "To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com." = "Pour ajouter un compte Google Hosted, spécifiez l'adresse courriel complète comme nom d'utilisateur, p. ex. admin@ashchan.com.";
-"Enable this account" = "Enable this account";
-"Cancel" = "Cancel";
+"Enable this account" = "Activer ce compte";
+"Cancel" = "Annuler";
 "OK" = "OK";

@@ -44,7 +44,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="256512304">
 						<reference key="NSMenu" ref="845846908"/>
-						<string key="NSTitle">Tout cocher</string>
+						<string key="NSTitle">Tout relever</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="253178495">

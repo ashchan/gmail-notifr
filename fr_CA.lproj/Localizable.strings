@@ -13,7 +13,7 @@
 // Menu and tooltip
 // ---------------------------------------- 
 /* Open Inbox menu item under each account */
-"Open Inbox" = "Ouvrir la boîte de réception";
+"Open Inbox" = "Ouvrir la boite de réception";
 
 /* menubar tooltip when checking mail */
 "Checking Mail" = "lecture du courriel...";

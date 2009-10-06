@@ -357,6 +357,8 @@ class ApplicationController < OSX::NSObject
     
     inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
       "https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
+      
+    NSLog("Gmail Notifr DEBUG: open inbox '#{inbox_url}'")
     NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
   end
 end

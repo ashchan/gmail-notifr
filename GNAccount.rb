@@ -15,7 +15,7 @@ class GNAccount < OSX::NSObject
   Properties = [:guid, :username, :interval, :enabled, :sound, :growl]
     
   MIN_INTERVAL    = 1
-  MAX_INTERVAL    = 300
+  MAX_INTERVAL    = 900
   DEFAULT_INTERVAL  = 30
 
   def init

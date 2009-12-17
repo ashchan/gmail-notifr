@@ -10,6 +10,7 @@ require 'osx/cocoa'
 require 'yaml'
 
 include OSX
+OSX.ns_import('GNComposeHandler')
 OSX.require_framework 'Security'
 OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
 OSX.ruby_thread_switcher_stop
@@ -29,6 +30,19 @@ class ApplicationController < OSX::NSObject
   ib_action :showPreferencesWindow
   ib_action :donate
 
+  def init
+    super_init
+	NSAppleEventManager.sharedAppleEventManager().setEventHandler_andSelector_forEventClass_andEventID_(self, :compose_withReplyEvent, fourcharcode('GURL'), fourcharcode('GURL'))
+    self
+  end
+  
+  def compose_withReplyEvent(event, reply)	
+	GNComposeHandler.alloc().init().compose_withReplyEvent_(event, reply)
+  end
+  
+  def fourcharcode(character_code)
+    character_code.unpack('N').first
+  end
     
   def awakeFromNib
     @status_bar = NSStatusBar.systemStatusBar

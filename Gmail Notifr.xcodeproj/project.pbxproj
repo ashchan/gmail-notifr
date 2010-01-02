@@ -43,8 +43,6 @@
 		1AF197650F356152009CBBF1 /* app_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197630F356152009CBBF1 /* app_a.tiff */; };
 		1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197640F356152009CBBF1 /* mail_a.tiff */; };
 		1AF197730F356353009CBBF1 /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197720F356353009CBBF1 /* check_a.tiff */; };
-		45E9C26310D989EF007D0A3D /* GNComposeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9C26110D989EF007D0A3D /* GNComposeHandler.m */; };
-		45E9C26410D989EF007D0A3D /* GNComposeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9C26210D989EF007D0A3D /* GNComposeHandler.h */; };
 		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
@@ -136,8 +134,6 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		45E9C26110D989EF007D0A3D /* GNComposeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNComposeHandler.m; sourceTree = "<group>"; };
-		45E9C26210D989EF007D0A3D /* GNComposeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNComposeHandler.h; sourceTree = "<group>"; };
 		4DDCA7110ACC9A6100E082CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DDCA7120ACC9A6100E082CE /* Gmail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gmail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
@@ -162,8 +158,6 @@
 		080E96DDFE201D6D7F000001 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				45E9C26110D989EF007D0A3D /* GNComposeHandler.m */,
-				45E9C26210D989EF007D0A3D /* GNComposeHandler.h */,
 				1A1463820E95F67700930C28 /* ApplicationController.rb */,
 				1AA23341103790BE00D5A79B /* PreferencesController.rb */,
 				1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */,
@@ -292,7 +286,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45E9C26410D989EF007D0A3D /* GNComposeHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +393,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDCA70A0ACC9A6100E082CE /* main.m in Sources */,
-				45E9C26310D989EF007D0A3D /* GNComposeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

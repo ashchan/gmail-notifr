@@ -8,6 +8,7 @@
 
 require 'osx/cocoa'
 require 'yaml'
+require 'uri'
 
 include OSX
 OSX.require_framework 'Security'
@@ -15,6 +16,8 @@ OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Securit
 OSX.ruby_thread_switcher_stop
 
 class ApplicationController < OSX::NSObject
+  KInternetEventClass = KAEGetURL = 'GURL'.unpack('N').first
+  KeyDirectObject = '----'.unpack('N').first
 
   ACCOUNT_MENUITEM_POS = 2
   CHECK_MENUITEM_POS = 1
@@ -50,6 +53,8 @@ class ApplicationController < OSX::NSObject
     GNPreferences::setupDefaults
     
     registerObservers
+    
+    registerMailtoHandler
 
     registerGrowl
 
@@ -360,5 +365,24 @@ class ApplicationController < OSX::NSObject
       
     NSLog("Gmail Notifr DEBUG: open inbox '#{inbox_url}'")
     NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
+  end
+  
+  def registerMailtoHandler
+    e = NSAppleEventManager.sharedAppleEventManager
+    e.setEventHandler_andSelector_forEventClass_andEventID(self,
+      :mailtoHandler,
+      KInternetEventClass,
+      KAEGetURL
+    )
+  end
+
+  def mailtoHandler(event, eventReply)
+    url = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
+    email = url.to_s
+    uri = URI.parse(email)
+    url = "https://mail.google.com/mail?view=cm&tf=0&to=" + URI::escape(uri.to)
+    url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
+    url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
   end
 end

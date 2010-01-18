@@ -19,7 +19,7 @@ class GmailChecker
 
     begin
       http.start do |http|
-      req = Net::HTTP::Get.new("/mail/feed/atom/unread")
+      req = Net::HTTP::Get.new("/mail/feed/atom")
       req.basic_auth(@username, @password)
       response = http.request(req)
       end

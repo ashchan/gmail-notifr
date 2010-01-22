@@ -212,6 +212,16 @@ class ApplicationController < OSX::NSObject
 
   def growlNotifierTimedOut_context(sender, context)
   end
+  
+  def handleMailTo(event, eventReply)
+    url = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
+    email = url.to_s
+    uri = URI.parse(email)
+    url = "https://mail.google.com/mail?view=cm&tf=0&to=" + URI::escape(uri.to)
+    url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
+    url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
+  end
 
   private
   
@@ -370,19 +380,9 @@ class ApplicationController < OSX::NSObject
   def registerMailtoHandler
     e = NSAppleEventManager.sharedAppleEventManager
     e.setEventHandler_andSelector_forEventClass_andEventID(self,
-      :mailtoHandler,
+      :handleMailTo,
       KInternetEventClass,
       KAEGetURL
     )
-  end
-
-  def mailtoHandler(event, eventReply)
-    url = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
-    email = url.to_s
-    uri = URI.parse(email)
-    url = "https://mail.google.com/mail?view=cm&tf=0&to=" + URI::escape(uri.to)
-    url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
-    url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
   end
 end

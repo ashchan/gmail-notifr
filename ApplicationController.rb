@@ -227,49 +227,16 @@ class ApplicationController < OSX::NSObject
   
   def registerObservers
     center = NSNotificationCenter.defaultCenter
-    
-    center.addObserver_selector_name_object(
-      self,
-      "updateMenuBarCount",
-      GNShowUnreadCountChangedNotification,
-      nil
-    )
-    
-    center = NSNotificationCenter.defaultCenter
-    center.addObserver_selector_name_object(
-      self,
-      "accountAdded",
-      GNAccountAddedNotification,
-      nil
-    )
-    
-    center.addObserver_selector_name_object(
-      self,
-      "accountChanged",
-      GNAccountChangedNotification,
-      nil
-    )
-    
-    center.addObserver_selector_name_object(
-      self,
-      "accountRemoved",
-      GNAccountRemovedNotification,
-      nil
-    )
-    
-    center.addObserver_selector_name_object(
-      self,
-      "updateAccountMenuItem",
-      GNAccountMenuUpdateNotification,
-      nil
-    )
-    
-    center.addObserver_selector_name_object(
-      self,
-      "accountChecking",
-      GNCheckingAccountNotification,
-      nil
-    )
+    [
+      ["updateMenuBarCount", GNShowUnreadCountChangedNotification],
+      ["accountAdded", GNAccountAddedNotification],
+      ["accountChanged", GNAccountChangedNotification],
+      ["accountRemoved", GNAccountRemovedNotification],
+      ["updateAccountMenuItem", GNAccountMenuUpdateNotification],
+      ["accountChecking", GNCheckingAccountNotification]
+    ].each do |item|
+      center.addObserver_selector_name_object(self, item[0], item[1], nil)
+    end
   end
   
   def registerGrowl

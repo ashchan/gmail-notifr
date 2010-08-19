@@ -1,3 +1,7 @@
+h3. 0.5.1 (Aug 20, 2010)
+* Localization Fix
+* Can now set as default email reader to handle mailto link in browser (please set it under Preferences of Mail.app)
+
 h3. 0.5.0 (Sep 21, 2009)
 * Support separate checking and notification setting for each account
 * Option to Enable/Disable account

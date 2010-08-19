@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleVersion</key>
-	<string>0.5.0</string>
+	<string>0.5.1</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -25,7 +25,7 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
-	<string>http://ashchan.com/gmailnotifr/update.xml</string>
+	<string>http://assets.ashchan.com/gmailnotifr/update.xml</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

@@ -31,7 +31,7 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 * [Feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/)
 
-* [Changelog](http://ashchan.com/gmailnotifr/release_notes.html)
+* [Changelog](http://assets.ashchan.com/gmailnotifr/release_notes.html)
 
 # Binary Download
 
@@ -43,4 +43,4 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 # Copyright Info #
 
-Copyright (c) 2008 - 2009 [James Chen](http://blog.ashchan.com) (ashchan), released under the MIT license
+Copyright (c) 2008 - 2010 [James Chen](http://blog.ashchan.com) (ashchan), released under the MIT license

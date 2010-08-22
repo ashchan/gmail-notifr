@@ -42,6 +42,16 @@ class GNAccount < OSX::NSObject
     init
   end
   
+  def self.baseurl_for(name)
+    account_domain = name.split("@")
+    url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
+      "https://mail.google.com/a/#{account_domain[1]}/" : "https://mail.google.com/mail"
+  end
+  
+  def baseurl
+    self.class.baseurl_for(username)
+  end
+  
   def encodeWithCoder(coder)
     Properties.each do |prop|
       val = self.send(prop)

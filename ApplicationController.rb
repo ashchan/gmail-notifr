@@ -214,13 +214,15 @@ class ApplicationController < OSX::NSObject
   end
   
   def handleMailTo(event, eventReply)
-    url = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
-    email = url.to_s
-    uri = URI.parse(email)
-    url = "https://mail.google.com/mail?view=cm&tf=0&to=" + URI::escape(uri.to)
-    url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
-    url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
+    account = GNPreferences.sharedInstance.accounts.first
+    if account
+      url = account.baseurl << "?view=cm&tf=0&fs=1&to="
+      uri = URI.parse(event.paramDescriptorForKeyword(KeyDirectObject).stringValue.to_s)
+      url << URI::escape(uri.to)
+      url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
+      url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
+      NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
+    end
   end
 
   private
@@ -334,14 +336,8 @@ class ApplicationController < OSX::NSObject
     openInboxForAccountName(account.username)
   end
   
-  def openInboxForAccountName(name)
-    account_domain = name.split("@")
-    
-    inbox_url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ? 
-      "https://mail.google.com/a/#{account_domain[1]}" : "https://mail.google.com/mail"
-      
-    NSLog("Gmail Notifr DEBUG: open inbox '#{inbox_url}'")
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(inbox_url))
+  def openInboxForAccountName(name) 
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(GNAccount.baseurl_for(name)))
   end
   
   def registerMailtoHandler

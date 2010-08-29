@@ -1,3 +1,7 @@
+h3. 0.5.2 (Aug 30, 2010)
+* Enhancements on mailto handler, now should support most situations.
+* Localization Fix (German)
+
 h3. 0.5.1 (Aug 20, 2010)
 * Localization Fix
 * Can now set as default email reader to handle mailto link in browser (please set it under Preferences of Mail.app)

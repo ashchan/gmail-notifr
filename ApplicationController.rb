@@ -216,11 +216,10 @@ class ApplicationController < OSX::NSObject
   def handleMailTo(event, eventReply)
     account = GNPreferences.sharedInstance.accounts.first
     if account
+      link = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
       url = account.baseurl << "?view=cm&tf=0&fs=1&to="
-      uri = URI.parse(event.paramDescriptorForKeyword(KeyDirectObject).stringValue.to_s)
-      url << URI::escape(uri.to)
-      url << "&su=" + uri.headers.assoc('subject').last if uri.headers.assoc('subject')
-      url << "&body=" + uri.headers.assoc('body').last if uri.headers.assoc('body')
+      url << link.split('?')[0].gsub(/mailto:/, '')
+      url << "&#{link.split('?')[1]}".gsub(/&subject=/, "&su=")
       NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
     end
   end

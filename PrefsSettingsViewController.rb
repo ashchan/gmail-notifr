@@ -12,8 +12,10 @@ class PrefsSettingsViewController <  OSX::NSViewController
 
   ib_outlet :autoLaunch
   ib_outlet :showUnreadCount
+  ib_outlet :showAllLabels
   ib_action :saveAutoLaunch
   ib_action :saveShowUnreadCount
+  ib_action :saveShowAllLabels
 
   def title
     NSLocalizedString("Settings")
@@ -33,6 +35,8 @@ class PrefsSettingsViewController <  OSX::NSViewController
     @autoLaunch.setState(GNPreferences.sharedInstance.autoLaunch? ? NSOnState : NSOffState)
     @showUnreadCount.setTitle(NSLocalizedString("Show unread count in menu bar"))
     @showUnreadCount.setState(GNPreferences.sharedInstance.showUnreadCount? ? NSOnState : NSOffState)
+    @showAllLabels.setTitle(NSLocalizedString("Show all labels"))
+    @showAllLabels.setState(GNPreferences.sharedInstance.showAllLabels? ? NSOnState : NSOffState)
   end
 
   def saveAutoLaunch(sender)
@@ -41,5 +45,9 @@ class PrefsSettingsViewController <  OSX::NSViewController
   
   def saveShowUnreadCount(sender)
     GNPreferences.sharedInstance.showUnreadCount = (@showUnreadCount.state == NSOnState)
+  end
+  
+  def saveShowAllLabels(sender)
+	GNPreferences.sharedInstance.showAllLabels = (@showAllLabels.state == NSOnState)
   end
 end

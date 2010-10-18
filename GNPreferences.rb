@@ -11,7 +11,7 @@ require 'osx/cocoa'
 # a simple wrapper for preferences values
 class GNPreferences < OSX::NSObject     
 
-  attr_accessor :accounts, :autoLaunch, :showUnreadCount
+  attr_accessor :accounts, :autoLaunch, :showUnreadCount, :showAllLabels
   
   def self.sharedInstance
     @instance ||= self.alloc.init
@@ -50,6 +50,7 @@ class GNPreferences < OSX::NSObject
 
     @autoLaunch = GNStartItems.alloc.init.isSet
     @showUnreadCount = defaults.boolForKey(ShowUnreadCount)
+	@showAllLabels = defaults.boolForKey(ShowAllLabels)
 
     self
   end
@@ -70,6 +71,15 @@ class GNPreferences < OSX::NSObject
     NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
     NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
+  end
+  
+  def showAllLabels?
+	NSUserDefaults.standardUserDefaults.boolForKey(ShowAllLabels)
+  end
+  
+  def showAllLabels=(val)
+	NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowAllLabels)
+	NSUserDefaults.standardUserDefaults.synchronize
   end
   
   def addAccount(account)

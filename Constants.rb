@@ -18,5 +18,6 @@ PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
 PrefsToolbarItemSettings = "prefsToolbarItemSettings"
 
 ShowUnreadCount = "ShowUnreadCount"
+ShowAllLabels = "ShowAllLabels"
 PreferencesSelection = "PreferencesSelection"
 Accounts = "Accounts"

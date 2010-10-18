@@ -5,9 +5,10 @@ require 'yaml'
 
 class GmailChecker
   # password should be base64 encoded
-  def initialize(username, password)
+  def initialize(username, password, all_labels)
     @username = username
     @password = password.unpack("m").first
+	@all_labels = [true, "true", 1, "1", "T", "t"].include?(all_labels.class == String ? all_labels.downcase : value)
   end
   
   def check
@@ -19,10 +20,15 @@ class GmailChecker
 
     begin
       http.start do |http|
-      req = Net::HTTP::Get.new("/mail/feed/atom")
+	  if @all_labels
+		req = Net::HTTP::Get.new("/mail/feed/atom/all")
+	  else
+		req = Net::HTTP::Get.new("/mail/feed/atom")
+	  end
       req.basic_auth(@username, @password)
       response = http.request(req)
       end
+
 
       if response
         case response.code
@@ -75,7 +81,7 @@ end
 
 results = {}
 (ARGV.length / 2).times do |t|
-  results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1]).check
+  results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1], ARGV[t * 2 + 2]).check
 end
 
 print results.to_yaml

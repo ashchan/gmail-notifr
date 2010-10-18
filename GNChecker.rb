@@ -66,6 +66,7 @@ class GNChecker < OSX::NSObject
       args.addObject(@account.username.to_s)
       # pass password as base64 encoded to gmailchecker
       args.addObject([@account.password.to_s].pack("m"))
+      args.addObject(GNPreferences.sharedInstance.showAllLabels.to_s)
       @checker.setArguments(args)
       
       @pipe = NSPipe.alloc.init

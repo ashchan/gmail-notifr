@@ -80,8 +80,8 @@ class GmailChecker
 end
 
 results = {}
-(ARGV.length / 2).times do |t|
-  results[ARGV[t * 2]] = GmailChecker.new(ARGV[t * 2], ARGV[t * 2 + 1], ARGV[t * 2 + 2]).check
+(ARGV.length / 3).times do |t|
+  results[ARGV[t * 3]] = GmailChecker.new(ARGV[t * 3], ARGV[t * 3 + 1], ARGV[t * 3 + 2]).check
 end
 
 print results.to_yaml

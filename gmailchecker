@@ -8,7 +8,7 @@ class GmailChecker
   def initialize(username, password, all_labels)
     @username = username
     @password = password.unpack("m").first
-	@all_labels = [true, "true", 1, "1", "T", "t"].include?(all_labels.class == String ? all_labels.downcase : value)
+	@all_labels = [true, "true", 1, "1", "T", "t"].include?(all_labels.downcase)
   end
   
   def check

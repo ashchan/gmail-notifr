@@ -21,7 +21,7 @@ class GmailChecker
     begin
       http.start do |http|
 	  if @all_labels
-		req = Net::HTTP::Get.new("/mail/feed/atom/all")
+		req = Net::HTTP::Get.new("/mail/feed/atom/unread")
 	  else
 		req = Net::HTTP::Get.new("/mail/feed/atom")
 	  end

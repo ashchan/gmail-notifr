@@ -10,8 +10,6 @@ class PrefsSettingsViewController <  NSViewController
 
   attr_accessor :autoLaunch
   attr_accessor :showUnreadCount
-  ib_action :saveAutoLaunch
-  ib_action :saveShowUnreadCount
 
   def title
     NSLocalizedString("Settings")

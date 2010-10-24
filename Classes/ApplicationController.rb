@@ -10,7 +10,7 @@ require 'yaml'
 require 'uri'
 
 framework 'Security'
-load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
+load_bridge_support_file(NSBundle.mainBundle.pathForResource("Security", ofType:"bridgesupport"))
 #OSX.ruby_thread_switcher_stop
 
 class ApplicationController
@@ -228,7 +228,7 @@ class ApplicationController
       ["updateAccountMenuItem", GNAccountMenuUpdateNotification],
       ["accountChecking", GNCheckingAccountNotification]
     ].each do |item|
-      center.addObserver_selector_name_object(self, item[0], item[1], nil)
+      center.addObserver(self, selector:item[0], name:item[1], object:nil)
     end
   end
   
@@ -333,10 +333,10 @@ class ApplicationController
   
   def registerMailtoHandler
     e = NSAppleEventManager.sharedAppleEventManager
-    e.setEventHandler_andSelector_forEventClass_andEventID(self,
-      :handleMailTo,
-      KInternetEventClass,
-      KAEGetURL
+    e.setEventHandler(self,
+      andSelector:'handleMailTo',
+      forEventClass:KInternetEventClass,
+      andEventID:KAEGetURL
     )
   end
 end

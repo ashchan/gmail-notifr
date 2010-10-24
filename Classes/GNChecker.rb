@@ -8,7 +8,7 @@
 
 class GNChecker
   def init
-    super_init
+    super
   end
   
   def initWithAccount(account)
@@ -71,7 +71,7 @@ class GNChecker
   
       nc = NSNotificationCenter.defaultCenter
       fn = @pipe.fileHandleForReading
-      nc.addObserver_selector_name_object(self, 'checkResult', NSFileHandleReadToEndOfFileCompletionNotification, fn)
+      nc.addObserver(self, selector:'checkResult', name:NSFileHandleReadToEndOfFileCompletionNotification, object:fn)
       
       @checker.launch
       

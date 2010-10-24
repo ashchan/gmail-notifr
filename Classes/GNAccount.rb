@@ -16,19 +16,21 @@ class GNAccount
   MAX_INTERVAL    = 900
   DEFAULT_INTERVAL  = 30
 
-  def init
+  def fetch_pass
     self.password = GNKeychain.sharedInstance.get_password(@username)
-    super_init
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
+    init
     self.username = username    
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
     self.sound = sound || GNSound::SOUND_NONE
     
-    init
+    fetch_pass
+    
+    self
   end
   
   def initWithCoder(coder)
@@ -37,7 +39,9 @@ class GNAccount
       self.send("#{prop.to_s}=", val)
     end
     
-    init
+    fetch_pass
+    
+    self
   end
   
   def self.baseurl_for(name)

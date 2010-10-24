@@ -16,7 +16,7 @@ class GNPreferences
   end
   
   def init
-    super_init
+    super
     
     defaults = NSUserDefaults.standardUserDefaults
 

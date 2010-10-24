@@ -27,12 +27,12 @@ class PreferencesController < NSWindowController
   end
 
   def init
-    if super_init
-      prefsWindow = NSWindow.alloc.initWithContentRect_styleMask_backing_defer(
+    if super
+      prefsWindow = NSWindow.alloc.initWithContentRect(
         NSMakeRect(0, 0, 550, 260),
-        NSTitledWindowMask | NSClosableWindowMask,
-        NSBackingStoreBuffered,
-        true
+        styleMask:NSTitledWindowMask | NSClosableWindowMask,
+        backing:NSBackingStoreBuffered,
+        defer:true
       )
       prefsWindow.setShowsToolbarButton(false)
       self.window = prefsWindow

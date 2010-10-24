@@ -9,7 +9,6 @@
 framework 'Security'
 
 class GNKeychain
-  include OSX 
   SERVICE = "GmailNotifr"
   
     
@@ -31,7 +30,7 @@ class GNKeychain
       nil)
       
     #already set
-    if error == OSX::ErrSecDuplicateItem
+    if error == ErrSecDuplicateItem
       status, *data = SecKeychainFindGenericPassword(
         nil,
         SERVICE.length,

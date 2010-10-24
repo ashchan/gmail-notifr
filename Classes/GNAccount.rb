@@ -6,10 +6,8 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-
 # a normal gmail account, or a google hosted email account
-class GNAccount < OSX::NSObject
+class GNAccount
 
   attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl
   Properties = [:guid, :username, :interval, :enabled, :sound, :growl]

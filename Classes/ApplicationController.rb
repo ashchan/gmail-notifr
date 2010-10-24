@@ -6,16 +6,14 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
 require 'yaml'
 require 'uri'
 
-include OSX
-OSX.require_framework 'Security'
-OSX.load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
-OSX.ruby_thread_switcher_stop
+framework 'Security'
+load_bridge_support_file(NSBundle.mainBundle.pathForResource_ofType("Security", "bridgesupport"))
+#OSX.ruby_thread_switcher_stop
 
-class ApplicationController < OSX::NSObject
+class ApplicationController
   KInternetEventClass = KAEGetURL = 'GURL'.unpack('N').first
   KeyDirectObject = '----'.unpack('N').first
 
@@ -25,14 +23,8 @@ class ApplicationController < OSX::NSObject
   DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
   DONATE_URL = "http://www.pledgie.com/campaigns/2046"
 
-  ib_outlet :menu
-  ib_action :openInbox
-  ib_action :checkAll
-  ib_action :showAbout
-  ib_action :showPreferencesWindow
-  ib_action :donate
-
-    
+  attr_accessor :menu
+  
   def awakeFromNib
     @status_bar = NSStatusBar.systemStatusBar
     @status_item = @status_bar.statusItemWithLength(NSVariableStatusItemLength)

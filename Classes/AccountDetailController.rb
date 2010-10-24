@@ -6,29 +6,23 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-
-class AccountDetailController < OSX::NSWindowController
+class AccountDetailController < NSWindowController
   
-  ib_outlet :username
-  ib_outlet :password
-  ib_outlet :interval
-  ib_outlet :accountEnabled
-  ib_outlet :growl
-  ib_outlet :soundList
+  attr_accessor :username
+  attr_accessor :password
+  attr_accessor :interval
+  attr_accessor :accountEnabled
+  attr_accessor :growl
+  attr_accessor :soundList
   
-  ib_outlet :usernameLabel
-  ib_outlet :passwordLabel
-  ib_outlet :checkLabel
-  ib_outlet :minuteLabel
-  ib_outlet :soundLabel
-  ib_outlet :hint
-  ib_outlet :cancelButton
-  ib_outlet :okButton
-  
-  ib_action :soundSelect
-  ib_action :cancel
-  ib_action :okay
+  attr_accessor :usernameLabel
+  attr_accessor :passwordLabel
+  attr_accessor :checkLabel
+  attr_accessor :minuteLabel
+  attr_accessor :soundLabel
+  attr_accessor :hint
+  attr_accessor :cancelButton
+  attr_accessor :okButton
   
   def self.editAccountOnWindow(account, parentWindow)
     controller = alloc.initWithAccount(account)

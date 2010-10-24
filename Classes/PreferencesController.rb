@@ -8,12 +8,11 @@
 #  preferences window and toolbar implementation learnt from Matt Ball:
 #  http://mattballdesign.com/blog/2008/10/01/building-a-preferences-window/
 
-require 'osx/cocoa'
 
-class PreferencesController < OSX::NSWindowController
+class PreferencesController < NSWindowController
 
-  ib_outlet :accountsPane
-  ib_outlet :settingsPane
+  attr_accessor :accountsPane
+  attr_accessor :settingsPane
 
   def self.sharedController
     unless @sharedInstance

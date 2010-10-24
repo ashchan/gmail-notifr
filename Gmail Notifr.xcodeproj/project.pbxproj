@@ -72,6 +72,7 @@
 		1AC3DCD012748771006832E4 /* GNSound.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC712748771006832E4 /* GNSound.rb */; };
 		1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC812748771006832E4 /* GNStartItems.rb */; };
 		1AC3DCD212748771006832E4 /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC912748771006832E4 /* Growl.rb */; };
+		1AC3DCEF12748994006832E4 /* Security.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCEE12748994006832E4 /* Security.bridgesupport */; };
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
 		4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3BE130D8651D900ECA448 /* MacRuby.framework */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -142,6 +143,7 @@
 		1AC3DCC712748771006832E4 /* GNSound.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNSound.rb; path = Classes/GNSound.rb; sourceTree = "<group>"; };
 		1AC3DCC812748771006832E4 /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNStartItems.rb; path = Classes/GNStartItems.rb; sourceTree = "<group>"; };
 		1AC3DCC912748771006832E4 /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Growl.rb; path = Classes/Growl.rb; sourceTree = "<group>"; };
+		1AC3DCEE12748994006832E4 /* Security.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Security.bridgesupport; path = Libs/Security.bridgesupport; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -237,6 +239,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		1AC3DCED12748984006832E4 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				1AC3DCEE12748994006832E4 /* Security.bridgesupport */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* Gmail Notifr */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +255,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				1AC3DCED12748984006832E4 /* Libs */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = "Gmail Notifr";
@@ -381,6 +392,7 @@
 				1AC3DCD012748771006832E4 /* GNSound.rb in Resources */,
 				1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */,
 				1AC3DCD212748771006832E4 /* Growl.rb in Resources */,
+				1AC3DCEF12748994006832E4 /* Security.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

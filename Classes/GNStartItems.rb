@@ -6,9 +6,7 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-
-class GNStartItems < OSX::NSObject
+class GNStartItems
 
   def isSet
     cf = OSX::CFPreferencesCopyValue(

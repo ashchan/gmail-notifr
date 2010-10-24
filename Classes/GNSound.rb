@@ -6,9 +6,8 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
 
-class GNSound < OSX::NSObject
+class GNSound
 
   SOUND_NONE = "None" #NSLocalizedString("Sound None")
   

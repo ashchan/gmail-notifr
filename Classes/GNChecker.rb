@@ -6,9 +6,7 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-
-class GNChecker < OSX::NSObject
+class GNChecker
   def init
     super_init
   end

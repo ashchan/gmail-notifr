@@ -6,19 +6,12 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
+class PrefsAccountsViewController <  NSViewController
 
-class PrefsAccountsViewController <  OSX::NSViewController
-
-  ib_outlet :addButton
-  ib_outlet :removeButton
-  ib_outlet :editButton
-  ib_outlet :accountList
-  ib_action :startAddingAccount
-  ib_action :endAddingAccount
-  ib_action :removeAccount
-  ib_action :startEditingAccount
-  ib_action :endEditingAccount
+  attr_accessor :addButton
+  attr_accessor :removeButton
+  attr_accessor :editButton
+  attr_accessor :accountList
 
   def title
     NSLocalizedString("Accounts")

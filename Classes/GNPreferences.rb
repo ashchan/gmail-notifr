@@ -6,10 +6,8 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-
 # a simple wrapper for preferences values
-class GNPreferences < OSX::NSObject     
+class GNPreferences  
 
   attr_accessor :accounts, :autoLaunch, :showUnreadCount
   

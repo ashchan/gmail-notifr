@@ -6,10 +6,9 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
-OSX.require_framework 'Security'
+framework 'Security'
 
-class GNKeychain < OSX::NSObject
+class GNKeychain
   include OSX 
   SERVICE = "GmailNotifr"
   

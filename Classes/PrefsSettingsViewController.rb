@@ -6,12 +6,10 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-require 'osx/cocoa'
+class PrefsSettingsViewController <  NSViewController
 
-class PrefsSettingsViewController <  OSX::NSViewController
-
-  ib_outlet :autoLaunch
-  ib_outlet :showUnreadCount
+  attr_accessor :autoLaunch
+  attr_accessor :showUnreadCount
   ib_action :saveAutoLaunch
   ib_action :saveShowUnreadCount
 

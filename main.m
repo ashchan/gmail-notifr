@@ -2,14 +2,13 @@
 //  main.m
 //  Gmail Notifr
 //
-//  Created by james on 10/3/08.
-//  Copyright (c) 2008 ashchan.com. All rights reserved.
+//  Created by James Chen on 10/24/10.
+//  Copyright ashchan.com 2010. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <RubyCocoa/RBRuntime.h>
+#import <MacRuby/MacRuby.h>
 
-int main(int argc, const char *argv[])
+int main(int argc, char *argv[])
 {
-    return RBApplicationMain("rb_main.rb", argc, argv);
+    return macruby_main("rb_main.rb", argc, argv);
 }

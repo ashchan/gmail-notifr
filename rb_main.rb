@@ -1,23 +1,23 @@
 #
-#  rb_main.rb
-#  Gmail Notifr
+# rb_main.rb
+# Gmail Notifr
 #
-#  Created by james on 10/3/08.
-#  Copyright (c) 2008 ashchan.com. All rights reserved.
+# Created by James Chen on 10/24/10.
+# Copyright ashchan.com 2010. All rights reserved.
 #
 
-require 'osx/cocoa'
+# Loading the Cocoa framework. If you need to load more frameworks, you can
+# do that here too.
+framework 'Cocoa'
 
-def rb_main_init
-  path = OSX::NSBundle.mainBundle.resourcePath.fileSystemRepresentation
-  rbfiles = Dir.entries(path).select {|x| /\.rb\z/ =~ x}
-  rbfiles -= [ File.basename(__FILE__) ]
-  rbfiles.each do |path|
-    require( File.basename(path) )
+# Loading all the Ruby project files.
+main = File.basename(__FILE__, File.extname(__FILE__))
+dir_path = NSBundle.mainBundle.resourcePath.fileSystemRepresentation
+Dir.glob(File.join(dir_path, '*.{rb,rbo}')).map { |x| File.basename(x, File.extname(x)) }.uniq.each do |path|
+  if path != main
+    require(path)
   end
 end
 
-if $0 == __FILE__ then
-  rb_main_init
-  OSX.NSApplicationMain(0, nil)
-end
+# Starting the Cocoa main loop.
+NSApplicationMain(0, nil)

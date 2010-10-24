@@ -6,173 +6,178 @@
 	objectVersion = 44;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		172754BD107597F200D0347B /* Unit Tests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */;
+			buildPhases = (
+				172754BC107597F200D0347B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Unit Tests";
+			productName = "Unit Tests";
+		};
+		4D1A51A110A4FF5D0046A98A /* Compile */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */;
+			buildPhases = (
+				4D1A51A010A4FF5D0046A98A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Compile;
+			productName = Compile;
+		};
+		4D1A51A510A4FF640046A98A /* Embed */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */;
+			buildPhases = (
+				4D1A51A410A4FF640046A98A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Embed;
+			productName = Embed;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		1A02D8DC0F447B1E007F4254 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A02D8DB0F447B1E007F4254 /* release_notes.txt */; };
-		1A1463630E9595ED00930C28 /* MIT-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463620E9595ED00930C28 /* MIT-LICENSE */; };
-		1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463820E95F67700930C28 /* ApplicationController.rb */; };
-		1A14638C0E95FF8200930C28 /* app.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A14638B0E95FF8200930C28 /* app.tiff */; };
-		1A1463AD0E9743E300930C28 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1A1463AC0E9743E300930C28 /* app.icns */; };
-		1A1465550E979E7200930C28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1465540E979E7200930C28 /* Security.framework */; };
-		1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A1465A20E979FE600930C28 /* GNKeychain.rb */; };
-		1A1466F70E987BF100930C28 /* gmailchecker in Resources */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
-		1A1467050E987D4500930C28 /* gmailchecker in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A1466F60E987BF100930C28 /* gmailchecker */; };
-		1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 1A33AF920E9896DE002F815F /* Security.bridgesupport */; };
-		1A33B0EE0E98C070002F815F /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A33B0ED0E98C070002F815F /* GNStartItems.rb */; };
-		1A37869110468635003FA6E2 /* GNChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A37869010468635003FA6E2 /* GNChecker.rb */; };
-		1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1A382A290E9F2EE000BDC026 /* Credits.html */; };
-		1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A58F8B20EB88D28004D74BB /* Growl.rb */; };
-		1A709B050E98EC34009672CC /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B020E98EC34009672CC /* check.tiff */; };
-		1A709B060E98EC34009672CC /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B030E98EC34009672CC /* error.tiff */; };
-		1A709B070E98EC34009672CC /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1A709B040E98EC34009672CC /* mail.tiff */; };
-		1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A8653870EC3C81D00384B3E /* GNPreferences.rb */; };
-		1AA23342103790BE00D5A79B /* PreferencesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA23341103790BE00D5A79B /* PreferencesController.rb */; };
-		1AA233661037BB9300D5A79B /* PrefsAccountsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */; };
-		1AA233681037BC2B00D5A79B /* PrefsSettingsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA233671037BC2B00D5A79B /* PrefsSettingsViewController.rb */; };
-		1AA2336D1037BFB900D5A79B /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA2336C1037BFB900D5A79B /* PreferencesAccounts.xib */; };
-		1AA2336F1037BFE800D5A79B /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA2336E1037BFE800D5A79B /* PreferencesSettings.xib */; };
-		1AA235381039966800D5A79B /* Constants.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA235371039966800D5A79B /* Constants.rb */; };
-		1AA239EC103BD70800D5A79B /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA239EB103BD70800D5A79B /* AccountDetail.xib */; };
-		1AA23A39103BDC6000D5A79B /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */; };
-		1AA23B47103C0A4200D5A79B /* GNSound.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AA23B46103C0A4200D5A79B /* GNSound.rb */; };
-		1AAAF6960F38613A00F7A3FB /* release_notes_template.html.erb in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */; };
-		1AAAF6990F3861F600F7A3FB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
-		1AAAF6B80F38626A00F7A3FB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AAAF6980F3861F600F7A3FB /* Sparkle.framework */; };
-		1AAAF6BD0F3863F800F7A3FB /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */; };
-		1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */; };
-		1AE8E8F310286ECE0053B0A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AE8E8F110286ECE0053B0A0 /* Localizable.strings */; };
-		1AF197650F356152009CBBF1 /* app_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197630F356152009CBBF1 /* app_a.tiff */; };
-		1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197640F356152009CBBF1 /* mail_a.tiff */; };
-		1AF197730F356353009CBBF1 /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AF197720F356353009CBBF1 /* check_a.tiff */; };
-		4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
-		4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
-		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
-		4DDCA70A0ACC9A6100E082CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		4DDCA70D0ACC9A6100E082CE /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
+		1AC3DC8E12748643006832E4 /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8212748643006832E4 /* AccountDetail.xib */; };
+		1AC3DC8F12748643006832E4 /* app_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8312748643006832E4 /* app_a.tiff */; };
+		1AC3DC9012748643006832E4 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8412748643006832E4 /* app.icns */; };
+		1AC3DC9112748643006832E4 /* app.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8512748643006832E4 /* app.tiff */; };
+		1AC3DC9212748643006832E4 /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8612748643006832E4 /* check_a.tiff */; };
+		1AC3DC9312748643006832E4 /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8712748643006832E4 /* check.tiff */; };
+		1AC3DC9412748643006832E4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8812748643006832E4 /* Credits.html */; };
+		1AC3DC9512748643006832E4 /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8912748643006832E4 /* error.tiff */; };
+		1AC3DC9612748643006832E4 /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8A12748643006832E4 /* mail_a.tiff */; };
+		1AC3DC9712748643006832E4 /* mail.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8B12748643006832E4 /* mail.tiff */; };
+		1AC3DC9812748643006832E4 /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8C12748643006832E4 /* PreferencesAccounts.xib */; };
+		1AC3DC9912748643006832E4 /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8D12748643006832E4 /* PreferencesSettings.xib */; };
+		1AC3DC9E12748667006832E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC9A12748667006832E4 /* Localizable.strings */; };
+		1AC3DC9F12748667006832E4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC9C12748667006832E4 /* MainMenu.nib */; };
+		1AC3DCA41274867D006832E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCA01274867D006832E4 /* InfoPlist.strings */; };
+		1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB612748752006832E4 /* AccountDetailController.rb */; };
+		1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB712748752006832E4 /* ApplicationController.rb */; };
+		1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB812748752006832E4 /* PreferencesController.rb */; };
+		1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */; };
+		1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */; };
+		1AC3DCCA12748771006832E4 /* Constants.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC112748771006832E4 /* Constants.rb */; };
+		1AC3DCCB12748771006832E4 /* gmailchecker in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC212748771006832E4 /* gmailchecker */; };
+		1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.rb */; };
+		1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC412748771006832E4 /* GNChecker.rb */; };
+		1AC3DCCE12748771006832E4 /* GNKeychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC512748771006832E4 /* GNKeychain.rb */; };
+		1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.rb */; };
+		1AC3DCD012748771006832E4 /* GNSound.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC712748771006832E4 /* GNSound.rb */; };
+		1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC812748771006832E4 /* GNStartItems.rb */; };
+		1AC3DCD212748771006832E4 /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC912748771006832E4 /* Growl.rb */; };
+		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
+		4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3BE130D8651D900ECA448 /* MacRuby.framework */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1A1466FA0E987CA200930C28 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				1A1467050E987D4500930C28 /* gmailchecker in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1AAAF6B70F38624800F7A3FB /* CopyFiles */ = {
+		172754B4107597CF00D0347B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1AAAF6B80F38626A00F7A3FB /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		1A02D8DB0F447B1E007F4254 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
-		1A1463510E95954900930C28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		1A1463620E9595ED00930C28 /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
-		1A1463820E95F67700930C28 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationController.rb; sourceTree = "<group>"; };
-		1A14638B0E95FF8200930C28 /* app.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app.tiff; sourceTree = "<group>"; };
-		1A1463AC0E9743E300930C28 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = app.icns; sourceTree = "<group>"; };
-		1A1465540E979E7200930C28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		1A1465A20E979FE600930C28 /* GNKeychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNKeychain.rb; sourceTree = "<group>"; };
-		1A1466F60E987BF100930C28 /* gmailchecker */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = gmailchecker; sourceTree = "<group>"; };
-		1A33AF920E9896DE002F815F /* Security.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Security.bridgesupport; sourceTree = "<group>"; };
-		1A33B0ED0E98C070002F815F /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNStartItems.rb; sourceTree = "<group>"; };
-		1A37869010468635003FA6E2 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNChecker.rb; sourceTree = "<group>"; };
-		1A382A290E9F2EE000BDC026 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
-		1A42C6CB10670C52008D6EA1 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1A42C6CC10670C6B008D6EA1 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = German.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1A42C6CD10670C82008D6EA1 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1A42C6CE10670C89008D6EA1 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1A58F8B20EB88D28004D74BB /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Growl.rb; sourceTree = "<group>"; };
-		1A709B020E98EC34009672CC /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check.tiff; sourceTree = "<group>"; };
-		1A709B030E98EC34009672CC /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = error.tiff; sourceTree = "<group>"; };
-		1A709B040E98EC34009672CC /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail.tiff; sourceTree = "<group>"; };
-		1A8653870EC3C81D00384B3E /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNPreferences.rb; sourceTree = "<group>"; };
-		1A884FD61068652800EE6A8B /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Catalan; path = Catalan.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1A884FE61068655000EE6A8B /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Catalan; path = Catalan.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1A8853E01067C053006EBA4F /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Norwegian; path = Norwegian.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1A8B46251067B01900475725 /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Norwegian; path = Norwegian.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AA23341103790BE00D5A79B /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PreferencesController.rb; sourceTree = "<group>"; };
-		1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PrefsAccountsViewController.rb; sourceTree = "<group>"; };
-		1AA233671037BC2B00D5A79B /* PrefsSettingsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PrefsSettingsViewController.rb; sourceTree = "<group>"; };
-		1AA2336C1037BFB900D5A79B /* PreferencesAccounts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesAccounts.xib; sourceTree = "<group>"; };
-		1AA2336E1037BFE800D5A79B /* PreferencesSettings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesSettings.xib; sourceTree = "<group>"; };
-		1AA235371039966800D5A79B /* Constants.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Constants.rb; sourceTree = "<group>"; };
-		1AA239EB103BD70800D5A79B /* AccountDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetail.xib; sourceTree = "<group>"; };
-		1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AccountDetailController.rb; sourceTree = "<group>"; };
-		1AA23B46103C0A4200D5A79B /* GNSound.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNSound.rb; sourceTree = "<group>"; };
-		1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes_template.html.erb; sourceTree = "<group>"; };
-		1AAAF6980F3861F600F7A3FB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GNAccount.rb; sourceTree = "<group>"; };
-		1AE8E8E310286A980053B0A0 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = zh_CN; path = zh_CN.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1AE8E8F210286ECE0053B0A0 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AE8E8F410286F2B0053B0A0 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AE8E9B81029B26A0053B0A0 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AE8E9B91029B2A20053B0A0 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Spanish.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1AF197630F356152009CBBF1 /* app_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = app_a.tiff; sourceTree = "<group>"; };
-		1AF197640F356152009CBBF1 /* mail_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = mail_a.tiff; sourceTree = "<group>"; };
-		1AF197720F356353009CBBF1 /* check_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = check_a.tiff; sourceTree = "<group>"; };
-		1AF46DC9102BBFDD00E4C859 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AF46DCA102BC07800E4C859 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1AFD5C42102DABDE00E0EECA /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AFD5C43102DAC3000E0EECA /* fr_CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr_CA; path = fr_CA.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AFD5C44102DAC6E00E0EECA /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		1AFD5C47102DB1B900E0EECA /* fr_CA */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = fr_CA; path = fr_CA.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		172754D5107598EA00D0347B /* stub_test.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = stub_test.rb; sourceTree = "<group>"; };
+		17D55CD81076A1A2008207BD /* run_suite.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = run_suite.rb; sourceTree = "<group>"; };
+		1AC3DC8212748643006832E4 /* AccountDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AccountDetail.xib; path = Resources/AccountDetail.xib; sourceTree = "<group>"; };
+		1AC3DC8312748643006832E4 /* app_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app_a.tiff; path = Resources/app_a.tiff; sourceTree = "<group>"; };
+		1AC3DC8412748643006832E4 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Resources/app.icns; sourceTree = "<group>"; };
+		1AC3DC8512748643006832E4 /* app.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = app.tiff; path = Resources/app.tiff; sourceTree = "<group>"; };
+		1AC3DC8612748643006832E4 /* check_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = check_a.tiff; path = Resources/check_a.tiff; sourceTree = "<group>"; };
+		1AC3DC8712748643006832E4 /* check.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = check.tiff; path = Resources/check.tiff; sourceTree = "<group>"; };
+		1AC3DC8812748643006832E4 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Credits.html; path = Resources/Credits.html; sourceTree = "<group>"; };
+		1AC3DC8912748643006832E4 /* error.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = error.tiff; path = Resources/error.tiff; sourceTree = "<group>"; };
+		1AC3DC8A12748643006832E4 /* mail_a.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = mail_a.tiff; path = Resources/mail_a.tiff; sourceTree = "<group>"; };
+		1AC3DC8B12748643006832E4 /* mail.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = mail.tiff; path = Resources/mail.tiff; sourceTree = "<group>"; };
+		1AC3DC8C12748643006832E4 /* PreferencesAccounts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesAccounts.xib; path = Resources/PreferencesAccounts.xib; sourceTree = "<group>"; };
+		1AC3DC8D12748643006832E4 /* PreferencesSettings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreferencesSettings.xib; path = Resources/PreferencesSettings.xib; sourceTree = "<group>"; };
+		1AC3DC9B12748667006832E4 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Resources/zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DC9D12748667006832E4 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = zh_CN; path = Resources/zh_CN.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCA11274867D006832E4 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1AC3DCA21274867D006832E4 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCA31274867D006832E4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Resources/English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCA512748698006832E4 /* fr_CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr_CA; path = Resources/fr_CA.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCA612748698006832E4 /* fr_CA */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = fr_CA; path = Resources/fr_CA.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCA7127486A8006832E4 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = Resources/French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCA8127486A8006832E4 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = Resources/French.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCA9127486B8006832E4 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = Resources/German.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCAA127486B8006832E4 /* German */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = German; path = Resources/German.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCAB127486DE006832E4 /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Catalan; path = Resources/Catalan.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCAC127486DE006832E4 /* Catalan */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Catalan; path = Resources/Catalan.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCAD127486F0006832E4 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Italian; path = Resources/Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCAE127486F0006832E4 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Resources/Italian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCAF12748702006832E4 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Resources/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCB012748702006832E4 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Resources/Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCB112748711006832E4 /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Norwegian; path = Resources/Norwegian.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCB212748711006832E4 /* Norwegian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Norwegian; path = Resources/Norwegian.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCB312748722006832E4 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC3DCB412748722006832E4 /* Spanish */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Spanish; path = Resources/Spanish.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		1AC3DCB612748752006832E4 /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = AccountDetailController.rb; path = Classes/AccountDetailController.rb; sourceTree = "<group>"; };
+		1AC3DCB712748752006832E4 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ApplicationController.rb; path = Classes/ApplicationController.rb; sourceTree = "<group>"; };
+		1AC3DCB812748752006832E4 /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PreferencesController.rb; path = Classes/PreferencesController.rb; sourceTree = "<group>"; };
+		1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsAccountsViewController.rb; path = Classes/PrefsAccountsViewController.rb; sourceTree = "<group>"; };
+		1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsSettingsViewController.rb; path = Classes/PrefsSettingsViewController.rb; sourceTree = "<group>"; };
+		1AC3DCC112748771006832E4 /* Constants.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Constants.rb; path = Classes/Constants.rb; sourceTree = "<group>"; };
+		1AC3DCC212748771006832E4 /* gmailchecker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = gmailchecker; path = Classes/gmailchecker; sourceTree = "<group>"; };
+		1AC3DCC312748771006832E4 /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNAccount.rb; path = Classes/GNAccount.rb; sourceTree = "<group>"; };
+		1AC3DCC412748771006832E4 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNChecker.rb; path = Classes/GNChecker.rb; sourceTree = "<group>"; };
+		1AC3DCC512748771006832E4 /* GNKeychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNKeychain.rb; path = Classes/GNKeychain.rb; sourceTree = "<group>"; };
+		1AC3DCC612748771006832E4 /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNPreferences.rb; path = Classes/GNPreferences.rb; sourceTree = "<group>"; };
+		1AC3DCC712748771006832E4 /* GNSound.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNSound.rb; path = Classes/GNSound.rb; sourceTree = "<group>"; };
+		1AC3DCC812748771006832E4 /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNStartItems.rb; path = Classes/GNStartItems.rb; sourceTree = "<group>"; };
+		1AC3DCC912748771006832E4 /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Growl.rb; path = Classes/Growl.rb; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		4DDCA7110ACC9A6100E082CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DDCA7120ACC9A6100E082CE /* Gmail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gmail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
-		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+		4DE339F60D74FCDD00ADB6EE /* rb_main.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+		4DE3BE130D8651D900ECA448 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Gmail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gmail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4DDCA70B0ACC9A6100E082CE /* Frameworks */ = {
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */,
-				4DDCA70D0ACC9A6100E082CE /* RubyCocoa.framework in Frameworks */,
-				1A1465550E979E7200930C28 /* Security.framework in Frameworks */,
-				1AAAF6990F3861F600F7A3FB /* Sparkle.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Controllers */ = {
+		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1A1463820E95F67700930C28 /* ApplicationController.rb */,
-				1AA23341103790BE00D5A79B /* PreferencesController.rb */,
-				1AA233651037BB9300D5A79B /* PrefsAccountsViewController.rb */,
-				1AA233671037BC2B00D5A79B /* PrefsSettingsViewController.rb */,
-				1AA23A38103BDC6000D5A79B /* AccountDetailController.rb */,
+				1AC3DCB512748735006832E4 /* Controllers */,
+				1AC3DCC012748757006832E4 /* Models */,
 			);
-			name = Controllers;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1AAAF6980F3861F600F7A3FB /* Sparkle.framework */,
+				4DE3BE130D8651D900ECA448 /* MacRuby.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -180,63 +185,67 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		172754AE1075979200D0347B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				172754D5107598EA00D0347B /* stub_test.rb */,
+				17D55CD81076A1A2008207BD /* run_suite.rb */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DDCA7120ACC9A6100E082CE /* Gmail Notifr.app */,
+				8D1107320486CEB800E47090 /* Gmail Notifr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A14664D0E98420A00930C28 /* Models */ = {
+		1AC3DCB512748735006832E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A1466F60E987BF100930C28 /* gmailchecker */,
-				1A1465A20E979FE600930C28 /* GNKeychain.rb */,
-				1A33B0ED0E98C070002F815F /* GNStartItems.rb */,
-				1A58F8B20EB88D28004D74BB /* Growl.rb */,
-				1A8653870EC3C81D00384B3E /* GNPreferences.rb */,
-				1ABAB9A00F0F9EAA00A758AF /* GNAccount.rb */,
-				1AA235371039966800D5A79B /* Constants.rb */,
-				1AA23B46103C0A4200D5A79B /* GNSound.rb */,
-				1A37869010468635003FA6E2 /* GNChecker.rb */,
+				1AC3DCB612748752006832E4 /* AccountDetailController.rb */,
+				1AC3DCB712748752006832E4 /* ApplicationController.rb */,
+				1AC3DCB812748752006832E4 /* PreferencesController.rb */,
+				1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */,
+				1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */,
 			);
-			name = Models;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
-		1A33AF860E9892DA002F815F /* Icons */ = {
+		1AC3DCC012748757006832E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1AF197720F356353009CBBF1 /* check_a.tiff */,
-				1AF197630F356152009CBBF1 /* app_a.tiff */,
-				1AF197640F356152009CBBF1 /* mail_a.tiff */,
-				1A709B020E98EC34009672CC /* check.tiff */,
-				1A709B030E98EC34009672CC /* error.tiff */,
-				1A709B040E98EC34009672CC /* mail.tiff */,
-				1A14638B0E95FF8200930C28 /* app.tiff */,
-				1A1463AC0E9743E300930C28 /* app.icns */,
+				1AC3DCC112748771006832E4 /* Constants.rb */,
+				1AC3DCC212748771006832E4 /* gmailchecker */,
+				1AC3DCC312748771006832E4 /* GNAccount.rb */,
+				1AC3DCC412748771006832E4 /* GNChecker.rb */,
+				1AC3DCC512748771006832E4 /* GNKeychain.rb */,
+				1AC3DCC612748771006832E4 /* GNPreferences.rb */,
+				1AC3DCC712748771006832E4 /* GNSound.rb */,
+				1AC3DCC812748771006832E4 /* GNStartItems.rb */,
+				1AC3DCC912748771006832E4 /* Growl.rb */,
 			);
-			name = Icons;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* Gmail Notifr */ = {
 			isa = PBXGroup;
 			children = (
-				1A33AF860E9892DA002F815F /* Icons */,
-				1A14664D0E98420A00930C28 /* Models */,
-				080E96DDFE201D6D7F000001 /* Controllers */,
+				172754AE1075979200D0347B /* Tests */,
+				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				4DDCA7110ACC9A6100E082CE /* Info.plist */,
-				1AE8E8F110286ECE0053B0A0 /* Localizable.strings */,
 			);
 			name = "Gmail Notifr";
 			sourceTree = "<group>";
@@ -244,14 +253,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1A02D8DB0F447B1E007F4254 /* release_notes.txt */,
-				1AAAF6940F38613A00F7A3FB /* release_notes_template.html.erb */,
-				1A33AF920E9896DE002F815F /* Security.bridgesupport */,
-				1A1463620E9595ED00930C28 /* MIT-LICENSE */,
-				1A1463510E95954900930C28 /* README.md */,
+				4DE339F60D74FCDD00ADB6EE /* rb_main.rb */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
-				1A382A290E9F2EE000BDC026 /* Credits.html */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -259,12 +262,22 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1AA239EB103BD70800D5A79B /* AccountDetail.xib */,
-				1AA2336E1037BFE800D5A79B /* PreferencesSettings.xib */,
-				1AA2336C1037BFB900D5A79B /* PreferencesAccounts.xib */,
-				1AAAF6BC0F3863F800F7A3FB /* dsa_pub.pem */,
-				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1AC3DCA01274867D006832E4 /* InfoPlist.strings */,
+				1AC3DC9A12748667006832E4 /* Localizable.strings */,
+				1AC3DC9C12748667006832E4 /* MainMenu.nib */,
+				1AC3DC8212748643006832E4 /* AccountDetail.xib */,
+				1AC3DC8C12748643006832E4 /* PreferencesAccounts.xib */,
+				1AC3DC8D12748643006832E4 /* PreferencesSettings.xib */,
+				1AC3DC8312748643006832E4 /* app_a.tiff */,
+				1AC3DC8412748643006832E4 /* app.icns */,
+				1AC3DC8512748643006832E4 /* app.tiff */,
+				1AC3DC8612748643006832E4 /* check_a.tiff */,
+				1AC3DC8712748643006832E4 /* check.tiff */,
+				1AC3DC8812748643006832E4 /* Credits.html */,
+				1AC3DC8912748643006832E4 /* error.tiff */,
+				1AC3DC8A12748643006832E4 /* mail_a.tiff */,
+				1AC3DC8B12748643006832E4 /* mail.tiff */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -272,7 +285,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1A1465540E979E7200930C28 /* Security.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -281,27 +293,15 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		4DDCA7040ACC9A6100E082CE /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		4DDCA7030ACC9A6100E082CE /* Gmail Notifr */ = {
+		8D1107260486CEB800E47090 /* Gmail Notifr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DDCA70E0ACC9A6100E082CE /* Build configuration list for PBXNativeTarget "Gmail Notifr" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Gmail Notifr" */;
 			buildPhases = (
-				4DDCA7040ACC9A6100E082CE /* Headers */,
-				4DDCA7050ACC9A6100E082CE /* Resources */,
-				4DDCA7090ACC9A6100E082CE /* Sources */,
-				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
-				1A1466FA0E987CA200930C28 /* CopyFiles */,
-				1AAAF6B70F38624800F7A3FB /* CopyFiles */,
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				172754B4107597CF00D0347B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -310,7 +310,7 @@
 			name = "Gmail Notifr";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "Gmail Notifr";
-			productReference = 4DDCA7120ACC9A6100E082CE /* Gmail Notifr.app */;
+			productReference = 8D1107320486CEB800E47090 /* Gmail Notifr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -318,218 +318,342 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 4D7A7B570ABF745500C2D4C0 /* Build configuration list for PBXProject "Gmail Notifr" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Gmail Notifr" */;
 			compatibilityVersion = "Xcode 3.0";
-			hasScannedForEncodings = 0;
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
 				Japanese,
 				French,
 				German,
 				zh_CN,
-				Spanish,
 				fr_CA,
+				Catalan,
 				Italian,
 				Norwegian,
-				Catalan,
+				Spanish,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gmail Notifr */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DDCA7030ACC9A6100E082CE /* Gmail Notifr */,
+				8D1107260486CEB800E47090 /* Gmail Notifr */,
+				172754BD107597F200D0347B /* Unit Tests */,
+				4D1A51A110A4FF5D0046A98A /* Compile */,
+				4D1A51A510A4FF640046A98A /* Embed */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4DDCA7050ACC9A6100E082CE /* Resources */ = {
+		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDCA7060ACC9A6100E082CE /* MainMenu.nib in Resources */,
-				4DDCA7070ACC9A6100E082CE /* InfoPlist.strings in Resources */,
-				4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */,
-				1A1463630E9595ED00930C28 /* MIT-LICENSE in Resources */,
-				1A1463830E95F67700930C28 /* ApplicationController.rb in Resources */,
-				1A14638C0E95FF8200930C28 /* app.tiff in Resources */,
-				1A1463AD0E9743E300930C28 /* app.icns in Resources */,
-				1A1465A30E979FE600930C28 /* GNKeychain.rb in Resources */,
-				1A1466F70E987BF100930C28 /* gmailchecker in Resources */,
-				1A33AF930E9896DE002F815F /* Security.bridgesupport in Resources */,
-				1A33B0EE0E98C070002F815F /* GNStartItems.rb in Resources */,
-				1A709B050E98EC34009672CC /* check.tiff in Resources */,
-				1A709B060E98EC34009672CC /* error.tiff in Resources */,
-				1A709B070E98EC34009672CC /* mail.tiff in Resources */,
-				1A382A2A0E9F2EE000BDC026 /* Credits.html in Resources */,
-				1A58F8B30EB88D28004D74BB /* Growl.rb in Resources */,
-				1A8653880EC3C81D00384B3E /* GNPreferences.rb in Resources */,
-				1ABAB9A10F0F9EAA00A758AF /* GNAccount.rb in Resources */,
-				1AF197650F356152009CBBF1 /* app_a.tiff in Resources */,
-				1AF197660F356152009CBBF1 /* mail_a.tiff in Resources */,
-				1AF197730F356353009CBBF1 /* check_a.tiff in Resources */,
-				1AAAF6960F38613A00F7A3FB /* release_notes_template.html.erb in Resources */,
-				1AAAF6BD0F3863F800F7A3FB /* dsa_pub.pem in Resources */,
-				1A02D8DC0F447B1E007F4254 /* release_notes.txt in Resources */,
-				1AE8E8F310286ECE0053B0A0 /* Localizable.strings in Resources */,
-				1AA23342103790BE00D5A79B /* PreferencesController.rb in Resources */,
-				1AA233661037BB9300D5A79B /* PrefsAccountsViewController.rb in Resources */,
-				1AA233681037BC2B00D5A79B /* PrefsSettingsViewController.rb in Resources */,
-				1AA2336D1037BFB900D5A79B /* PreferencesAccounts.xib in Resources */,
-				1AA2336F1037BFE800D5A79B /* PreferencesSettings.xib in Resources */,
-				1AA235381039966800D5A79B /* Constants.rb in Resources */,
-				1AA239EC103BD70800D5A79B /* AccountDetail.xib in Resources */,
-				1AA23A39103BDC6000D5A79B /* AccountDetailController.rb in Resources */,
-				1AA23B47103C0A4200D5A79B /* GNSound.rb in Resources */,
-				1A37869110468635003FA6E2 /* GNChecker.rb in Resources */,
+				4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */,
+				1AC3DC8E12748643006832E4 /* AccountDetail.xib in Resources */,
+				1AC3DC8F12748643006832E4 /* app_a.tiff in Resources */,
+				1AC3DC9012748643006832E4 /* app.icns in Resources */,
+				1AC3DC9112748643006832E4 /* app.tiff in Resources */,
+				1AC3DC9212748643006832E4 /* check_a.tiff in Resources */,
+				1AC3DC9312748643006832E4 /* check.tiff in Resources */,
+				1AC3DC9412748643006832E4 /* Credits.html in Resources */,
+				1AC3DC9512748643006832E4 /* error.tiff in Resources */,
+				1AC3DC9612748643006832E4 /* mail_a.tiff in Resources */,
+				1AC3DC9712748643006832E4 /* mail.tiff in Resources */,
+				1AC3DC9812748643006832E4 /* PreferencesAccounts.xib in Resources */,
+				1AC3DC9912748643006832E4 /* PreferencesSettings.xib in Resources */,
+				1AC3DC9E12748667006832E4 /* Localizable.strings in Resources */,
+				1AC3DC9F12748667006832E4 /* MainMenu.nib in Resources */,
+				1AC3DCA41274867D006832E4 /* InfoPlist.strings in Resources */,
+				1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */,
+				1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */,
+				1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */,
+				1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */,
+				1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */,
+				1AC3DCCA12748771006832E4 /* Constants.rb in Resources */,
+				1AC3DCCB12748771006832E4 /* gmailchecker in Resources */,
+				1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */,
+				1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */,
+				1AC3DCCE12748771006832E4 /* GNKeychain.rb in Resources */,
+				1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */,
+				1AC3DCD012748771006832E4 /* GNSound.rb in Resources */,
+				1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */,
+				1AC3DCD212748771006832E4 /* Growl.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		172754BC107597F200D0347B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/macruby Tests/run_suite.rb";
+		};
+		4D1A51A010A4FF5D0046A98A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The macruby_deploy command-line tool with the --compile argument will compile every Ruby source file of your .app into machine code. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --compile \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
+		};
+		4D1A51A410A4FF640046A98A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The macruby_deploy command-line tool with the --embed argument will make sure the MacRuby framework will be embedded in your .app. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --embed \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		4DDCA7090ACC9A6100E082CE /* Sources */ = {
+		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDCA70A0ACC9A6100E082CE /* main.m in Sources */,
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+		1AC3DC9A12748667006832E4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1AE8E8F110286ECE0053B0A0 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1AE8E8F210286ECE0053B0A0 /* English */,
-				1AE8E8F410286F2B0053B0A0 /* zh_CN */,
-				1AE8E9B81029B26A0053B0A0 /* Spanish */,
-				1AF46DC9102BBFDD00E4C859 /* Japanese */,
-				1AFD5C42102DABDE00E0EECA /* French */,
-				1AFD5C43102DAC3000E0EECA /* fr_CA */,
-				1A42C6CD10670C82008D6EA1 /* Italian */,
-				1A42C6CE10670C89008D6EA1 /* German */,
-				1A8B46251067B01900475725 /* Norwegian */,
-				1A884FD61068652800EE6A8B /* Catalan */,
+				1AC3DC9B12748667006832E4 /* zh_CN */,
+				1AC3DCA21274867D006832E4 /* English */,
+				1AC3DCA512748698006832E4 /* fr_CA */,
+				1AC3DCA7127486A8006832E4 /* French */,
+				1AC3DCA9127486B8006832E4 /* German */,
+				1AC3DCAB127486DE006832E4 /* Catalan */,
+				1AC3DCAD127486F0006832E4 /* Italian */,
+				1AC3DCAF12748702006832E4 /* Japanese */,
+				1AC3DCB112748711006832E4 /* Norwegian */,
+				1AC3DCB312748722006832E4 /* Spanish */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+		1AC3DC9C12748667006832E4 /* MainMenu.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				29B97319FDCFA39411CA2CEA /* English */,
-				1AE8E8E310286A980053B0A0 /* zh_CN */,
-				1AE8E9B91029B2A20053B0A0 /* Spanish */,
-				1AF46DCA102BC07800E4C859 /* Japanese */,
-				1AFD5C44102DAC6E00E0EECA /* French */,
-				1AFD5C47102DB1B900E0EECA /* fr_CA */,
-				1A42C6CB10670C52008D6EA1 /* Italian */,
-				1A42C6CC10670C6B008D6EA1 /* German */,
-				1A8853E01067C053006EBA4F /* Norwegian */,
-				1A884FE61068655000EE6A8B /* Catalan */,
+				1AC3DC9D12748667006832E4 /* zh_CN */,
+				1AC3DCA31274867D006832E4 /* English */,
+				1AC3DCA612748698006832E4 /* fr_CA */,
+				1AC3DCA8127486A8006832E4 /* French */,
+				1AC3DCAA127486B8006832E4 /* German */,
+				1AC3DCAC127486DE006832E4 /* Catalan */,
+				1AC3DCAE127486F0006832E4 /* Italian */,
+				1AC3DCB012748702006832E4 /* Japanese */,
+				1AC3DCB212748711006832E4 /* Norwegian */,
+				1AC3DCB412748722006832E4 /* Spanish */,
 			);
 			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		1AC3DCA01274867D006832E4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1AC3DCA11274867D006832E4 /* English */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4D7A7B580ABF745500C2D4C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-			};
-			name = Debug;
-		};
-		4D7A7B590ABF745500C2D4C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-			};
-			name = Release;
-		};
-		4DDCA70F0ACC9A6100E082CE /* Debug */ = {
+		172754BE107597F200D0347B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 38;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Unit Tests";
+			};
+			name = Debug;
+		};
+		172754BF107597F200D0347B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Unit Tests";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		4D1A51A210A4FF5D0046A98A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Compile;
+			};
+			name = Debug;
+		};
+		4D1A51A310A4FF5D0046A98A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Compile;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		4D1A51A610A4FF640046A98A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Embed;
+			};
+			name = Debug;
+		};
+		4D1A51A710A4FF640046A98A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Embed;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = "Gmail Notifr";
-				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
-		4DDCA7100ACC9A6100E082CE /* Release */ = {
+		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/build/Debug\"",
 				);
 				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = "Gmail Notifr";
-				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D7A7B570ABF745500C2D4C0 /* Build configuration list for PBXProject "Gmail Notifr" */ = {
+		172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4D7A7B580ABF745500C2D4C0 /* Debug */,
-				4D7A7B590ABF745500C2D4C0 /* Release */,
+				172754BE107597F200D0347B /* Debug */,
+				172754BF107597F200D0347B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DDCA70E0ACC9A6100E082CE /* Build configuration list for PBXNativeTarget "Gmail Notifr" */ = {
+		4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DDCA70F0ACC9A6100E082CE /* Debug */,
-				4DDCA7100ACC9A6100E082CE /* Release */,
+				4D1A51A210A4FF5D0046A98A /* Debug */,
+				4D1A51A310A4FF5D0046A98A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D1A51A610A4FF640046A98A /* Debug */,
+				4D1A51A710A4FF640046A98A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Gmail Notifr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Gmail Notifr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -13,7 +13,7 @@ class GNKeychain
   
     
   def self.sharedInstance
-    @instance ||= self.alloc.init
+    @instance ||= self.new
   end
   
   def set_account(username, password)

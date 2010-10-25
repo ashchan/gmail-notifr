@@ -221,12 +221,12 @@ class ApplicationController
   def registerObservers
     center = NSNotificationCenter.defaultCenter
     [
-      ["updateMenuBarCount", GNShowUnreadCountChangedNotification],
-      ["accountAdded", GNAccountAddedNotification],
-      ["accountChanged", GNAccountChangedNotification],
-      ["accountRemoved", GNAccountRemovedNotification],
-      ["updateAccountMenuItem", GNAccountMenuUpdateNotification],
-      ["accountChecking", GNCheckingAccountNotification]
+      ["updateMenuBarCount:", GNShowUnreadCountChangedNotification],
+      ["accountAdded:", GNAccountAddedNotification],
+      ["accountChanged:", GNAccountChangedNotification],
+      ["accountRemoved:", GNAccountRemovedNotification],
+      ["updateAccountMenuItem:", GNAccountMenuUpdateNotification],
+      ["accountChecking:", GNCheckingAccountNotification]
     ].each do |item|
       center.addObserver(self, selector:item[0], name:item[1], object:nil)
     end
@@ -280,19 +280,19 @@ class ApplicationController
     accountMenu.setAutoenablesItems(false)
     
     #open inbox menu item
-    openInboxItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Open Inbox"), "openInbox", "")
+    openInboxItem = accountMenu.addItemWithTitle(NSLocalizedString("Open Inbox"), action:"openInbox:", keyEquivalent:"")
     openInboxItem.target = self
     openInboxItem.enabled = true
     
     #check menu item
-    checkItem = accountMenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Check"), "checkAccount", "")
+    checkItem = accountMenu.addItemWithTitle(NSLocalizedString("Check"), action:"checkAccount:", keyEquivalent:"")
     checkItem.target = self
     checkItem.enabled = account.enabled?
     
     #enable/disable menu item
-    enableAccountItem = accountMenu.addItemWithTitle_action_keyEquivalent(
+    enableAccountItem = accountMenu.addItemWithTitle(
       account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account"),
-      "toggleAccount", ""
+      action:"toggleAccount", keyEquivalent:""
     )
     enableAccountItem.target = self
     enableAccountItem.enabled = true
@@ -306,7 +306,7 @@ class ApplicationController
     accountItem.target = self
     accountItem.action = 'openInbox'
 
-    @status_item.menu.insertItem_atIndex(accountItem, ACCOUNT_MENUITEM_POS + index)
+    @status_item.menu.insertItem(accountItem, atIndex:ACCOUNT_MENUITEM_POS + index)
   end
   
   def menuItemForAccount(account)

@@ -22,7 +22,6 @@ class GNPreferences
 
     @accounts = NSMutableArray.alloc.init
     
-    
     if archivedAccounts = defaults.objectForKey(Accounts)
       archivedAccounts.each { |a| @accounts.addObject(NSKeyedUnarchiver.unarchiveObjectWithData(a)) }
     end

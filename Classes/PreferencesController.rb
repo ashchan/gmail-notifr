@@ -18,8 +18,8 @@ class PreferencesController < NSWindowController
     unless @sharedInstance
       @sharedInstance = self.alloc.init
       
-      accounts = PrefsAccountsViewController.alloc.initWithNibName_bundle("PreferencesAccounts", nil)
-      settings = PrefsSettingsViewController.alloc.initWithNibName_bundle("PreferencesSettings", nil)
+      accounts = PrefsAccountsViewController.alloc.initWithNibName("PreferencesAccounts", bundle:nil)
+      settings = PrefsSettingsViewController.alloc.initWithNibName("PreferencesSettings", bundle:nil)
       @sharedInstance.modules = [settings, accounts]
     end
     
@@ -43,7 +43,7 @@ class PreferencesController < NSWindowController
     self
   end
   
-  def toolbar_itemForItemIdentifier_willBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
+  def toolbar(toolbar, itemForItemIdentifier:itemIdentifier, willBeInsertedIntoToolbar:flag)
     mod = moduleForIdentifier(itemIdentifier)
     item = NSToolbarItem.alloc.initWithItemIdentifier(itemIdentifier)
     
@@ -51,7 +51,7 @@ class PreferencesController < NSWindowController
       item.label = mod.title
       item.image = mod.image
       item.target = self;
-      item.action = "selectModule"
+      item.action = "selectModule:"
     end
     
     item
@@ -71,7 +71,7 @@ class PreferencesController < NSWindowController
   
   def showWindow(sender)
     self.window.center
-    super_showWindow(sender)
+    super
   end
 
   def selectModule(sender)
@@ -85,7 +85,7 @@ class PreferencesController < NSWindowController
     return unless toolbar && toolbar.items.count == 0
     
     @modules.each do |mod|
-      toolbar.insertItemWithItemIdentifier_atIndex(mod.identifier, toolbar.items.count)
+      toolbar.insertItemWithItemIdentifier(mod.identifier, atIndex:toolbar.items.count)
     end
     
     savedIdentifier = NSUserDefaults.standardUserDefaults.stringForKey(PreferencesSelection)
@@ -109,7 +109,7 @@ class PreferencesController < NSWindowController
     windowFrame = self.window.frameRectForContentRect(newView.frame)
     windowFrame.origin = self.window.frame.origin;
     windowFrame.origin.y -= windowFrame.size.height - self.window.frame.size.height
-    self.window.setFrame_display_animate(windowFrame, true, true)
+    self.window.setFrame(windowFrame, display:true, animate:true)
     
     self.window.toolbar.setSelectedItemIdentifier(mod.identifier)
     self.window.title = mod.title
@@ -118,7 +118,7 @@ class PreferencesController < NSWindowController
     self.window.contentView.addSubview(@currentModule.view)
     self.window.setInitialFirstResponder(@currentModule.view)
     
-    NSUserDefaults.standardUserDefaults.setObject_forKey(mod.identifier, PreferencesSelection)
+    NSUserDefaults.standardUserDefaults.setObject(mod.identifier, forKey:PreferencesSelection)
   end
 
   def moduleForIdentifier(identifier)

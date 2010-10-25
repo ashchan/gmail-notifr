@@ -26,12 +26,12 @@ class AccountDetailController < NSWindowController
   
   def self.editAccountOnWindow(account, parentWindow)
     controller = alloc.initWithAccount(account)
-    NSApp.beginSheet_modalForWindow_modalDelegate_didEndSelector_contextInfo(
+    NSApp.beginSheet(
       controller.window,
-      parentWindow,
-      controller,
-      "sheetDidEnd_returnCode_contextInfo",
-      nil
+      modalForWindow:parentWindow,
+      modalDelegate:controller,
+      didEndSelector:"sheetDidEnd_returnCode_contextInfo",
+      contextInfo:nil
     )
   end
   
@@ -88,7 +88,7 @@ class AccountDetailController < NSWindowController
     end
   end
   
-  def sheetDidEnd_returnCode_contextInfo(sheet, code, info)
+  def sheetDidEnd(sheet, returnCode:code, contextInfo:info)
     sheet.orderOut(nil)
   end
 

@@ -26,7 +26,7 @@ class PrefsAccountsViewController <  NSViewController
   end
   
   def loadView
-    super_loadView
+    super
     registerObservers
     @editButton.title = NSLocalizedString("Edit")
     @accountList.target = self
@@ -39,7 +39,7 @@ class PrefsAccountsViewController <  NSViewController
     accounts.size
   end
   
-  def tableView_objectValueForTableColumn_row(tableView, tableColumn, row)
+  def tableView tableView, objectValueForTableColumn:tableColumn, row:row
     account = accounts[row]
     if account
       case tableColumn.identifier
@@ -51,7 +51,7 @@ class PrefsAccountsViewController <  NSViewController
     end
   end
   
-  def tableView_setObjectValue_forTableColumn_row(tableView, object, tableColumn, row)  
+  def tableView tableView, setObjectValue:object, forTableColumn:tableColumn, row:row
     if (account = accounts[row]) && tableColumn.identifier == "EnableStatus"
       account.enabled = object
       account.save
@@ -73,7 +73,7 @@ class PrefsAccountsViewController <  NSViewController
   def endAddingAccount(sender)        
     forceRefresh
     index = accounts.size - 1
-    @accountList.selectRowIndexes_byExtendingSelection(NSIndexSet.indexSetWithIndex(index), false)
+    @accountList.selectRowIndexes(NSIndexSet.indexSetWithIndex(index), byExtendingSelection:false)
     @accountList.scrollRowToVisible(index)
   end
   

@@ -9,11 +9,11 @@
 class GNStartItems
 
   def isSet
-    cf = OSX::CFPreferencesCopyValue(
+    cf = CFPreferencesCopyValue(
       "AutoLaunchedApplicationDictionary",
       "loginwindow",
-      OSX::KCFPreferencesCurrentUser,
-      OSX::KCFPreferencesAnyHost
+      KCFPreferencesCurrentUser,
+      KCFPreferencesAnyHost
     )
     
     return false unless cf
@@ -23,11 +23,11 @@ class GNStartItems
   
   def set(autoLaunch)
     if autoLaunch != isSet
-      cf = OSX::CFPreferencesCopyValue(
+      cf = CFPreferencesCopyValue(
         "AutoLaunchedApplicationDictionary",
         "loginwindow",
-        OSX::KCFPreferencesCurrentUser,
-        OSX::KCFPreferencesAnyHost
+        KCFPreferencesCurrentUser,
+        KCFPreferencesAnyHost
       )
       
       if cf
@@ -39,7 +39,7 @@ class GNStartItems
       if autoLaunch
         #add
         #cf << { "Path" => path }
-        cf.addObject(NSDictionary.dictionaryWithObject_forKey(path, "Path"))
+        cf.addObject(NSDictionary.dictionaryWithObject(path, forKey:"Path"))
       else
         #remove
         to_remove = nil
@@ -49,18 +49,18 @@ class GNStartItems
         cf.removeObject(to_remove) if to_remove
       end
       
-      OSX::CFPreferencesSetValue(
+      CFPreferencesSetValue(
         "AutoLaunchedApplicationDictionary",
         cf,
         "loginwindow",
-        OSX::KCFPreferencesCurrentUser,
-        OSX::KCFPreferencesAnyHost
+        KCFPreferencesCurrentUser,
+        KCFPreferencesAnyHost
       )
       
-      OSX::CFPreferencesSynchronize(
+      CFPreferencesSynchronize(
         "loginwindow",
-        OSX::KCFPreferencesCurrentUser,
-        OSX::KCFPreferencesAnyHost
+        KCFPreferencesCurrentUser,
+        KCFPreferencesAnyHost
       )
     end
   end

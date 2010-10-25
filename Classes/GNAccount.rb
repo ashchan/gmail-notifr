@@ -21,7 +21,7 @@ class GNAccount
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
-    init
+
     self.username = username    
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
@@ -36,7 +36,7 @@ class GNAccount
   def initWithCoder(coder)
     Properties.each do |prop|
       val = coder.decodeObjectForKey(prop)
-      self.send("#{prop.to_s}=", val)
+      #self.send("#{prop.to_s}=", val)
     end
     
     fetch_pass

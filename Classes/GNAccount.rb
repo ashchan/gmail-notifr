@@ -17,7 +17,7 @@ class GNAccount
   DEFAULT_INTERVAL  = 30
 
   def fetch_pass
-    self.password = GNKeychain.sharedInstance.get_password(@username)
+    #self.password = GNKeychain.sharedInstance.get_password(@username)
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
@@ -36,7 +36,7 @@ class GNAccount
   def initWithCoder(coder)
     Properties.each do |prop|
       val = coder.decodeObjectForKey(prop)
-      #self.send("#{prop.to_s}=", val)
+      self.send("#{prop.to_s}=", val)
     end
     
     fetch_pass

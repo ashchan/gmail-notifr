@@ -72,7 +72,7 @@ class GNPreferences
   def addAccount(account)
     @accounts.addObject(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountAddedNotification, self, :guid => account.guid)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountAddedNotification, object:self, userInfo:{:guid => account.guid})
   end
   
   def removeAccount(account)
@@ -82,12 +82,12 @@ class GNPreferences
     GNKeychain.sharedInstance.delete_account(account.username)
     @accounts.removeObject(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountRemovedNotification, self, :guid => guid)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountRemovedNotification, object:self, userInfo:{:guid => guid})
   end
   
   def saveAccount(account)
     writeBack
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountChangedNotification, self, :guid => account.guid)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountChangedNotification, object:self, userInfo:{:guid => account.guid})
   end
   
   def writeBack

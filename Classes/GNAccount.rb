@@ -17,7 +17,7 @@ class GNAccount
   DEFAULT_INTERVAL  = 30
 
   def fetch_pass
-    #self.password = GNKeychain.sharedInstance.get_password(@username)
+    self.password = GNKeychain.sharedInstance.get_password(@username)
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)

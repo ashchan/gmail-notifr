@@ -17,8 +17,8 @@ class GNChecker
     @guid = account.guid
     @messages = []
     
-    @checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')    
-
+    #@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
+    @checker_path = NSBundle.mainBundle.pathForResource('gmailchecker', ofType:nil)
     self
   end
   
@@ -49,11 +49,11 @@ class GNChecker
   
   def reset
     cleanup
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNCheckingAccountNotification, self, :guid => @account.guid)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNCheckingAccountNotification, object:self, userInfo:{:guid => @account.guid})
 
     if @account && @account.enabled?
-      @timer = NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats(
-        @account.interval * 60, self, 'checkMail', nil, true)
+      @timer = NSTimer.scheduledTimerWithTimeInterval(
+        @account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
 
       @checker = NSTask.alloc.init
       @checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
@@ -81,7 +81,7 @@ class GNChecker
     end
   end
   
-  def checkMail       
+  def checkMail     
     reset
   end
   
@@ -150,7 +150,7 @@ class GNChecker
   end
   
   def notifyMenuUpdate
-    NSNotificationCenter.defaultCenter.postNotificationName_object_userInfo(GNAccountMenuUpdateNotification, self, :guid => @account.guid, :checkedAt => checkedAt)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountMenuUpdateNotification, object:self, userInfo:{:guid => @account.guid, :checkedAt => checkedAt})
   end
   
   def notify(title, desc)

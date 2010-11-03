@@ -97,7 +97,7 @@ module Growl
       end
       dict[:NotificationClickContext] = context unless context.empty?
       
-      notification_center.postNotificationName_object_userInfo_deliverImmediately(:GrowlNotification, nil, dict, true)
+      notification_center.postNotificationName(:GrowlNotification, object:nil, userInfo:dict, deliverImmediately:true)
     end
     
     def onReady(notification)

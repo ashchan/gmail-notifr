@@ -1,5 +1,9 @@
 # Gmail Notifr #
 
+# NOTE (2010/11/03) #
+
+The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch. Master branch will focus on MacRuby.
+
 A RubyCocoa Gmail Notifier for Mac OS X
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)

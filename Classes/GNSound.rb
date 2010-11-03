@@ -31,7 +31,7 @@ class GNSound
       
       libs.each do |folder|
         folder_name = File.join(folder, "Sounds")
-        if fileManager.fileExistsAtPath_isDirectory(folder_name, nil)
+        if fileManager.fileExistsAtPath(folder_name, isDirectory:nil)
           fileManager.directoryContentsAtPath(folder_name).each do |file|
             if knownSoundTypes.include?(file.pathExtension)           
               @@soundList << file.stringByDeletingPathExtension

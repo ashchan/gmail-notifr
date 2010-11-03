@@ -168,17 +168,17 @@ class ApplicationController
       checker = checkerForAccount(account)
       
       if checker.connectionError?
-        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Connection Error"), nil, "")
+        errorItem = menuItem.submenu.addItemWithTitle(NSLocalizedString("Connection Error"), action:nil, keyEquivalent:"")
         errorItem.enabled = false
         menuItem.setImage(@error_icon)
       elsif checker.userError?
-        errorItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent(NSLocalizedString("Username/password Wrong"), nil, "")
+        errorItem = menuItem.submenu.addItemWithTitle(NSLocalizedString("Username/password Wrong"), action:nil, keyEquivalent:"")
         errorItem.enabled = false
         menuItem.setImage(@error_icon)
       else
         # messages list
         checker.messages.each do |msg|
-          msgItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_("#{msg[:author]}: #{msg[:subject]}", "openMessage", "")
+          msgItem = menuItem.submenu.addItemWithTitle("#{msg[:author]}: #{msg[:subject]}", action:"openMessage:", keyEquivalent:"")
           msgItem.toolTip = msg[:summary]
           msgItem.enabled = true
           msgItem.setRepresentedObject(msg[:link])
@@ -190,7 +190,7 @@ class ApplicationController
       
       menuItem.submenu.addItem(NSMenuItem.separatorItem) if checker.messages.size > 0
       # recent check timestamp
-      timeItem = menuItem.submenu.addItemWithTitle_action_keyEquivalent_(NSLocalizedString("Last Checked:") + " #{notification.userInfo[:checkedAt]}", nil, "")
+      timeItem = menuItem.submenu.addItemWithTitle(NSLocalizedString("Last Checked:") + " #{notification.userInfo[:checkedAt]}", action:nil, keyEquivalent:"")
       timeItem.enabled = false
     end
   
@@ -198,11 +198,11 @@ class ApplicationController
   end
   
   # delegate not working if :click_context not provided?
-  def growlNotifierClicked_context(sender, context)
+  def growlNotifierClicked(sender, context:context)
     openInboxForAccountName(context) if context
   end
 
-  def growlNotifierTimedOut_context(sender, context)
+  def growlNotifierTimedOut(sender, context:context)
   end
   
   def handleMailTo(event, eventReply)
@@ -292,7 +292,7 @@ class ApplicationController
     #enable/disable menu item
     enableAccountItem = accountMenu.addItemWithTitle(
       account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account"),
-      action:"toggleAccount", keyEquivalent:""
+      action:"toggleAccount:", keyEquivalent:""
     )
     enableAccountItem.target = self
     enableAccountItem.enabled = true
@@ -304,7 +304,7 @@ class ApplicationController
     accountItem.title = account.username
     accountItem.submenu = accountMenu
     accountItem.target = self
-    accountItem.action = 'openInbox'
+    accountItem.action = 'openInbox:'
 
     @status_item.menu.insertItem(accountItem, atIndex:ACCOUNT_MENUITEM_POS + index)
   end

@@ -71,7 +71,7 @@ class GNChecker
   
       nc = NSNotificationCenter.defaultCenter
       fn = @pipe.fileHandleForReading
-      nc.addObserver(self, selector:'checkResult', name:NSFileHandleReadToEndOfFileCompletionNotification, object:fn)
+      nc.addObserver(self, selector:'checkResult:', name:NSFileHandleReadToEndOfFileCompletionNotification, object:fn)
       
       @checker.launch
       
@@ -85,15 +85,15 @@ class GNChecker
     reset
   end
   
-  def checkResult(notification)  
+  def checkResult(notification)
     @checkedAt = DateTime.now
     
     preferences = GNPreferences.sharedInstance
 
     results = YAML.load(
-      NSString.alloc.initWithData_encoding(
+      NSString.alloc.initWithData(
         notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
-        NSUTF8StringEncoding
+        encoding:NSUTF8StringEncoding
       )
     )
     

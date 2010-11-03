@@ -57,7 +57,7 @@ class GNAccount
   def encodeWithCoder(coder)
     Properties.each do |prop|
       val = self.send(prop)
-      coder.encodeObject_forKey(val, prop)
+      coder.encodeObject(val, forKey:prop)
     end
   end
   

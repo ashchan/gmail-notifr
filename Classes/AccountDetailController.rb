@@ -30,7 +30,7 @@ class AccountDetailController < NSWindowController
       controller.window,
       modalForWindow:parentWindow,
       modalDelegate:controller,
-      didEndSelector:"sheetDidEnd_returnCode_contextInfo",
+      didEndSelector:"sheetDidEnd:returnCode:contextInfo:",
       contextInfo:nil
     )
   end

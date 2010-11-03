@@ -30,7 +30,7 @@ class PrefsAccountsViewController <  NSViewController
     registerObservers
     @editButton.title = NSLocalizedString("Edit")
     @accountList.target = self
-    @accountList.setDoubleAction("startEditingAccount")
+    @accountList.setDoubleAction("startEditingAccount:")
     forceRefresh
   end
   

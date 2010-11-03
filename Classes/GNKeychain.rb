@@ -62,16 +62,24 @@ class GNKeychain
   
   def get_password(username)
     return "" if username.nil?
-    status, *data = SecKeychainFindGenericPassword(
+    password_length = Pointer.new('I')
+    password_data = Pointer.new('^v')
+    item_ref = Pointer.new('^{OpaqueSecKeychainItemRef}')
+    status = SecKeychainFindGenericPassword(
       nil,
       SERVICE.length,
       SERVICE,
       username.length,
-      username)
+      username,
+      password_length,
+      password_data,
+      item_ref)
     if status == 0
-      password_length = data.shift
-      password_data = data.shift
-      password = password_data.bytestr(password_length)
+      p = ""
+      password_length[0].times do |i|
+        p << password_data[0][i]
+      end
+      p
     else
       ""
     end

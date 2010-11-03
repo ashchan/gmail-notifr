@@ -64,9 +64,9 @@ class GNPreferences
   end
   
   def showUnreadCount=(val)
-    NSUserDefaults.standardUserDefaults.setObject_forKey(val, ShowUnreadCount)
+    NSUserDefaults.standardUserDefaults.setObject(val, forKey:ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
-    NSNotificationCenter.defaultCenter.postNotificationName_object(GNShowUnreadCountChangedNotification, self)
+    NSNotificationCenter.defaultCenter.postNotificationName(GNShowUnreadCountChangedNotification, object:self)
   end
   
   def addAccount(account)
@@ -93,9 +93,9 @@ class GNPreferences
   def writeBack
     defaults = NSUserDefaults.standardUserDefaults
         
-    defaults.setObject_forKey(
+    defaults.setObject(
       @accounts.map { |a| NSKeyedArchiver.archivedDataWithRootObject(a) },
-      Accounts
+      forKey:Accounts
     )
 
     # save to Info.plist

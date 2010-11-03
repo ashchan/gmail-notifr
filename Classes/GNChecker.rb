@@ -162,7 +162,7 @@ class GNChecker
     @timer.invalidate if @timer
     
     if @pipe
-      NSNotificationCenter.defaultCenter.removeObserver_name_object(self, NSFileHandleReadToEndOfFileCompletionNotification, @pipe.fileHandleForReading)
+      NSNotificationCenter.defaultCenter.removeObserver(self, name:NSFileHandleReadToEndOfFileCompletionNotification, object:@pipe.fileHandleForReading)
     end
   end
   

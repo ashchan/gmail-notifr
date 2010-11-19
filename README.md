@@ -1,19 +1,19 @@
 # Gmail Notifr #
 
+A MacRuby Gmail Notifier for Mac OS X
+
 # NOTE (2010/11/03) #
-
+Gmail Notifr was implemented in RubyCocoa then rewritten in MacRuby.
 The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch. Master branch will focus on MacRuby.
-
-A RubyCocoa Gmail Notifier for Mac OS X
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)
 
 # Yet Another Gmail Notifier #
 
-[Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in RubyCocoa and has these features:
+[Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in MacRuby and has these features:
 
-* Separate check and notification setting for each account! (new in version 0.5.0)
-* Support multiple accounts! (new in version 0.3.0)
+* Separate check and notification setting for each account.
+* Support multiple accounts.
 * Support Google hosted account.
 * Check mail at a specified interval.
 * Growl &amp; sound notifications.
@@ -24,8 +24,9 @@ A RubyCocoa Gmail Notifier for Mac OS X
 
 # Requirements #
 
-* Mac OS X 10.5+ (Leopard)
-* RubyCocoa
+* Mac OS X 10.6 (Snow Leopard) or higher
+* [MacRuby](http://macruby.com/) 0.8 (nightly build)
+* [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 1
 
 # Project Detail #
 

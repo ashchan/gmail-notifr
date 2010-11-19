@@ -20,3 +20,5 @@ PrefsToolbarItemSettings = "prefsToolbarItemSettings"
 ShowUnreadCount = "ShowUnreadCount"
 PreferencesSelection = "PreferencesSelection"
 Accounts = "Accounts"
+
+KeychainService = "GmailNotifr";

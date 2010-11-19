@@ -13,6 +13,9 @@ framework 'Cocoa'
 # Loading all the Ruby project files.
 main = File.basename(__FILE__, File.extname(__FILE__))
 dir_path = NSBundle.mainBundle.resourcePath.fileSystemRepresentation
+
+# macruby-keychain-wrapper is git submodule and has its own directory structure
+require File.join(dir_path, 'macruby-keychain-wrapper', 'keychain.rb')
 Dir.glob(File.join(dir_path, '*.{rb,rbo}')).map { |x| File.basename(x, File.extname(x)) }.uniq.each do |path|
   if path != main
     require(path)

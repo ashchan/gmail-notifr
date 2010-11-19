@@ -79,7 +79,9 @@ class GNPreferences
     guid = account.guid
     # also delete keychain item
     # FIXFIX should delete old item when renaming an account; don't track name changing now so it's not possible to do so for now
-    GNKeychain.sharedInstance.delete_account(account.username)
+    keychain_item = MRKeychain::GenericItem.item_for_service(KeychainService, username:account.username)
+    keychain_item.remove
+      
     @accounts.removeObject(account)
     writeBack
     NSNotificationCenter.defaultCenter.postNotificationName(GNAccountRemovedNotification, object:self, userInfo:{:guid => guid})
@@ -103,7 +105,12 @@ class GNPreferences
     
     # save accounts to default keychain
     @accounts.each do |account|
-      GNKeychain.sharedInstance.set_account(account.username, account.password)
+      keychain_item = MRKeychain::GenericItem.item_for_service(KeychainService, username:account.username)
+      if keychain_item
+        keychain_item.password = account.password
+      else
+        MRKeychain::GenericItem.add_item_for_service(KeychainService, username:account.username, password:account.password)
+      end
     end
     
   end

@@ -1,0 +1,3 @@
+[submodule "Libs/macruby-keychain-wrapper"]
+	path = Libs/macruby-keychain-wrapper
+	url = git@github.com:ashchan/macruby-keychain-wrapper.git

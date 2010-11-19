@@ -9,8 +9,6 @@
 require 'yaml'
 require 'uri'
 
-framework 'Security'
-load_bridge_support_file(NSBundle.mainBundle.pathForResource("Security", ofType:"bridgesupport"))
 #OSX.ruby_thread_switcher_stop
 
 class ApplicationController

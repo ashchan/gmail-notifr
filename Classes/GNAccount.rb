@@ -7,6 +7,7 @@
 #
 
 # a normal gmail account, or a google hosted email account
+
 class GNAccount
 
   attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl
@@ -17,7 +18,7 @@ class GNAccount
   DEFAULT_INTERVAL  = 30
 
   def fetch_pass
-    self.password = GNKeychain.sharedInstance.get_password(@username)
+    self.password = MRKeychain::GenericItem.item_for_service(KeychainService, username:@username).password
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)

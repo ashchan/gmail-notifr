@@ -28,6 +28,14 @@ The RubyCocoa implementation has been moved to the [rubycocoa](https://github.co
 * [MacRuby](http://macruby.com/) 0.8 (nightly build)
 * [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 1
 
+# How to Build #
+
+The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashchan/macruby-keychain-wrapper). It is added as a submodule. So don't forget to fetch it also:
+
+    git clone git@github.com:ashchan/gmail-notifr.git
+    git submodule init
+    git submodule update
+
 # Project Detail #
 
 * View [project home page](http://ashchan.com/projects/gmail-notifr)

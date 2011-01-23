@@ -5,7 +5,7 @@
 #  Created by james on 10/3/08.
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
-
+framework 'Growl'
 require 'yaml'
 require 'uri'
 
@@ -195,12 +195,16 @@ class ApplicationController
     updateMenuBarCount
   end
   
-  # delegate not working if :click_context not provided?
-  def growlNotifierClicked(sender, context:context)
-    openInboxForAccountName(context) if context
+  # Growl delegate
+  def applicationNameForGrowl
+    "Gmail Notifr"
   end
-
-  def growlNotifierTimedOut(sender, context:context)
+  
+  def growlNotificationWasClicked(clickContext)
+    openInboxForAccountName(clickContext) if clickContext
+  end
+  
+  def growlNotificationTimedOut(clickContext)
   end
   
   def handleMailTo(event, eventReply)
@@ -231,9 +235,7 @@ class ApplicationController
   end
   
   def registerGrowl
-    g = Growl::Notifier.sharedInstance
-    g.delegate = self
-    g.register('Gmail Notifr', ['new_messages'])
+    GrowlApplicationBridge.setGrowlDelegate(self)
   end
   
   def setupCheckers

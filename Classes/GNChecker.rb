@@ -5,6 +5,7 @@
 #  Created by James Chen on 8/27/09.
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
+framework 'Growl'
 
 class GNChecker
   def init
@@ -154,7 +155,13 @@ class GNChecker
   end
   
   def notify(title, desc)
-    Growl::Notifier.sharedInstance.notify('new_messages', title, desc, :click_context => title)
+    GrowlApplicationBridge.notifyWithTitle(title,
+      description: desc,
+      notificationName: "new_messages",
+      iconData: nil,
+      priority: 0,
+      isSticky: false,
+      clickContext: title)
   end
   
   def cleanup

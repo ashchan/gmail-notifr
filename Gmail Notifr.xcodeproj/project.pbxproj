@@ -43,6 +43,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1A0BBCED12EBFC2700D98CD8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
+		1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
+		1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
+		1A0BBD1912EC047300D98CD8 /* Growl Registration Ticket.growlRegDict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
 		1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952412D2097000F4D5F3 /* keychain.rb */; };
 		1A7A954812D2097000F4D5F3 /* exception.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952612D2097000F4D5F3 /* exception.rb */; };
 		1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952712D2097000F4D5F3 /* generic_item.rb */; };
@@ -75,7 +79,6 @@
 		1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.rb */; };
 		1AC3DCD012748771006832E4 /* GNSound.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC712748771006832E4 /* GNSound.rb */; };
 		1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC812748771006832E4 /* GNStartItems.rb */; };
-		1AC3DCD212748771006832E4 /* Growl.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC912748771006832E4 /* Growl.rb */; };
 		1AC3DDE01275CF44006832E4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
 		1AC3DDEB1275CF8E006832E4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
@@ -91,6 +94,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1A0BBD1912EC047300D98CD8 /* Growl Registration Ticket.growlRegDict in CopyFiles */,
+				1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */,
 				1AC3DDEB1275CF8E006832E4 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +107,8 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		172754D5107598EA00D0347B /* stub_test.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = stub_test.rb; sourceTree = "<group>"; };
 		17D55CD81076A1A2008207BD /* run_suite.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = run_suite.rb; sourceTree = "<group>"; };
+		1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
+		1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		1A7A952412D2097000F4D5F3 /* keychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = keychain.rb; sourceTree = "<group>"; };
 		1A7A952612D2097000F4D5F3 /* exception.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = exception.rb; sourceTree = "<group>"; };
 		1A7A952712D2097000F4D5F3 /* generic_item.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = generic_item.rb; sourceTree = "<group>"; };
@@ -152,7 +159,6 @@
 		1AC3DCC612748771006832E4 /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNPreferences.rb; path = Classes/GNPreferences.rb; sourceTree = "<group>"; };
 		1AC3DCC712748771006832E4 /* GNSound.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNSound.rb; path = Classes/GNSound.rb; sourceTree = "<group>"; };
 		1AC3DCC812748771006832E4 /* GNStartItems.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNStartItems.rb; path = Classes/GNStartItems.rb; sourceTree = "<group>"; };
-		1AC3DCC912748771006832E4 /* Growl.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Growl.rb; path = Classes/Growl.rb; sourceTree = "<group>"; };
 		1AC3DDDF1275CF44006832E4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Libs/Sparkle.framework; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -171,6 +177,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */,
 				1AC3DDE01275CF44006832E4 /* Sparkle.framework in Frameworks */,
+				1A0BBCED12EBFC2700D98CD8 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +199,7 @@
 				4DE3BE130D8651D900ECA448 /* MacRuby.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				1AC3DDDF1275CF44006832E4 /* Sparkle.framework */,
+				1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -274,7 +282,6 @@
 				1AC3DCC612748771006832E4 /* GNPreferences.rb */,
 				1AC3DCC712748771006832E4 /* GNSound.rb */,
 				1AC3DCC812748771006832E4 /* GNStartItems.rb */,
-				1AC3DCC912748771006832E4 /* Growl.rb */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 				1AC3DC8A12748643006832E4 /* mail_a.tiff */,
 				1AC3DC8B12748643006832E4 /* mail.tiff */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -422,12 +430,12 @@
 				1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */,
 				1AC3DCD012748771006832E4 /* GNSound.rb in Resources */,
 				1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */,
-				1AC3DCD212748771006832E4 /* Growl.rb in Resources */,
 				1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */,
 				1A7A954812D2097000F4D5F3 /* exception.rb in Resources */,
 				1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */,
 				1A7A954A12D2097000F4D5F3 /* internet_item.rb in Resources */,
 				1A7A954B12D2097000F4D5F3 /* README.md in Resources */,
+				1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

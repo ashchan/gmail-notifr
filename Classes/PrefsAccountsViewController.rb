@@ -119,14 +119,14 @@ class PrefsAccountsViewController <  NSViewController
     center = NSNotificationCenter.defaultCenter
     center.addObserver(
       self,
-      selector:"endAddingAccount",
+      selector:"endAddingAccount:",
       name:GNAccountAddedNotification,
       object:nil
     )
     
     center.addObserver(
       self,
-      selector:"endEditingAccount",
+      selector:"endEditingAccount:",
       name:GNAccountChangedNotification,
       object:nil
     )

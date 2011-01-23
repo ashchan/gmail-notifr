@@ -6,8 +6,87 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 framework 'Growl'
+require 'net/https'
+require 'rexml/document'
+
+class GNCheckOperation < NSOperation
+  def initWithUsername(username, password:password, guid:guid)
+    init
+    @username = username
+    @password = password
+    @guid = guid
+    self
+  end
+  
+  def main
+    http = Net::HTTP.new("mail.google.com", 443)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    response = nil
+    result = { :error => "ConnectionError", :count => 0, :messages => [] }
+
+    begin
+      http.start do |http|
+        req = Net::HTTP::Get.new("/mail/feed/atom")
+        req.basic_auth(@username, @password)
+        response = http.request(req)
+      end
+
+      if response
+        case response.code
+        when "401" #HTTPUnauthorized
+          result[:error] = "UserError"
+        when "200" #HTTPOK        
+          feed = REXML::Document.new response.body
+          # messages count
+          result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
+          result[:error] = "No"
+          
+          cnt = 0
+          feed.each_element('/feed/entry') do |msg|
+            cnt += 1
+            # only return first 10 messages
+            break if cnt > 10
+            
+            #contributor = msg.get_elements('contributor')[0]
+            #author = if contributor 
+            #  contributor.get_elements('name')[0].text
+            #else
+            #  msg.get_elements('author/name')[0].text
+            #end
+            
+            # gmail atom gives time string like 2009-08-29T24:56:52Z
+            date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
+
+            result[:messages] << {
+              :link => msg.get_elements('link')[0].attributes['href'],
+              :author => msg.get_elements('author/name')[0].text,
+              :subject => msg.get_elements('title')[0].text,
+              :id => msg.get_elements('id')[0].text,
+              :date => date,
+              :summary => msg.get_elements('summary')[0].text
+            }
+          end
+        end
+      end
+    rescue REXML::ParseException => e
+      #puts "error parsing feed: #{e.message}"
+    rescue => e
+      #puts "error: #{e}"
+    rescue Timeout::Error => e
+      #puts "time out on connection"
+    end
+
+    NSNotificationCenter.defaultCenter.postNotificationName(GNCheckedAccountNotification,
+      object:self,
+      userInfo:{:guid => @guid, :results => result}
+    )
+  end
+end
 
 class GNChecker
+  @@queue = NSOperationQueue.alloc.init
+  
   def init
     super
   end
@@ -17,10 +96,11 @@ class GNChecker
     @account = account
     @guid = account.guid
     @messages = []
-    
-    #@checker_path = NSBundle.mainBundle.pathForAuxiliaryExecutable('gmailchecker')
-    @checker_path = NSBundle.mainBundle.pathForResource('gmailchecker', ofType:nil)
     self
+  end
+  
+  def queue
+    @@queue
   end
   
   def forAccount?(account)
@@ -56,27 +136,9 @@ class GNChecker
       @timer = NSTimer.scheduledTimerWithTimeInterval(
         @account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
 
-      @checker = NSTask.alloc.init
-      @checker.setCurrentDirectoryPath(@checker_path.stringByDeletingLastPathComponent)
-      @checker.setLaunchPath(@checker_path)
-
-      
-      args = NSMutableArray.alloc.init
-      args.addObject(@account.username.to_s)
-      # pass password as base64 encoded to gmailchecker
-      args.addObject([@account.password.to_s].pack("m"))
-      @checker.setArguments(args)
-      
-      @pipe = NSPipe.alloc.init
-      @checker.setStandardOutput(@pipe)
-  
-      nc = NSNotificationCenter.defaultCenter
-      fn = @pipe.fileHandleForReading
-      nc.addObserver(self, selector:'checkResult:', name:NSFileHandleReadToEndOfFileCompletionNotification, object:fn)
-      
-      @checker.launch
-      
-      fn.readToEndOfFileInBackgroundAndNotify
+      NSNotificationCenter.defaultCenter.addObserver(self, selector:'checkResults:', name:GNCheckedAccountNotification, object:nil)
+      checker = GNCheckOperation.alloc.initWithUsername(@account.username, password:@account.password, guid:@account.guid)
+      queue.addOperation(checker)
     else
       notifyMenuUpdate
     end
@@ -86,27 +148,18 @@ class GNChecker
     reset
   end
   
-  def checkResult(notification)
-    @checkedAt = DateTime.now
-    
-    preferences = GNPreferences.sharedInstance
+  def checkResults(notification)
+    return unless notification.userInfo[:guid] == @account.guid
 
-    results = YAML.load(
-      NSString.alloc.initWithData(
-        notification.userInfo.valueForKey(NSFileHandleNotificationDataItem),
-        encoding:NSUTF8StringEncoding
-      )
-    )
-    
-    result = results[@account.username.to_s]
-    return unless result
+    @checkedAt = DateTime.now
+    results = notification.userInfo[:results]
     
     @messages.clear
-    @messageCount = result[:count]
-    @connectionError = result[:error] == "ConnectionError"
-    @userError = result[:error] == "UserError"
+    @messageCount = results[:count]
+    @connectionError = results[:error] == "ConnectionError"
+    @userError = results[:error] == "UserError"
 
-    result[:messages].each do |msg|
+    results[:messages].each do |msg|
       @messages << {
         :subject => msg[:subject],
         :author => msg[:author],
@@ -127,7 +180,6 @@ class GNChecker
 
       @newestDate = newestDate
     end
-    
     notifyMenuUpdate
     
     if shouldNotify && @account.growl
@@ -165,18 +217,13 @@ class GNChecker
   end
   
   def cleanup
-    @checker.interrupt and @checker = nil if @checker
     @timer.invalidate if @timer
-    
-    if @pipe
-      NSNotificationCenter.defaultCenter.removeObserver(self, name:NSFileHandleReadToEndOfFileCompletionNotification, object:@pipe.fileHandleForReading)
-    end
+    NSNotificationCenter.defaultCenter.removeObserver(self, name:GNCheckedAccountNotification, object:nil)
   end
   
   def cleanupAndQuit
     cleanup
     @timer = nil
-    @pipe = nil
   end
   
   private

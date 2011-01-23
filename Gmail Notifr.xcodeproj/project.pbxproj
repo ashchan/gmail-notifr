@@ -73,7 +73,6 @@
 		1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */; };
 		1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */; };
 		1AC3DCCA12748771006832E4 /* Constants.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC112748771006832E4 /* Constants.rb */; };
-		1AC3DCCB12748771006832E4 /* gmailchecker in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC212748771006832E4 /* gmailchecker */; };
 		1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.rb */; };
 		1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC412748771006832E4 /* GNChecker.rb */; };
 		1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.rb */; };
@@ -153,7 +152,6 @@
 		1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsAccountsViewController.rb; path = Classes/PrefsAccountsViewController.rb; sourceTree = "<group>"; };
 		1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsSettingsViewController.rb; path = Classes/PrefsSettingsViewController.rb; sourceTree = "<group>"; };
 		1AC3DCC112748771006832E4 /* Constants.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Constants.rb; path = Classes/Constants.rb; sourceTree = "<group>"; };
-		1AC3DCC212748771006832E4 /* gmailchecker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = gmailchecker; path = Classes/gmailchecker; sourceTree = "<group>"; };
 		1AC3DCC312748771006832E4 /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNAccount.rb; path = Classes/GNAccount.rb; sourceTree = "<group>"; };
 		1AC3DCC412748771006832E4 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNChecker.rb; path = Classes/GNChecker.rb; sourceTree = "<group>"; };
 		1AC3DCC612748771006832E4 /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNPreferences.rb; path = Classes/GNPreferences.rb; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				1AC3DCC112748771006832E4 /* Constants.rb */,
-				1AC3DCC212748771006832E4 /* gmailchecker */,
 				1AC3DCC312748771006832E4 /* GNAccount.rb */,
 				1AC3DCC412748771006832E4 /* GNChecker.rb */,
 				1AC3DCC612748771006832E4 /* GNPreferences.rb */,
@@ -424,7 +421,6 @@
 				1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */,
 				1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */,
 				1AC3DCCA12748771006832E4 /* Constants.rb in Resources */,
-				1AC3DCCB12748771006832E4 /* gmailchecker in Resources */,
 				1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */,
 				1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */,
 				1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */,

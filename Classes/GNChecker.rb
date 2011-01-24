@@ -6,7 +6,6 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 framework 'Growl'
-require 'net/https'
 require 'rexml/document'
 
 class GNCheckOperation < NSOperation
@@ -18,69 +17,103 @@ class GNCheckOperation < NSOperation
     self
   end
   
-  def main
-    http = Net::HTTP.new("mail.google.com", 443)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    response = nil
-    result = { :error => "ConnectionError", :count => 0, :messages => [] }
-
-    begin
-      http.start do |http|
-        req = Net::HTTP::Get.new("/mail/feed/atom")
-        req.basic_auth(@username, @password)
-        response = http.request(req)
-      end
-
-      if response
-        case response.code
-        when "401" #HTTPUnauthorized
-          result[:error] = "UserError"
-        when "200" #HTTPOK        
-          feed = REXML::Document.new response.body
-          # messages count
-          result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
-          result[:error] = "No"
-          
-          cnt = 0
-          feed.each_element('/feed/entry') do |msg|
-            cnt += 1
-            # only return first 10 messages
-            break if cnt > 10
-            
-            #contributor = msg.get_elements('contributor')[0]
-            #author = if contributor 
-            #  contributor.get_elements('name')[0].text
-            #else
-            #  msg.get_elements('author/name')[0].text
-            #end
-            
-            # gmail atom gives time string like 2009-08-29T24:56:52Z
-            date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
-
-            result[:messages] << {
-              :link => msg.get_elements('link')[0].attributes['href'],
-              :author => msg.get_elements('author/name')[0].text,
-              :subject => msg.get_elements('title')[0].text,
-              :id => msg.get_elements('id')[0].text,
-              :date => date,
-              :summary => msg.get_elements('summary')[0].text
-            }
-          end
-        end
-      end
-    rescue REXML::ParseException => e
-      #puts "error parsing feed: #{e.message}"
-    rescue => e
-      #puts "error: #{e}"
-    rescue Timeout::Error => e
-      #puts "time out on connection"
+  def start
+    if !NSThread.isMainThread
+       performSelectorOnMainThread("start", withObject:nil, waitUntilDone:false)
+       return
     end
 
+    willChangeValueForKey("isExecuting")
+    @isExecuting = true
+    didChangeValueForKey("isExecuting")
+    
+    
+    @buffer = NSMutableData.new
+    request = NSURLRequest.requestWithURL(NSURL.URLWithString:"https://mail.google.com/mail/feed/atom")
+    c = NSURLConnection.alloc.initWithRequest(request, delegate:self)
+  end
+  
+  def finish
+    willChangeValueForKey("isExecuting")
+    willChangeValueForKey("isFinished")
+    @isExecuting = false
+    @isFinished = true
+    didChangeValueForKey("isExecuting")
+    didChangeValueForKey("isFinished")
+  end
+  
+  def isExecuting
+    @isExecuting
+  end
+  
+  def isFinished
+    @isFinished
+  end
+  
+  def main
+  end
+  
+  def process(xml = nil)
+    result = { :error => "ConnectionError", :count => 0, :messages => [] }
+    if @error && @error.code == NSURLErrorUserCancelledAuthentication || @statusCode == 401
+      result[:error] = "UserError"
+    end
+    
+    if xml && !@error
+      puts xml
+      feed = REXML::Document.new(xml)
+      # messages count
+      result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
+      result[:error] = "No"
+      
+      cnt = 0
+      feed.each_element('/feed/entry') do |msg|
+        cnt += 1
+        # only return first 10 messages
+        break if cnt > 10
+        
+        # gmail atom gives time string like 2009-08-29T24:56:52Z
+        date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
+
+        result[:messages] << {
+          :link => msg.get_elements('link')[0].attributes['href'],
+          :author => msg.get_elements('author/name')[0].text,
+          :subject => msg.get_elements('title')[0].text,
+          :id => msg.get_elements('id')[0].text,
+          :date => date,
+          :summary => msg.get_elements('summary')[0].text
+        }
+      end
+    end
+    
     NSNotificationCenter.defaultCenter.postNotificationName(GNCheckedAccountNotification,
       object:self,
       userInfo:{:guid => @guid, :results => result}
     )
+    finish
+  end
+  
+  def connection(conn, didReceiveAuthenticationChallenge:challenge)
+    credential = NSURLCredential.credentialWithUser(@username, password:@password, persistence:NSURLCredentialPersistenceNone)
+    challenge.useCredential(credential, forAuthenticationChallenge:challenge)
+  end
+  
+  def connection(conn, didReceiveResponse:res)
+    @buffer.setLength(0)
+    @statusCode = res.statusCode
+  end
+  
+  def connection(conn, didReceiveData:data)
+    @buffer.appendData(data)
+  end
+
+  def connection(conn, didFailWithError:err)
+    @error = err.copy
+    process
+  end
+  
+  def connectionDidFinishLoading(conn)
+    process(NSString.alloc.initWithData(@buffer, encoding:NSUTF8StringEncoding))
   end
 end
 

@@ -16,15 +16,15 @@ class PrefsAccountsViewController <  NSViewController
   def title
     NSLocalizedString("Accounts")
   end
-  
+
   def image
     NSImage.imageNamed("NSUserAccounts")
   end
-  
+
   def identifier
     PrefsToolbarItemAccounts
   end
-  
+
   def loadView
     super
     registerObservers
@@ -33,12 +33,12 @@ class PrefsAccountsViewController <  NSViewController
     @accountList.setDoubleAction("startEditingAccount:")
     forceRefresh
   end
-  
+
   ## account list table view
   def numberOfRowsInTableView(sender)
     accounts.size
   end
-  
+
   def tableView tableView, objectValueForTableColumn:tableColumn, row:row
     account = accounts[row]
     if account
@@ -50,18 +50,18 @@ class PrefsAccountsViewController <  NSViewController
       end
     end
   end
-  
+
   def tableView tableView, setObjectValue:object, forTableColumn:tableColumn, row:row
     if (account = accounts[row]) && tableColumn.identifier == "EnableStatus"
       account.enabled = object
       account.save
     end
   end
-  
+
   def tableViewSelectionDidChange(notification)
     forceRefresh
   end
-  
+
   ## button actions
   def startAddingAccount(sender)
     account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
@@ -69,29 +69,29 @@ class PrefsAccountsViewController <  NSViewController
     )
     AccountDetailController.editAccountOnWindow(account, view.superview.window)
   end
-  
-  def endAddingAccount(sender)        
+
+  def endAddingAccount(sender)
     forceRefresh
     index = accounts.size - 1
     @accountList.selectRowIndexes(NSIndexSet.indexSetWithIndex(index), byExtendingSelection:false)
     @accountList.scrollRowToVisible(index)
   end
-  
+
   def removeAccount(sender)
     account = currentAccount
     if account
-      GNPreferences.sharedInstance.removeAccount(account) 
+      GNPreferences.sharedInstance.removeAccount(account)
       forceRefresh
     end
   end
-  
+
   def startEditingAccount(sender)
     account = currentAccount
     if account
       AccountDetailController.editAccountOnWindow(account, view.superview.window)
     end
   end
-  
+
   def endEditingAccount(sender)
     forceRefresh
   end
@@ -100,7 +100,7 @@ class PrefsAccountsViewController <  NSViewController
   def accounts
     GNPreferences.sharedInstance.accounts
   end
-  
+
   def currentAccount
     if @accountList.selectedRow > -1
       accounts[@accountList.selectedRow]
@@ -108,13 +108,13 @@ class PrefsAccountsViewController <  NSViewController
       nil
     end
   end
-  
+
   def forceRefresh
     @accountList.reloadData
     enabled = !currentAccount.nil?
     @removeButton.enabled = @editButton.enabled = enabled
   end
-  
+
   def registerObservers
     center = NSNotificationCenter.defaultCenter
     center.addObserver(
@@ -123,7 +123,7 @@ class PrefsAccountsViewController <  NSViewController
       name:GNAccountAddedNotification,
       object:nil
     )
-    
+
     center.addObserver(
       self,
       selector:"endEditingAccount:",

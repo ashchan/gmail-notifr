@@ -17,7 +17,7 @@ class GNCheckOperation < NSOperation
     @guid = guid
     self
   end
-  
+
   def main
     http = Net::HTTP.new("mail.google.com", 443)
     http.use_ssl = true
@@ -36,25 +36,25 @@ class GNCheckOperation < NSOperation
         case response.code
         when "401" #HTTPUnauthorized
           result[:error] = "UserError"
-        when "200" #HTTPOK        
+        when "200" #HTTPOK
           feed = REXML::Document.new response.body
           # messages count
           result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
           result[:error] = "No"
-          
+
           cnt = 0
           feed.each_element('/feed/entry') do |msg|
             cnt += 1
             # only return first 10 messages
             break if cnt > 10
-            
+
             #contributor = msg.get_elements('contributor')[0]
-            #author = if contributor 
+            #author = if contributor
             #  contributor.get_elements('name')[0].text
             #else
             #  msg.get_elements('author/name')[0].text
             #end
-            
+
             # gmail atom gives time string like 2009-08-29T24:56:52Z
             date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
 
@@ -86,11 +86,11 @@ end
 
 class GNChecker
   @@queue = NSOperationQueue.alloc.init
-  
+
   def init
     super
   end
-  
+
   def initWithAccount(account)
     init
     @account = account
@@ -98,36 +98,36 @@ class GNChecker
     @messages = []
     self
   end
-  
+
   def queue
     @@queue
   end
-  
+
   def forAccount?(account)
     account.guid == @account.guid
   end
-  
+
   def forGuid?(guid)
     @guid == guid
   end
-  
+
   def userError?
     @userError
   end
-  
+
   def connectionError?
     @connectionError
   end
-  
+
   def messages
     @messages
   end
-  
+
   def messageCount
     return 0 unless @account && @account.enabled?
     @messageCount || 0
   end
-  
+
   def reset
     cleanup
     NSNotificationCenter.defaultCenter.postNotificationName(GNCheckingAccountNotification, object:self, userInfo:{:guid => @account.guid})
@@ -143,17 +143,17 @@ class GNChecker
       notifyMenuUpdate
     end
   end
-  
-  def checkMail     
+
+  def checkMail
     reset
   end
-  
+
   def checkResults(notification)
     return unless notification.userInfo[:guid] == @account.guid
 
     @checkedAt = DateTime.now
     results = notification.userInfo[:results]
-    
+
     @messages.clear
     @messageCount = results[:count]
     @connectionError = results[:error] == "ConnectionError"
@@ -169,11 +169,11 @@ class GNChecker
         :summary => msg[:summary]
       }
     end
-    
+
     shouldNotify = @account.enabled? && @messages.size > 0
     if shouldNotify
       newestDate = @messages.map { |m| m[:date] }.sort[-1]
-      
+
       if @newestDate
         shouldNotify = newestDate > @newestDate
       end
@@ -181,31 +181,31 @@ class GNChecker
       @newestDate = newestDate
     end
     notifyMenuUpdate
-    
+
     if shouldNotify && @account.growl
       info = @messages.map { |m| "#{m[:subject]}\nFrom: #{m[:author]}" }.join("\n#{'-' * 30}\n\n")
       if @messageCount > @messages.size
         info += "\n\n..."
       end
-      
+
       unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
           NSLocalizedString("Unread Messages") % @messageCount
-      
+
       notify(@account.username, [unreadCount, info].join("\n\n"))
     end
     if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
       sound.play
     end
   end
-  
+
   def checkedAt
     @checkedAt ? @checkedAt.strftime("%H:%M") : "NA"
   end
-  
+
   def notifyMenuUpdate
     NSNotificationCenter.defaultCenter.postNotificationName(GNAccountMenuUpdateNotification, object:self, userInfo:{:guid => @account.guid, :checkedAt => checkedAt})
   end
-  
+
   def notify(title, desc)
     GrowlApplicationBridge.notifyWithTitle(title,
       description: desc,
@@ -215,17 +215,17 @@ class GNChecker
       isSticky: false,
       clickContext: title)
   end
-  
+
   def cleanup
     @timer.invalidate if @timer
     NSNotificationCenter.defaultCenter.removeObserver(self, name:GNCheckedAccountNotification, object:nil)
   end
-  
+
   def cleanupAndQuit
     cleanup
     @timer = nil
   end
-  
+
   private
   def normalizeMessageLink(link)
     if @account.username.include?("@")
@@ -234,7 +234,7 @@ class GNChecker
         link = link.gsub("/mail?", "/a/#{domain}/?")
       end
     end
-    
+
     link
   end
 end

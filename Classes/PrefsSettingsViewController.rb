@@ -14,15 +14,15 @@ class PrefsSettingsViewController <  NSViewController
   def title
     NSLocalizedString("Settings")
   end
-  
+
   def image
     NSImage.imageNamed("NSPreferencesGeneral")
   end
-  
+
   def identifier
     PrefsToolbarItemSettings
   end
-  
+
   def loadView
     super
     @autoLaunch.setTitle(NSLocalizedString("Launch at login"))
@@ -33,8 +33,8 @@ class PrefsSettingsViewController <  NSViewController
 
   def saveAutoLaunch(sender)
     GNPreferences.sharedInstance.autoLaunch = (@autoLaunch.state == NSOnState)
-  end 
-  
+  end
+
   def saveShowUnreadCount(sender)
     GNPreferences.sharedInstance.showUnreadCount = (@showUnreadCount.state == NSOnState)
   end

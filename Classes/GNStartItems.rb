@@ -15,12 +15,12 @@ class GNStartItems
       KCFPreferencesCurrentUser,
       KCFPreferencesAnyHost
     )
-    
+
     return false unless cf
 
     cf.any? { |app| path == app["Path"] }
   end
-  
+
   def set(autoLaunch)
     if autoLaunch != isSet
       cf = CFPreferencesCopyValue(
@@ -29,13 +29,13 @@ class GNStartItems
         KCFPreferencesCurrentUser,
         KCFPreferencesAnyHost
       )
-      
+
       if cf
         cf = cf.mutableCopy
       else
         cf = NSMutableArray.alloc.init
       end
-      
+
       if autoLaunch
         #add
         #cf << { "Path" => path }
@@ -48,7 +48,7 @@ class GNStartItems
         end
         cf.removeObject(to_remove) if to_remove
       end
-      
+
       CFPreferencesSetValue(
         "AutoLaunchedApplicationDictionary",
         cf,
@@ -56,7 +56,7 @@ class GNStartItems
         KCFPreferencesCurrentUser,
         KCFPreferencesAnyHost
       )
-      
+
       CFPreferencesSynchronize(
         "loginwindow",
         KCFPreferencesCurrentUser,
@@ -64,7 +64,7 @@ class GNStartItems
       )
     end
   end
-  
+
   def path
     @path ||= NSBundle.mainBundle.bundlePath
   end

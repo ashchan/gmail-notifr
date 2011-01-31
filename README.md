@@ -25,8 +25,8 @@ The RubyCocoa implementation has been moved to the [rubycocoa](https://github.co
 # Requirements #
 
 * Mac OS X 10.6 (Snow Leopard) or higher
-* [MacRuby](http://macruby.com/) 0.8 (nightly build)
-* [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 1
+* [MacRuby](http://macruby.com/) 0.9 (nightly build)
+* [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 3
 
 # How to Build #
 
@@ -48,12 +48,12 @@ The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashch
 
 # Binary Download
 
-* [http://github.com/ashchan/gmail-notifr/downloads](http://github.com/ashchan/gmail-notifr/downloads)
+* [https://github.com/ashchan/gmail-notifr/downloads](https://github.com/ashchan/gmail-notifr/downloads)
 
 # Source #
 
-* [http://github.com/ashchan/gmail-notifr/tree/master](http://github.com/ashchan/gmail-notifr/tree/master)
+* [https://github.com/ashchan/gmail-notifr](https://github.com/ashchan/gmail-notifr)
 
 # Copyright Info #
 
-Copyright (c) 2008 - 2010 [James Chen](http://blog.ashchan.com) ([@ashchan](http://twitter.com/ashchan)), released under the MIT license
+Copyright (c) 2008 - 2011 [James Chen](http://blog.ashchan.com) ([@ashchan](http://twitter.com/ashchan)), released under the MIT license

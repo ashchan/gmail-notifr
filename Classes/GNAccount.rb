@@ -18,7 +18,8 @@ class GNAccount
   DEFAULT_INTERVAL  = 30
 
   def fetch_pass
-    self.password = MRKeychain::GenericItem.item_for_service(KeychainService, username:@username).password
+    keychain_item = MRKeychain::GenericItem.item_for_service(KeychainService, username:@username)
+    self.password = keychain_item ? keychain_item.password : ""
   end
 
   def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)

@@ -4,3 +4,5 @@ build
 *.mode1v3
 dsa_priv.pem
 *.perspectivev3
+Gmail Notifr.xcodeproj/xcuserdata/*
+Gmail Notifr.xcodeproj/project.xcworkspace/xcuserdata

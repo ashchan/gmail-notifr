@@ -6,7 +6,6 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 framework 'Growl'
-require 'rexml/document'
 
 class GNCheckOperation < NSOperation
   def initWithUsername(username, password:password, guid:guid)
@@ -26,11 +25,12 @@ class GNCheckOperation < NSOperation
     willChangeValueForKey("isExecuting")
     @isExecuting = true
     didChangeValueForKey("isExecuting")
-    
-    
+
+    removeCredential
+
     @buffer = NSMutableData.new
-    request = NSURLRequest.requestWithURL(NSURL.URLWithString:"https://mail.google.com/mail/feed/atom")
-    c = NSURLConnection.alloc.initWithRequest(request, delegate:self)
+    request = NSURLRequest.requestWithURL(NSURL.URLWithString("https://mail.google.com/mail/feed/atom"))
+    NSURLConnection.alloc.initWithRequest(request, delegate:self)
   end
   
   def finish
@@ -60,28 +60,27 @@ class GNCheckOperation < NSOperation
     end
     
     if xml && !@error
-      puts xml
-      feed = REXML::Document.new(xml)
+      feed = NSXMLDocument.alloc.initWithXMLString(xml, options:NSXMLDocumentTidyXML, error:nil)
       # messages count
-      result[:count] = feed.get_elements('/feed/fullcount')[0].text.to_i
+      result[:count] = feed.nodesForXPath('/feed/fullcount', error:nil)[0].stringValue.to_i
       result[:error] = "No"
       
       cnt = 0
-      feed.each_element('/feed/entry') do |msg|
+      feed.nodesForXPath('/feed/entry', error:nil).each do |msg|
         cnt += 1
         # only return first 10 messages
         break if cnt > 10
         
         # gmail atom gives time string like 2009-08-29T24:56:52Z
-        date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
+        date = DateTime.parse(msg.elementsForName('issued')[0].stringValue) rescue DateTime.parse(Date.today.to_s)
 
         result[:messages] << {
-          :link => msg.get_elements('link')[0].attributes['href'],
-          :author => msg.get_elements('author/name')[0].text,
-          :subject => msg.get_elements('title')[0].text,
-          :id => msg.get_elements('id')[0].text,
+          :link => msg.elementsForName('link')[0].attributeForName('href').stringValue,
+          :author => msg.elementsForName('author')[0].elementsForName('name')[0].stringValue,
+          :subject => msg.elementsForName('title')[0].stringValue,
+          :id => msg.elementsForName('id')[0].stringValue,
           :date => date,
-          :summary => msg.get_elements('summary')[0].text
+          :summary => msg.elementsForName('summary')[0].stringValue
         }
       end
     end
@@ -93,9 +92,29 @@ class GNCheckOperation < NSOperation
     finish
   end
   
+  def removeCredential
+    credentialStorage = NSURLCredentialStorage.sharedCredentialStorage
+
+    space = credentialStorage.allCredentials.select do |space, dict|
+      space.host =~ /^mail.google.com\//
+    end
+    if space
+      space.values.each { |u, c| credentialStorage.removeCredential(c, forProtectionSpace:space) if u == @username || u == @username + "@gmail.com" }
+    end
+  end
+  
+  def connectionShouldUseCredentialStorage(conn)
+    false
+  end
+  
   def connection(conn, didReceiveAuthenticationChallenge:challenge)
-    credential = NSURLCredential.credentialWithUser(@username, password:@password, persistence:NSURLCredentialPersistenceNone)
-    challenge.useCredential(credential, forAuthenticationChallenge:challenge)
+    puts "auth"
+    if challenge.previousFailureCount == 0
+      credential = NSURLCredential.credentialWithUser(@username, password:@password, persistence:NSURLCredentialPersistenceNone)
+      challenge.sender.useCredential(credential, forAuthenticationChallenge:challenge)
+    else
+      challenge.sender.cancelAuthenticationChallenge(challenge)
+    end
   end
   
   def connection(conn, didReceiveResponse:res)

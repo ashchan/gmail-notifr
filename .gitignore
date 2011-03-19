@@ -1,6 +1,16 @@
 .DS_Store
+dsa_priv.pem
 build
 *.pbxuser
+!default.pbxuser
 *.mode1v3
-dsa_priv.pem
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
 *.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside

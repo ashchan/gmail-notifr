@@ -2,9 +2,7 @@
 
 A MacRuby Gmail Notifier for Mac OS X
 
-# NOTE (2010/11/03) #
-Gmail Notifr was implemented in RubyCocoa then rewritten in MacRuby.
-The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch. Master branch will focus on MacRuby.
+The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch.
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)
 
@@ -25,7 +23,7 @@ The RubyCocoa implementation has been moved to the [rubycocoa](https://github.co
 # Requirements #
 
 * Mac OS X 10.6 (Snow Leopard) or higher
-* [MacRuby](http://macruby.com/) 0.9 (nightly build)
+* [MacRuby](http://macruby.com/) 1.0 (nightly build, 2011-04-14 or newer)
 * [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 3
 
 # How to Build #
@@ -35,6 +33,10 @@ The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashch
     git clone git@github.com:ashchan/gmail-notifr.git
     git submodule init
     git submodule update
+
+or use --recursive option:
+
+    git clone --recursive git@github.com:ashchan/gmail-notifr.git
 
 # Project Detail #
 

@@ -8,6 +8,7 @@
 framework 'Growl'
 require 'net/https'
 require 'rexml/document'
+require 'time'
 
 class GNCheckOperation < NSOperation
   def initWithUsername(username, password:password, guid:guid)
@@ -56,7 +57,11 @@ class GNCheckOperation < NSOperation
             #end
 
             # gmail atom gives time string like 2009-08-29T24:56:52Z
-            date = DateTime.parse(msg.get_elements('issued')[0].text) rescue DateTime.parse(Date.today.to_s)
+            # note 24 causes ArgumentError: argument out of range
+            # make it 23 and hope it won't matter too much
+            issued = msg.get_elements('issued')[0].text
+            issued.gsub!(/T24/, 'T23')
+            date = Time.parse(issued) 
 
             result[:messages] << {
               :link => msg.get_elements('link')[0].attributes['href'],

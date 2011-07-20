@@ -6,6 +6,7 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 framework 'Growl'
+require 'time'
 
 class GNCheckOperation < NSOperation
   def initWithUsername(username, password:password, guid:guid)
@@ -72,7 +73,11 @@ class GNCheckOperation < NSOperation
         break if cnt > 10
         
         # gmail atom gives time string like 2009-08-29T24:56:52Z
-        date = DateTime.parse(msg.elementsForName('issued')[0].stringValue) rescue DateTime.parse(Date.today.to_s)
+        # note 24 causes ArgumentError: argument out of range
+        # make it 23 and hope it won't matter too much
+        issued = msg.elementsForName('issued')[0].stringValue
+        issued.gsub!(/T24/, 'T23')
+        date = Time.parse(issued)
 
         result[:messages] << {
           :link => msg.elementsForName('link')[0].attributeForName('href').stringValue,
@@ -108,7 +113,6 @@ class GNCheckOperation < NSOperation
   end
   
   def connection(conn, didReceiveAuthenticationChallenge:challenge)
-    puts "auth"
     if challenge.previousFailureCount == 0
       credential = NSURLCredential.credentialWithUser(@username, password:@password, persistence:NSURLCredentialPersistenceNone)
       challenge.sender.useCredential(credential, forAuthenticationChallenge:challenge)
@@ -203,7 +207,7 @@ class GNChecker
   def checkResults(notification)
     return unless notification.userInfo[:guid] == @account.guid
 
-    @checkedAt = DateTime.now
+    @checkedAt = Time.now
     results = notification.userInfo[:results]
     
     @messages.clear

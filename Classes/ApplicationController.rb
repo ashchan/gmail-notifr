@@ -248,9 +248,7 @@ class ApplicationController
   end
 
   def checkAllAccounts
-    @checkers.each do |c|
-      c.reset
-    end
+    @checkers.map(&:reset)
   end
 
   def accountForGuid(guid)

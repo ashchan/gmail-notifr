@@ -101,6 +101,7 @@ class GNChecker
     @account = account
     @guid = account.guid
     @messages = []
+    NSNotificationCenter.defaultCenter.addObserver(self, selector:'checkResults:', name:GNCheckedAccountNotification, object:nil)
     self
   end
 
@@ -141,7 +142,6 @@ class GNChecker
       @timer = NSTimer.scheduledTimerWithTimeInterval(
         @account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
 
-      NSNotificationCenter.defaultCenter.addObserver(self, selector:'checkResults:', name:GNCheckedAccountNotification, object:nil)
       checker = GNCheckOperation.alloc.initWithUsername(@account.username, password:@account.password, guid:@account.guid)
       queue.addOperation(checker)
     else
@@ -223,11 +223,11 @@ class GNChecker
 
   def cleanup
     @timer.invalidate if @timer
-    NSNotificationCenter.defaultCenter.removeObserver(self, name:GNCheckedAccountNotification, object:nil)
   end
 
   def cleanupAndQuit
     cleanup
+    NSNotificationCenter.defaultCenter.removeObserver(self, name:GNCheckedAccountNotification, object:nil)
     @timer = nil
   end
 

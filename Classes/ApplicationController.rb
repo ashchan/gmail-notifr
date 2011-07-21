@@ -6,8 +6,6 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 framework 'Growl'
-require 'yaml'
-require 'uri'
 
 #OSX.ruby_thread_switcher_stop
 

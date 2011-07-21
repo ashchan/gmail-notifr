@@ -80,7 +80,7 @@ class GNPreferences
     # also delete keychain item
     # FIXFIX should delete old item when renaming an account; don't track name changing now so it's not possible to do so for now
     keychain_item = MRKeychain::GenericItem.item_for_service(KeychainService, username:account.username)
-    keychain_item.remove
+    keychain_item.remove if keychain_item
 
     @accounts.removeObject(account)
     writeBack

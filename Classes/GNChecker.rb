@@ -65,7 +65,7 @@ class GNCheckOperation < NSOperation
       result[:error] = "No"
 
       # return first 10 messages
-      feed.nodesForXPath('/feed/entry', error:nil).slice(0, 10).each do |msg|
+      feed.nodesForXPath('/feed/entry', error:nil).first(10).each do |msg|
         # gmail atom gives time string like 2009-08-29T24:56:52Z
         # note 24 causes ArgumentError: argument out of range
         # make it 23 and hope it won't matter too much

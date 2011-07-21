@@ -5,9 +5,7 @@
 #  Created by james on 10/3/08.
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
-framework 'Growl'
 
-#OSX.ruby_thread_switcher_stop
 
 class ApplicationController
   KInternetEventClass = KAEGetURL = 'GURL'.unpack('N').first

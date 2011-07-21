@@ -5,8 +5,6 @@
 #  Created by James Chen on 8/27/09.
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
-framework 'Growl'
-require 'time'
 
 class GNCheckOperation < NSOperation
   def initWithUsername(username, password:password, guid:guid)
@@ -66,12 +64,8 @@ class GNCheckOperation < NSOperation
       result[:count] = feed.nodesForXPath('/feed/fullcount', error:nil)[0].stringValue.to_i
       result[:error] = "No"
 
-      cnt = 0
-      feed.nodesForXPath('/feed/entry', error:nil).each do |msg|
-        cnt += 1
-        # only return first 10 messages
-        break if cnt > 10
-
+      # return first 10 messages
+      feed.nodesForXPath('/feed/entry', error:nil).slice(0, 10).each do |msg|
         # gmail atom gives time string like 2009-08-29T24:56:52Z
         # note 24 causes ArgumentError: argument out of range
         # make it 23 and hope it won't matter too much

@@ -6,42 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		172754BD107597F200D0347B /* Unit Tests */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */;
-			buildPhases = (
-				172754BC107597F200D0347B /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "Unit Tests";
-			productName = "Unit Tests";
-		};
-		4D1A51A110A4FF5D0046A98A /* Compile */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */;
-			buildPhases = (
-				4D1A51A010A4FF5D0046A98A /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Compile;
-			productName = Compile;
-		};
-		4D1A51A510A4FF640046A98A /* Embed */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */;
-			buildPhases = (
-				4D1A51A410A4FF640046A98A /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Embed;
-			productName = Embed;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		1A0BBCED12EBFC2700D98CD8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
 		1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
@@ -85,6 +49,16 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A8277B013D928CB00B436BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = "Gmail Notifr";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		172754B4107597CF00D0347B /* CopyFiles */ = {
@@ -341,6 +315,24 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		1A8277AC13D9287000B436BB /* Deployment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--compile --embed --bs";
+			buildConfigurationList = 1A8277AD13D9287000B436BB /* Build configuration list for PBXLegacyTarget "Deployment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/macruby_deploy;
+			buildWorkingDirectory = "";
+			dependencies = (
+				1A8277B113D928CB00B436BB /* PBXTargetDependency */,
+			);
+			name = Deployment;
+			passBuildSettingsInEnvironment = 1;
+			productName = Deployment;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		8D1107260486CEB800E47090 /* Gmail Notifr */ = {
 			isa = PBXNativeTarget;
@@ -390,9 +382,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Gmail Notifr */,
-				172754BD107597F200D0347B /* Unit Tests */,
-				4D1A51A110A4FF5D0046A98A /* Compile */,
-				4D1A51A510A4FF640046A98A /* Embed */,
+				1A8277AC13D9287000B436BB /* Deployment */,
 			);
 		};
 /* End PBXProject section */
@@ -440,48 +430,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		172754BC107597F200D0347B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/macruby Tests/run_suite.rb";
-		};
-		4D1A51A010A4FF5D0046A98A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The macruby_deploy command-line tool with the --compile argument will compile every Ruby source file of your .app into machine code. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --compile \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
-		};
-		4D1A51A410A4FF640046A98A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The macruby_deploy command-line tool with the --embed argument will make sure the MacRuby framework will be embedded in your .app. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --embed \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -492,6 +440,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A8277B113D928CB00B436BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* Gmail Notifr */;
+			targetProxy = 1A8277B013D928CB00B436BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1AC3DC9A12748667006832E4 /* Localizable.strings */ = {
@@ -539,63 +495,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		172754BE107597F200D0347B /* Debug */ = {
+		1A8277AE13D9287000B436BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Unit Tests";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 			};
 			name = Debug;
 		};
-		172754BF107597F200D0347B /* Release */ = {
+		1A8277AF13D9287000B436BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = "Unit Tests";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		4D1A51A210A4FF5D0046A98A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = Compile;
-			};
-			name = Debug;
-		};
-		4D1A51A310A4FF5D0046A98A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = Compile;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		4D1A51A610A4FF640046A98A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = Embed;
-			};
-			name = Debug;
-		};
-		4D1A51A710A4FF640046A98A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = Embed;
-				ZERO_LINK = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 			};
 			name = Release;
 		};
@@ -644,54 +584,38 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */ = {
+		1A8277AD13D9287000B436BB /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				172754BE107597F200D0347B /* Debug */,
-				172754BF107597F200D0347B /* Release */,
+				1A8277AE13D9287000B436BB /* Debug */,
+				1A8277AF13D9287000B436BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4D1A51A210A4FF5D0046A98A /* Debug */,
-				4D1A51A310A4FF5D0046A98A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4D1A51A610A4FF640046A98A /* Debug */,
-				4D1A51A710A4FF640046A98A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Gmail Notifr" */ = {
 			isa = XCConfigurationList;

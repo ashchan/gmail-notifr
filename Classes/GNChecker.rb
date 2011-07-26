@@ -77,7 +77,9 @@ class GNChecker
         when "401" #HTTPUnauthorized
           result[:error] = "UserError"
         when "200" #HTTPOK
-          feed = NSXMLDocument.alloc.initWithXMLString(response.body, options:NSXMLDocumentTidyXML, error:nil)
+          # oops, response.body should be utf-8
+          xml = response.body.force_encoding("UTF-8")
+          feed = NSXMLDocument.alloc.initWithXMLString(xml, options:NSXMLDocumentTidyXML, error:nil)
           # messages count
           result[:count] = feed.nodesForXPath('/feed/fullcount', error:nil)[0].stringValue.to_i
           result[:error] = "No"

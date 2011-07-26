@@ -1,3 +1,9 @@
+h3. 0.6.0 (July 25, 2011)
+* Lion compatible.
+* The whole app has been rewritten in MacRuby.
+* Several localization and issue fix.
+* Note: This is the test build for Lion, some functionalities might not be doing well. Due to the fact it embeds the MacRuby framework, the app size is bigger.
+
 h3. 0.5.2 (Aug 30, 2010)
 * Enhancements on mailto handler, now should support most situations.
 * Localization Fix (German)

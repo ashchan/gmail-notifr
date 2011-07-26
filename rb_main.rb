@@ -11,6 +11,7 @@
 framework 'Cocoa'
 framework 'Growl'
 require 'time'
+require 'net/https'
 
 # Loading all the Ruby project files.
 main = File.basename(__FILE__, File.extname(__FILE__))

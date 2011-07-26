@@ -6,137 +6,7 @@
 #  Copyright (c) 2009 ashchan.com. All rights reserved.
 #
 
-class GNCheckOperation < NSOperation
-  def initWithUsername(username, password:password, guid:guid)
-    init
-    @username = username
-    @password = password
-    @guid = guid
-    self
-  end
-
-  def start
-    if !NSThread.isMainThread
-       performSelectorOnMainThread("start", withObject:nil, waitUntilDone:false)
-       return
-    end
-
-    willChangeValueForKey("isExecuting")
-    @isExecuting = true
-    didChangeValueForKey("isExecuting")
-
-    removeCredential
-
-    @buffer = NSMutableData.new
-    request = NSURLRequest.requestWithURL(NSURL.URLWithString("https://mail.google.com/mail/feed/atom"))
-    NSURLConnection.alloc.initWithRequest(request, delegate:self)
-  end
-
-  def finish
-    willChangeValueForKey("isExecuting")
-    willChangeValueForKey("isFinished")
-    @isExecuting = false
-    @isFinished = true
-    didChangeValueForKey("isExecuting")
-    didChangeValueForKey("isFinished")
-  end
-
-  def isExecuting
-    @isExecuting
-  end
-
-  def isFinished
-    @isFinished
-  end
-
-  def main
-  end
-
-  def process(xml = nil)
-    result = { :error => "ConnectionError", :count => 0, :messages => [] }
-    if @error && @error.code == NSURLErrorUserCancelledAuthentication || @statusCode == 401
-      result[:error] = "UserError"
-    end
-
-    if xml && !@error
-      feed = NSXMLDocument.alloc.initWithXMLString(xml, options:NSXMLDocumentTidyXML, error:nil)
-      # messages count
-      result[:count] = feed.nodesForXPath('/feed/fullcount', error:nil)[0].stringValue.to_i
-      result[:error] = "No"
-
-      # return first 10 messages
-      feed.nodesForXPath('/feed/entry', error:nil).first(10).each do |msg|
-        # gmail atom gives time string like 2009-08-29T24:56:52Z
-        # note 24 causes ArgumentError: argument out of range
-        # make it 23 and hope it won't matter too much
-        issued = msg.elementsForName('issued')[0].stringValue
-        issued.gsub!(/T24/, 'T23')
-        date = Time.parse(issued)
-
-        result[:messages] << {
-          :link => msg.elementsForName('link')[0].attributeForName('href').stringValue,
-          :author => msg.elementsForName('author')[0].elementsForName('name')[0].stringValue,
-          :subject => msg.elementsForName('title')[0].stringValue,
-          :id => msg.elementsForName('id')[0].stringValue,
-          :date => date,
-          :summary => msg.elementsForName('summary')[0].stringValue
-        }
-      end
-    end
-
-    NSNotificationCenter.defaultCenter.postNotificationName(GNCheckedAccountNotification,
-      object:self,
-      userInfo:{:guid => @guid, :results => result}
-    )
-    finish
-  end
-
-  def removeCredential
-    credentialStorage = NSURLCredentialStorage.sharedCredentialStorage
-
-    space = credentialStorage.allCredentials.select do |space, dict|
-      space.host =~ /^mail.google.com\//
-    end
-    if space
-      space.values.each { |u, c| credentialStorage.removeCredential(c, forProtectionSpace:space) if u == @username || u == @username + "@gmail.com" }
-    end
-  end
-
-  def connectionShouldUseCredentialStorage(conn)
-    false
-  end
-
-  def connection(conn, didReceiveAuthenticationChallenge:challenge)
-    if challenge.previousFailureCount == 0
-      credential = NSURLCredential.credentialWithUser(@username, password:@password, persistence:NSURLCredentialPersistenceNone)
-      challenge.sender.useCredential(credential, forAuthenticationChallenge:challenge)
-    else
-      challenge.sender.cancelAuthenticationChallenge(challenge)
-    end
-  end
-
-  def connection(conn, didReceiveResponse:res)
-    @buffer.setLength(0)
-    @statusCode = res.statusCode
-  end
-
-  def connection(conn, didReceiveData:data)
-    @buffer.appendData(data)
-  end
-
-  def connection(conn, didFailWithError:err)
-    @error = err.copy
-    process
-  end
-
-  def connectionDidFinishLoading(conn)
-    process(NSString.alloc.initWithData(@buffer, encoding:NSUTF8StringEncoding))
-  end
-end
-
 class GNChecker
-  @@queue = NSOperationQueue.alloc.init
-
   def init
     super
   end
@@ -146,12 +16,7 @@ class GNChecker
     @account = account
     @guid = account.guid
     @messages = []
-    NSNotificationCenter.defaultCenter.addObserver(self, selector:'checkResults:', name:GNCheckedAccountNotification, object:nil)
     self
-  end
-
-  def queue
-    @@queue
   end
 
   def forAccount?(account)
@@ -184,13 +49,67 @@ class GNChecker
     NSNotificationCenter.defaultCenter.postNotificationName(GNCheckingAccountNotification, object:self, userInfo:{:guid => @account.guid})
 
     if @account && @account.enabled?
-      @timer = NSTimer.scheduledTimerWithTimeInterval(
-        @account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
-
-      checker = GNCheckOperation.alloc.initWithUsername(@account.username, password:@account.password, guid:@account.guid)
-      queue.addOperation(checker)
+      @timer = NSTimer.scheduledTimerWithTimeInterval(@account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
+      Dispatch::Queue.concurrent.async do
+        check!
+      end
     else
       notifyMenuUpdate
+    end
+  end
+
+  def check!
+    http = Net::HTTP.new("mail.google.com", 443)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    response = nil
+    result = { :error => "ConnectionError", :count => 0, :messages => [] }
+
+    begin
+      http.start do |http|
+        req = Net::HTTP::Get.new("/mail/feed/atom")
+        req.basic_auth(@account.username, @account.password)
+        response = http.request(req)
+      end
+
+      if response
+        case response.code
+        when "401" #HTTPUnauthorized
+          result[:error] = "UserError"
+        when "200" #HTTPOK
+          feed = NSXMLDocument.alloc.initWithXMLString(response.body, options:NSXMLDocumentTidyXML, error:nil)
+          # messages count
+          result[:count] = feed.nodesForXPath('/feed/fullcount', error:nil)[0].stringValue.to_i
+          result[:error] = "No"
+
+          # return first 10 messages
+          feed.nodesForXPath('/feed/entry', error:nil).first(10).each do |msg|
+            # gmail atom gives time string like 2009-08-29T24:56:52Z
+            # note 24 causes ArgumentError: argument out of range
+            # make it 23 and hope it won't matter too much
+            issued = msg.elementsForName('issued')[0].stringValue
+            issued.gsub!(/T24/, 'T23')
+            date = Time.parse(issued)
+
+            result[:messages] << {
+              :link => msg.elementsForName('link')[0].attributeForName('href').stringValue,
+              :author => msg.elementsForName('author')[0].elementsForName('name')[0].stringValue,
+              :subject => msg.elementsForName('title')[0].stringValue,
+              :id => msg.elementsForName('id')[0].stringValue,
+              :date => date,
+              :summary => msg.elementsForName('summary')[0].stringValue
+            }
+          end
+        end
+      end
+    rescue => e
+      puts "error: #{e}"
+    rescue Timeout::Error => e
+      #puts "time out on connection"
+    end
+
+    Dispatch::Queue.main.async do
+      processResult(result)
     end
   end
 
@@ -198,18 +117,15 @@ class GNChecker
     reset
   end
 
-  def checkResults(notification)
-    return unless notification.userInfo[:guid] == @account.guid
-
+  def processResult(result)
     @checkedAt = Time.now
-    results = notification.userInfo[:results]
 
     @messages.clear
-    @messageCount = results[:count]
-    @connectionError = results[:error] == "ConnectionError"
-    @userError = results[:error] == "UserError"
+    @messageCount = result[:count]
+    @connectionError = result[:error] == "ConnectionError"
+    @userError = result[:error] == "UserError"
 
-    results[:messages].each do |msg|
+    result[:messages].each do |msg|
       @messages << {
         :subject => msg[:subject],
         :author => msg[:author],
@@ -239,7 +155,7 @@ class GNChecker
       end
 
       unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
-          NSLocalizedString("Unread Messages") % @messageCount
+        NSLocalizedString("Unread Messages") % @messageCount
 
       notify(@account.username, [unreadCount, info].join("\n\n"))
     end
@@ -253,7 +169,7 @@ class GNChecker
   end
 
   def notifyMenuUpdate
-    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountMenuUpdateNotification, object:self, userInfo:{:guid => @account.guid, :checkedAt => checkedAt})
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountMenuUpdateNotification, object:nil, userInfo:{:guid => @account.guid, :checkedAt => checkedAt})
   end
 
   def notify(title, desc)
@@ -272,7 +188,6 @@ class GNChecker
 
   def cleanupAndQuit
     cleanup
-    NSNotificationCenter.defaultCenter.removeObserver(self, name:GNCheckedAccountNotification, object:nil)
     @timer = nil
   end
 

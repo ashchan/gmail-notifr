@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleVersion</key>
-	<string>32600</string>
+	<string>0.6.1</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.6.1</string>
 	<key>LSUIElement</key>
@@ -24,10 +24,8 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
-	<string>http://assets.ashchan.com/gmailnotifr/update.xml</string>
+	<string>https://assets.ashchan.com.s3.amazonaws.com/gmailnotifr/update.xml</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

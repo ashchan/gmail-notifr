@@ -1,5 +1,3 @@
 /* Localized versions of Info.plist keys */
 
 CFBundleName = "Gmail Notifr";
-CFBundleGetInfoString = "Gmail Notifr version 0.6.1, Copyright 2008-2011 ashchan.com.";
-NSHumanReadableCopyright = "Copyright 2008-2011 ashchan.com.";

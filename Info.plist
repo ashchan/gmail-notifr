@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleVersion</key>
-	<string>97</string>
+	<string>98</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.6.1</string>
+	<string>0.6.2</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -35,5 +35,7 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright 2008-2011 ashchan.com.</string>
 </dict>
 </plist>

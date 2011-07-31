@@ -17,10 +17,8 @@ require 'net/https'
 main = File.basename(__FILE__, File.extname(__FILE__))
 dir_path = NSBundle.mainBundle.resourcePath.fileSystemRepresentation
 
-# try to load Security bs file on SnowLeopard
-if NSAppKitVersionNumber < 1138 # Lion 10.7 is 1138
-  load_bridge_support_file "#{dir_path}/BridgeSupport/Security.bridgesupport"
-end
+# try to load Security bs file on SnowLeopard, Lion 10.7 has version number 1138
+load_bridge_support_file "#{dir_path}/BridgeSupport/Security.bridgesupport" if NSAppKitVersionNumber < 1138
 
 Dir.glob(File.join(dir_path, '*.{rb,rbo}')).map { |x| File.basename(x, File.extname(x)) }.uniq.each do |path|
   if path != main

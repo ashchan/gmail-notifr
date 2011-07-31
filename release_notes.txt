@@ -1,3 +1,6 @@
+h3. 0.6.2 (July 31, 2001)
+* Fixed Snow Leopard issue.
+
 h3. 0.6.1 (July 27, 2011)
 * Bugfix: Multiple accounts show same result from a single account.
 * Bugfix: Crash on updating menu. Now more stable on Lion.

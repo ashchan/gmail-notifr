@@ -11,6 +11,7 @@
 		1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
 		1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
 		1A0BBD1912EC047300D98CD8 /* Growl Registration Ticket.growlRegDict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
+		1A30BF2113E397B800337B6C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A30BF2013E397B800337B6C /* Security.framework */; };
 		1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952412D2097000F4D5F3 /* keychain.rb */; };
 		1A7A954812D2097000F4D5F3 /* exception.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952612D2097000F4D5F3 /* exception.rb */; };
 		1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952712D2097000F4D5F3 /* generic_item.rb */; };
@@ -82,6 +83,7 @@
 		17D55CD81076A1A2008207BD /* run_suite.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = run_suite.rb; sourceTree = "<group>"; };
 		1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
 		1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		1A30BF2013E397B800337B6C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1A7A952412D2097000F4D5F3 /* keychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = keychain.rb; sourceTree = "<group>"; };
 		1A7A952612D2097000F4D5F3 /* exception.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = exception.rb; sourceTree = "<group>"; };
 		1A7A952712D2097000F4D5F3 /* generic_item.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = generic_item.rb; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A30BF2113E397B800337B6C /* Security.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */,
 				1AC3DDE01275CF44006832E4 /* Sparkle.framework in Frameworks */,
@@ -168,6 +171,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A30BF2013E397B800337B6C /* Security.framework */,
 				4DE3BE130D8651D900ECA448 /* MacRuby.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				1AC3DDDF1275CF44006832E4 /* Sparkle.framework */,

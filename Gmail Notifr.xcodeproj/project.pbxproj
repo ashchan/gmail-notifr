@@ -85,7 +85,7 @@
 		17D55CD81076A1A2008207BD /* run_suite.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = run_suite.rb; sourceTree = "<group>"; };
 		1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
 		1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		1A125AFC14762484004245FE /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A125AFC14762484004245FE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A125AFE14762497004245FE /* nl */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = nl; path = Resources/nl.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		1A1374AB13DFF96500DA76C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A7A952412D2097000F4D5F3 /* keychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = keychain.rb; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
@@ -580,7 +580,7 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 98;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

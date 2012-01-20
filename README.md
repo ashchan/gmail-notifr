@@ -25,6 +25,7 @@ _* MacRuby is private framework on Lion, Gmail Notifr needs to embed the framewo
 ## Requirements ##
 
 * Mac OS X 10.6 (Snow Leopard) or higher
+* An Intel 64-bit machine
 * [MacRuby](http://macruby.com/) 1.0 (nightly build, 2011-07-22 or newer)
 * [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 3
 

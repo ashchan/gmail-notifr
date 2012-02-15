@@ -18,6 +18,7 @@ PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
 PrefsToolbarItemSettings = "prefsToolbarItemSettings"
 
 ShowUnreadCount = "ShowUnreadCount"
+OpenWithChrome = "OpenWithChrome"
 PreferencesSelection = "PreferencesSelection"
 Accounts = "Accounts"
 

@@ -16,6 +16,7 @@ class ApplicationController
   ENABLE_MENUITEM_POS = 2
   DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
   DONATE_URL = "http://www.pledgie.com/campaigns/2046"
+  CHROME_BUNDLE_IDENTIFIER = "com.google.Chrome"
 
   attr_accessor :menu
 
@@ -69,8 +70,21 @@ class ApplicationController
     checkerForAccount(account).reset
   end
 
+  def openURL(url)
+    nsurl = NSURL.URLWithString(url)
+    if GNPreferences.sharedInstance.openWithChrome?
+      NSWorkspace.sharedWorkspace.openURLs([nsurl],
+                                           withAppBundleIdentifier: CHROME_BUNDLE_IDENTIFIER,
+                                           options: NSWorkspaceLaunchDefault,
+                                           additionalEventParamDescriptor:nil,
+                                           launchIdentifiers:nil)
+    else
+      NSWorkspace.sharedWorkspace.openURL(nsurl)
+    end
+  end
+
   def openMessage(sender)
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(sender.representedObject))
+    openURL(sender.representedObject)
   end
 
   def checkAll(sender)
@@ -210,7 +224,7 @@ class ApplicationController
       url = account.baseurl << "?view=cm&tf=0&fs=1&to="
       url << link.split('?')[0].gsub(/mailto:/, '')
       url << "&#{link.split('?')[1]}".gsub(/&subject=/, "&su=")
-      NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(url))
+      openURL(url)
     end
   end
 
@@ -322,7 +336,7 @@ class ApplicationController
   end
 
   def openInboxForAccountName(name)
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString(GNAccount.baseurl_for(name)))
+    openURL(GNAccount.baseurl_for(name))
   end
 
   def registerMailtoHandler

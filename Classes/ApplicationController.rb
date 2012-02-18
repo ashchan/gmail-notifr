@@ -217,7 +217,7 @@ class ApplicationController
   def growlNotificationTimedOut(clickContext)
   end
 
-  def handleMailTo(event, eventReply)
+  def handleMailToEvent(event, eventReply:reply)
     account = GNPreferences.sharedInstance.accounts.first
     if account
       link = event.paramDescriptorForKeyword(KeyDirectObject).stringValue
@@ -342,7 +342,7 @@ class ApplicationController
   def registerMailtoHandler
     e = NSAppleEventManager.sharedAppleEventManager
     e.setEventHandler(self,
-      andSelector:'handleMailTo',
+      andSelector:'handleMailToEvent:eventReply:',
       forEventClass:KInternetEventClass,
       andEventID:KAEGetURL
     )

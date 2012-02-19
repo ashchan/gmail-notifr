@@ -9,7 +9,7 @@
 # a simple wrapper for preferences values
 class GNPreferences
 
-  attr_accessor :accounts, :autoLaunch, :showUnreadCount, :openWithChrome
+  attr_accessor :accounts, :autoLaunch, :showUnreadCount
 
   def self.sharedInstance
     @instance ||= self.alloc.init
@@ -47,7 +47,6 @@ class GNPreferences
 
     @autoLaunch = GNStartItems.alloc.init.isSet
     @showUnreadCount = defaults.boolForKey(ShowUnreadCount)
-    @openWithChrome = defaults.boolForKey(OpenWithChrome)
 
     self
   end
@@ -68,15 +67,6 @@ class GNPreferences
     NSUserDefaults.standardUserDefaults.setObject(val, forKey:ShowUnreadCount)
     NSUserDefaults.standardUserDefaults.synchronize
     NSNotificationCenter.defaultCenter.postNotificationName(GNShowUnreadCountChangedNotification, object:self)
-  end
-
-  def openWithChrome?
-    NSUserDefaults.standardUserDefaults.boolForKey(OpenWithChrome)
-  end
-
-  def openWithChrome=(val)
-    NSUserDefaults.standardUserDefaults.setObject(val, forKey:OpenWithChrome)
-    NSUserDefaults.standardUserDefaults.synchronize
   end
 
   def addAccount(account)
@@ -130,7 +120,6 @@ class GNPreferences
       NSUserDefaults.standardUserDefaults.registerDefaults(
         NSDictionary.dictionaryWithObjectsAndKeys(
           true, ShowUnreadCount,
-          false, OpenWithChrome,
           PrefsToolbarItemAccounts, PreferencesSelection,
           nil
         )

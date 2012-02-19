@@ -16,7 +16,6 @@ class ApplicationController
   ENABLE_MENUITEM_POS = 2
   DEFAULT_ACCOUNT_SUBMENU_COUNT = 4
   DONATE_URL = "http://www.pledgie.com/campaigns/2046"
-  CHROME_BUNDLE_IDENTIFIER = "com.google.Chrome"
 
   attr_accessor :menu
 
@@ -70,11 +69,11 @@ class ApplicationController
     checkerForAccount(account).reset
   end
 
-  def openURL(url)
+  def openURL(url, browserIdentifier = GNBrowser::DEFAULT)
     nsurl = NSURL.URLWithString(url)
-    if GNPreferences.sharedInstance.openWithChrome?
+    unless GNBrowser.default?(browserIdentifier)
       NSWorkspace.sharedWorkspace.openURLs([nsurl],
-                                           withAppBundleIdentifier: CHROME_BUNDLE_IDENTIFIER,
+                                           withAppBundleIdentifier: browserIdentifier,
                                            options: NSWorkspaceLaunchDefault,
                                            additionalEventParamDescriptor:nil,
                                            launchIdentifiers:nil)
@@ -84,7 +83,7 @@ class ApplicationController
   end
 
   def openMessage(sender)
-    openURL(sender.representedObject)
+    openURL(sender.representedObject, GNAccount.accountByMessageLink(sender.representedObject).browser)
   end
 
   def checkAll(sender)
@@ -211,7 +210,7 @@ class ApplicationController
   end
 
   def growlNotificationWasClicked(clickContext)
-    openInboxForAccountName(clickContext) if clickContext
+    openInboxForAccountName(clickContext, GNAccount.accountByName(clickContext).browser) if clickContext
   end
 
   def growlNotificationTimedOut(clickContext)
@@ -332,11 +331,11 @@ class ApplicationController
   end
 
   def openInboxForAccount(account)
-    openInboxForAccountName(account.username)
+    openInboxForAccountName(account.username, account.browser)
   end
 
-  def openInboxForAccountName(name)
-    openURL(GNAccount.baseurl_for(name))
+  def openInboxForAccountName(name, browserIdentifier = GNBrowser::DEFAULT)
+    openURL(GNAccount.baseurl_for(name), browserIdentifier)
   end
 
   def registerMailtoHandler

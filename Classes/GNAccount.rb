@@ -10,8 +10,8 @@
 
 class GNAccount
 
-  attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl
-  Properties = [:guid, :username, :interval, :enabled, :sound, :growl]
+  attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl, :browser
+  Properties = [:guid, :username, :interval, :enabled, :sound, :growl, :browser]
 
   MIN_INTERVAL    = 1
   MAX_INTERVAL    = 900
@@ -22,13 +22,14 @@ class GNAccount
     self.password = keychain_item ? keychain_item.password : ""
   end
 
-  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound)
+  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound, browser = GNBorwser::DEFAULT)
 
     self.username = username
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
     self.sound = sound || GNSound::SOUND_NONE
+    self.browser = browser || GNBorwser::DEFAULT
 
     fetch_pass
 
@@ -44,6 +45,18 @@ class GNAccount
     fetch_pass
 
     self
+  end
+
+  def self.accountByName(name)
+    GNPreferences.sharedInstance.accounts.find { |a| a.username == name }
+  end
+
+  def self.accountByMessageLink(link)
+    params = link.split("?")[1].split("&").map { |p| p.split("=") }
+    mail = params.find { |p| p.first == "account_id" }[1]
+    GNPreferences.sharedInstance.accounts.find do |a|
+      [mail, mail.split("@").first].include?(a.username)
+    end
   end
 
   def self.baseurl_for(name)
@@ -64,7 +77,7 @@ class GNAccount
   end
 
   def description
-    "<#{self.class}: #{username}(#{guid}), enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}>"
+    "<#{self.class}: #{username}(#{guid}), enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}, browser: #{browser}>"
   end
 
   alias inspect to_s

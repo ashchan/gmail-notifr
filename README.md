@@ -10,8 +10,9 @@ _Note: The RubyCocoa implementation has been moved to the [rubycocoa](https://gi
 
 [Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in MacRuby with these features:
 
-* Separate check and notification setting for each account.
 * Support multiple accounts.
+* Separate check and notification setting for each account.
+* Preferred browser setting for each account.
 * Support Google hosted account.
 * Check mail at a specified interval.
 * Growl &amp; sound notifications.
@@ -20,7 +21,7 @@ _Note: The RubyCocoa implementation has been moved to the [rubycocoa](https://gi
 * No background daemon processes installed as Google's official notifier.
 * Open Source &amp; free!
 
-_* MacRuby is private framework on Lion, Gmail Notifr needs to embed the framework so the final size is kind of 'big' comparing to RubyCocoa version._
+_* MacRuby is private framework on Lion, Gmail Notifr needs to embed the framework so the final size is kind of 'big' comparing to RubyCocoa version. Memory usage is bigger (30MB+) due to the same reason._
 
 ## Requirements ##
 
@@ -59,7 +60,7 @@ _Note: versions <= 0.5.2 do NOT run on OS X Lion._
 
 (The MIT License)
 
-Copyright (c) 2008 - 2011 [James Chen](http://ashchan.com/) ([@ashchan](http://twitter.com/#!/ashchan))
+Copyright (c) 2008 - 2012 [James Chen](http://ashchan.com/) ([@ashchan](http://twitter.com/#!/ashchan))
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

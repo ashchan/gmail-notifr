@@ -1,7 +1,7 @@
 h3. 0.6.3 (Feb 25, 2010)
-* Added browser setting. Now you can set each account to open in different browsers! Support Safari, Google Chrome and Firefox.
+* Added browser setting. Now you can set each account to open in different browsers! Support Safari, Google Chrome and Firefox. - thanks to Akinori MUSHA
 * Bugfix: mailto handling not working.
-* Added Dutch localization.
+* Added Dutch localization. - thanks to Ico Davids
 * Note: Doesn't run on Mountain Lion 10.8, not yet be able to fix it very soon. Follow the author (@ashchan) on twitter if you have suggestions or feedbacks.
 
 h3. 0.6.2 (July 31, 2001)

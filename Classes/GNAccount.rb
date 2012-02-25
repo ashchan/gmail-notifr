@@ -22,14 +22,14 @@ class GNAccount
     self.password = keychain_item ? keychain_item.password : ""
   end
 
-  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound, browser = GNBorwser::DEFAULT)
+  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound, browser = GNBrowser::DEFAULT)
 
     self.username = username
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
     self.sound = sound || GNSound::SOUND_NONE
-    self.browser = browser || GNBorwser::DEFAULT
+    self.browser = browser || GNBrowser::DEFAULT
 
     fetch_pass
 

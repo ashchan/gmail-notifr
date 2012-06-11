@@ -11,8 +11,6 @@
 		1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
 		1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
 		1A0BBD1912EC047300D98CD8 /* Growl Registration Ticket.growlRegDict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBD1712EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict */; };
-		1A125AFD14762484004245FE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC9C12748667006832E4 /* MainMenu.nib */; };
-		1A125AFF14762497004245FE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DC8212748643006832E4 /* AccountDetail.xib */; };
 		1A1374AC13DFF96500DA76C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1374AB13DFF96500DA76C3 /* Security.framework */; };
 		1A74EA9014F0998400C8D491 /* GNBrowser.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A74EA8F14F0998400C8D491 /* GNBrowser.rb */; };
 		1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952412D2097000F4D5F3 /* keychain.rb */; };
@@ -370,7 +368,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = ashchan.com;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Gmail Notifr" */;
@@ -438,8 +436,6 @@
 				1A7A954A12D2097000F4D5F3 /* internet_item.rb in Resources */,
 				1A7A954B12D2097000F4D5F3 /* README.md in Resources */,
 				1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */,
-				1A125AFD14762484004245FE /* MainMenu.nib in Resources */,
-				1A125AFF14762497004245FE /* AccountDetail.xib in Resources */,
 				1A74EA9014F0998400C8D491 /* GNBrowser.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

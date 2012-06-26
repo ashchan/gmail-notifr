@@ -10,6 +10,7 @@ class AccountDetailController < NSWindowController
 
   attr_accessor :username
   attr_accessor :password
+  attr_accessor :customurl
   attr_accessor :interval
   attr_accessor :accountEnabled
   attr_accessor :growl
@@ -18,6 +19,7 @@ class AccountDetailController < NSWindowController
 
   attr_accessor :usernameLabel
   attr_accessor :passwordLabel
+  attr_accessor :customurlLabel
   attr_accessor :checkLabel
   attr_accessor :minuteLabel
   attr_accessor :soundLabel
@@ -55,6 +57,7 @@ class AccountDetailController < NSWindowController
     @growl.setState(@account.growl ? NSOnState : NSOffState)
     @username.setTitleWithMnemonic(@account.username)
     @password.setTitleWithMnemonic(@account.password)
+    @customurl.setTitleWithMnemonic(@account.customurl)
 
     @browserList.removeAllItems
     @browserList.addItemsWithTitles(GNBrowser.all.map(&:first))
@@ -62,6 +65,7 @@ class AccountDetailController < NSWindowController
 
     @usernameLabel.setTitleWithMnemonic(NSLocalizedString("Username:"))
     @passwordLabel.setTitleWithMnemonic(NSLocalizedString("Password:"))
+    @customurlLabel.setTitleWithMnemonic(NSLocalizedString("Custom URL:"))
     @checkLabel.setTitleWithMnemonic(NSLocalizedString("Check for new mail every"))
     @minuteLabel.setTitleWithMnemonic(NSLocalizedString("minutes"))
     @accountEnabled.title = NSLocalizedString("Enable this account")
@@ -84,6 +88,7 @@ class AccountDetailController < NSWindowController
     @account.growl = @growl.state == NSOnState ? true : false
     @account.username = @username.stringValue
     @account.password = @password.stringValue
+    @account.customurl = @customurl.stringValue
     @account.browser = GNBrowser.getIdentifier(@browserList.titleOfSelectedItem)
     @account.save
 

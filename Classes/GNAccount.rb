@@ -10,8 +10,8 @@
 
 class GNAccount
 
-  attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl, :browser
-  Properties = [:guid, :username, :interval, :enabled, :sound, :growl, :browser]
+  attr_accessor :guid, :username, :password, :interval, :enabled, :sound, :growl, :browser, :customurl
+  Properties = [:guid, :username, :interval, :enabled, :sound, :growl, :browser, :customurl]
 
   MIN_INTERVAL    = 1
   MAX_INTERVAL    = 900
@@ -22,15 +22,17 @@ class GNAccount
     self.password = keychain_item ? keychain_item.password : ""
   end
 
-  def initWithNameIntervalEnabledGrowlSound(username, interval, enabled, growl, sound, browser = GNBrowser::DEFAULT)
+  def initWithNameIntervalEnabledGrowlSound(username, customurl, interval, enabled, growl, sound, browser = GNBrowser::DEFAULT)
 
     self.username = username
+    self.customurl = customurl
     self.interval = interval || DEFAULT_INTERVAL
     self.enabled = enabled
     self.growl = growl
     self.sound = sound || GNSound::SOUND_NONE
     self.browser = browser || GNBrowser::DEFAULT
-
+    self.customurl = customurl || DEFAULT_URL
+    
     fetch_pass
 
     self
@@ -59,14 +61,18 @@ class GNAccount
     end
   end
 
-  def self.baseurl_for(name)
-    account_domain = name.split("@")
-    url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ?
-      "https://mail.google.com/a/#{account_domain[1]}/" : "https://mail.google.com/mail"
+  def self.baseurl_for(name, customurl)
+    if customurl.length == 0
+      account_domain = name.split("@")
+      url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ?
+        "https://mail.google.com/a/#{account_domain[1]}/" : "https://mail.google.com/mail"
+    else
+      url = customurl
+    end
   end
 
   def baseurl
-    self.class.baseurl_for(username)
+    self.class.baseurl_for(username, customurl)
   end
 
   def encodeWithCoder(coder)
@@ -77,7 +83,7 @@ class GNAccount
   end
 
   def description
-    "<#{self.class}: #{username}(#{guid}), enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}, browser: #{browser}>"
+    "<#{self.class}: #{username}(#{guid}), customurl: #{customurl}, enabled? : #{enabled?}\ninterval: #{interval}, sound: #{sound}, growl: #{growl}, browser: #{browser}>"
   end
 
   alias inspect to_s
@@ -108,12 +114,21 @@ class GNAccount
     @password = new_password
   end
 
+  def customurl=(new_customurl)
+    @old_customurl ||= @customurl
+    @customurl = new_customurl
+  end
+
   def username_changed?
     @old_username && @old_username != @username
   end
 
   def password_changed?
     @old_password && @old_password != @password
+  end
+    
+  def customurl_changed?
+    @old_customurl && @old_customurl != @customurl
   end
 
   def changed?

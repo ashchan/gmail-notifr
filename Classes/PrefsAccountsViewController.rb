@@ -65,7 +65,7 @@ class PrefsAccountsViewController <  NSViewController
   ## button actions
   def startAddingAccount(sender)
     account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(
-      "username", nil, true, true, nil
+      "username", "", nil, true, true, nil
     )
     AccountDetailController.editAccountOnWindow(account, view.superview.window)
   end

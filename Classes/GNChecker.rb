@@ -201,7 +201,9 @@ class GNChecker
         link = link.gsub("/mail?", "/a/#{domain}/?")
       end
     end
-
+    if @account.customurl.length > 0
+      link = @account.customurl + link.split("/mail")[2]
+    end
     link
   end
 end

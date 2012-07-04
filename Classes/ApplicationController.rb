@@ -331,11 +331,11 @@ class ApplicationController
   end
 
   def openInboxForAccount(account)
-    openInboxForAccountName(account.username, account.browser)
+    openInboxForAccountName(account.username, account.customurl, account.browser)
   end
 
-  def openInboxForAccountName(name, browserIdentifier = GNBrowser::DEFAULT)
-    openURL(GNAccount.baseurl_for(name), browserIdentifier)
+  def openInboxForAccountName(name, customurl, browserIdentifier = GNBrowser::DEFAULT)
+    openURL(GNAccount.baseurl_for(name, customurl), browserIdentifier)
   end
 
   def registerMailtoHandler

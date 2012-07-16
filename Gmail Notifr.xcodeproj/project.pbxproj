@@ -562,6 +562,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
 					"\"$(SRCROOT)/Libs\"",
+					"/Library/Frameworks/**",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -587,6 +588,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
 					"\"$(SRCROOT)/Libs\"",
+					"/Library/Frameworks/**",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

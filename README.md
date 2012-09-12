@@ -34,7 +34,7 @@ _* MacRuby is private framework on Lion, Gmail Notifr needs to embed the framewo
 
 The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashchan/macruby-keychain-wrapper). It is added as a submodule. So don't forget to fetch it:
 
-    git clone git@github.com:ashchan/gmail-notifr.git
+    git clone https://github.com/ashchan/gmail-notifr.git
     git submodule init
     git submodule update
 

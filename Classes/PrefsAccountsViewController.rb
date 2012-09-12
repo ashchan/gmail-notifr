@@ -13,6 +13,8 @@ class PrefsAccountsViewController <  NSViewController
   attr_accessor :editButton
   attr_accessor :accountList
 
+  PBOARD_DRAG_TYPE = "GNDragType"
+    
   def title
     NSLocalizedString("Accounts")
   end
@@ -31,6 +33,7 @@ class PrefsAccountsViewController <  NSViewController
     @editButton.title = NSLocalizedString("Edit")
     @accountList.target = self
     @accountList.setDoubleAction("startEditingAccount:")
+    accountList.registerForDraggedTypes(NSArray.arrayWithObject(PBOARD_DRAG_TYPE))
     forceRefresh
   end
 
@@ -62,6 +65,36 @@ class PrefsAccountsViewController <  NSViewController
     forceRefresh
   end
 
+  def tableView tableView, writeRowsWithIndexes:rowIndexes, toPasteboard:pboard
+    pboard.declareTypes(NSArray.arrayWithObject(PBOARD_DRAG_TYPE), owner:self)
+    pboard.setData(NSKeyedArchiver.archivedDataWithRootObject(rowIndexes), forType:PBOARD_DRAG_TYPE)
+    return true
+  end
+    
+  def tableView tableView, validateDrop:info, proposedRow:row, proposedDropOperation:operation
+    if operation == NSTableViewDropAbove
+      return NSDragOperationGeneric
+    end
+    return NSDragOperationNone
+  end
+    
+  def tableView tableView, acceptDrop:info, row:row, dropOperation:operation
+    rowData = info.draggingPasteboard.dataForType(PBOARD_DRAG_TYPE)
+    oldRow = NSKeyedUnarchiver.unarchiveObjectWithData(rowData).firstIndex
+    if oldRow < row
+      accounts.insertObject(accounts.objectAtIndex(oldRow), atIndex:row)
+      accounts.removeObjectAtIndex(oldRow)
+    elsif oldRow > row
+      obj = accounts.objectAtIndex(oldRow)
+      accounts.removeObjectAtIndex(oldRow)
+      accounts.insertObject(obj, atIndex:row)
+    end
+    GNPreferences.sharedInstance.writeBack
+    NSNotificationCenter.defaultCenter.postNotificationName(GNAccountsReorderedNotification, object:nil)
+    tableView.reloadData
+    return true
+  end
+  
   ## button actions
   def startAddingAccount(sender)
     account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(

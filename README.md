@@ -40,7 +40,7 @@ The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashch
 
 or use --recursive option:
 
-    git clone --recursive git@github.com:ashchan/gmail-notifr.git
+    git clone --recursive https://github.com/ashchan/gmail-notifr.git
 
 ## Updates, Changelog & Feedback ##
 

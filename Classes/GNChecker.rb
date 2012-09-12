@@ -194,7 +194,13 @@ class GNChecker
   end
 
   def checkedAt
-    @checkedAt ? @checkedAt.strftime("%H:%M") : "NA"
+    if @checkedAt
+      dateFormatter = NSDateFormatter.alloc.init
+      dateFormatter.setTimeStyle(NSDateFormatterShortStyle)
+      dateFormatter.setDateStyle(NSDateFormatterNoStyle)
+      return dateFormatter.stringFromDate(NSDate.dateWithTimeIntervalSince1970(@checkedAt.to_i))
+    end
+    return "NA"
   end
 
   def notifyMenuUpdate

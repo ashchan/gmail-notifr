@@ -57,7 +57,8 @@ class GNChecker
   end
     
   def check!
-    request = NSURLRequest.requestWithURL(NSURL.URLWithString("https://mail.google.com/mail/feed/atom"), cachePolicy:NSURLRequestReloadIgnoringLocalCacheData, timeoutInterval:30.0)
+    request = NSMutableURLRequest.requestWithURL(NSURL.URLWithString("https://mail.google.com/mail/feed/atom"), cachePolicy:NSURLRequestReloadIgnoringLocalCacheData, timeoutInterval:30.0)
+    request.setHTTPShouldHandleCookies(false)
     @downloadedData = NSMutableData.data
     @connection = NSURLConnection.connectionWithRequest(request, delegate:self)
   end

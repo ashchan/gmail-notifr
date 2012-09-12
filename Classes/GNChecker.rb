@@ -173,7 +173,7 @@ class GNChecker
     end
     notifyMenuUpdate
 
-    if shouldNotify && @account.growl
+    if shouldNotify
       info = @messages.map { |m| "#{m[:subject]}\nFrom: #{m[:author]}" }.join("\n#{'-' * 30}\n\n")
       if @messageCount > @messages.size
         info += "\n\n..."
@@ -182,7 +182,10 @@ class GNChecker
       unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
         NSLocalizedString("Unread Messages") % @messageCount
 
-      notify(@account.username, [unreadCount, info].join("\n\n"))
+      if @account.growl
+        notifyGrowl(@account.username, [unreadCount, info].join("\n\n"))
+      end
+      notifyNotificationCenter(@account.username, unreadCount)
     end
     if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
       sound.play
@@ -197,7 +200,7 @@ class GNChecker
     NSNotificationCenter.defaultCenter.postNotificationName(GNAccountMenuUpdateNotification, object:nil, userInfo:{:guid => @account.guid, :checkedAt => checkedAt})
   end
 
-  def notify(title, desc)
+  def notifyGrowl(title, desc)
     GrowlApplicationBridge.notifyWithTitle(title,
       description: desc,
       notificationName: "new_messages",
@@ -205,6 +208,16 @@ class GNChecker
       priority: 0,
       isSticky: false,
       clickContext: title)
+  end
+    
+  def notifyNotificationCenter(title, desc)
+    userNotificationCenterClass = NSClassFromString("NSUserNotificationCenter")
+    if userNotificationCenterClass != nil
+      note = NSClassFromString("NSUserNotification").alloc.init
+      note.setValue(title, forKey:"title")
+      note.setValue(desc, forKey:"subtitle")
+      userNotificationCenterClass.performSelector("defaultUserNotificationCenter").performSelector("deliverNotification:", withObject:note)
+    end
   end
 
   def cleanup

@@ -12,7 +12,7 @@ GNAccountRemovedNotification = "GNAccountRemovedNotification"
 GNAccountChangedNotification = "GNAccountChangedNotification"
 GNAccountMenuUpdateNotification = "GNAccountMenuUpdateNotification"
 GNCheckingAccountNotification = "GNCheckingAccountNotification"
-
+GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
 
 PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
 PrefsToolbarItemSettings = "prefsToolbarItemSettings"

@@ -133,7 +133,7 @@ class ApplicationController
 
   def accountAdded(notification)
     account = accountForGuid(notification.userInfo[:guid])
-    addAccountMenuItem(account, GNPreferences.sharedInstance.accounts.count - 1)
+    createMenuForAccount(account, GNPreferences.sharedInstance.accounts.count - 1)
     checker = GNChecker.alloc.initWithAccount(account)
     @checkers << checker
     checker.reset
@@ -152,6 +152,22 @@ class ApplicationController
     checker.cleanupAndQuit
     @checkers.delete(checker)
     updateMenuBarCount
+  end
+    
+  def accountsReordered(notification)
+    menuItems = {}
+    # Remove all existing account menus but hold on to them
+    GNPreferences.sharedInstance.accounts.each do |account|
+      menuItem = menuItemForGuid(account.guid)
+      @status_item.menu.removeItem(menuItem)
+      menuItems[account.guid] = menuItem
+    end
+    # Now add them back in the order of the accounts array
+    i = 0
+    GNPreferences.sharedInstance.accounts.each do |account|
+      addAccountMenuItem(menuItems[account.guid], i)
+      i += 1
+    end
   end
 
   def accountChecking(notification)
@@ -237,7 +253,8 @@ class ApplicationController
       ["accountChanged:", GNAccountChangedNotification],
       ["accountRemoved:", GNAccountRemovedNotification],
       ["updateAccountMenuItem:", GNAccountMenuUpdateNotification],
-      ["accountChecking:", GNCheckingAccountNotification]
+      ["accountChecking:", GNCheckingAccountNotification],
+      ["accountsReordered:", GNAccountsReorderedNotification]
     ].each do |item|
       center.addObserver(self, selector:item[0], name:item[1], object:nil)
     end
@@ -278,11 +295,11 @@ class ApplicationController
 
   def setupMenu
     GNPreferences.sharedInstance.accounts.each_with_index do |a, i|
-      addAccountMenuItem(a, i)
+      createMenuForAccount(a, i)
     end
   end
 
-  def addAccountMenuItem(account, index)
+  def createMenuForAccount(account, index)
     accountMenu = NSMenu.alloc.initWithTitle(account.guid)
     accountMenu.setAutoenablesItems(false)
 
@@ -312,7 +329,11 @@ class ApplicationController
     accountItem.submenu = accountMenu
     accountItem.target = self
     accountItem.action = 'openInbox:'
-
+      
+    addAccountMenuItem(accountItem, index)
+  end
+ 
+  def addAccountMenuItem(accountItem, index)
     @status_item.menu.insertItem(accountItem, atIndex:ACCOUNT_MENUITEM_POS + index)
   end
 

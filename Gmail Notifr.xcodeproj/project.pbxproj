@@ -50,6 +50,7 @@
 		4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3BE130D8651D900ECA448 /* MacRuby.framework */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A56634121633432300E4C57F /* NSApplication+LoginItems.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,8 @@
 		4DE3BE130D8651D900ECA448 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Gmail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gmail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A56634111633432300E4C57F /* NSApplication+LoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSApplication+LoginItems.h"; path = "Libs/NSAppLoginItems/NSApplication+LoginItems.h"; sourceTree = "<group>"; };
+		A56634121633432300E4C57F /* NSApplication+LoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSApplication+LoginItems.m"; path = "Libs/NSAppLoginItems/NSApplication+LoginItems.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +217,7 @@
 		1A7A949712D2091200F4D5F3 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				A56634141633433300E4C57F /* NSAppLoginItems */,
 				1A7A94F212D2097000F4D5F3 /* macruby-keychain-wrapper */,
 			);
 			name = lib;
@@ -320,6 +324,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A56634141633433300E4C57F /* NSAppLoginItems */ = {
+			isa = PBXGroup;
+			children = (
+				A56634111633432300E4C57F /* NSApplication+LoginItems.h */,
+				A56634121633432300E4C57F /* NSApplication+LoginItems.m */,
+			);
+			name = NSAppLoginItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

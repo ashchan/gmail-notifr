@@ -46,6 +46,13 @@
 		1AC3DCD112748771006832E4 /* GNStartItems.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC812748771006832E4 /* GNStartItems.rb */; };
 		1AC3DDE01275CF44006832E4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
 		1AC3DDEB1275CF8E006832E4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
+		499522171652C8B700A2A183 /* app_a@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 499522121652C8B700A2A183 /* app_a@2x.tiff */; };
+		499522181652C8B700A2A183 /* app@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 499522131652C8B700A2A183 /* app@2x.tiff */; };
+		499522191652C8B700A2A183 /* check_a@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 499522141652C8B700A2A183 /* check_a@2x.tiff */; };
+		4995221A1652C8B700A2A183 /* check@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 499522151652C8B700A2A183 /* check@2x.tiff */; };
+		4995221B1652C8B700A2A183 /* error@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 499522161652C8B700A2A183 /* error@2x.tiff */; };
+		4995221E1652CAA700A2A183 /* mail_a@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4995221C1652CAA700A2A183 /* mail_a@2x.tiff */; };
+		4995221F1652CAA700A2A183 /* mail@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4995221D1652CAA700A2A183 /* mail@2x.tiff */; };
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
 		4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3BE130D8651D900ECA448 /* MacRuby.framework */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -142,6 +149,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		499522121652C8B700A2A183 /* app_a@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "app_a@2x.tiff"; path = "Resources/app_a@2x.tiff"; sourceTree = "<group>"; };
+		499522131652C8B700A2A183 /* app@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "app@2x.tiff"; path = "Resources/app@2x.tiff"; sourceTree = "<group>"; };
+		499522141652C8B700A2A183 /* check_a@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "check_a@2x.tiff"; path = "Resources/check_a@2x.tiff"; sourceTree = "<group>"; };
+		499522151652C8B700A2A183 /* check@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "check@2x.tiff"; path = "Resources/check@2x.tiff"; sourceTree = "<group>"; };
+		499522161652C8B700A2A183 /* error@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "error@2x.tiff"; path = "Resources/error@2x.tiff"; sourceTree = "<group>"; };
+		4995221C1652CAA700A2A183 /* mail_a@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "mail_a@2x.tiff"; path = "Resources/mail_a@2x.tiff"; sourceTree = "<group>"; };
+		4995221D1652CAA700A2A183 /* mail@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "mail@2x.tiff"; path = "Resources/mail@2x.tiff"; sourceTree = "<group>"; };
 		4DE339F60D74FCDD00ADB6EE /* rb_main.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		4DE3BE130D8651D900ECA448 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -302,9 +316,16 @@
 				1AC3DC8212748643006832E4 /* AccountDetail.xib */,
 				1AC3DC8C12748643006832E4 /* PreferencesAccounts.xib */,
 				1AC3DC8D12748643006832E4 /* PreferencesSettings.xib */,
+				1AC3DC8512748643006832E4 /* app.tiff */,
 				1AC3DC8312748643006832E4 /* app_a.tiff */,
 				1AC3DC8412748643006832E4 /* app.icns */,
-				1AC3DC8512748643006832E4 /* app.tiff */,
+				4995221C1652CAA700A2A183 /* mail_a@2x.tiff */,
+				4995221D1652CAA700A2A183 /* mail@2x.tiff */,
+				499522121652C8B700A2A183 /* app_a@2x.tiff */,
+				499522131652C8B700A2A183 /* app@2x.tiff */,
+				499522141652C8B700A2A183 /* check_a@2x.tiff */,
+				499522151652C8B700A2A183 /* check@2x.tiff */,
+				499522161652C8B700A2A183 /* error@2x.tiff */,
 				1AC3DC8612748643006832E4 /* check_a.tiff */,
 				1AC3DC8712748643006832E4 /* check.tiff */,
 				1AC3DC8812748643006832E4 /* Credits.html */,
@@ -450,6 +471,13 @@
 				1A7A954B12D2097000F4D5F3 /* README.md in Resources */,
 				1A0BBD1812EC041F00D98CD8 /* Growl Registration Ticket.growlRegDict in Resources */,
 				1A74EA9014F0998400C8D491 /* GNBrowser.rb in Resources */,
+				499522171652C8B700A2A183 /* app_a@2x.tiff in Resources */,
+				499522181652C8B700A2A183 /* app@2x.tiff in Resources */,
+				499522191652C8B700A2A183 /* check_a@2x.tiff in Resources */,
+				4995221A1652C8B700A2A183 /* check@2x.tiff in Resources */,
+				4995221B1652C8B700A2A183 /* error@2x.tiff in Resources */,
+				4995221E1652CAA700A2A183 /* mail_a@2x.tiff in Resources */,
+				4995221F1652CAA700A2A183 /* mail@2x.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

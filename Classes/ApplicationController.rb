@@ -118,10 +118,20 @@ class ApplicationController
     end
 
     if msgCount > 0
-      @status_item.setToolTip(
-        msgCount == 1 ? NSLocalizedString("Unread Message") % msgCount :
-          NSLocalizedString("Unread Messages") % msgCount
-      )
+      if NSLocale.currentLocale.objectForKey(NSLocaleLanguageCode) == "ru"
+        count = msgCount % 100
+        if ((count % 10 > 4) || (count % 10 == 0) || ((count > 10) && (count < 15)))
+          toolTipText = NSLocalizedString("Unread Messages") % msgCount
+        elsif (count % 10 == 1)
+          toolTipText = NSLocalizedString("Unread Message") % msgCount
+        else
+          toolTipText = NSLocalizedString("Unread Messages 2") % msgCount
+        end
+      else
+        toolTipText = (msgCount == 1 ? NSLocalizedString("Unread Message") % msgCount :
+          NSLocalizedString("Unread Messages") % msgCount)
+      end
+      @status_item.setToolTip(toolTipText)
       @status_item.setImage(@mail_icon)
       @status_item.setAlternateImage(@mail_alter_icon)
     else

@@ -60,9 +60,8 @@ class GNAccount
   end
 
   def self.baseurl_for(name)
-    account_domain = name.split("@")
-    url = (account_domain.length == 2 && !["gmail.com", "googlemail.com"].include?(account_domain[1])) ?
-      "https://mail.google.com/a/#{account_domain[1]}/" : "https://mail.google.com/mail"
+    account_name = name.include?("@") ? name : name + "@gmail.com"
+    url = "https://mail.google.com/mail/b/#{account_name}"
   end
 
   def baseurl

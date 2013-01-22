@@ -10,17 +10,14 @@ class GNStartItems
 
   def isSet
     # isInLoginItems returns BOOL but apparently Ruby doesn't cast
-    # that to an internal boolean, so do it manually.
-    return NSApp.isInLoginItems == 1 ? true : false
+    NSApp.isInLoginItems == 1
   end
 
   def set(autoLaunch)
     if autoLaunch != isSet
       if autoLaunch
-        #add
         NSApp.addToLoginItems
       else
-        #remove
         NSApp.removeFromLoginItems
       end
     end

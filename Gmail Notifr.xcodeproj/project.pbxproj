@@ -11,6 +11,7 @@
 		1A0BBCF512EBFC4300D98CD8 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */; };
 		1A1374AC13DFF96500DA76C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1374AB13DFF96500DA76C3 /* Security.framework */; };
 		1A74EA9014F0998400C8D491 /* GNBrowser.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A74EA8F14F0998400C8D491 /* GNBrowser.rb */; };
+		1A78C6FA16AE9BE9007E53C4 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1A78C6F916AE9BE8007E53C4 /* Growl Registration Ticket.growlRegDict */; };
 		1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952412D2097000F4D5F3 /* keychain.rb */; };
 		1A7A954812D2097000F4D5F3 /* exception.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952612D2097000F4D5F3 /* exception.rb */; };
 		1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952712D2097000F4D5F3 /* generic_item.rb */; };
@@ -92,6 +93,7 @@
 		1A0BBCEC12EBFC2700D98CD8 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
 		1A1374AB13DFF96500DA76C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A74EA8F14F0998400C8D491 /* GNBrowser.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNBrowser.rb; path = Classes/GNBrowser.rb; sourceTree = "<group>"; };
+		1A78C6F916AE9BE8007E53C4 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = SOURCE_ROOT; };
 		1A7A952412D2097000F4D5F3 /* keychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = keychain.rb; sourceTree = "<group>"; };
 		1A7A952612D2097000F4D5F3 /* exception.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = exception.rb; sourceTree = "<group>"; };
 		1A7A952712D2097000F4D5F3 /* generic_item.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = generic_item.rb; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		43D99EE416AD8151005AD039 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A78C6F916AE9BE8007E53C4 /* Growl Registration Ticket.growlRegDict */,
 				43D99EE516AD8151005AD039 /* AccountDetail.xib */,
 				43D99EE616AD8151005AD039 /* app.icns */,
 				43D99EE716AD8151005AD039 /* app.tiff */,
@@ -481,6 +484,7 @@
 				43D99F2916AD8151005AD039 /* mail_a@2x.tiff in Resources */,
 				43D99F2A16AD8151005AD039 /* PreferencesAccounts.xib in Resources */,
 				43D99F2B16AD8151005AD039 /* PreferencesSettings.xib in Resources */,
+				1A78C6FA16AE9BE9007E53C4 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

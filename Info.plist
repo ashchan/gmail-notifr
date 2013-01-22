@@ -14,18 +14,8 @@
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleVersion</key>
-	<string>106</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.7.0</string>
-	<key>LSUIElement</key>
-	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
-	<key>SUFeedURL</key>
-	<string>https://s3.amazonaws.com/assets.ashchan.com/gmailnotifr/update.xml</string>
+	<string>0.7.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -35,7 +25,17 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>109</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 2008-2012 ashchan.com.</string>
+	<string>Copyright 2008-2013 ashchan.com.</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://s3.amazonaws.com/assets.ashchan.com/gmailnotifr/update.xml</string>
 </dict>
 </plist>

@@ -180,8 +180,19 @@ class GNChecker
         info += "\n\n..."
       end
 
-      unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
-        NSLocalizedString("Unread Messages") % @messageCount
+      if NSLocale.currentLocale.objectForKey(NSLocaleLanguageCode) == "ru"
+        count = @messageCount % 100
+        if ((count % 10 > 4) || (count % 10 == 0) || ((count > 10) && (count < 15)))
+          unreadCount = NSLocalizedString("Unread Messages") % @messageCount
+        elsif (count % 10 == 1)
+          unreadCount = NSLocalizedString("Unread Message") % @messageCount
+        else
+          unreadCount = NSLocalizedString("Unread Messages 2") % @messageCount
+        end
+      else
+        unreadCount = @messageCount == 1 ? NSLocalizedString("Unread Message") % @messageCount :
+          NSLocalizedString("Unread Messages") % @messageCount
+      end
 
       if @account.growl
         notifyGrowl(@account.username, [unreadCount, info].join("\n\n"))

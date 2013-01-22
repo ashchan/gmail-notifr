@@ -3,4 +3,4 @@
 	url = git://github.com/ashchan/macruby-keychain-wrapper.git
 [submodule "Libs/NSAppLoginItems"]
 	path = Libs/NSAppLoginItems
-	url = https://github.com/kainjow/NSAppLoginItems.git
+  url = https://github.com/ashchan/NSAppLoginItems.git

@@ -2,6 +2,8 @@
 
 A MacRuby Gmail Notifier for Mac OS X
 
+_Note: moved to [gmail-notifr-objc](https://github.com/ashchan/gmail-notifr-objc). Native Objective-C will be used for future development. _
+
 _Note: The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch._
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)

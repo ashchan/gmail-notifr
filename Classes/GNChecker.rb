@@ -249,12 +249,14 @@ class GNChecker
 
   private
   def normalizeMessageLink(link)
-    if @account.username.include?("@")
-      domain = @account.username.split("@")[1]
-      if domain != "gmail.com" && domain != "googlemail.com"
-        link = link.gsub("/mail?", "/a/#{domain}/?")
-      end
-    end
+    link = link.gsub("/mail?account_id=", "/mail/b/")
+    link = link.gsub("&message_id=", "/#inbox/")
+    #if @account.username.include?("@")
+    #  domain = @account.username.split("@")[1]
+    #  if domain != "gmail.com" && domain != "googlemail.com"
+    #    link = link.gsub("/mail?", "/a/#{domain}/?")
+    #  end
+    #end
 
     link
   end
